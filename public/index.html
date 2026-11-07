@@ -166,13 +166,13 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .stage3d.nogl .fallback { opacity: 1 }
 .band .mover { transition: opacity .6s ease }
 .band .canwrap { position: relative }
-.band .tape { position: absolute; left: 50%; top: 50%; width: 118%; height: auto; z-index: 3; pointer-events: none; background: #FFE600; color: #123D33; overflow: hidden; padding: 11px 0; box-shadow: 0 10px 24px rgba(18,61,51,.22); border-block: 7px solid transparent; border-image: repeating-linear-gradient(45deg, #123D33 0 12px, #FFE600 12px 24px) 7; will-change: transform; transform: translate(-50%,-50%) rotate(-10deg) }
-.band .tape.b { background: #FFE600; transform: translate(-50%,-50%) rotate(12deg) }
-.band .tape .run { display: flex; width: max-content; animation: taperun 14s linear infinite; font: 800 clamp(15px, 1.6vw, 21px)/1 var(--body); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap }
-.band .tape.b .run { animation-direction: reverse; animation-duration: 17s }
-.band .tape .run span { padding-right: 1.2em }
-@keyframes taperun { to { transform: translateX(-50%) } }
-@media (prefers-reduced-motion: reduce) { .band .tape .run { animation: none } }
+.band .curtain { position: absolute; top: 50%; width: 68%; z-index: 3; pointer-events: none; filter: drop-shadow(0 18px 28px rgba(40,80,110,.20)); will-change: transform }
+.band .curtain svg { display: block; width: 100%; height: auto }
+.band .curtain.l { right: 36%; transform: translate3d(0,-50%,0) }
+.band .curtain.r { left: 36%; transform: translate3d(0,-50%,0) scaleX(-1) }
+.band .curtain.r svg { transform: scaleX(-1) }
+.band .peek { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 4; background: #FFE600; color: #123D33; font: 800 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; padding: 9px 14px; border-radius: 999px; box-shadow: 0 4px 0 #123D33; white-space: nowrap; pointer-events: none }
+@media (prefers-reduced-motion: reduce) { .band .curtain, .band .peek { display: none } }
 .band .mover.wait { opacity: 0 }
 @media (max-width: 860px) {
   .hero .in { padding-block: 8px 32px; gap: 0 }
@@ -202,7 +202,7 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .band .canwrap { display: flex; justify-content: center; height: clamp(320px, 46vw, 520px) }
 .band .canwrap > * { height: 100%; will-change: transform }
 .band .canwrap img.can3d, .band .canwrap svg.can { height: 100%; width: auto }
-.band .canwrap > .tape { height: auto }
+.band .canwrap > .curtain, .band .canwrap > .peek { height: auto }
 .band h2 { font-size: clamp(46px, 6.5vw, 86px); line-height: .92 }
 .band .num { font: 300 18px/1 var(--display); color: var(--soft); margin-bottom: 10px }
 .band p { font-size: 18px; color: var(--soft); max-width: 38ch; margin: 16px 0 }
@@ -438,9 +438,9 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
   };
   const ORDER = ['mint', 'peach', 'grapefruit'];
   const CLOUD = 'M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z';
-  /* "afzetlint": two yellow caution tapes with COMING SOON taped across each flavor can */
-  const TAPE_TXT = Array(8).fill('<span>Coming soon \u2726</span>').join('');
-  const TAPE = '<div class="tape a" aria-hidden="true"><div class="run">' + TAPE_TXT + TAPE_TXT + '</div></div><div class="tape b" aria-hidden="true"><div class="run">' + TAPE_TXT + TAPE_TXT + '</div></div>';
+  /* cloud curtain over each flavor can: closed when the band enters, opens as it reaches the middle */
+  const CURTAIN_SVG = '<svg viewBox="0 0 100 60" aria-hidden="true"><path d="' + CLOUD + '" fill="#fff"/><path d="M22 54 C14 54 9 50 7 45 C20 49 70 50 88 45 C86 51 82 54 77 54 Z" fill="#E3EEF6"/></svg>';
+  const CURTAIN = '<div class="curtain l" aria-hidden="true">' + CURTAIN_SVG + '</div><div class="curtain r" aria-hidden="true">' + CURTAIN_SVG + '</div><div class="peek" aria-hidden="true">sneak peek ↓</div>';
 
   /* drawn can, used until the 3D pictures are ready */
   let uid = 0;
@@ -509,14 +509,14 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
     const f = FL[k];
     const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
     sec.setAttribute('aria-label', f.name);
-    sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div>' + TAPE + '</div>' +
+    sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div>' + CURTAIN + '</div>' +
       '<div><div class="num">0' + (i + 1) + ' / 03 · coming soon</div><h2></h2><p></p><div class="ing"></div><a class="btn" href="#list">Notify me at launch</a></div></div>';
     sec.querySelector('.word').textContent = (f.name.split(' & ')[0] + ' · ').repeat(4);
     sec.querySelector('h2').textContent = f.name;
     sec.querySelector('p').textContent = f.desc;
     const ing = sec.querySelector('.ing'); f.ing.forEach(x => { const s = document.createElement('span'); s.textContent = x; ing.appendChild(s); });
     flavorsEl.appendChild(sec);
-    bands.push({ sec, key: k, mover: sec.querySelector('.mover'), word: sec.querySelector('.word'), dir: i % 2 ? 1 : -1, ta: sec.querySelector('.tape.a'), tb: sec.querySelector('.tape.b') });
+    bands.push({ sec, key: k, mover: sec.querySelector('.mover'), word: sec.querySelector('.word'), dir: i % 2 ? 1 : -1, cl: sec.querySelector('.curtain.l'), cr: sec.querySelector('.curtain.r'), peek: sec.querySelector('.peek') });
   });
 
   /* playful floating clouds: puffy SVG clouds that drift, bob, squish on hover and go poof on click */
@@ -611,10 +611,12 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
       const p = b.cur;
       b.mover.style.transform = 'translate3d(' + (b.dir * p * 110 * amp).toFixed(1) + 'px,' + (p * 50).toFixed(1) + 'px,0) rotate(' + (b.dir * p * 14).toFixed(2) + 'deg) scale(' + (1 - Math.min(0.1, Math.abs(p) * 0.1)).toFixed(3) + ')';
       b.word.style.transform = 'translate3d(' + (b.dir * p * 420 - 200).toFixed(1) + 'px,-50%,0)';
-      /* tapes swing in from the sides and settle crossed over the can, with a little wobble */
-      const q = Math.max(-1, Math.min(1, p * 1.6));
-      b.ta.style.transform = 'translate(-50%,-50%) translateX(' + (-b.dir * q * 30).toFixed(1) + '%) rotate(' + (-10 + q * 14).toFixed(2) + 'deg)';
-      b.tb.style.transform = 'translate(-50%,-50%) translateX(' + (b.dir * q * 30).toFixed(1) + '%) rotate(' + (12 - q * 16).toFixed(2) + 'deg)';
+      const open = Math.max(0, Math.min(1, 1.25 - Math.abs(p) * 2.2));
+      const ease = open * open * (3 - 2 * open);
+      b.cl.style.transform = 'translate3d(' + (-ease * 55).toFixed(1) + '%,-50%,0) rotate(' + (-ease * 10).toFixed(2) + 'deg) scale(' + (1 - ease * 0.25).toFixed(3) + ')';
+      b.cl.style.opacity = b.cr.style.opacity = (1 - ease).toFixed(2);
+      b.cr.style.transform = 'translate3d(' + (ease * 55).toFixed(1) + '%,-50%,0) rotate(' + (ease * 10).toFixed(2) + 'deg) scale(' + (1 - ease * 0.25).toFixed(3) + ')';
+      b.peek.style.opacity = (1 - ease).toFixed(2);
     });
   }
   requestAnimationFrame(onFrame);
