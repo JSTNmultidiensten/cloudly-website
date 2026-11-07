@@ -172,19 +172,6 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .band .tape.b .run { animation-direction: reverse; animation-duration: 17s }
 .band .tape .run span { padding-right: 1.2em }
 @keyframes taperun { to { transform: translateX(-50%) } }
-/* caution tapes across the whole site */
-.tape2, .ctape { position: absolute; background: #FFE600; color: #123D33; overflow: hidden; padding: 11px 0; box-shadow: 0 10px 24px rgba(18,61,51,.22); border-block: 7px solid transparent; border-image: repeating-linear-gradient(45deg, #123D33 0 12px, #FFE600 12px 24px) 7; pointer-events: none; will-change: transform }
-.tape2 .run, .ctape .run { display: flex; width: max-content; animation: taperun 22s linear infinite; font: 800 clamp(14px, 1.5vw, 20px)/1 var(--body); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap }
-.tape2.b .run { animation-direction: reverse; animation-duration: 26s }
-.tape2 .run span, .ctape .run span { padding-right: 1.2em }
-.xt { position: relative; height: 0; z-index: 6 }
-.xt .tape2 { left: -10vw; width: 120vw; top: 0; transform: translateY(-50%) rotate(-3deg) }
-.xt .tape2.b { transform: translateY(-50%) rotate(2.5deg) }
-.ticker + .tapeX { position: relative; height: 0; z-index: 6 }
-.ctape.corner { top: 46px; right: -70px; width: 380px; transform: rotate(32deg); z-index: 3 }
-.ctape.corner .run { animation-duration: 12s }
-@media (max-width: 600px) { .ctape.corner { top: 26px; right: -90px; width: 300px } .tape2, .ctape { padding: 8px 0; border-block-width: 5px } }
-@media (prefers-reduced-motion: reduce) { .tape2 .run, .ctape .run { animation: none } }
 @media (prefers-reduced-motion: reduce) { .band .tape .run { animation: none } }
 .band .mover.wait { opacity: 0 }
 @media (max-width: 860px) {
@@ -355,7 +342,6 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
   </section>
 
   <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
-  <div class="xt" aria-hidden="true" style="margin-top:-30px"><div class="tape2" data-r="2.2"><div class="run"></div></div></div>
 
   <section class="filmband" id="film">
     <div class="in">
@@ -364,14 +350,12 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
           <source src="hero.mp4" type="video/mp4">
         </video>
         <div class="cap"><div class="eyebrow">Ice cold, straight from the clouds</div><h2>Crack one open.</h2></div>
-        <div class="ctape corner" aria-hidden="true"><div class="run"></div></div>
         <button class="film-toggle" id="film-toggle" type="button" aria-label="Pause video">❚❚</button>
       </div>
     </div>
   </section>
 
   <div id="flavors"></div>
-  <div class="xt" aria-hidden="true"><div class="tape2" data-r="-2.5"><div class="run"></div></div><div class="tape2 b" data-r="3"><div class="run"></div></div></div>
 
 
   <section class="in" id="story">
@@ -395,7 +379,6 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
     </div>
   </section>
 
-  <div class="xt" aria-hidden="true"><div class="tape2" data-r="3"><div class="run"></div></div><div class="tape2 b" data-r="-2"><div class="run"></div></div></div>
   <section class="block" id="list">
     <div class="in">
       <div class="wait">
@@ -425,7 +408,6 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
       </div>
     </div>
   </section>
-  <div class="xt" aria-hidden="true"><div class="tape2" data-r="-2"><div class="run"></div></div><div class="tape2 b" data-r="2.5"><div class="run"></div></div></div>
 </main>
 
 <footer>
@@ -605,17 +587,6 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
     heroState.mx = (e.clientX - r.left) / r.width - 0.5; heroState.my = (e.clientY - r.top) / r.height - 0.5;
   });
   let lastY = window.scrollY, tickX = 0, boost = 0, lastT = performance.now();
-  /* fill every caution tape and let them sway a little with the scroll */
-  { const one = '<span>Coming soon \u2726</span>', txt = Array(14).fill(one).join('');
-    document.querySelectorAll('.tape2 .run, .ctape .run').forEach(r => { r.innerHTML = txt + txt; }); }
-  const tapes2 = [...document.querySelectorAll('.tape2')].map(el => ({ el, r: parseFloat(el.dataset.r) || 0 }));
-  function swayTapes(vh) {
-    for (const t of tapes2) {
-      const b = t.el.getBoundingClientRect(); if (b.bottom < -200 || b.top > vh + 200) continue;
-      const p = Math.max(-1, Math.min(1, (b.top + b.height / 2 - vh / 2) / vh));
-      t.el.style.transform = 'translateY(-50%) translateX(' + (p * (t.r > 0 ? 4 : -4)).toFixed(2) + 'vw) rotate(' + (t.r + p * t.r * 0.6).toFixed(2) + 'deg)';
-    }
-  }
   function onFrame(t) {
     requestAnimationFrame(onFrame);
     const dt = Math.min(0.05, (t - lastT) / 1000); lastT = t;
@@ -624,7 +595,6 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
     heroState.p = Math.min(1, y / (vh * 0.9));
     if (reduce) return;
     heroEl.style.setProperty('--hp', heroState.p.toFixed(3));
-    swayTapes(vh);
     for (const d of driftLayers) { const r = d.host.getBoundingClientRect(); if (r.bottom > -200 && r.top < vh + 200) d.layer.style.setProperty('--sy', (r.top - vh / 2).toFixed(0)); } heroEl.style.setProperty('--mx', heroState.mx.toFixed(3));
     { const fb = document.getElementById('film'), r = fb.getBoundingClientRect(); fb.style.setProperty('--fp', Math.max(0, Math.min(1, 1 - r.top / vh)).toFixed(3)); }
     boost += (Math.abs(dy) * 6 - boost) * Math.min(1, dt * 6);
