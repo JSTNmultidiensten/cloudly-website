@@ -88,6 +88,7 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 /* coming soon: loud and clear */
 .announce { background: #123D33; color: #fff; text-align: center; font: 700 14px/1.3 var(--body); letter-spacing: .02em; padding: 10px 16px }
 .announce a { color: #FFE600; text-decoration: none; white-space: nowrap }
+@media (max-width: 600px) { .announce .hide-m { display: none } }
 .announce b { color: #FFE600; letter-spacing: .12em; text-transform: uppercase; margin-right: 6px }
 .soon { display: inline-flex; align-items: center; gap: 10px; background: #FFE600; color: #123D33; font: 800 15px/1 var(--body); letter-spacing: .16em; text-transform: uppercase; padding: 11px 18px 11px 14px; border-radius: 999px; box-shadow: 0 6px 0 #123D33; margin-bottom: 18px; transform: rotate(-2deg) }
 .soon i { width: 10px; height: 10px; border-radius: 50%; background: #E2453C; box-shadow: 0 0 0 0 rgba(226,69,60,.6) }
@@ -158,7 +159,21 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 @media (max-width: 860px) { .filmband { padding-top: 36px } .filmband .frame { aspect-ratio: 4 / 5; border-radius: 24px } }
 .stage3d { position: relative; min-height: 540px; display: flex; justify-content: center; align-items: flex-end }
 @media (max-width: 860px) { .stage3d { min-height: 440px } }
-.stage3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block }
+.stage3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity .7s ease }
+.stage3d canvas.on { opacity: 1 }
+.stage3d .fallback { opacity: 0; transition: opacity .4s }
+.stage3d.nogl .fallback { opacity: 1 }
+.band .mover { transition: opacity .6s ease }
+.band .mover.wait { opacity: 0 }
+@media (max-width: 860px) {
+  .hero .in { padding-block: 8px 32px; gap: 0 }
+  .hero .stage3d { order: -1; min-height: 50vh; margin: 0 -8px }
+  .hero .eyebrow, .hero p:not(.ok):not(.fine), .hero .facts { display: none }
+  .hero h1 { font-size: 54px }
+  .hero .soon { margin-bottom: 12px; font-size: 13px }
+  .hform { margin-top: 16px }
+  .stamp { width: 88px; top: 2%; right: 2% }
+}
 .stage3d .fallback { display: flex; align-items: flex-end; justify-content: center; gap: 2%; width: 100%; padding-bottom: 30px }
 .stage3d .fallback .can { width: 26%; max-width: 150px }
 .stage3d .fallback .can:nth-child(2) { width: 30%; max-width: 172px }
@@ -277,7 +292,7 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
 .sum .msg { background: var(--sky); border-radius: 14px; padding: 12px 14px; font-size: 14px; margin-top: 8px }
 </style>
 
-<div class="announce"><b>Coming soon</b> Cloudly lands in the Netherlands soon. <a href="#list">Join the launch list for an early bird discount →</a></div>
+<div class="announce"><b>Coming soon</b> <span class="hide-m">Cloudly lands in the Netherlands soon. </span><a href="#list">Join the launch list<span class="hide-m"> for an early bird discount</span> →</a></div>
 <header class="top">
   <div class="in">
     <a class="logo" href="#top" aria-label="cloudly home">
@@ -448,9 +463,13 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
   const PRICE = 24.99, DEPOSIT = 12 * 0.15, SHIP = 4.95, FREE_FROM = 40;
   const eur = n => '€ ' + n.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  /* hero fallback until 3D is ready */
+  /* hero fallback: hidden while the 3D cans load, shown only if 3D is not ready after a few seconds */
   const fallback = document.getElementById('fallback');
   fallback.innerHTML = can('peach') + can('mint') + can('grapefruit');
+  const noGL = setTimeout(() => {
+    document.getElementById('stage3d').classList.add('nogl');
+    document.querySelectorAll('.band .mover.wait').forEach(m => m.classList.remove('wait'));
+  }, 6000);
 
   /* film band: the real can video, muted and looping; poster only when motion is reduced */
   const vid = document.getElementById('hero-video'), vbtn = document.getElementById('film-toggle');
@@ -477,7 +496,7 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
     const f = FL[k];
     const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
     sec.setAttribute('aria-label', f.name);
-    sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover">' + canPic(k) + '</div></div>' +
+    sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div></div>' +
       '<div><div class="num">0' + (i + 1) + ' / 03 · coming soon</div><h2></h2><p></p><div class="ing"></div><a class="btn" href="#list">Notify me at launch</a></div></div>';
     sec.querySelector('.word').textContent = (f.name.split(' & ')[0] + ' · ').repeat(4);
     sec.querySelector('h2').textContent = f.name;
@@ -615,11 +634,12 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
     setImages(map) {
       Object.assign(IMG, map);
       pics.forEach(([el, p]) => { el.innerHTML = p.cans.map(canPic).join(''); });
-      bands.forEach(b => { b.mover.innerHTML = canPic(b.key); });
+      bands.forEach(b => { b.mover.innerHTML = canPic(b.key); b.mover.classList.remove('wait'); });
     },
     useHero3D(canvas) {
       const st = document.getElementById('stage3d');
-      fallback.remove(); st.appendChild(canvas);
+      clearTimeout(noGL); fallback.remove(); st.appendChild(canvas);
+      requestAnimationFrame(() => requestAnimationFrame(() => canvas.classList.add('on')));
       canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', 'Three ice cold Cloudly cans with lemon, mint and ice');
       return st;
     }
