@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cloudly · Sparkling botanical soda · Coming soon</title>
+<meta name="description" content="Cloudly is a lightly sparkling botanical soda made with real fruit, herbs and flowers. Nothing fake. Coming soon to the Netherlands. Join the launch list.">
+<meta property="og:title" content="Cloudly · light as a cloud.">
+<meta property="og:description" content="Sparkling botanical soda with real fruit and herbs. Coming soon. Join the launch list.">
+<meta property="og:image" content="hero-poster.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cpath d='M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z' fill='%23123D33'/%3E%3C/svg%3E">
+<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: brand site for drinkcloudly.com. Studio-shot hero with live 3D cans and floating props, a ticker, three free-scrolling flavor bands, shop grid, story, launch list, FAQ, slide-in cart. One light sky look by choice. */
+:root {
+  --sky: #CBEBFF;
+  --sky-hi: #EEF8FF;
+  --sky-deep: #5CC1FF;
+  --cloud: #FFFFFF;
+  --ink: #123D33;
+  --soft: #4F6F66;
+  --mint: #1FDB9B;
+  --line: #D6E8E1;
+  --display: "Outfit", system-ui, sans-serif;
+  --body: "Nunito", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box }
+html { scroll-behavior: smooth }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
+body { background: var(--sky-hi); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; overflow-x: hidden }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--cloud) }
+.in { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+a { color: inherit }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 300; letter-spacing: -.02em; text-wrap: balance }
+.eyebrow { font: 800 12px/1.2 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--soft) }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 22px; border-radius: 999px; border: 0; background: var(--ink); color: var(--cloud); font: 700 15px/1 var(--body); text-decoration: none; cursor: pointer; transition: transform .2s cubic-bezier(.3,1.6,.5,1), background .2s }
+.btn:hover { background: #0B2C24; transform: translateY(-2px) scale(1.03) }
+.btn:active { transform: scale(.97) }
+.btn.light { background: var(--cloud); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink) }
+.btn:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px }
+
+/* header */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line) }
+header.top .in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px }
+.logo { display: inline-flex; align-items: center; gap: 8px; font: 300 28px/1 var(--display); letter-spacing: -.03em; text-decoration: none }
+.logo svg { transition: transform .5s cubic-bezier(.3,1.6,.5,1) }
+.logo:hover svg { transform: translateY(-3px) rotate(-6deg) }
+.menu { display: flex; gap: 6px; align-items: center }
+.menu a { text-decoration: none; font-weight: 700; font-size: 15px; padding: 10px 12px; border-radius: 999px; transition: background .2s }
+.menu a:hover { background: var(--sky) }
+@media (max-width: 720px) { .menu .hide-s { display: none } }
+.cart-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; border: 0; background: var(--ink); color: var(--cloud); font: 700 15px var(--body); cursor: pointer }
+.cart-btn .count { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--mint); color: var(--ink); font: 800 12px/22px var(--body); text-align: center }
+.cart-btn.bump .count { animation: bump .5s cubic-bezier(.3,1.8,.5,1) }
+@keyframes bump { 0% { transform: scale(1) } 40% { transform: scale(1.6) } 100% { transform: scale(1) } }
+
+/* hero: a studio shot */
+.hero { position: relative; overflow: hidden; background: #B9DDF5 url(sky.jpg) center / cover no-repeat }
+.hero .sky { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden }
+.hero .sky i { position: absolute; left: -6%; width: 112%; height: 100%; bottom: 0; background-repeat: no-repeat; background-size: cover; background-position: center bottom; will-change: transform }
+.hero .sky .back { background-image: url(clouds-back.webp); transform: translate3d(calc(var(--mx, 0) * -10px), calc(var(--hp, 0) * 40px), 0) }
+.hero .sky .front { background-image: url(clouds-front.webp); transform: translate3d(calc(var(--mx, 0) * -24px), calc(var(--hp, 0) * 110px), 0) }
+.hero .sky .haze { left: 0; width: 100%; background: linear-gradient(180deg, transparent 80%, rgba(240,247,252,.85) 100%) }
+@media (prefers-reduced-motion: no-preference) {
+  .hero .sky .back { animation: drift 70s ease-in-out infinite alternate }
+  .hero .sky .front { animation: drift 46s ease-in-out infinite alternate-reverse }
+}
+.freebar { display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 14px; background: #E3F4EC; color: var(--ink); font-size: 14px }
+.freebar i { display: block; height: 8px; border-radius: 99px; background: rgba(18,61,51,.12); overflow: hidden }
+.freebar em { display: block; height: 100%; border-radius: 99px; background: var(--ink); transition: width .4s }
+.co { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; padding-top: 12px; border-top: 1px dashed rgba(18,61,51,.2) }
+.co > div:not(.msg):not(.co-h) { display: flex; justify-content: space-between; gap: 12px }
+.co .co-h { font: 500 18px/1.2 var(--display) }
+
+.story .quote { font: 300 clamp(24px, 3vw, 32px)/1.2 var(--display); color: #fff; margin-top: 18px }
+.story .sign { font-weight: 700; letter-spacing: .04em; color: #9FE3C7; margin-top: 4px }
+
+a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
+
+/* coming soon: loud and clear */
+.announce { background: #123D33; color: #fff; text-align: center; font: 700 14px/1.3 var(--body); letter-spacing: .02em; padding: 10px 16px }
+.announce a { color: #FFE600; text-decoration: none; white-space: nowrap }
+.announce b { color: #FFE600; letter-spacing: .12em; text-transform: uppercase; margin-right: 6px }
+.soon { display: inline-flex; align-items: center; gap: 10px; background: #FFE600; color: #123D33; font: 800 15px/1 var(--body); letter-spacing: .16em; text-transform: uppercase; padding: 11px 18px 11px 14px; border-radius: 999px; box-shadow: 0 6px 0 #123D33; margin-bottom: 18px; transform: rotate(-2deg) }
+.soon i { width: 10px; height: 10px; border-radius: 50%; background: #E2453C; box-shadow: 0 0 0 0 rgba(226,69,60,.6) }
+@media (prefers-reduced-motion: no-preference) { .soon i { animation: ping 1.6s infinite } }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(226,69,60,.55) } 80%, 100% { box-shadow: 0 0 0 12px rgba(226,69,60,0) } }
+.hform { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; max-width: 480px }
+.hform label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0) }
+.hform input[type=email] { flex: 1 1 220px; min-height: 52px; padding: 12px 20px; border-radius: 999px; border: 1.5px solid rgba(18,61,51,.18); font: 600 16px var(--body); color: var(--ink); background: rgba(255,255,255,.92) }
+.hform input[type=email]:focus-visible { outline: 3px solid #FFE600; outline-offset: 2px }
+.hform .btn { min-height: 52px; background: #FFE600; color: #123D33; box-shadow: 0 5px 0 #123D33 }
+.hform .btn:hover { background: #FFF04D }
+.hero .ok { margin: 10px 0 0; font-weight: 700; color: var(--ink) }
+.hero .meet { display: inline-block; margin-top: 12px; color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 4px }
+.stamp { position: absolute; z-index: 6; right: 4%; top: 4%; width: clamp(104px, 12vw, 150px); aspect-ratio: 1; border-radius: 50%; background: #FFE600; box-shadow: 0 8px 0 #123D33, 0 20px 40px -12px rgba(18,61,51,.35); display: grid; place-items: center; transform: rotate(10deg); pointer-events: none }
+.stamp svg.ring { position: absolute; inset: 0; width: 100%; height: 100% }
+@media (prefers-reduced-motion: no-preference) { .stamp svg.ring { animation: spin 14s linear infinite } }
+@keyframes spin { to { transform: rotate(360deg) } }
+.stamp svg.mid { width: 38%; height: auto }
+.stage3d { position: relative }
+
+
+
+/* playful floating clouds through the whole page */
+.has-drift { position: relative }
+.has-drift > .in, .has-drift > .wrap { position: relative; z-index: 1 }
+.drift { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden }
+.drift .lane { position: absolute; left: 0; width: 100%; transform: translateX(var(--x0)) }
+.drift .par { width: max-content; transform: translate3d(0, calc(var(--sy, 0) * var(--depth) * 1px), 0); will-change: transform }
+.drift .bob { animation: bob var(--bob) ease-in-out var(--delay) infinite alternate }
+.drift svg { display: block; overflow: visible; opacity: var(--op, 1); pointer-events: auto; cursor: pointer; transform-origin: 50% 85%; transition: transform .5s cubic-bezier(.3,1.8,.5,1), opacity .5s }
+.drift svg:hover { transform: scale(1.08, .93) }
+.drift svg.poof { animation: poof 2.4s cubic-bezier(.2,.9,.3,1) both; pointer-events: none }
+.drift.dark svg { --op: .12 }
+.drift.soft svg { --op: .7 }
+.drift .face { opacity: .55 }
+@media (prefers-reduced-motion: no-preference) {
+  .drift .lane { animation: lane var(--dur) linear var(--delay) infinite }
+}
+@media (prefers-reduced-motion: reduce) { .drift .bob { animation: none } }
+@keyframes lane { from { transform: translateX(-40%) } to { transform: translateX(105%) } }
+@keyframes bob { from { transform: translateY(-7px) rotate(-1.2deg) } to { transform: translateY(7px) rotate(1.2deg) } }
+@keyframes poof { 0% { transform: scale(1) } 18% { transform: scale(1.35, 1.15); opacity: 0 } 70% { transform: scale(.4); opacity: 0 } 100% { transform: scale(1); opacity: var(--op, 1) } }
+@keyframes drift { from { translate: -2.5% 0 } to { translate: 2.5% 0 } }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3; opacity: .07; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>") }
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2; background: radial-gradient(130% 100% at 60% 45%, transparent 55%, rgba(30,70,100,.18) 100%) }
+.hero .in { position: relative; z-index: 4; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 16px; align-items: center; padding-block: 40px 56px }
+@media (max-width: 860px) { .hero .in { grid-template-columns: minmax(0, 1fr); padding-block: 28px 40px } }
+.hero h1 { font-size: clamp(56px, 9vw, 112px); line-height: .9 }
+.hero h1 .w { display: inline-block }
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 .w { animation: rise .9s cubic-bezier(.2,1.4,.4,1) both }
+  .hero h1 .w:nth-child(2) { animation-delay: .08s } .hero h1 .w:nth-child(4) { animation-delay: .16s } .hero h1 .w:nth-child(5) { animation-delay: .24s }
+}
+@keyframes rise { from { transform: translateY(.35em) rotate(4deg) } to { transform: none } }
+.hero p { font-size: 19px; max-width: 34ch; margin: 18px 0 26px; color: var(--soft) }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 10px }
+.hero .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px }
+.hero .facts span { background: rgba(255,255,255,.85); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px }
+.filmband { padding: 56px 0 24px }
+.filmband .frame { position: relative; border-radius: 32px; overflow: hidden; aspect-ratio: 16 / 9; max-height: 82vh; width: 100%; background: #CFE6F5; box-shadow: 0 40px 90px -40px rgba(20,60,90,.45) }
+.filmband video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(calc(1.08 - var(--fp, 0) * .08)) }
+.filmband .frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(10,40,35,.55) 0%, rgba(10,40,35,.1) 38%, transparent 60%) }
+.filmband .cap { position: absolute; left: clamp(20px, 4vw, 48px); bottom: clamp(18px, 4vw, 44px); z-index: 2; color: #fff; max-width: 30ch }
+.filmband .cap .eyebrow { color: rgba(255,255,255,.85) }
+.filmband .cap h2 { font-size: clamp(32px, 5vw, 64px); line-height: .95; color: #fff }
+.film-toggle { position: absolute; right: 18px; bottom: 18px; z-index: 3; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255,255,255,.8); color: var(--ink); font-size: 12px; cursor: pointer; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px) }
+@media (max-width: 860px) { .filmband { padding-top: 36px } .filmband .frame { aspect-ratio: 4 / 5; border-radius: 24px } }
+.stage3d { position: relative; min-height: 540px; display: flex; justify-content: center; align-items: flex-end }
+@media (max-width: 860px) { .stage3d { min-height: 440px } }
+.stage3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block }
+.stage3d .fallback { display: flex; align-items: flex-end; justify-content: center; gap: 2%; width: 100%; padding-bottom: 30px }
+.stage3d .fallback .can { width: 26%; max-width: 150px }
+.stage3d .fallback .can:nth-child(2) { width: 30%; max-width: 172px }
+
+/* ticker */
+.ticker { background: var(--ink); color: var(--cloud); overflow: hidden; padding-block: 16px; transform: rotate(-1.2deg); margin: -14px -10px 0; position: relative; z-index: 5 }
+.ticker .track { display: flex; width: max-content; will-change: transform }
+.ticker span { font: 300 30px/1 var(--display); white-space: nowrap; padding-right: 22px; display: inline-flex; align-items: center; gap: 22px }
+.ticker svg { flex: none }
+
+/* flavor bands: free scrolling, things move with the scroll */
+.band { position: relative; overflow: hidden; background: var(--bg); padding-block: clamp(56px, 9vw, 110px) }
+.band .word { position: absolute; top: 50%; left: 0; white-space: nowrap; font: 300 clamp(120px, 22vw, 300px)/1 var(--display); letter-spacing: -.04em; color: rgba(255,255,255,.55); transform: translateY(-50%); pointer-events: none; will-change: transform }
+.band .in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: center }
+.band.flip .in .canwrap { order: 2 }
+@media (max-width: 760px) { .band .in { grid-template-columns: minmax(0, 1fr); text-align: center } .band.flip .in .canwrap { order: 0 } .band .ing { justify-content: center } .band p { margin-inline: auto } }
+.band .canwrap { display: flex; justify-content: center; height: clamp(320px, 46vw, 520px) }
+.band .canwrap > * { height: 100%; will-change: transform }
+.band .canwrap img.can3d, .band .canwrap svg.can { height: 100%; width: auto }
+.band h2 { font-size: clamp(46px, 6.5vw, 86px); line-height: .92 }
+.band .num { font: 300 18px/1 var(--display); color: var(--soft); margin-bottom: 10px }
+.band p { font-size: 18px; color: var(--soft); max-width: 38ch; margin: 16px 0 }
+.band .ing { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px }
+.band .ing span { background: rgba(255,255,255,.75); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px }
+
+/* shop */
+section.block { padding-block: 72px }
+.sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 28px }
+.sec-head h2 { font-size: clamp(36px, 5vw, 56px); line-height: 1 }
+.sec-head p { margin: 0; color: var(--soft); max-width: 44ch }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px }
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 520px) { .grid { grid-template-columns: minmax(0, 1fr) } }
+.prod { background: var(--cloud); border-radius: 26px; padding: 18px; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--line); min-width: 0; transition: transform .35s cubic-bezier(.3,1.5,.5,1), box-shadow .35s }
+.prod:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(18,61,51,.12) }
+.prod .pic { border-radius: 18px; height: 240px; display: flex; align-items: flex-end; justify-content: center; padding-top: 12px; overflow: hidden }
+.prod .pic > * { transition: transform .5s cubic-bezier(.3,1.6,.5,1) }
+.prod .pic svg.can { width: 84px }
+.prod .pic img.can3d { height: 215px; width: auto }
+.prod .pic.mix img.can3d { height: 178px; margin: 0 -16px }
+.prod .pic.mix img.can3d:nth-child(2) { height: 200px; position: relative; z-index: 1 }
+.prod .pic.mix svg.can { width: 70px; margin: 0 -6px }
+.prod:hover .pic > * { transform: translateY(-10px) rotate(-5deg) }
+.prod:hover .pic > :nth-child(2) { transform: translateY(-14px) rotate(3deg) }
+.prod:hover .pic > :nth-child(3) { transform: translateY(-8px) rotate(7deg) }
+.prod h3 { font-size: 24px; font-weight: 400 }
+.prod p { margin: 0; color: var(--soft); font-size: 14.5px }
+.price { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: auto }
+.price b { font: 500 24px/1 var(--display); font-variant-numeric: tabular-nums }
+.price small { color: var(--soft); font-size: 12.5px; text-align: right }
+.buy { display: flex; gap: 8px }
+.qty { display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: 999px }
+.qty button { width: 40px; height: 44px; border: 0; background: transparent; font: 800 18px var(--body); color: var(--ink); cursor: pointer; border-radius: 999px }
+.qty span { min-width: 22px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums }
+.buy .btn { flex: 1; min-height: 44px; padding: 10px 14px }
+.pop { animation: pop .6s cubic-bezier(.3,1.6,.5,1) }
+@keyframes pop { 0% { transform: translateY(14px) scale(.98) } 100% { transform: none } }
+
+/* story */
+.story { background: var(--ink); color: var(--cloud); border-radius: 36px; overflow: hidden; position: relative }
+.story .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; padding: clamp(28px, 5vw, 64px) }
+@media (max-width: 860px) { .story .wrap { grid-template-columns: minmax(0, 1fr) } }
+.story h2 { font-size: clamp(44px, 6vw, 76px); line-height: .95 }
+.story p { color: #CFE7DD; font-size: 17px; max-width: 46ch }
+.vals { display: grid; gap: 12px; align-content: start }
+.val { background: rgba(255,255,255,.08); border-radius: 20px; padding: 18px 20px; transition: transform .3s cubic-bezier(.3,1.5,.5,1), background .3s }
+.val:hover { transform: translateX(6px); background: rgba(255,255,255,.13) }
+.val b { display: block; font: 500 20px/1.2 var(--display); margin-bottom: 4px; color: var(--cloud) }
+.val span { color: #CFE7DD; font-size: 15px }
+.skyline { display: block; width: 100%; height: 34px }
+
+/* waitlist */
+.wait { background: var(--cloud); border-radius: 30px; border: 1px solid var(--line); padding: clamp(24px, 4vw, 44px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: center }
+@media (max-width: 760px) { .wait { grid-template-columns: minmax(0, 1fr) } }
+.wait h2 { font-size: clamp(32px, 4vw, 46px) }
+.wait form { display: flex; flex-wrap: wrap; gap: 10px }
+.wait label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0) }
+.wait input { flex: 1 1 220px; min-height: 48px; padding: 12px 18px; border-radius: 999px; border: 1.5px solid var(--line); font: 600 16px var(--body); color: var(--ink); background: var(--sky-hi) }
+.wait .ok { margin: 8px 0 0; font-weight: 700; color: var(--soft) }
+
+/* faq */
+.faq { display: grid; gap: 10px; max-width: 800px }
+.faq details { background: var(--cloud); border: 1px solid var(--line); border-radius: 18px; padding: 4px 20px }
+.faq summary { cursor: pointer; list-style: none; padding: 14px 0; font: 500 19px/1.3 var(--display); display: flex; justify-content: space-between; gap: 12px }
+.faq summary::-webkit-details-marker { display: none }
+.faq summary::after { content: "+"; font-weight: 300; font-size: 24px; line-height: 1; transition: transform .3s }
+.faq details[open] summary::after { transform: rotate(45deg) }
+.faq details p { margin: 0 0 16px; color: var(--soft) }
+
+footer { margin-top: 64px; background: var(--sky); padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)) }
+footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px }
+footer p { margin: 0; color: var(--soft); font-size: 14px }
+
+/* cart drawer */
+.scrim { position: fixed; inset: 0; background: rgba(18,61,51,.35); z-index: 40 }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100%); background: var(--cloud); z-index: 41; display: flex; flex-direction: column;
+  padding: calc(18px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) 20px; box-shadow: -10px 0 40px rgba(18,61,51,.15) }
+[hidden] { display: none !important }
+@media (prefers-reduced-motion: no-preference) { .drawer:not([hidden]) { animation: slide .35s cubic-bezier(.2,1,.3,1) } }
+@keyframes slide { from { transform: translateX(40px) } to { transform: none } }
+.drawer header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px }
+.drawer h2 { font-size: 30px }
+.x { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--sky); font: 400 26px/1 var(--body); color: var(--ink); cursor: pointer }
+.lines { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-block: 8px }
+.line { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--line) }
+.line .mini { height: 70px; border-radius: 12px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden }
+.line .mini svg.can { width: 26px }
+.line .mini img.can3d { height: 66px; width: auto }
+.line b { font: 500 16px/1.2 var(--display) }
+.line small { display: block; color: var(--soft) }
+.line .qty button { width: 34px; height: 36px; font-size: 16px }
+.empty { color: var(--soft); text-align: center; padding: 40px 0 }
+.sum { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; font-variant-numeric: tabular-nums }
+.sum div { display: flex; justify-content: space-between; gap: 12px }
+.sum .tot { font: 500 22px/1.2 var(--display); margin-top: 4px }
+.sum .msg { background: var(--sky); border-radius: 14px; padding: 12px 14px; font-size: 14px; margin-top: 8px }
+</style>
+
+<div class="announce"><b>Coming soon</b> Cloudly lands in the Netherlands soon. <a href="#list">Join the launch list for an early bird discount →</a></div>
+<header class="top">
+  <div class="in">
+    <a class="logo" href="#top" aria-label="cloudly home">
+      <svg width="34" height="20" viewBox="0 0 100 60" aria-hidden="true"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"></path></svg>
+      cloudly
+    </a>
+    <nav class="menu" aria-label="Main">
+      <a href="#flavors">Flavors</a>
+      <a class="hide-s" href="#story">Our story</a>
+      <a class="cart-btn" href="#list">Join the list</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="sky" aria-hidden="true"><i class="back"></i><i class="front"></i><i class="haze"></i></div>
+    <div class="in">
+      <div>
+        <div class="soon"><i></i>Coming soon</div>
+        <div class="eyebrow">Sparkling botanical soda</div>
+        <h1><span class="w">light</span> <span class="w">as</span><br><span class="w">a</span> <span class="w">cloud.</span></h1>
+        <p>Real fruit, fresh herbs and a lot of bubbles. Nothing added, nothing fake. We are almost ready to pour. Be the first to know when Cloudly launches.</p>
+        <form class="hform lform" name="launch-list">
+                    <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+          <label for="hero-email">Email address</label>
+          <input id="hero-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+          <button class="btn" type="submit">Notify me</button>
+        </form>
+        <p class="ok" hidden role="status"></p>
+        <a class="meet" href="#flavors">Meet the three flavors ↓</a>
+        <div class="facts"><span>Lightly sparkling</span><span>250 ml slim can</span><span>Real ingredients</span><span>Made for the Netherlands</span></div>
+      </div>
+      <div class="stage3d" id="stage3d" aria-label="The three Cloudly cans"><div class="fallback" id="fallback"></div><div class="stamp" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text font-family="Nunito, sans-serif" font-weight="800" font-size="21" letter-spacing="4.6" fill="#123D33"><textPath href="#ringp" textLength="458" lengthAdjust="spacing">COMING SOON • COMING SOON •</textPath></text></svg><svg class="mid" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#123D33"/></svg></div></div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
+
+  <section class="filmband" id="film">
+    <div class="in">
+      <div class="frame">
+        <video id="hero-video" muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-label="An ice cold Cloudly can rising from the clouds, a drop of condensation, and the can cracking open">
+          <source src="hero.mp4" type="video/mp4">
+        </video>
+        <div class="cap"><div class="eyebrow">Ice cold, straight from the clouds</div><h2>Crack one open.</h2></div>
+        <button class="film-toggle" id="film-toggle" type="button" aria-label="Pause video">❚❚</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="flavors"></div>
+
+
+  <section class="in" id="story">
+    <div class="story">
+      <svg class="skyline" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1200 V18 C1170 18 1160 34 1130 34 C1100 34 1095 14 1060 14 C1025 14 1015 32 980 32 C950 32 940 16 905 16 C870 16 860 34 825 34 C795 34 785 12 750 12 C715 12 705 30 670 30 C640 30 630 16 595 16 C560 16 550 34 515 34 C485 34 475 14 440 14 C405 14 395 32 360 32 C330 32 320 16 285 16 C250 16 240 34 205 34 C175 34 165 12 130 12 C95 12 85 30 50 30 C25 30 15 20 0 20 Z" fill="#F3FAFE"></path></svg>
+      <div class="wrap">
+        <div>
+          <div class="eyebrow" style="color:#9FE3C7">Our story</div>
+          <h2>head in<br>the clouds.</h2>
+          <p>I started Cloudly because I wanted to bring the world a drink for everyone. One you can enjoy in the morning, in the afternoon or late in the evening. On the hottest summer day and on the coldest winter night.</p>
+          <p>From day one there was one rule: nothing fake. Only real, natural ingredients. Real fruit, real herbs and flowers, and a lot of bubbles. That is the whole recipe.</p>
+          <p class="quote">That is what Cloudly stands for. Delicious, and light as a cloud.</p>
+          <p class="sign">Justin Messak, founder</p>
+        </div>
+        <div class="vals">
+          <div class="val"><b>Real fruit and herbs</b><span>Pressed lemon, peach and grapefruit. Fresh mint, lavender and hibiscus.</span></div>
+          <div class="val"><b>Nothing fake</b><span>No artificial flavors, colors or sweeteners.</span></div>
+          <div class="val"><b>For every moment</b><span>Morning, noon or night. Summer heat or winter cold.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="list">
+    <div class="in">
+      <div class="wait">
+        <div><div class="eyebrow">Launch list</div><h2>Be the first to float.</h2><p style="color:var(--soft);margin:8px 0 0">Cloudly is coming soon. Leave your email and you will be the first to know when we launch, plus an early bird discount.</p></div>
+        <div>
+          <form id="wait-form" class="lform" name="launch-list">
+                        <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+            <label for="wait-email">Email address</label>
+            <input id="wait-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+            <button class="btn" type="submit">Join the list</button>
+          </form>
+          <p class="ok" id="wait-ok" hidden role="status"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq" style="padding-top:0">
+    <div class="in">
+      <div class="sec-head"><div><div class="eyebrow">FAQ</div><h2>Good to know.</h2></div></div>
+      <div class="faq">
+        <details><summary>When can I buy Cloudly?</summary><p>We are working on our first production run right now. Join the launch list and you will hear it first, with an early bird discount.</p></details>
+        <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, fruit juice and real herbs or flowers. Nothing artificial. The full ingredient list is on each flavor.</p></details>
+        <details><summary>Where will you deliver?</summary><p>First in the Netherlands, with Belgium soon after.</p></details>
+        <details><summary>Can I sell Cloudly in my shop or café?</summary><p>Yes, we would love that. Send a message to drinkcloudly@gmail.com and we will get in touch before launch.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <div>
+      <div class="logo" style="font-size:24px">cloudly</div>
+      <p style="margin-top:6px">light as a cloud.</p>
+    </div>
+    <div>
+      <p>drinkcloudly@gmail.com</p>
+      <p>Groningen, the Netherlands</p>
+    </div>
+    <p>© 2026 Cloudly · Coming soon</p>
+  </div>
+</footer>
+
+
+<script>
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FL = {
+    mint: { name: 'Mint & Lemon', base: '#EEF5F0', ink: '#123D33', accent: '#1FDB9B', band: '#123D33', tint: '#E4F4EC', bg: '#D3EFE2',
+      desc: 'Cool garden mint, a squeeze of lemon and crisp apple, all bubbled up. The fresh one.', ing: ['fresh mint', 'lemon juice', 'apple juice', 'sparkling water'] },
+    peach: { name: 'Peach & Lavender', base: '#FCEFE6', ink: '#5A2A1A', accent: '#FF9459', band: '#5A2A1A', tint: '#FBE7DA', bg: '#FADCC8',
+      desc: 'Ripe summer peach with a soft touch of lavender. Juicy, floral and a little dreamy.', ing: ['peach purée', 'lavender', 'apple juice', 'sparkling water'] },
+    grapefruit: { name: 'Grapefruit & Hibiscus', base: '#FBEDEF', ink: '#4A1D2B', accent: '#FF5C8A', band: '#4A1D2B', tint: '#F9E1E5', bg: '#F6D5DC',
+      desc: 'Bright pink grapefruit with a floral splash of hibiscus. Tart, juicy and naturally pink.', ing: ['pink grapefruit', 'hibiscus', 'apple juice', 'sparkling water'] }
+  };
+  const ORDER = ['mint', 'peach', 'grapefruit'];
+  const CLOUD = 'M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z';
+
+  /* drawn can, used until the 3D pictures are ready */
+  let uid = 0;
+  function can(key) {
+    const f = FL[key]; const id = 'g' + (uid++); const words = f.name.split(' & ');
+    let scal = ''; for (let x = 4, i = 0; x < 104; i++) { const r = 5 + (i * 3) % 4; scal += '<circle cx="' + x + '" cy="200" r="' + r + '"/>'; x += r * 1.5; }
+    return '<svg class="can" viewBox="0 0 108 262" role="img" aria-label="Cloudly ' + f.name + ' can">' +
+      '<defs><linearGradient id="' + id + '" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".18" stop-color="#fff" stop-opacity=".35"/><stop offset=".32" stop-color="#fff" stop-opacity=".05"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient>' +
+      '<linearGradient id="s' + id + '" x1="0" y1="14" x2="0" y2="168" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5CC1FF"/><stop offset=".55" stop-color="#BFE6FF"/><stop offset="1" stop-color="' + f.base + '"/></linearGradient>' +
+      '<clipPath id="c' + id + '"><rect x="4" y="14" width="100" height="238" rx="12"/></clipPath>' +
+      '<linearGradient id="m' + id + '" x1="0" x2="1"><stop offset="0" stop-color="#9aa3a8"/><stop offset=".25" stop-color="#eef1f3"/><stop offset=".5" stop-color="#b9c0c4"/><stop offset=".75" stop-color="#e6e9eb"/><stop offset="1" stop-color="#8f979c"/></linearGradient></defs>' +
+      '<rect x="12" y="4" width="84" height="14" rx="6" fill="url(#m' + id + ')"/>' +
+      '<g clip-path="url(#c' + id + ')"><rect x="4" y="14" width="100" height="238" fill="' + f.base + '"/><rect x="4" y="14" width="100" height="154" fill="url(#s' + id + ')"/>' +
+      '<g fill="#fff" opacity=".95"><path transform="translate(-14 34) scale(.5)" d="' + CLOUD + '"/><path transform="translate(72 22) scale(.36)" d="' + CLOUD + '"/></g>' +
+      '<path transform="translate(33 56) scale(.42)" d="' + CLOUD + '" fill="none" stroke="' + f.ink + '" stroke-width="3.4" stroke-linejoin="round"/>' +
+      '<text x="54" y="112" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="300" font-size="27" letter-spacing="-.6" fill="' + f.ink + '">cloudly</text>' +
+      '<text x="54" y="136" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9.5" fill="' + f.ink + '">' + words[0] + ' &amp;</text>' +
+      '<text x="54" y="148" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9.5" fill="' + f.ink + '">' + words[1] + '</text>' +
+      '<rect x="4" y="200" width="100" height="60" fill="' + f.band + '"/><g fill="' + f.band + '">' + scal + '</g>' +
+      '<text x="54" y="226" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="300" font-size="9" fill="#fff">light as a cloud.</text>' +
+      '<rect x="4" y="14" width="100" height="238" fill="url(#' + id + ')"/></g>' +
+      '<rect x="14" y="248" width="80" height="10" rx="5" fill="url(#m' + id + ')"/></svg>';
+  }
+  const IMG = {};
+  function canPic(key) { return IMG[key] ? '<img class="can3d" src="' + IMG[key] + '" alt="Cloudly ' + FL[key].name + ' can">' : can(key); }
+
+  const PRODUCTS = [
+    { id: 'mint', name: 'Mint & Lemon', desc: 'Cool garden mint, a squeeze of lemon and crisp apple.', cans: ['mint'], tint: FL.mint.tint },
+    { id: 'peach', name: 'Peach & Lavender', desc: 'Ripe summer peach with a soft touch of lavender.', cans: ['peach'], tint: FL.peach.tint },
+    { id: 'grapefruit', name: 'Grapefruit & Hibiscus', desc: 'Bright pink grapefruit with a floral splash of hibiscus.', cans: ['grapefruit'], tint: FL.grapefruit.tint },
+    { id: 'mix', name: 'Mixed pack', desc: '4 cans of each flavor. The easiest way to find your favorite.', cans: ['peach', 'mint', 'grapefruit'], tint: '#E8F4FC' }
+  ];
+  const PRICE = 24.99, DEPOSIT = 12 * 0.15, SHIP = 4.95, FREE_FROM = 40;
+  const eur = n => '€ ' + n.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  /* hero fallback until 3D is ready */
+  const fallback = document.getElementById('fallback');
+  fallback.innerHTML = can('peach') + can('mint') + can('grapefruit');
+
+  /* film band: the real can video, muted and looping; poster only when motion is reduced */
+  const vid = document.getElementById('hero-video'), vbtn = document.getElementById('film-toggle');
+  function setPlaying(on) {
+    if (on) { const p = vid.play(); if (p && p.catch) p.catch(() => {}); } else vid.pause();
+    vbtn.textContent = on ? '❚❚' : '▶'; vbtn.setAttribute('aria-label', on ? 'Pause video' : 'Play video');
+  }
+  let userPaused = reduce;
+  setPlaying(!reduce);
+  vbtn.onclick = () => { userPaused = !vid.paused; setPlaying(vid.paused); };
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => {
+    if (userPaused) return; setPlaying(es[0].isIntersecting);
+  }).observe(vid);
+
+  /* ticker, driven by time plus a speed boost while scrolling */
+  const piece = '<span>coming soon <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#9FD3F6"/></svg> light as a cloud. <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#5FC7A0"/></svg> coming soon <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#F2A37E"/></svg> join the launch list <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#EE8A9A"/></svg></span>';
+  const ticker = document.getElementById('ticker');
+  ticker.innerHTML = piece + piece + piece + piece;
+
+  /* flavor bands */
+  const flavorsEl = document.getElementById('flavors');
+  const bands = [];
+  ORDER.forEach((k, i) => {
+    const f = FL[k];
+    const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
+    sec.setAttribute('aria-label', f.name);
+    sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover">' + canPic(k) + '</div></div>' +
+      '<div><div class="num">0' + (i + 1) + ' / 03 · coming soon</div><h2></h2><p></p><div class="ing"></div><a class="btn" href="#list">Notify me at launch</a></div></div>';
+    sec.querySelector('.word').textContent = (f.name.split(' & ')[0] + ' · ').repeat(4);
+    sec.querySelector('h2').textContent = f.name;
+    sec.querySelector('p').textContent = f.desc;
+    const ing = sec.querySelector('.ing'); f.ing.forEach(x => { const s = document.createElement('span'); s.textContent = x; ing.appendChild(s); });
+    flavorsEl.appendChild(sec);
+    bands.push({ sec, key: k, mover: sec.querySelector('.mover'), word: sec.querySelector('.word'), dir: i % 2 ? 1 : -1 });
+  });
+
+  /* playful floating clouds: puffy SVG clouds that drift, bob, squish on hover and go poof on click */
+  const SHAPES = [
+    [[48, 66, 30], [88, 46, 40], [132, 58, 32], [160, 74, 22]],
+    [[42, 70, 24], [74, 52, 32], [114, 40, 38], [150, 60, 28]],
+    [[56, 62, 34], [100, 52, 30], [136, 66, 24]]
+  ];
+  const TONES = {
+    white: ['#FFFFFF', '#FFFFFF', '#D9EAF7'],
+    sky:   ['#FFFFFF', '#EAF6FE', '#A9D8F7'],
+    mint:  ['#FFFFFF', '#E9F8F1', '#9FDFC4'],
+    peach: ['#FFFFFF', '#FFF2EA', '#F6C3A6'],
+    pink:  ['#FFFFFF', '#FDEEF1', '#F2B3BF']
+  };
+  const driftLayers = [];
+  let cseed = 7, gid = 0; const rnd = (a, b) => { cseed = (cseed * 16807) % 2147483647; return a + (b - a) * (cseed / 2147483647); };
+  function cloudSVG(shape, tone, face, w) {
+    const id = 'cg' + (gid++), c = TONES[tone], pts = SHAPES[shape];
+    const blobs = pts.map(([x, y, r]) => '<circle cx="' + x + '" cy="' + y + '" r="' + r + '"/>').join('');
+    const [hx, hy, hr] = pts[1];
+    const eyes = face ? '<g class="face" fill="none" stroke="#123D33" stroke-width="2.6" stroke-linecap="round"><path d="M' + (hx - 14) + ' ' + (hy + 18) + ' q5 5 10 0"/><path d="M' + (hx + 6) + ' ' + (hy + 18) + ' q5 5 10 0"/><path d="M' + (hx - 4) + ' ' + (hy + 28) + ' q4 3 8 0"/></g><ellipse cx="' + (hx - 20) + '" cy="' + (hy + 27) + '" rx="6" ry="3.5" fill="#F2A3B3" opacity=".45"/><ellipse cx="' + (hx + 22) + '" cy="' + (hy + 27) + '" rx="6" ry="3.5" fill="#F2A3B3" opacity=".45"/>' : '';
+    return '<svg viewBox="0 0 200 110" width="' + w + '" height="' + Math.round(w * 0.55) + '" aria-hidden="true">' +
+      '<defs><linearGradient id="' + id + '" gradientUnits="userSpaceOnUse" x1="0" y1="10" x2="0" y2="100"><stop offset="0" stop-color="' + c[0] + '"/><stop offset=".55" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></linearGradient>' +
+      '<radialGradient id="' + id + 'h" cx=".35" cy=".3" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>' +
+      '<ellipse cx="100" cy="104" rx="70" ry="5" fill="#2A5A7A" opacity=".07"/>' +
+      '<g fill="url(#' + id + ')">' + blobs + '<rect x="' + (pts[0][0] - 10) + '" y="70" width="' + (pts[pts.length - 1][0] + pts[pts.length - 1][2] - pts[0][0] - 2) + '" height="26" rx="13"/></g>' +
+      '<ellipse cx="' + (hx - 8) + '" cy="' + (hy - 14) + '" rx="' + (pts[1][2] * 0.6) + '" ry="' + (pts[1][2] * 0.35) + '" fill="url(#' + id + 'h)"/>' + eyes + '</svg>';
+  }
+  function sprinkle(host, n, cls, sizes, band, tones) {
+    if (!host) return;
+    host.classList.add('has-drift');
+    const layer = document.createElement('div'); layer.className = 'drift ' + cls; layer.setAttribute('aria-hidden', 'true');
+    for (let i = 0; i < n; i++) {
+      const lane = document.createElement('div'); lane.className = 'lane';
+      lane.style.top = (band[0] + (band[1] - band[0]) * ((i + rnd(0.1, 0.9)) / n)).toFixed(1) + '%';
+      const dur = rnd(70, 140);
+      lane.style.setProperty('--dur', dur.toFixed(0) + 's');
+      lane.style.setProperty('--delay', (-rnd(0, dur)).toFixed(0) + 's');
+      lane.style.setProperty('--bob', rnd(3.5, 6.5).toFixed(1) + 's');
+      lane.style.setProperty('--x0', rnd(-30, 90).toFixed(0) + '%');
+      const depth = rnd(0.3, 1);
+      const face = cls.indexOf('dark') < 0 && rnd(0, 1) < 0.22;
+      const tone = tones[Math.floor(rnd(0, tones.length - 0.001))];
+      lane.innerHTML = '<div class="par" style="--depth:' + (depth * 0.18).toFixed(3) + '"><div class="bob">' +
+        cloudSVG(Math.floor(rnd(0, 2.999)), tone, face, Math.round(sizes[0] + (sizes[1] - sizes[0]) * depth)) + '</div></div>';
+      layer.appendChild(lane);
+    }
+    host.prepend(layer); driftLayers.push({ host, layer });
+  }
+  document.addEventListener('click', e => {
+    const svg = e.target.closest && e.target.closest('.drift svg'); if (!svg || reduce) return;
+    svg.classList.remove('poof'); void svg.getBoundingClientRect(); svg.classList.add('poof');
+    setTimeout(() => svg.classList.remove('poof'), 2500);
+  });
+  sprinkle(document.getElementById('film'), 3, '', [150, 260], [2, 70], ['sky', 'mint', 'peach']);
+  bands.forEach(b => sprinkle(b.sec, 3, '', [160, 320], [4, 80], ['white']));
+  sprinkle(document.getElementById('shop'), 2, 'soft', [110, 180], [0, 22], ['sky', 'pink']);
+  sprinkle(document.querySelector('#story .story'), 4, 'dark', [200, 400], [5, 85], ['white']);
+  document.querySelectorAll('main > section.block:not(#shop)').forEach(sec => sprinkle(sec, 2, '', [130, 220], [0, 60], ['sky', 'mint', 'peach', 'pink']));
+  sprinkle(document.querySelector('footer'), 4, 'soft', [110, 200], [0, 70], ['white', 'sky']);
+
+  /* scroll: everything reacts straight away, nothing is pinned */
+  const heroState = { p: 0, mx: 0, my: 0 };
+  const heroEl = document.getElementById('hero');
+  if (!reduce) heroEl.addEventListener('pointermove', e => {
+    const r = heroEl.getBoundingClientRect();
+    heroState.mx = (e.clientX - r.left) / r.width - 0.5; heroState.my = (e.clientY - r.top) / r.height - 0.5;
+  });
+  let lastY = window.scrollY, tickX = 0, boost = 0, lastT = performance.now();
+  function onFrame(t) {
+    requestAnimationFrame(onFrame);
+    const dt = Math.min(0.05, (t - lastT) / 1000); lastT = t;
+    const y = window.scrollY, vh = window.innerHeight;
+    const dy = y - lastY; lastY = y;
+    heroState.p = Math.min(1, y / (vh * 0.9));
+    if (reduce) return;
+    heroEl.style.setProperty('--hp', heroState.p.toFixed(3));
+    for (const d of driftLayers) { const r = d.host.getBoundingClientRect(); if (r.bottom > -200 && r.top < vh + 200) d.layer.style.setProperty('--sy', (r.top - vh / 2).toFixed(0)); } heroEl.style.setProperty('--mx', heroState.mx.toFixed(3));
+    { const fb = document.getElementById('film'), r = fb.getBoundingClientRect(); fb.style.setProperty('--fp', Math.max(0, Math.min(1, 1 - r.top / vh)).toFixed(3)); }
+    boost += (Math.abs(dy) * 6 - boost) * Math.min(1, dt * 6);
+    tickX -= (60 + boost * 2) * dt * (dy < 0 ? -1 : 1);
+    const half = ticker.scrollWidth / 2; if (half > 0) { if (tickX < -half) tickX += half; if (tickX > 0) tickX -= half; }
+    ticker.style.transform = 'translateX(' + tickX + 'px)';
+    bands.forEach(b => {
+      const r = b.sec.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      const prog = ((r.top + r.height / 2) - vh / 2) / vh; // 0 when centered
+      b.mover.style.transform = 'translate(' + (b.dir * prog * 120) + 'px,' + (prog * 60) + 'px) rotate(' + (b.dir * prog * 18) + 'deg) scale(' + (1 - Math.min(0.12, Math.abs(prog) * 0.12)) + ')';
+      b.word.style.transform = 'translate(' + (b.dir * prog * 420 - 200) + 'px,-50%)';
+    });
+  }
+  requestAnimationFrame(onFrame);
+
+  const pics = [];
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('pop'); io.unobserve(en.target); } }), { threshold: 0.2 });
+    document.querySelectorAll('.val, .wait, .faq details').forEach(el => io.observe(el));
+  }
+
+  /* launch list: Mailchimp (JSONP, stays on the page). Paste the embedded form's action URL below. */
+  const MAILCHIMP_ACTION = '';
+  document.querySelectorAll('form.lform').forEach(wf => {
+    const wok = wf.nextElementSibling && wf.nextElementSibling.classList.contains('ok') ? wf.nextElementSibling : document.getElementById('wait-ok');
+    wf.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = (wf.querySelector('input[type=email]').value || '').trim();
+      const trap = wf.querySelector('input[name=bot-field]');
+      if (trap && trap.value) return;
+      if (!MAILCHIMP_ACTION) { wok.textContent = 'Preview only: on drinkcloudly.com this adds you to the launch list.'; wok.hidden = false; return; }
+      const btn = wf.querySelector('button[type=submit]'); btn.disabled = true;
+      const cb = 'cl_cb_' + Date.now();
+      const url = MAILCHIMP_ACTION.replace('/post?', '/post-json?') + '&EMAIL=' + encodeURIComponent(email) + '&c=' + cb;
+      const sc = document.createElement('script');
+      const done = (msg) => { wok.textContent = msg; wok.hidden = false; btn.disabled = false; sc.remove(); delete window[cb]; };
+      const timer = setTimeout(() => done('Something went wrong. Please try again in a minute.'), 10000);
+      window[cb] = (res) => {
+        clearTimeout(timer);
+        if (res && res.result === 'success') { wf.reset(); done('Thanks! Check your inbox to confirm, and you are on the list.'); }
+        else if (res && /already subscribed/i.test(res.msg || '')) done('You are already on the list. See you at launch!');
+        else done('That did not work. Check your email address and try again.');
+      };
+      sc.src = url; sc.onerror = () => { clearTimeout(timer); done('Something went wrong. Please try again in a minute.'); };
+      document.body.appendChild(sc);
+    });
+  });
+
+  window.CloudlyUI = {
+    reduce, heroState, hero: heroEl,
+    setImages(map) {
+      Object.assign(IMG, map);
+      pics.forEach(([el, p]) => { el.innerHTML = p.cans.map(canPic).join(''); });
+      bands.forEach(b => { b.mover.innerHTML = canPic(b.key); });
+    },
+    useHero3D(canvas) {
+      const st = document.getElementById('stage3d');
+      fallback.remove(); st.appendChild(canvas);
+      canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', 'Three ice cold Cloudly cans with lemon, mint and ice');
+      return st;
+    }
+  };
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ---------- studio 3D: cans with condensation, floating props, intro animation ---------- */
+(function () {
+  const UI = window.CloudlyUI;
+  if (!window.THREE || !UI) return;
+
+  const FLAV = {
+    mint: { name: 'Mint & Lemon', sub: 'MINT · LEMON · APPLE', base: '#EEF5F0', ink: '#123D33', soft: '#5B7D72', accent: '#1FDB9B', dot: '#FFE600', band: '#123D33', bandText: '#9FE3C7',
+      ingredients: 'Sparkling water, apple juice, lemon juice, fresh mint infusion.', story: 'Real mint and real lemon, bubbled up and nothing else. One sip and you are somewhere up in the clouds.', icon: 'leaves' },
+    peach: { name: 'Peach & Lavender', sub: 'PEACH · LAVENDER · APPLE', base: '#FCEFE6', ink: '#5A2A1A', soft: '#8F5E4B', accent: '#FF9459', dot: '#FFD23F', band: '#5A2A1A', bandText: '#F7C4AA',
+      ingredients: 'Sparkling water, apple juice, peach purée, lemon juice, lavender infusion.', story: 'Sun-ripe peach and a hint of real lavender, pressed and bubbled. Like drifting off on a warm summer cloud.', icon: 'peach' },
+    grapefruit: { name: 'Grapefruit & Hibiscus', sub: 'GRAPEFRUIT · HIBISCUS · APPLE', base: '#FBEDEF', ink: '#4A1D2B', soft: '#86505F', accent: '#FF5C8A', dot: '#FFB627', band: '#4A1D2B', bandText: '#F5B9C3',
+      ingredients: 'Sparkling water, pink grapefruit juice, apple juice, hibiscus infusion.', story: 'Pink grapefruit and real hibiscus flowers, nothing more. Pour it over ice and let your head drift into the clouds.', icon: 'sprig' }
+  };
+
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const fontLoad = (document.fonts && document.fonts.load)
+    ? Promise.all(['300 176px Outfit', '400 64px Outfit', '500 26px Outfit', '300 80px Outfit', '400 30px Outfit'].map(f => document.fonts.load(f)))
+    : Promise.resolve();
+  Promise.race([fontLoad, wait(2500)]).catch(() => {}).then(() => { try { init(); } catch (e) { console.warn('3D cans unavailable', e); } });
+
+  function init() {
+    /* ---------- label artwork ---------- */
+    let g, F;
+    function wrapText(text, x, y, maxW, lh) { const words = text.split(' '); let line = '';
+      for (const w of words) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line) { g.fillText(line, x, y); line = w; y += lh; } else line = t; }
+      if (line) g.fillText(line, x, y); return y + lh; }
+    function spaced(text, x, y, spacing, align) { const chars = [...text]; const widths = chars.map(c => g.measureText(c).width);
+      const total = widths.reduce((a, b) => a + b, 0) + spacing * (chars.length - 1); let cx = align === 'left' ? x : x - total / 2; const prev = g.textAlign; g.textAlign = 'left';
+      chars.forEach((c, i) => { g.fillText(c, cx, y); cx += widths[i] + spacing; }); g.textAlign = prev; }
+    function fitFont(text, weight, size, family, maxW) { let s = size; g.font = weight + ' ' + s + 'px ' + family; while (g.measureText(text).width > maxW && s > 20) { s -= 2; g.font = weight + ' ' + s + 'px ' + family; } }
+    function barcode(x, y, h, color) { g.fillStyle = color; const bars = [3,1,2,1,4,1,1,2,3,1,2,2,1,1,3,1,2,1,1,4,2,1,1,2,3,1,1,2,1,3,2,1]; bars.forEach((w, i) => { if (i % 2 === 0) g.fillRect(x, y, w * 3, h); x += w * 3; }); }
+    const LOGO = new Path2D('M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z');
+    function logoCloud(cx, bottom, width, mode, color) { const k = width / 100; g.save(); g.translate(cx - 47 * k, bottom - 54 * k); g.scale(k, k);
+      if (mode === 'fill') { g.fillStyle = color; g.fill(LOGO); } else { g.strokeStyle = color; g.lineWidth = 3.2; g.lineJoin = 'round'; g.stroke(LOGO); } g.restore(); }
+    function badge(cx, cy, width) { const k = width / 100; logoCloud(cx, cy + 25 * k, width, 'fill', F.ink); g.save(); g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '400 ' + Math.round(16.5 * k) + 'px Outfit, sans-serif'; g.fillText('cloudly', cx, cy + 14 * k); g.restore(); }
+    function cloudPath(x, y, s) { g.beginPath(); g.moveTo(x - 70 * s, y); g.arc(x - 45 * s, y - 18 * s, 25 * s, Math.PI * 0.85, Math.PI * 1.6); g.arc(x + 2 * s, y - 34 * s, 34 * s, Math.PI * 1.15, Math.PI * 1.95); g.arc(x + 48 * s, y - 14 * s, 22 * s, Math.PI * 1.4, Math.PI * 0.2); g.lineTo(x - 70 * s, y); }
+    function cloudLine(x, y, s, color, w) { g.save(); g.strokeStyle = color; g.lineWidth = w || 5; g.lineCap = 'round'; g.lineJoin = 'round'; cloudPath(x, y, s); g.stroke(); g.restore(); }
+    function cloudFill(x, y, s, color, a) { g.save(); g.globalAlpha = a; g.fillStyle = color; cloudPath(x, y, s); g.closePath(); g.fill(); g.restore(); }
+    function leafLine(x, y, len, ang) { g.save(); g.translate(x, y); g.rotate(ang); g.strokeStyle = F.accent; g.lineWidth = 4; g.lineCap = 'round';
+      g.beginPath(); g.moveTo(0, 0); g.quadraticCurveTo(len * 0.5, -len * 0.4, len, 0); g.quadraticCurveTo(len * 0.5, len * 0.4, 0, 0); g.stroke();
+      g.beginPath(); g.moveTo(-len * 0.15, 0); g.lineTo(len * 0.85, 0); g.stroke(); g.restore(); }
+    function icon(fx, y) {
+      if (F.icon === 'leaves') { leafLine(fx - 70, y, 120, -0.45); leafLine(fx + 70, y, 120, Math.PI + 0.45); g.fillStyle = F.dot; g.beginPath(); g.arc(fx, y + 10, 14, 0, Math.PI * 2); g.fill(); }
+      else if (F.icon === 'peach') { g.save(); g.strokeStyle = F.accent; g.lineWidth = 4; g.beginPath(); g.arc(fx, y + 6, 44, 0, Math.PI * 2); g.stroke();
+        g.beginPath(); g.moveTo(fx, y - 38); g.quadraticCurveTo(fx - 10, y + 6, fx, y + 50); g.stroke(); g.restore(); leafLine(fx + 8, y - 40, 70, -0.6); (function () { const sx = fx + 70, sy = y + 52; g.save(); g.strokeStyle = '#7E9C6A'; g.lineWidth = 3; g.lineCap = 'round'; g.beginPath(); g.moveTo(sx, sy); g.quadraticCurveTo(sx + 8, sy - 50, sx + 24, sy - 100); g.stroke(); g.fillStyle = '#A88BC9'; for (let i = 0; i < 8; i++) { const t = 0.32 + i * 0.09, px = sx + 24 * t * t + 8 * t + (i % 2 ? 5 : -5), py = sy - 100 * t; g.beginPath(); g.ellipse(px, py, 4.5, 8, i % 2 ? 0.5 : -0.5, 0, 6.2832); g.fill(); } g.restore(); })();
+        g.fillStyle = F.dot; g.beginPath(); g.arc(fx - 86, y + 20, 10, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(fx + 92, y + 30, 7, 0, Math.PI * 2); g.fill(); }
+      else { g.save(); g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = F.accent; for (let i = 0; i < 5; i++) { const a = i / 5 * Math.PI * 2 - Math.PI / 2; g.save(); g.translate(fx + Math.cos(a) * 30, y + 8 + Math.sin(a) * 30); g.rotate(a + Math.PI / 2); g.fillStyle = '#FBDDE3'; g.beginPath(); g.ellipse(0, 0, 25, 33, 0, 0, Math.PI * 2); g.fill(); g.stroke(); g.restore(); } g.fillStyle = F.ink; g.beginPath(); g.arc(fx, y + 8, 7, 0, Math.PI * 2); g.fill(); g.strokeStyle = F.ink; g.lineWidth = 3; g.lineCap = 'round'; g.beginPath(); g.moveTo(fx, y + 8); g.quadraticCurveTo(fx + 18, y - 18, fx + 40, y - 30); g.stroke(); g.restore(); g.fillStyle = F.dot; g.beginPath(); g.arc(fx + 42, y - 32, 6, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(fx - 104, y + 30, 10, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(fx + 104, y + 40, 7, 0, Math.PI * 2); g.fill(); }
+    }
+    function drawLabel(TW, TH) {
+      const bandY = TH - 250;
+      [[1024-330,260,0.9],[1024+320,200,0.7],[1024+360,860,0.8],[1024-360,900,0.6],[380-220,190,0.8],[380+230,1000,0.7],[1660+230,180,0.7],[1660-260,1030,0.6],[40,520,1.0],[2010,420,0.9],[1960,860,0.7],[120,900,0.6],[700,120,0.5],[1340,110,0.5]].forEach(([x,y,s]) => cloudFill(x, y, s, '#FFFFFF', 0.85));
+      cloudLine(1024 - 300, 300, 0.45, F.accent, 4); cloudLine(1024 + 290, 820, 0.4, F.accent, 4); cloudLine(40, 560, 0.55, F.accent, 4); cloudLine(2000, 300, 0.45, F.accent, 4);
+      g.fillStyle = F.band; g.fillRect(0, bandY, TW, TH - bandY + 400);
+      g.beginPath(); for (let x = -40, i = 0; x < TW + 80; i++) { const r = 34 + ((i * 37) % 30); g.moveTo(x + r, bandY + 6); g.arc(x, bandY + 6, r, 0, Math.PI * 2); x += r * 1.35; } g.fill();
+      const fx = 1024; g.textBaseline = 'alphabetic'; g.textAlign = 'center';
+      g.fillStyle = F.soft; g.font = '500 26px Outfit, sans-serif'; spaced('SPARKLING BOTANICAL SODA', fx, 190, 9);
+      logoCloud(fx, 395, 190, 'stroke', F.ink);
+      g.fillStyle = F.ink; g.font = '300 176px Outfit, sans-serif'; spaced('cloudly', fx, 560, -5); g.fillRect(fx - 40, 612, 80, 3);
+      fitFont(F.name, '400', 64, 'Outfit, sans-serif', 560); g.fillStyle = F.ink; g.fillText(F.name, fx, 706);
+      g.font = '400 24px Outfit, sans-serif'; g.fillStyle = F.soft; spaced(F.sub, fx, 758, 6);
+      icon(fx, 900);
+      g.fillStyle = '#FFFFFF'; g.font = '300 44px Outfit, sans-serif'; g.fillText('light as a cloud.', fx, bandY + 128);
+      g.fillStyle = F.bandText; g.font = '500 24px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 186, 10);
+      const ix = 1660, iw = 420, lx = ix - iw / 2; g.textAlign = 'left'; let y = 290;
+      g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; spaced('INGREDIENTS', lx, y, 6, 'left'); y += 46;
+      g.fillStyle = F.ink; g.font = '400 30px Outfit, sans-serif'; y = wrapText(F.ingredients, lx, y, iw, 40); y += 14; g.fillRect(lx, y, iw, 2); y += 54;
+      g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; spaced('NUTRITION PER 100 ML', lx, y, 6, 'left'); y += 44;
+      g.fillStyle = F.ink; g.font = '400 26px Outfit, sans-serif'; g.fillText('[values after lab test]', lx, y); y += 40; g.fillRect(lx, y, iw, 2); y += 52;
+      g.font = '400 24px Outfit, sans-serif'; g.fillStyle = F.soft; g.fillText('Nothing added. Nothing fake.', lx, y); y += 36; g.fillText('Keep cool. Best before: see bottom.', lx, y);
+      barcode(lx, bandY - 130, 80, F.ink);
+      g.textAlign = 'right'; g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; g.fillText('drinkcloudly.com', lx + iw, bandY - 60);
+      const sx = 380; g.textAlign = 'center'; g.fillStyle = F.ink; g.font = '300 80px Outfit, sans-serif'; g.fillText('head in', sx, 380); g.fillText('the clouds.', sx, 464);
+      g.font = '400 30px Outfit, sans-serif'; wrapText(F.story, sx, 560, 440, 44); badge(sx, 880, 230);
+    }
+
+    /* ---------- renderer + studio light ---------- */
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+    renderer.physicallyCorrectLights = true;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
+    const envMap = (function () {
+      const w = 1024, h = 512, d = new Uint8Array(w * h * 4);
+      function put(i, r, gg, b) { const m = Math.max(r, gg, b); if (m < 1e-6) { d[i] = d[i + 1] = d[i + 2] = d[i + 3] = 0; return; }
+        const e = Math.ceil(Math.log2(m)), f = 255 / Math.pow(2, e); d[i] = Math.min(255, Math.round(r * f)); d[i + 1] = Math.min(255, Math.round(gg * f)); d[i + 2] = Math.min(255, Math.round(b * f)); d[i + 3] = e + 128; }
+      const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+      const box = (u, v, x0, x1, y0, y1, s) => ss(x0 - s, x0, u) * (1 - ss(x1, x1 + s, u)) * ss(y0 - s, y0, v) * (1 - ss(y1, y1 + s, v));
+      for (let y = 0; y < h; y++) { const v = y / h; for (let x = 0; x < w; x++) { const u = x / w, i = ((h - 1 - y) * w + x) * 4; let r, gg, b;
+        if (v < 0.5) { const k = 1.0 - v * 0.5; r = 0.78 * k; gg = 0.90 * k; b = 1.05 * k; } else { const k = 0.34 - (v - 0.5) * 0.3; r = k * 0.95; gg = k * 1.0; b = k * 1.08; }
+        const L = 14 * box(u, v, 0.20, 0.25, 0.16, 0.46, 0.012) + 10 * box(u, v, 0.70, 0.735, 0.14, 0.48, 0.012) + 6 * box(u, v, 0.44, 0.56, 0.02, 0.07, 0.02) + 3 * box(u, v, 0.93, 0.97, 0.22, 0.42, 0.02) + 2 * box(u, v, 0.02, 0.05, 0.22, 0.42, 0.02);
+        const k2 = 1 - 0.8 * box(u, v, 0.46, 0.52, 0.2, 0.45, 0.02); put(i, (r + L) * k2, (gg + L) * k2, (b + L) * k2); } }
+      const t = new THREE.DataTexture(d, w, h, THREE.RGBAFormat, THREE.UnsignedByteType);
+      t.encoding = THREE.RGBEEncoding; t.mapping = THREE.EquirectangularReflectionMapping; t.minFilter = THREE.NearestFilter; t.magFilter = THREE.NearestFilter; t.generateMipmaps = false; t.flipY = false; t.needsUpdate = true;
+      const pm = new THREE.PMREMGenerator(renderer); const out = pm.fromEquirectangular(t).texture; t.dispose(); pm.dispose(); return out;
+    })();
+
+    /* ---------- can geometry ---------- */
+    const R = 0.8, H = 2.03, SEG = 160;
+    const V = a => a.map(([x, y]) => new THREE.Vector2(x, y));
+    const prof = new THREE.SplineCurve(V([[0.0,-H+0.17],[0.2,-H+0.165],[0.36,-H+0.145],[0.47,-H+0.11],[0.54,-H+0.065],[0.585,-H+0.025],[0.612,-H+0.007],[0.635,-H],[0.66,-H+0.005],[0.69,-H+0.024],[0.725,-H+0.065],[0.757,-H+0.13],[0.78,-H+0.2],[0.793,-H+0.26],[0.799,-H+0.31],[0.8,-H+0.37],[0.8,-1.0],[0.8,0],[0.8,1.0],[0.8,H-0.42],[0.799,H-0.36],[0.792,H-0.3],[0.778,H-0.24],[0.757,H-0.18],[0.733,H-0.13],[0.71,H-0.09],[0.696,H-0.06],[0.688,H-0.035]])).getPoints(600);
+    const yP0 = -H + 0.25, yP1 = H - 0.06;
+    const i0 = prof.findIndex(p => p.y >= yP0 && p.x > 0.7); let i1 = prof.length - 1; while (prof[i1].y > yP1) i1--;
+    const lidY = H - 0.012;
+    const rim = new THREE.SplineCurve(V([[0.688,H-0.035],[0.692,H-0.02],[0.699,H],[0.702,H+0.024],[0.699,H+0.044],[0.69,H+0.054],[0.676,H+0.052],[0.667,H+0.04],[0.664,H+0.02],[0.66,H-0.004],[0.65,H-0.028],[0.637,H-0.036],[0.626,H-0.028],[0.62,lidY]])).getPoints(100);
+    const geoBottom = new THREE.LatheGeometry(prof.slice(0, i0 + 1), SEG, Math.PI, Math.PI * 2);
+    const geoNeck = new THREE.LatheGeometry(prof.slice(i1).concat(rim.slice(1)), SEG, Math.PI, Math.PI * 2);
+    const geoLid = new THREE.LatheGeometry(V([[0.62,lidY],[0.565,lidY],[0.552,lidY+0.007],[0.538,lidY+0.01],[0.524,lidY+0.007],[0.51,lidY],[0.3,lidY],[0.0,lidY]]), SEG, Math.PI, Math.PI * 2);
+    const geoPrint = new THREE.LatheGeometry(prof.slice(i0, i1 + 1), SEG, Math.PI, Math.PI * 2);
+    { const pos = geoPrint.attributes.position, uv = geoPrint.attributes.uv; for (let k = 0; k < pos.count; k++) uv.setY(k, (pos.getY(k) - yP0) / (yP1 - yP0)); uv.needsUpdate = true; }
+    function rr(x, y, w, h, r, path) { const p = path || new THREE.Shape(); p.moveTo(x + r, y); p.lineTo(x + w - r, y); p.quadraticCurveTo(x + w, y, x + w, y + r); p.lineTo(x + w, y + h - r); p.quadraticCurveTo(x + w, y + h, x + w - r, y + h); p.lineTo(x + r, y + h); p.quadraticCurveTo(x, y + h, x, y + h - r); p.lineTo(x, y + r); p.quadraticCurveTo(x, y, x + r, y); return p; }
+    const tabShape = rr(-0.15, -0.14, 0.30, 0.50, 0.08); tabShape.holes.push(rr(-0.095, 0.13, 0.19, 0.16, 0.07, new THREE.Path()));
+    const slot = new THREE.Path(); slot.absarc(0, 0, 0.035, 0, Math.PI * 2, true); tabShape.holes.push(slot);
+    const geoTab = new THREE.ExtrudeGeometry(tabShape, { depth: 0.008, bevelEnabled: true, bevelThickness: 0.006, bevelSize: 0.008, bevelSegments: 3, curveSegments: 20 });
+    const scoreShape = new THREE.Shape(); scoreShape.absellipse(0, -0.29, 0.17, 0.15, 0, Math.PI * 2, false, 0);
+    const scoreHole = new THREE.Path(); scoreHole.absellipse(0, -0.29, 0.158, 0.138, 0, Math.PI * 2, true, 0); scoreShape.holes.push(scoreHole);
+    const geoScore = new THREE.ExtrudeGeometry(scoreShape, { depth: 0.004, bevelEnabled: false, curveSegments: 48 });
+    const geoRivet = new THREE.SphereGeometry(0.04, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2);
+
+    /* ---------- condensation normal map ---------- */
+    const LW = 2048, LH = Math.round(LW * (yP1 - yP0) / (2 * Math.PI * R));
+    function dropsTexture(W, Hh, density) {
+      const c = document.createElement('canvas'); c.width = W; c.height = Hh;
+      const ctx = c.getContext('2d'); const img = ctx.createImageData(W, Hh); const d = img.data;
+      for (let i = 0; i < d.length; i += 4) { d[i] = 128; d[i + 1] = 128; d[i + 2] = 255; d[i + 3] = 255; }
+      function drop(cx, cy, rx, ry) { const x0 = Math.ceil(rx), y0 = Math.ceil(ry);
+        for (let y = -y0; y <= y0; y++) for (let x = -x0; x <= x0; x++) { const u = x / rx, v = y / ry, q = u * u + v * v; if (q >= 1) continue;
+          const py = Math.round(cy + y); if (py < 0 || py >= Hh) continue; const px = ((Math.round(cx + x) % W) + W) % W;
+          const nz = Math.sqrt(1 - q), i = (py * W + px) * 4; d[i] = Math.round(128 + u * 110); d[i + 1] = Math.round(128 - v * 110); d[i + 2] = Math.round(128 + nz * 127); } }
+      const rnd = (a, b) => a + Math.random() * (b - a);
+      for (let n = 0; n < 5200 * density; n++) drop(rnd(0, W), rnd(0, Hh), rnd(0.8, 1.8), rnd(0.8, 1.8));
+      for (let n = 0; n < 1100 * density; n++) { const r = rnd(2, 4.2); drop(rnd(0, W), rnd(0, Hh), r, r * rnd(0.9, 1.15)); }
+      for (let n = 0; n < 70 * density; n++) { const r = rnd(4.5, 7.5); drop(rnd(0, W), rnd(0, Hh * 0.92), r, r * rnd(1.05, 1.3)); }
+      for (let n = 0; n < 18 * density; n++) { const x = rnd(0, W), y = rnd(0, Hh * 0.6), len = rnd(40, 140);
+        for (let t = 0; t < len; t += 3) drop(x + Math.sin(t / 17) * 1.5, y + t, 1.4, 2.2); drop(x, y + len + 4, rnd(4, 6), rnd(5.5, 8)); }
+      ctx.putImageData(img, 0, 0);
+      const t = new THREE.CanvasTexture(c); t.anisotropy = 8; return t;
+    }
+    const condTex = dropsTexture(1024, Math.round(1024 * LH / LW), 1);
+    const condMetal = condTex.clone(); condMetal.needsUpdate = true; condMetal.wrapS = condMetal.wrapT = THREE.RepeatWrapping; condMetal.repeat.set(2, 0.3);
+
+    const alu = new THREE.MeshPhysicalMaterial({ color: 0xe3e6e8, metalness: 1, roughness: 0.24, clearcoat: 1, clearcoatRoughness: 0.08, clearcoatNormalMap: condMetal, clearcoatNormalScale: new THREE.Vector2(0.8, 0.8), envMap, side: THREE.DoubleSide });
+    const aluLid = new THREE.MeshPhysicalMaterial({ color: 0xcfd4d7, metalness: 1, roughness: 0.3, envMap, side: THREE.DoubleSide });
+    const tabMat = new THREE.MeshPhysicalMaterial({ color: 0xd9dee1, metalness: 1, roughness: 0.18, clearcoat: 0.6, envMap });
+
+    const SCALE = 1.5;
+    const topOffset = Math.round(LH * (yP1 - (H - 0.38)) / (yP1 - yP0));
+    const printMats = {};
+    Object.keys(FLAV).forEach(key => {
+      const c = document.createElement('canvas'); c.width = LW * SCALE; c.height = LH * SCALE;
+      g = c.getContext('2d'); F = FLAV[key];
+      g.setTransform(SCALE, 0, 0, SCALE, 0, 0); g.fillStyle = F.base; g.fillRect(0, 0, LW, LH);
+      const end = topOffset + 800; const sky = g.createLinearGradient(0, 0, 0, end);
+      sky.addColorStop(0, '#5CC1FF'); sky.addColorStop(0.45, '#A6DDFF'); sky.addColorStop(0.72, '#DDF2FF'); sky.addColorStop(1, F.base);
+      g.fillStyle = sky; g.fillRect(0, 0, LW, end);
+      g.translate(0, topOffset); drawLabel(LW, 1368);
+      g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = 'rgba(255,255,255,0.05)'; g.fillRect(0, 0, c.width, c.height);
+      const tex = new THREE.CanvasTexture(c); tex.encoding = THREE.sRGBEncoding; tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      printMats[key] = new THREE.MeshPhysicalMaterial({ map: tex, metalness: 0.2, roughness: 0.36, envMap,
+        clearcoat: 1, clearcoatRoughness: 0.04, clearcoatNormalMap: condTex, clearcoatNormalScale: new THREE.Vector2(1.1, 1.1),
+        normalMap: condTex, normalScale: new THREE.Vector2(0.25, 0.25), side: THREE.DoubleSide });
+    });
+    function makeCan(key) {
+      const grp = new THREE.Group();
+      grp.add(new THREE.Mesh(geoBottom, alu)); grp.add(new THREE.Mesh(geoNeck, alu)); grp.add(new THREE.Mesh(geoLid, aluLid)); grp.add(new THREE.Mesh(geoPrint, printMats[key]));
+      const tab = new THREE.Mesh(geoTab, tabMat); tab.rotation.x = -Math.PI / 2; tab.position.set(0, lidY + 0.018, 0); grp.add(tab);
+      const sc = new THREE.Mesh(geoScore, aluLid); sc.rotation.x = -Math.PI / 2; sc.position.set(0, lidY, 0); grp.add(sc);
+      const rv = new THREE.Mesh(geoRivet, alu); rv.scale.set(1, 0.5, 1); rv.position.set(0, lidY + 0.004, 0); grp.add(rv);
+      grp.traverse(o => { if (o.isMesh) o.castShadow = true; });
+      return grp;
+    }
+
+    /* ---------- props: citrus slices, mint leaves, ice ---------- */
+    function citrusTex(rind, pith, flesh, fleshLight) {
+      const c = document.createElement('canvas'); c.width = c.height = 512; const s = c.getContext('2d'); const m = 256;
+      s.fillStyle = rind; s.beginPath(); s.arc(m, m, 254, 0, Math.PI * 2); s.fill();
+      s.fillStyle = pith; s.beginPath(); s.arc(m, m, 236, 0, Math.PI * 2); s.fill();
+      const segs = 10;
+      for (let i = 0; i < segs; i++) {
+        const a0 = i / segs * Math.PI * 2 + 0.035, a1 = (i + 1) / segs * Math.PI * 2 - 0.035;
+        const gr = s.createRadialGradient(m, m, 10, m, m, 222); gr.addColorStop(0, fleshLight); gr.addColorStop(1, flesh);
+        s.fillStyle = gr; s.beginPath(); s.moveTo(m + Math.cos((a0 + a1) / 2) * 14, m + Math.sin((a0 + a1) / 2) * 14); s.arc(m, m, 218, a0, a1); s.closePath(); s.fill();
+        s.strokeStyle = 'rgba(255,255,255,.35)'; s.lineWidth = 2;
+        for (let k = 0; k < 14; k++) { const a = a0 + Math.random() * (a1 - a0), r0 = 40 + Math.random() * 150; s.beginPath(); s.moveTo(m + Math.cos(a) * r0, m + Math.sin(a) * r0); s.lineTo(m + Math.cos(a) * (r0 + 30), m + Math.sin(a) * (r0 + 30)); s.stroke(); }
+      }
+      s.fillStyle = pith; s.beginPath(); s.arc(m, m, 14, 0, Math.PI * 2); s.fill();
+      const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; return t;
+    }
+    function citrus(rind, pith, flesh, light, r) {
+      const top = new THREE.MeshPhysicalMaterial({ map: citrusTex(rind, pith, flesh, light), roughness: 0.35, clearcoat: 0.8, clearcoatRoughness: 0.15, envMap });
+      const side = new THREE.MeshPhysicalMaterial({ color: rind, roughness: 0.5, envMap });
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.07, 64), [side, top, top]); m.castShadow = true; return m;
+    }
+    function leafTex() {
+      const c = document.createElement('canvas'); c.width = 256; c.height = 512; const s = c.getContext('2d');
+      const gr = s.createLinearGradient(0, 0, 256, 0); gr.addColorStop(0, '#2E8B57'); gr.addColorStop(0.5, '#3FAE6C'); gr.addColorStop(1, '#2A7F4F');
+      s.fillStyle = gr; s.fillRect(0, 0, 256, 512);
+      s.strokeStyle = 'rgba(210,255,225,.65)'; s.lineWidth = 6; s.beginPath(); s.moveTo(128, 512); s.lineTo(128, 20); s.stroke();
+      s.lineWidth = 3; for (let y = 470; y > 60; y -= 52) { s.beginPath(); s.moveTo(128, y); s.quadraticCurveTo(170, y - 30, 230, y - 70); s.stroke(); s.beginPath(); s.moveTo(128, y); s.quadraticCurveTo(86, y - 30, 26, y - 70); s.stroke(); }
+      const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; return t;
+    }
+    const leafMap = leafTex();
+    function leaf(size) {
+      const sh = new THREE.Shape(); sh.moveTo(0, 0); sh.bezierCurveTo(0.36, 0.18, 0.34, 0.66, 0, 0.95); sh.bezierCurveTo(-0.34, 0.66, -0.36, 0.18, 0, 0);
+      const geo = new THREE.ShapeGeometry(sh, 24);
+      const pos = geo.attributes.position, uv = geo.attributes.uv;
+      for (let i = 0; i < pos.count; i++) { const x = pos.getX(i), y = pos.getY(i); pos.setZ(i, -0.14 * (x / 0.36) * (x / 0.36) + 0.05 * Math.sin(y * 3)); uv.setXY(i, x / 0.72 + 0.5, y / 0.95); }
+      geo.computeVertexNormals(); geo.translate(0, -0.47, 0); geo.scale(size, size, size);
+      const m = new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ map: leafMap, roughness: 0.45, clearcoat: 0.5, clearcoatRoughness: 0.3, envMap, side: THREE.DoubleSide }));
+      m.castShadow = true; return m;
+    }
+    const iceGeo = (function () { const s = rr(-0.25, -0.25, 0.5, 0.5, 0.09); const geo = new THREE.ExtrudeGeometry(s, { depth: 0.36, bevelEnabled: true, bevelThickness: 0.07, bevelSize: 0.07, bevelSegments: 5, curveSegments: 12 }); geo.center(); return geo; })();
+    const iceMat = new THREE.MeshPhysicalMaterial({ color: 0xEAF7FF, metalness: 0, roughness: 0.06, transparent: true, opacity: 0.5, clearcoat: 1, clearcoatRoughness: 0.03, envMap, envMapIntensity: 1.6, normalMap: condTex, normalScale: new THREE.Vector2(0.35, 0.35) });
+    function ice(s) { const m = new THREE.Mesh(iceGeo, iceMat); m.scale.setScalar(s); m.castShadow = true; return m; }
+
+    function key3(scene) {
+      const k = new THREE.DirectionalLight(0xffffff, 1.0); k.position.set(3.5, 8, 5.5); k.castShadow = true;
+      k.shadow.mapSize.set(1024, 1024); k.shadow.radius = 6; k.shadow.bias = -0.0006;
+      Object.assign(k.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7, near: 1, far: 25 });
+      scene.add(k); scene.add(k.target);
+      const fill = new THREE.DirectionalLight(0xdff2ff, 0.35); fill.position.set(-5, 2, 4); scene.add(fill);
+    }
+
+    /* ---------- product pictures ---------- */
+    const snap = new THREE.Scene(); key3(snap);
+    const sCam = new THREE.PerspectiveCamera(16, 0.42, 0.1, 100); sCam.position.set(0, 0.35, 17.5); sCam.lookAt(0, -0.15, 0);
+    const sFloor = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), new THREE.ShadowMaterial({ opacity: 0.22 })); sFloor.rotation.x = -Math.PI / 2; sFloor.position.y = -H; sFloor.receiveShadow = true; snap.add(sFloor);
+    renderer.setPixelRatio(1); renderer.setSize(520, 1240, false);
+    const imgs = {};
+    Object.keys(FLAV).forEach(key => {
+      const c = makeCan(key); c.rotation.set(0.04, -0.22, 0); snap.add(c);
+      renderer.render(snap, sCam); imgs[key] = renderer.domElement.toDataURL('image/png'); snap.remove(c);
+    });
+    UI.setImages(imgs);
+
+    /* ---------- live studio hero ---------- */
+    const scene = new THREE.Scene(); key3(scene);
+    const cam = new THREE.PerspectiveCamera(20, 1, 0.1, 100); cam.position.set(0, 0.4, 22); cam.lookAt(0, 0.2, 0);
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.2 })); floor.rotation.x = -Math.PI / 2; floor.position.y = -H - 1.0; floor.receiveShadow = true; scene.add(floor);
+    const keys = ['peach', 'mint', 'grapefruit'];
+    const cans = keys.map(k => makeCan(k));
+    const base = [{ x: -1.95, z: -0.4, ry: 0.42, rz: 0.07, s: 1 }, { x: 0, z: 0.5, ry: -0.12, rz: 0, s: 1.1 }, { x: 1.95, z: -0.4, ry: -0.62, rz: -0.07, s: 1 }];
+    cans.forEach(c => scene.add(c));
+
+    const props = [];
+    function prop(mesh, x, y, z, rx, ry, rz, depth, spin) { mesh.position.set(x, y, z); mesh.rotation.set(rx, ry, rz); scene.add(mesh); props.push({ mesh, x, y, z, rx, ry, rz, depth, spin, s: mesh.scale.x }); }
+    prop(citrus('#F2C200', '#FFF6D6', '#F7D84A', '#FFF1A6', 0.46), -3.0, 1.7, 1.2, 1.1, 0.3, 0.5, 1.4, 0.35);
+    prop(citrus('#E8664F', '#FFE8E2', '#F07D86', '#FFC2C4', 0.5), 2.9, 2.2, 0.6, 1.3, -0.4, -0.6, 1.2, -0.3);
+    prop(citrus('#F2C200', '#FFF6D6', '#F7D84A', '#FFF1A6', 0.32), 1.05, -2.35, 2.0, 0.6, 0.2, 0.9, 1.8, 0.5);
+    prop(leaf(0.9), 2.7, -0.6, 1.5, 0.3, 0.6, -0.9, 1.5, 0.4);
+    prop(leaf(0.75), -1.2, 2.75, -0.8, 0.6, -0.5, 0.5, 0.9, -0.5);
+    prop(leaf(0.65), -3.1, -0.9, 0.8, -0.4, 0.8, 1.6, 1.3, 0.6);
+    prop(ice(0.95), -2.5, -1.85, 1.4, 0.5, 0.6, 0.2, 1.6, 0.3);
+    prop(ice(0.75), 3.1, 0.65, -0.4, 0.3, 0.9, 0.5, 1.1, -0.35);
+    prop(ice(0.6), 0.6, 2.95, 0.4, 0.8, 0.2, 0.3, 1.0, 0.45);
+
+    renderer.setPixelRatio(Math.min(Math.max(window.devicePixelRatio || 1, 1.25), 2));
+    const holder = UI.useHero3D(renderer.domElement);
+    if (!holder) { renderer.dispose(); return; }
+    function resize() {
+      const w = holder.clientWidth, h = holder.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); cam.aspect = w / h;
+      cam.position.z = w / h < 1.0 ? 22 / Math.max(0.55, w / h) : 22; cam.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', resize); resize();
+
+    let visible = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(UI.hero);
+    const st = { p: 0, mx: 0, my: 0 };
+    const clock = new THREE.Clock();
+    const easeOutBack = x => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+    const clamp01 = x => Math.max(0, Math.min(1, x));
+    const intro = UI.reduce ? 99 : 0;
+    function loop() {
+      requestAnimationFrame(loop);
+      const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime + intro;
+      if (!visible) return;
+      const hs = UI.heroState, k = Math.min(1, dt * 6);
+      st.p += (hs.p - st.p) * k; st.mx += (hs.mx - st.mx) * k; st.my += (hs.my - st.my) * k;
+      cans.forEach((c, i) => {
+        const b = base[i], side = i === 0 ? -1 : i === 2 ? 1 : 0;
+        const drop = easeOutBack(clamp01((t - 0.15 - [0.25, 0, 0.45][i]) / 1.1));
+        const bob = UI.reduce ? 0 : Math.sin(t * 1.2 + i * 2.1) * 0.1;
+        c.position.set(b.x + side * st.p * 0.9 + st.mx * 0.25, 0.25 + bob + (1 - drop) * 8 + (side ? -st.p * 0.5 : st.p * 0.9) - st.my * 0.2, b.z);
+        c.rotation.set(0.05 + st.my * 0.15, b.ry + st.mx * 0.5 + (1 - drop) * 1.4 * (side || 1) + (UI.reduce ? 0 : Math.sin(t * 0.5 + i) * 0.06), b.rz + side * st.p * 0.35);
+        c.scale.setScalar(b.s * (side ? 1 : 1 + st.p * 0.06));
+      });
+      props.forEach((p, i) => {
+        const appear = easeOutBack(clamp01((t - 1.0 - i * 0.07) / 0.7));
+        const bob = UI.reduce ? 0 : Math.sin(t * 0.9 + i * 1.7) * 0.12;
+        p.mesh.scale.setScalar(Math.max(0.001, p.s * appear));
+        p.mesh.position.set(p.x + st.mx * 0.6 * p.depth, p.y + bob - st.my * 0.4 * p.depth + st.p * 1.6 * p.depth * (p.y > 0 ? 1 : -1), p.z);
+        p.mesh.rotation.set(p.rx + (UI.reduce ? 0 : t * 0.15 * p.spin), p.ry + (UI.reduce ? 0 : t * 0.2 * p.spin) + st.mx * 0.4, p.rz);
+      });
+      renderer.render(scene, cam);
+    }
+    loop();
+  }
+})();
+</script>
+
+</body>
+</html>
