@@ -585,30 +585,28 @@ footer p { margin: 0; color: var(--soft); font-size: 14px }
     document.querySelectorAll('.val, .wait, .faq details').forEach(el => io.observe(el));
   }
 
-  /* launch list: Mailchimp (JSONP, stays on the page). Paste the embedded form's action URL below. */
-  const MAILCHIMP_ACTION = '';
+  /* launch list: saved in our own Cloudflare database via /api/subscribe */
   document.querySelectorAll('form.lform').forEach(wf => {
     const wok = wf.nextElementSibling && wf.nextElementSibling.classList.contains('ok') ? wf.nextElementSibling : document.getElementById('wait-ok');
-    wf.addEventListener('submit', e => {
+    wf.addEventListener('submit', async e => {
       e.preventDefault();
-      const email = (wf.querySelector('input[type=email]').value || '').trim();
+      const input = wf.querySelector('input[type=email]');
+      const email = (input.value || '').trim();
       const trap = wf.querySelector('input[name=bot-field]');
-      if (trap && trap.value) return;
-      if (!MAILCHIMP_ACTION) { wok.textContent = 'Preview only: on drinkcloudly.com this adds you to the launch list.'; wok.hidden = false; return; }
+      const live = /(^|\.)drinkcloudly\.com$|\.pages\.dev$/.test(location.hostname);
+      if (!live) { wok.textContent = 'Preview only: on drinkcloudly.com this adds you to the launch list.'; wok.hidden = false; return; }
       const btn = wf.querySelector('button[type=submit]'); btn.disabled = true;
-      const cb = 'cl_cb_' + Date.now();
-      const url = MAILCHIMP_ACTION.replace('/post?', '/post-json?') + '&EMAIL=' + encodeURIComponent(email) + '&c=' + cb;
-      const sc = document.createElement('script');
-      const done = (msg) => { wok.textContent = msg; wok.hidden = false; btn.disabled = false; sc.remove(); delete window[cb]; };
-      const timer = setTimeout(() => done('Something went wrong. Please try again in a minute.'), 10000);
-      window[cb] = (res) => {
-        clearTimeout(timer);
-        if (res && res.result === 'success') { wf.reset(); done('Thanks! You are on the list. We will email you a few days before launch.'); }
-        else if (res && /already subscribed/i.test(res.msg || '')) done('You are already on the list. We will email you a few days before launch.');
-        else done('That did not work. Check your email address and try again.');
-      };
-      sc.src = url; sc.onerror = () => { clearTimeout(timer); done('Something went wrong. Please try again in a minute.'); };
-      document.body.appendChild(sc);
+      try {
+        const r = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: wf.id === 'wait-form' ? 'bottom' : 'hero', 'bot-field': trap ? trap.value : '' }) });
+        const res = await r.json().catch(() => ({}));
+        if (r.ok && res.ok) { wf.reset(); wok.textContent = res.already ? 'You are already on the list. We will email you a few days before launch.' : 'Thanks! You are on the list. We will email you a few days before launch.'; }
+        else if (res.error === 'invalid_email') wok.textContent = 'That email address does not look right. Please check it and try again.';
+        else wok.textContent = 'Something went wrong. Please try again in a minute.';
+      } catch (err) {
+        wok.textContent = 'Something went wrong. Please try again in a minute.';
+      }
+      wok.hidden = false; btn.disabled = false;
     });
   });
 
