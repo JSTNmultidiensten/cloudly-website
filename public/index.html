@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Cloudly · Sparkling botanical soda · Coming soon</title>
-<meta name="description" content="Cloudly is a lightly sparkling botanical soda made with real fruit, herbs and flowers. Nothing fake. Coming soon to the Netherlands. Join the launch list.">
+<title>Cloudly · Clean sparkling energy · Coming soon</title>
+<meta name="description" content="Cloudly is a clean sparkling energy drink with natural caffeine from green tea and zero sugar. Coming soon to the Netherlands. Join the launch list.">
 <meta property="og:title" content="Cloudly · light as a cloud.">
-<meta property="og:description" content="Sparkling botanical soda with real fruit and herbs. Coming soon. Join the launch list.">
+<meta property="og:description" content="Clean sparkling energy. Natural caffeine, zero sugar. Coming soon. Join the launch list.">
 <meta property="og:image" content="hero-poster.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cpath d='M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z' fill='%23123D33'/%3E%3C/svg%3E">
@@ -52,6 +52,9 @@ h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 300; letter-sp
 header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line) }
 header.top .in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px }
 .logo { display: inline-flex; align-items: center; gap: 8px; font: 300 28px/1 var(--display); letter-spacing: -.03em; text-decoration: none }
+@media (max-width: 480px) { .logo .etag { display: none } }
+.cart-btn { white-space: nowrap }
+.logo .etag { white-space: nowrap; font: 800 10px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; background: #FFE600; color: #123D33; padding: 5px 8px; border-radius: 999px; margin-left: 2px; align-self: center }
 .logo svg { transition: transform .5s cubic-bezier(.3,1.6,.5,1) }
 .logo:hover svg { transform: translateY(-3px) rotate(-6deg) }
 .menu { display: flex; gap: 6px; align-items: center }
@@ -199,6 +202,12 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .band p { font-size: 18px; color: var(--soft); max-width: 38ch; margin: 16px 0 }
 .band .ing { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px }
 .band .ing span { background: rgba(255,255,255,.75); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px }
+.band .perks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 0 0 14px; max-width: 520px }
+.band .perk { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.82); border-radius: 16px; padding: 10px 12px; font: 800 13px/1.15 var(--body); color: var(--ink) }
+.band .perk i { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-c, #FFE600); color: #fff }
+.band .perk i svg { width: 18px; height: 18px }
+.band .fine { font-size: 12px; color: rgba(18,61,51,.65); margin: 0 0 20px; max-width: 520px }
+@media (max-width: 760px) { .band .perks { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: auto } .band .fine { margin-inline: auto } }
 
 /* shop */
 section.block { padding-block: 72px }
@@ -298,18 +307,90 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .sum div { display: flex; justify-content: space-between; gap: 12px }
 .sum .tot { font: 500 22px/1.2 var(--display); margin-top: 4px }
 .sum .msg { background: var(--sky); border-radius: 14px; padding: 12px 14px; font-size: 14px; margin-top: 8px }
+
+
+/* ---------- product page section ---------- */
+.pdp { padding-block: clamp(56px, 8vw, 100px) }
+.pdp .grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start }
+.pdp .gal { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 12px }
+.pdp .main { aspect-ratio: 1 / 1; border-radius: 28px; display: flex; align-items: center; justify-content: center; gap: 4%; overflow: hidden; background: var(--g, #FFE8ED); transition: background .4s }
+.pdp .main img.can3d { height: 82%; width: auto; filter: drop-shadow(0 30px 40px rgba(20,40,60,.22)) }
+.pdp .main svg.can { height: 78%; width: auto }
+.pdp .main.multi img.can3d { height: 66% }
+.pdp .thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px }
+.pdp .thumbs button { aspect-ratio: 1; border-radius: 16px; border: 2px solid transparent; background: var(--t, #fff); cursor: pointer; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; padding: 6px 0 0 }
+.pdp .thumbs button[aria-pressed="true"] { border-color: var(--ink) }
+.pdp .thumbs img.can3d { height: 92%; width: auto } .pdp .thumbs svg.can { height: 86%; width: auto }
+.pdp h2 { font-size: clamp(34px, 4.4vw, 52px); line-height: 1.02 }
+.pdp .stars { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; color: var(--soft); margin: 10px 0 14px }
+.pdp .lead { color: var(--soft); margin: 0 0 14px; font-size: 17px }
+.pdp .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px }
+.pdp .tags span { background: var(--sky-hi); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-weight: 800; font-size: 13px }
+.pdp .lbl { font: 800 12px/1.2 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 10px }
+.pdp .lbl b { color: var(--ink); letter-spacing: 0; text-transform: none; font-size: 14px; margin-left: 6px }
+.pdp .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px }
+.pdp .chips button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px 8px 10px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--cloud); font: 700 15px var(--body); color: var(--ink); cursor: pointer; transition: border-color .2s, transform .2s }
+.pdp .chips button i { width: 22px; height: 22px; border-radius: 50%; background: var(--c) }
+.pdp .chips button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink) }
+.pdp .chips.size button { padding-left: 16px }
+.pdp .opts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px }
+.pdp .opt { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 18px; border: 1.5px solid var(--line); background: var(--cloud); cursor: pointer }
+.pdp .opt:has(input:checked) { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink) }
+.pdp .opt input { width: 20px; height: 20px; accent-color: #123D33; margin: 0 }
+.pdp .opt b { display: block; font-size: 15px } .pdp .opt small { color: var(--soft) }
+.pdp .opt .pr { font: 600 17px var(--body); text-align: right; font-variant-numeric: tabular-nums }
+.pdp .opt .pr s { display: block; font-size: 13px; color: var(--soft); font-weight: 600 }
+.pdp .opt .save { display: inline-block; background: #FFE600; border-radius: 999px; padding: 2px 8px; font: 800 11px var(--body); margin-left: 6px; vertical-align: 1px }
+.pdp .buyrow { display: flex; gap: 10px; align-items: stretch; margin-bottom: 12px }
+.pdp .buyrow .btn { flex: 1; min-height: 54px; font-size: 16px }
+.pdp .ship { font-size: 14px; color: var(--soft); margin: 0 0 24px }
+.pdp .ship b { color: var(--ink) }
+.acc details { border-top: 1px solid var(--line) } .acc details:last-child { border-bottom: 1px solid var(--line) }
+.acc summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 16px 0; font: 500 19px/1.2 var(--display) }
+.acc summary::-webkit-details-marker { display: none }
+.acc summary::after { content: "+"; font: 300 26px/1 var(--display); transition: transform .25s } .acc details[open] summary::after { transform: rotate(45deg) }
+.acc .body { padding: 0 0 18px; color: var(--soft) } .acc ul { margin: 0; padding-left: 18px } .acc li { margin: 4px 0 }
+.acc table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums } .acc td { padding: 6px 0; border-bottom: 1px dashed var(--line) } .acc td:last-child { text-align: right; color: var(--ink); font-weight: 700 }
+.love { margin-top: clamp(48px, 7vw, 88px) }
+.love .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 20px }
+.love .card { background: var(--cloud); border: 1px solid var(--line); border-radius: 24px; padding: 22px }
+.love .card i { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--sky); margin-bottom: 14px; font-style: normal; font-size: 22px }
+.love .card b { display: block; font: 500 20px/1.2 var(--display); margin-bottom: 6px } .love .card p { margin: 0; color: var(--soft); font-size: 15px }
+.howto { margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px }
+.howto div { background: rgba(255,255,255,.7); border-radius: 20px; padding: 18px 20px } .howto b { display: block; font: 500 18px var(--display); margin-bottom: 4px } .howto span { color: var(--soft); font-size: 15px }
+.cart-open { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--cloud); font: 700 15px var(--body); color: var(--ink); cursor: pointer }
+.cart-open .count { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: #FFE600; font: 800 12px/22px var(--body); text-align: center }
+@media (max-width: 860px) { .pdp .grid { grid-template-columns: minmax(0, 1fr) } .pdp .gal { position: static } .love .cards { grid-template-columns: repeat(2, minmax(0, 1fr)) } .howto { grid-template-columns: minmax(0, 1fr) } }
+@media (max-width: 480px) { .cart-open .t { display: none } .menu a:not(.cart-btn) { display: none } .menu { gap: 6px } }
+
+.pdp .main { position: relative; display: block; background: radial-gradient(120% 90% at 50% 30%, #FFFFFF 0%, var(--g) 62%, var(--g2, var(--g)) 100%) }
+.pdp .main .cl { position: absolute; background: #fff; border-radius: 999px; opacity: .85; filter: blur(1px) }
+.pdp .main .cl::before, .pdp .main .cl::after { content: ""; position: absolute; background: #fff; border-radius: 50% }
+.pdp .main .cl::before { width: 52%; height: 150%; left: 14%; bottom: 30% } .pdp .main .cl::after { width: 40%; height: 120%; right: 12%; bottom: 25% }
+.pdp .main .floor { position: absolute; left: 8%; right: 8%; bottom: 8%; height: 14%; border-radius: 50%; background: radial-gradient(closest-side, rgba(20,40,60,.28), transparent) }
+.pdp .main .c { position: absolute; transform: translateX(-50%); display: flex; align-items: flex-end; justify-content: center }
+.pdp .main .c img, .pdp .main .c svg { height: 100% !important; width: auto; filter: drop-shadow(0 10px 12px rgba(20,40,60,.25)) }
+.pdp .main .tray { position: absolute; left: 7%; right: 7%; bottom: 9%; height: 17%; border-radius: 10px 10px 16px 16px; background: linear-gradient(180deg, #FFFFFF, #EAF4FB); box-shadow: 0 18px 30px -12px rgba(20,40,60,.35), inset 0 -6px 0 rgba(0,0,0,.05); display: flex; align-items: center; justify-content: center; gap: 12px; z-index: 30 }
+.pdp .main .tray b { font: 300 clamp(22px, 3vw, 34px)/1 var(--display); color: var(--ink); letter-spacing: -.02em }
+.pdp .main .tray span { font: 800 11px/1.2 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); border-left: 1.5px solid var(--line); padding-left: 12px }
+.pdp .main img.pack { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 5; animation: packin .5s ease both }
+@keyframes packin { from { opacity: 0; transform: scale(.97) } to { opacity: 1; transform: none } }
+.pdp .main .tag { position: absolute; top: 6%; left: 6%; z-index: 40; background: var(--ink); color: #fff; font: 800 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: 999px }
+.pdp .main .tag i { font-style: normal; color: #FFE600 }
 </style>
 
 <div class="announce"><b>Coming soon</b> <span class="hide-m">Cloudly lands in the Netherlands soon. </span><a href="#list">Join the launch list<span class="hide-m"> for an early bird discount</span> →</a></div>
 <header class="top">
   <div class="in">
     <a class="logo" href="#top" aria-label="cloudly home">
-      <svg width="34" height="20" viewBox="0 0 100 60" aria-hidden="true"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"></path></svg>
-      cloudly
+      <svg width="34" height="20" viewBox="0 0 100 60" aria-hidden="true"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"></path><path d="M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z" fill="#FFC233" stroke="#FFC233" stroke-width="4" stroke-linejoin="round"></path></svg>
+      cloudly<span class="etag">clean energy</span>
     </a>
     <nav class="menu" aria-label="Main">
       <a href="#flavors">Flavors</a>
+      <a class="hide-s" href="#shop">Shop</a>
       <a class="hide-s" href="#story">Our story</a>
+      <button class="cart-open" id="cart-open" type="button" aria-label="Open your bag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="t">Bag</span><span class="count" id="cart-count">0</span></button>
       <a class="cart-btn" href="#list">Join the list</a>
     </nav>
   </div>
@@ -321,9 +402,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     <div class="in">
       <div>
         <div class="soon"><i></i>Coming soon</div>
-        <div class="eyebrow">Sparkling botanical soda</div>
-        <h1><span class="w">light</span> <span class="w">as</span><br><span class="w">a</span> <span class="w">cloud.</span></h1>
-        <p>Real fruit, fresh herbs and a lot of bubbles. Nothing added, nothing fake. We are almost ready to pour. Leave your email and we will send you a message a few days before launch.</p>
+        <div class="eyebrow">Sparkling energy · natural caffeine · zero sugar</div>
+        <h1><span class="w">clean</span> <span class="w">energy,</span><br><span class="w">light</span> <span class="w">as</span> <span class="w">a</span> <span class="w">cloud.</span></h1>
+        <p>Natural caffeine from green tea, zero sugar and a light sparkle. Clear head, light feeling. We are almost ready to pour. Leave your email and we will send you a message a few days before launch.</p>
         <form class="hform lform" name="launch-list">
                     <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
           <label for="hero-email">Email address</label>
@@ -333,9 +414,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         <p class="ok" hidden role="status"></p>
         <p class="fine" style="font-size:13px;color:var(--soft);margin:8px 0 0">We only email you about the launch. One click to unsubscribe.</p>
         <a class="meet" href="#flavors">Meet the three flavors ↓</a>
-        <div class="facts"><span>Lightly sparkling</span><span>250 ml slim can</span><span>Real ingredients</span><span>Made for the Netherlands</span></div>
+        <div class="facts"><span>80 mg natural caffeine</span><span>Zero sugar</span><span>Under 10 kcal</span><span>250 ml slim can</span></div>
       </div>
-      <div class="stage3d" id="stage3d" aria-label="The three Cloudly cans"><div class="fallback" id="fallback"></div><div class="stamp" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text font-family="Nunito, sans-serif" font-weight="800" font-size="21" letter-spacing="4.6" fill="#123D33"><textPath href="#ringp" textLength="458" lengthAdjust="spacing">COMING SOON • COMING SOON •</textPath></text></svg><svg class="mid" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#123D33"/></svg></div></div>
+      <div class="stage3d" id="stage3d" aria-label="The three Cloudly cans"><div class="fallback" id="fallback"></div><div class="stamp" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text font-family="Nunito, sans-serif" font-weight="800" font-size="21" letter-spacing="4.6" fill="#123D33"><textPath href="#ringp" textLength="458" lengthAdjust="spacing">CLEAN ENERGY • COMING SOON •</textPath></text></svg><svg class="mid" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#123D33"/><path d="M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z" fill="#FFE600" stroke="#FFE600" stroke-width="4" stroke-linejoin="round"/></svg></div></div>
     </div>
   </section>
 
@@ -347,7 +428,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         <video id="hero-video" muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-label="An ice cold Cloudly can rising from the clouds, a drop of condensation, and the can cracking open">
           <source src="hero.mp4" type="video/mp4">
         </video>
-        <div class="cap"><div class="eyebrow">Ice cold, straight from the clouds</div><h2>Crack one open.</h2></div>
+        <div class="cap"><div class="eyebrow">Natural energy, straight from the clouds</div><h2>Crack one open.</h2></div>
         <button class="film-toggle" id="film-toggle" type="button" aria-label="Pause video">❚❚</button>
       </div>
     </div>
@@ -355,6 +436,59 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
   <div id="flavors"></div>
 
+
+  <section class="block pdp" id="shop">
+    <div class="in">
+      <div class="grid">
+        <div class="gal">
+          <div class="main" id="pdp-main"></div>
+          <div class="thumbs" id="pdp-thumbs"></div>
+        </div>
+        <div>
+          <div class="eyebrow">Shop · pre-order soon</div>
+          <h2>Cloudly Sparkling Energy</h2>
+          <div class="stars">New · launching in the Netherlands</div>
+          <p class="lead">Clean, light energy with natural caffeine from green tea and zero sugar. Lightly sparkling, ice cold and light as a cloud.</p>
+          <div class="tags"><span>Natural caffeine</span><span>Zero sugar</span><span>Clean energy</span><span>Under 10 kcal</span></div>
+          <p class="lbl">Flavor <b id="pdp-flavor-name"></b></p>
+          <div class="chips" id="pdp-flavors"></div>
+          <p class="lbl">Pack size</p>
+          <div class="chips size" id="pdp-sizes"></div>
+          <div class="opts" id="pdp-opts">
+            <label class="opt"><input type="radio" name="ptype" value="once" checked><span><b>One-time purchase</b><small>Pay once, no strings</small></span><span class="pr" id="pr-once"></span></label>
+            <label class="opt"><input type="radio" name="ptype" value="sub"><span><b>Subscribe &amp; save <span class="save">-15%</span></b><small>Delivered every 30 days · skip or cancel anytime</small></span><span class="pr" id="pr-sub"></span></label>
+          </div>
+          <div class="buyrow">
+            <div class="qty" aria-label="Quantity"><button type="button" id="pdp-minus" aria-label="Less">−</button><span id="pdp-qty">1</span><button type="button" id="pdp-plus" aria-label="More">+</button></div>
+            <button class="btn" type="button" id="pdp-add">Add to bag</button>
+          </div>
+          <p class="ship"><b>Free shipping in the Netherlands</b> from €40 · deposit (statiegeld) added at checkout</p>
+          <div class="acc">
+            <details open><summary>Tell me more</summary><div class="body"><ul><li>80 mg natural caffeine from green tea per can, about one cup of coffee</li><li>With L-theanine for a smooth, steady feeling</li><li>Vitamins B6 and B12, which contribute to normal energy-yielding metabolism</li><li>0 g sugar, under 10 kcal, lightly sparkling</li></ul></div></details>
+            <details><summary>How to use</summary><div class="body">Drink one can when you need a clear, light boost: a morning start, a long study session, before the gym or as your afternoon pick-me-up. Best served ice cold.</div></details>
+            <details><summary>Ingredients</summary><div class="body" id="pdp-ingr"></div></details>
+            <details><summary>Nutrition per 100 ml</summary><div class="body"><table><tr><td>Energy</td><td>&lt; 4 kcal</td></tr><tr><td>Sugars</td><td>0 g</td></tr><tr><td>Caffeine</td><td>32 mg</td></tr><tr><td>Niacin</td><td>1.9 mg (12% RI)</td></tr><tr><td>Vitamin B6</td><td>0.17 mg (12% RI)</td></tr><tr><td>Vitamin B12</td><td>0.3 µg (12% RI)</td></tr></table><p style="margin:10px 0 0;font-size:13px">Final values after lab test. High caffeine content. Not recommended for children or pregnant or breast-feeding women.</p></div></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="love">
+        <div class="eyebrow">Why you'll love it</div>
+        <h2 style="font-size:clamp(32px,4vw,46px)">Energy that feels light.</h2>
+        <div class="cards">
+          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="#123D33"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg></i><b>Natural energy</b><p>80 mg caffeine from green tea. A clear head without the heavy feeling.</p></div>
+          <div class="card"><i><svg width="24" height="16" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="#123D33" stroke-width="7" stroke-linejoin="round"/></svg></i><b>Light as a cloud</b><p>0 g sugar and under 10 kcal. All the fizz, none of the sugar rush.</p></div>
+          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D33" stroke-width="2" stroke-linejoin="round"><path d="M12 21c-5-3-7-7-6-10 1-2 3-3 6-3s5 1 6 3c1 3-1 7-6 10z"/><path d="M9 6c1 1 2 1.5 3 1.5S14 7 15 6M12 7.5V4"/></svg></i><b>Fruit you can taste</b><p>Strawberry &amp; rose, ice cold classic or dark cherry. Juicy, never syrupy.</p></div>
+          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D33" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><b>Nothing weird</b><p>No artificial colors. Sweetened with stevia, with vitamins B6 and B12.</p></div>
+        </div>
+        <div class="howto">
+          <div><b>Morning</b><span>Swap your second coffee for a cold can.</span></div>
+          <div><b>Afternoon</b><span>Beat the 3 pm dip without a sugar crash.</span></div>
+          <div><b>Before the gym</b><span>Light, fizzy and easy on the stomach.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="in" id="story">
     <div class="story">
@@ -364,13 +498,13 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
           <div class="eyebrow" style="color:#9FE3C7">Our story</div>
           <h2>head in<br>the clouds.</h2>
           <p>I started Cloudly because I wanted to bring the world a drink for everyone. One you can enjoy in the morning, in the afternoon or late in the evening. On the hottest summer day and on the coldest winter night.</p>
-          <p>From day one there was one rule: nothing fake. Only real, natural ingredients. Real fruit, real herbs and flowers, and a lot of bubbles. That is the whole recipe.</p>
+          <p>From day one there was one rule: nothing fake. Energy that feels light, not heavy. Natural caffeine from green tea, real fruit, no sugar and a lot of bubbles. That is the whole recipe.</p>
           <p class="quote">That is what Cloudly stands for. Delicious, and light as a cloud.</p>
           <p class="sign">Justin Messak, founder</p>
         </div>
         <div class="vals">
-          <div class="val"><b>Real fruit and herbs</b><span>Pressed lemon, peach and grapefruit. Fresh mint, lavender and hibiscus.</span></div>
-          <div class="val"><b>Nothing fake</b><span>No artificial flavors, colors or sweeteners.</span></div>
+          <div class="val"><b>Natural energy</b><span>80 mg caffeine from green tea, with L-theanine. About the same as a cup of coffee.</span></div>
+          <div class="val"><b>Zero sugar</b><span>Sweetened with stevia. Under 10 kcal per can. No artificial colors.</span></div>
           <div class="val"><b>For every moment</b><span>Morning, noon or night. Summer heat or winter cold.</span></div>
         </div>
       </div>
@@ -401,7 +535,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       <div class="sec-head"><div><div class="eyebrow">FAQ</div><h2>Good to know.</h2></div></div>
       <div class="faq">
         <details><summary>When can I buy Cloudly?</summary><p>We are working on our first production run right now. Join the launch list and you will hear it first, with an early bird discount.</p></details>
-        <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, fruit juice and real herbs or flowers. Nothing artificial. The full ingredient list is on each flavor.</p></details>
+        <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, a little real fruit juice, natural caffeine from green tea, L-theanine, vitamins B3, B6 and B12, and stevia. Vitamins B6 and B12 contribute to normal energy-yielding metabolism.</p></details><details><summary>How much caffeine is in a can?</summary><p>80 mg per 250 ml can, about one cup of coffee. High caffeine content: not recommended for children or pregnant or breast-feeding women.</p></details>
         <details><summary>Where will you deliver?</summary><p>First in the Netherlands, with Belgium soon after.</p></details>
         <details><summary>Can I sell Cloudly in my shop or café?</summary><p>Yes, we would love that. Send a message to drinkcloudly@gmail.com and we will get in touch before launch.</p></details>
       </div>
@@ -424,24 +558,30 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 </footer>
 
 
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Your bag">
+  <header><h2>Your bag</h2><button class="x" id="drawer-x" type="button" aria-label="Close">×</button></header>
+  <div class="lines" id="lines"></div>
+  <div class="sum" id="sum"></div>
+</aside>
 <script>
 (function () {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FL = {
-    mint: { name: 'Mint & Lemon', base: '#EEF5F0', ink: '#123D33', accent: '#1FDB9B', band: '#123D33', tint: '#E4F4EC', bg: '#D3EFE2',
-      desc: 'Cool garden mint, a squeeze of lemon and crisp apple, all bubbled up. The fresh one.', ing: ['fresh mint', 'lemon juice', 'apple juice', 'sparkling water'] },
-    peach: { name: 'Peach & Lavender', base: '#FCEFE6', ink: '#5A2A1A', accent: '#FF9459', band: '#5A2A1A', tint: '#FBE7DA', bg: '#FADCC8',
-      desc: 'Ripe summer peach with a soft touch of lavender. Juicy, floral and a little dreamy.', ing: ['peach purée', 'lavender', 'apple juice', 'sparkling water'] },
-    grapefruit: { name: 'Grapefruit & Hibiscus', base: '#FBEDEF', ink: '#4A1D2B', accent: '#FF5C8A', band: '#4A1D2B', tint: '#F9E1E5', bg: '#F6D5DC',
-      desc: 'Bright pink grapefruit with a floral splash of hibiscus. Tart, juicy and naturally pink.', ing: ['pink grapefruit', 'hibiscus', 'apple juice', 'sparkling water'] }
+    mint: { name: 'Cherry Crush', base: '#FFF1F2', ink: '#3D0F1A', accent: '#8FD14F', band: '#A3162F', tint: '#F6C6C8', bg: '#EC8388',
+      desc: 'Dark, juicy sweet cherry. Bold, a little tart and wide awake.', ing: ['dark cherry', '80 mg caffeine', 'zero sugar'] },
+    peach: { name: 'Ice Cloud', base: '#EEF7FE', ink: '#0F2E4A', accent: '#5CC1FF', band: '#2F95E0', tint: '#E3F2FD', bg: '#CDE7FB',
+      desc: 'The classic energy taste, ice cold and light. Sweet, tangy and a little fruity. Ice cold, light as a cloud.', ing: ['classic energy taste', 'ice cold', '80 mg caffeine', 'zero sugar'] },
+    grapefruit: { name: 'Strawberry & Rose', base: '#FFF0F3', ink: '#3D1424', accent: '#FF5C7C', band: '#EE4B6A', tint: '#FFE8ED', bg: '#FFD9E1',
+      desc: 'Sweet strawberry with a soft floral touch of rose. Pink, light and dreamy.', ing: ['strawberry', 'rose', '80 mg caffeine', 'zero sugar'] }
   };
-  const ORDER = ['mint', 'peach', 'grapefruit'];
+  const ORDER = ['grapefruit', 'peach', 'mint'];
   const CLOUD = 'M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z';
 
   /* drawn can, used until the 3D pictures are ready */
   let uid = 0;
   function can(key) {
-    const f = FL[key]; const id = 'g' + (uid++); const words = f.name.split(' & ');
+    const f = FL[key]; const id = 'g' + (uid++); const words = f.name.includes(' & ') ? f.name.split(' & ') : [f.name, ''];
     let scal = ''; for (let x = 4, i = 0; x < 104; i++) { const r = 5 + (i * 3) % 4; scal += '<circle cx="' + x + '" cy="200" r="' + r + '"/>'; x += r * 1.5; }
     return '<svg class="can" viewBox="0 0 108 262" role="img" aria-label="Cloudly ' + f.name + ' can">' +
       '<defs><linearGradient id="' + id + '" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".18" stop-color="#fff" stop-opacity=".35"/><stop offset=".32" stop-color="#fff" stop-opacity=".05"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient>' +
@@ -453,7 +593,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       '<g fill="#fff" opacity=".95"><path transform="translate(-14 34) scale(.5)" d="' + CLOUD + '"/><path transform="translate(72 22) scale(.36)" d="' + CLOUD + '"/></g>' +
       '<path transform="translate(33 56) scale(.42)" d="' + CLOUD + '" fill="none" stroke="' + f.ink + '" stroke-width="3.4" stroke-linejoin="round"/>' +
       '<text x="54" y="112" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="300" font-size="27" letter-spacing="-.6" fill="' + f.ink + '">cloudly</text>' +
-      '<text x="54" y="136" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9.5" fill="' + f.ink + '">' + words[0] + ' &amp;</text>' +
+      '<text x="54" y="136" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9.5" fill="' + f.ink + '">' + words[0] + (words[1] ? ' &amp;' : '') + '</text>' +
       '<text x="54" y="148" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9.5" fill="' + f.ink + '">' + words[1] + '</text>' +
       '<rect x="4" y="200" width="100" height="60" fill="' + f.band + '"/><g fill="' + f.band + '">' + scal + '</g>' +
       '<text x="54" y="226" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="300" font-size="9" fill="#fff">light as a cloud.</text>' +
@@ -464,17 +604,17 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   function canPic(key) { return IMG[key] ? '<img class="can3d" src="' + IMG[key] + '" alt="Cloudly ' + FL[key].name + ' can">' : can(key); }
 
   const PRODUCTS = [
-    { id: 'mint', name: 'Mint & Lemon', desc: 'Cool garden mint, a squeeze of lemon and crisp apple.', cans: ['mint'], tint: FL.mint.tint },
-    { id: 'peach', name: 'Peach & Lavender', desc: 'Ripe summer peach with a soft touch of lavender.', cans: ['peach'], tint: FL.peach.tint },
-    { id: 'grapefruit', name: 'Grapefruit & Hibiscus', desc: 'Bright pink grapefruit with a floral splash of hibiscus.', cans: ['grapefruit'], tint: FL.grapefruit.tint },
-    { id: 'mix', name: 'Mixed pack', desc: '4 cans of each flavor. The easiest way to find your favorite.', cans: ['peach', 'mint', 'grapefruit'], tint: '#E8F4FC' }
+    { id: 'grapefruit', name: 'Strawberry & Rose', desc: 'Sweet strawberry with a soft floral touch of rose.', cans: ['grapefruit'], tint: FL.grapefruit.tint },
+    { id: 'peach', name: 'Ice Cloud', desc: 'The classic energy taste, ice cold and light.', cans: ['peach'], tint: FL.peach.tint },
+    { id: 'mint', name: 'Cherry Crush', desc: 'Dark, juicy sweet cherry. Bold and a little tart.', cans: ['mint'], tint: FL.mint.tint },
+    { id: 'mix', name: 'Mixed pack', desc: '4 cans of each flavor. The easiest way to find your favorite.', cans: ['peach', 'grapefruit', 'mint'], tint: '#E8F4FC' }
   ];
   const PRICE = 24.99, DEPOSIT = 12 * 0.15, SHIP = 4.95, FREE_FROM = 40;
   const eur = n => '€ ' + n.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   /* hero fallback: hidden while the 3D cans load, shown only if 3D is not ready after a few seconds */
   const fallback = document.getElementById('fallback');
-  fallback.innerHTML = can('peach') + can('mint') + can('grapefruit');
+  fallback.innerHTML = can('peach') + can('grapefruit') + can('mint');
   const noGL = setTimeout(() => {
     document.getElementById('stage3d').classList.add('nogl');
     document.querySelectorAll('.band .mover.wait').forEach(m => m.classList.remove('wait'));
@@ -494,7 +634,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   }).observe(vid);
 
   /* ticker, driven by time plus a speed boost while scrolling */
-  const piece = '<span>coming soon <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#9FD3F6"/></svg> light as a cloud. <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#5FC7A0"/></svg> coming soon <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#F2A37E"/></svg> join the launch list <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#EE8A9A"/></svg></span>';
+  const piece = '<span>clean energy <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#9FD3F6"/></svg> light as a cloud. <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#5FC7A0"/></svg> coming soon <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#F2A37E"/></svg> zero sugar <svg width="34" height="20" viewBox="0 0 100 60"><path d="' + CLOUD + '" fill="#EE8A9A"/></svg></span>';
   const ticker = document.getElementById('ticker');
   ticker.innerHTML = piece + piece + piece + piece;
 
@@ -506,11 +646,20 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
     sec.setAttribute('aria-label', f.name);
     sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div></div>' +
-      '<div><div class="num">0' + (i + 1) + ' / 03 · coming soon</div><h2></h2><p></p><div class="ing"></div><a class="btn" href="#list">Notify me at launch</a></div></div>';
+      '<div><div class="num">0' + (i + 1) + ' / 03 · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#list">Notify me at launch</a></div></div>';
     sec.querySelector('.word').textContent = (f.name.split(' & ')[0] + ' · ').repeat(4);
     sec.querySelector('h2').textContent = f.name;
     sec.querySelector('p').textContent = f.desc;
-    const ing = sec.querySelector('.ing'); f.ing.forEach(x => { const s = document.createElement('span'); s.textContent = x; ing.appendChild(s); });
+    const ing = sec.querySelector('.ing'); f.ing.filter(x => !/caffeine|sugar/.test(x)).forEach(x => { const s = document.createElement('span'); s.textContent = x; ing.appendChild(s); });
+    const P = {
+      sugar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 17.5l11-11"/></svg>',
+      bolt: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg>',
+      leaf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19l8-8"/></svg>',
+      vit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="9" width="16" height="7" rx="3.5" transform="rotate(-35 12 12.5)"/><path d="M10 7.5l4 9"/></svg>',
+      kcal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1 0-10 6 6 0 0 1 11 1.5A4.3 4.3 0 0 1 17.5 18z"/></svg>',
+      vegan: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>' };
+    const perks = sec.querySelector('.perks'); sec.style.setProperty('--accent-c', f.band);
+    [['sugar', 'Zero sugar'], ['bolt', 'Natural caffeine'], ['leaf', 'Clean energy'], ['vit', 'Vitamin B6 & B12*'], ['kcal', 'Under 10 kcal']].forEach(([k, t]) => { const d = document.createElement('div'); d.className = 'perk'; d.innerHTML = '<i>' + P[k] + '</i><span>' + t + '</span>'; perks.appendChild(d); });
     flavorsEl.appendChild(sec);
     bands.push({ sec, key: k, mover: sec.querySelector('.mover'), word: sec.querySelector('.word'), dir: i % 2 ? 1 : -1 });
   });
@@ -524,7 +673,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   const TONES = {
     white: ['#FFFFFF', '#FFFFFF', '#D9EAF7'],
     sky:   ['#FFFFFF', '#EAF6FE', '#A9D8F7'],
-    mint:  ['#FFFFFF', '#E9F8F1', '#9FDFC4'],
+    mint:  ['#FFFFFF', '#FBE6E8', '#E9A9B2'],
     peach: ['#FFFFFF', '#FFF2EA', '#F6C3A6'],
     pink:  ['#FFFFFF', '#FDEEF1', '#F2B3BF']
   };
@@ -642,18 +791,108 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     });
   });
 
+
+  /* ---------- product page + bag ---------- */
+  const PDP = { flavor: 'grapefruit', size: 12, qty: 1 }; const PACK = {};
+  const SIZES = { 12: 24.99, 24: 46.99 };
+  const PDP_KEYS = ['grapefruit', 'peach', 'mint', 'mix'];
+  const nameOf = k => k === 'mix' ? 'Mixed pack' : FL[k].name;
+  const colorOf = k => k === 'mix' ? '#E8F4FC' : FL[k].bg;
+  const cansOf = k => k === 'mix' ? ['peach', 'grapefruit', 'mint'] : [k];
+  const pdpMain = document.getElementById('pdp-main'), pdpThumbs = document.getElementById('pdp-thumbs');
+  const INGR = { grapefruit: 'Sparkling water, strawberry juice, rose extract, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).',
+    peach: 'Sparkling water, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).',
+    mint: 'Sparkling water, cherry juice, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).' };
+  function renderShopPics() {
+    const k = PDP.flavor, flav = cansOf(k), n = PDP.size;
+    const rows = n === 24 ? 4 : 3, cols = n === 24 ? 6 : 4;
+    pdpMain.style.setProperty('--g', colorOf(k));
+    pdpMain.style.setProperty('--g2', k === 'mix' ? '#D6EAF8' : (FL[k] ? FL[k].tint : colorOf(k)));
+    if (PACK[k + '-' + n]) {
+      pdpMain.classList.remove('multi');
+      pdpMain.innerHTML = '<div class="cl" style="width:26%;height:7%;left:6%;top:16%"></div><div class="cl" style="width:20%;height:6%;right:8%;top:10%"></div><div class="tag">' + n + ' cans <i>·</i> ' + (k === 'mix' ? 'mixed' : nameOf(k)) + '</div><img class="pack" src="' + PACK[k + '-' + n] + '" alt="Cloudly ' + nameOf(k) + ', ' + n + ' cans">';
+      pdpThumbs.innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-label="' + nameOf(t) + '" aria-pressed="' + (t === k) + '" style="--t:' + colorOf(t) + '">' + cansOf(t).slice(0, 1).map(canPic).join('') + '</button>').join('');
+      return;
+    }
+    let html = '<div class="cl" style="width:26%;height:7%;left:6%;top:16%"></div><div class="cl" style="width:20%;height:6%;right:8%;top:10%"></div><div class="floor"></div>';
+    html += '<div class="tag">' + n + ' cans <i>·</i> ' + (k === 'mix' ? 'mixed' : nameOf(k)) + '</div>';
+    let idx = 0;
+    for (let r = 0; r < rows; r++) {
+      const t = rows === 1 ? 1 : r / (rows - 1);
+      const h = (n === 24 ? 26 : 33) * (0.72 + 0.28 * t);
+      const bottom = (n === 24 ? 12 : 13) + (1 - t) * (n === 24 ? 30 : 30);
+      const spread = (n === 24 ? 76 : 70) * (0.8 + 0.2 * t);
+      for (let c = 0; c < cols; c++) {
+        const key = flav[(idx++) % flav.length];
+        const left = 50 - spread / 2 + spread * (c + 0.5) / cols + (r % 2 ? 2 : -2);
+        html += '<div class="c" style="left:' + left.toFixed(1) + '%;bottom:' + bottom.toFixed(1) + '%;height:' + h.toFixed(1) + '%;z-index:' + (r * 2 + 1) + '">' + canPic(key) + '</div>';
+      }
+    }
+    if (n === 24) html += '<div class="tray"><b>cloudly</b><span>24 × 250 ml<br>sparkling energy</span></div>';
+    pdpMain.classList.remove('multi');
+    pdpMain.innerHTML = html;
+    pdpThumbs.innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-label="' + nameOf(t) + '" aria-pressed="' + (t === k) + '" style="--t:' + colorOf(t) + '">' + cansOf(t).slice(0, 1).map(canPic).join('') + '</button>').join('');
+  }
+  function renderPdp() {
+    document.getElementById('pdp-flavor-name').textContent = nameOf(PDP.flavor);
+    document.getElementById('pdp-flavors').innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-pressed="' + (t === PDP.flavor) + '"><i style="--c:' + (t === 'mix' ? 'conic-gradient(' + FL.grapefruit.band + ' 0 33%,' + FL.peach.band + ' 0 66%,' + FL.mint.band + ' 0)' : FL[t].band) + '"></i>' + nameOf(t) + '</button>').join('');
+    document.getElementById('pdp-sizes').innerHTML = Object.keys(SIZES).map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (+n === PDP.size) + '">' + n + ' cans</button>').join('');
+    const base = SIZES[PDP.size];
+    document.getElementById('pr-once').textContent = eur(base);
+    document.getElementById('pr-sub').innerHTML = '<s>' + eur(base) + '</s>' + eur(base * .85);
+    document.getElementById('pdp-qty').textContent = PDP.qty;
+    document.getElementById('pdp-ingr').textContent = PDP.flavor === 'mix' ? 'See each flavor. ' + Object.keys(INGR).map(k => FL[k].name + ': ' + INGR[k]).join(' ') : INGR[PDP.flavor];
+    renderShopPics();
+  }
+  document.getElementById('shop').addEventListener('click', e => {
+    const f = e.target.closest('[data-k]'); if (f) { PDP.flavor = f.dataset.k; renderPdp(); return; }
+    const n = e.target.closest('[data-n]'); if (n) { PDP.size = +n.dataset.n; renderPdp(); }
+  });
+  document.getElementById('pdp-minus').onclick = () => { PDP.qty = Math.max(1, PDP.qty - 1); renderPdp(); };
+  document.getElementById('pdp-plus').onclick = () => { PDP.qty = Math.min(20, PDP.qty + 1); renderPdp(); };
+  renderPdp();
+
+  const BAG = [];
+  const drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim');
+  const openBag = () => { drawer.hidden = false; scrim.hidden = false; renderBag(); };
+  const closeBag = () => { drawer.hidden = true; scrim.hidden = true; };
+  document.getElementById('cart-open').onclick = openBag; document.getElementById('drawer-x').onclick = closeBag; scrim.onclick = closeBag;
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBag(); });
+  document.getElementById('pdp-add').onclick = () => {
+    const sub = document.querySelector('input[name=ptype]:checked').value === 'sub';
+    const id = PDP.flavor + '-' + PDP.size + (sub ? '-sub' : '');
+    const ex = BAG.find(x => x.id === id);
+    if (ex) ex.qty += PDP.qty; else BAG.push({ id, k: PDP.flavor, size: PDP.size, sub, qty: PDP.qty, price: SIZES[PDP.size] * (sub ? .85 : 1) });
+    const c = document.getElementById('cart-open'); c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
+    openBag();
+  };
+  function renderBag() {
+    const items = BAG.reduce((a, x) => a + x.qty, 0);
+    document.getElementById('cart-count').textContent = items;
+    const lines = document.getElementById('lines'), sum = document.getElementById('sum');
+    if (!BAG.length) { lines.innerHTML = '<p class="empty">Your bag is empty.</p>'; sum.innerHTML = ''; return; }
+    lines.innerHTML = BAG.map((x, i) => '<div class="line"><div class="mini" style="background:' + colorOf(x.k) + '">' + canPic(cansOf(x.k)[0]) + '</div><div><b>' + nameOf(x.k) + '</b><small>' + x.size + ' cans' + (x.sub ? ' · every 30 days' : '') + ' · ' + eur(x.price) + '</small></div><div class="qty"><button type="button" data-i="' + i + '" data-d="-1" aria-label="Less">−</button><span>' + x.qty + '</span><button type="button" data-i="' + i + '" data-d="1" aria-label="More">+</button></div></div>').join('');
+    const sub = BAG.reduce((a, x) => a + x.qty * x.price, 0), ship = sub >= FREE_FROM ? 0 : SHIP;
+    sum.innerHTML = '<div><span>Subtotal</span><span>' + eur(sub) + '</span></div><div><span>Shipping (NL)</span><span>' + (ship ? eur(ship) : 'Free') + '</span></div>' + (ship ? '<div style="font-size:13px;color:var(--soft)"><span>Add ' + eur(FREE_FROM - sub) + ' for free shipping</span></div>' : '') + '<div class="tot"><span>Total</span><span>' + eur(sub + ship) + '</span></div><small style="color:var(--soft)">Deposit (statiegeld) is added at checkout.</small><a class="btn" href="#list" id="bag-go" style="margin-top:8px">Checkout</a><div class="msg">We are not selling yet. Join the launch list and we will let you know the moment your bag can ship.</div>';
+    document.getElementById('bag-go').onclick = closeBag;
+  }
+  document.getElementById('lines').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (!b) return; const x = BAG[+b.dataset.i]; x.qty += +b.dataset.d; if (x.qty <= 0) BAG.splice(+b.dataset.i, 1); renderBag(); });
+  renderBag();
+
   window.CloudlyUI = {
     reduce, heroState, hero: heroEl,
+    setPacks(map) { Object.assign(PACK, map); renderShopPics(); },
     setImages(map) {
       Object.assign(IMG, map);
       pics.forEach(([el, p]) => { el.innerHTML = p.cans.map(canPic).join(''); });
       bands.forEach(b => { b.mover.innerHTML = canPic(b.key); b.mover.classList.remove('wait'); });
+      renderShopPics(); renderBag();
     },
     useHero3D(canvas) {
       const st = document.getElementById('stage3d');
       clearTimeout(noGL); fallback.remove(); st.appendChild(canvas);
       requestAnimationFrame(() => requestAnimationFrame(() => canvas.classList.add('on')));
-      canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', 'Three ice cold Cloudly cans with lemon, mint and ice');
+      canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', 'Three ice cold Cloudly Energy cans with fruit and ice');
       return st;
     }
   };
@@ -668,12 +907,12 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   if (!window.THREE || !UI) return;
 
   const FLAV = {
-    mint: { name: 'Mint & Lemon', sub: 'MINT · LEMON · APPLE', base: '#EEF5F0', ink: '#123D33', soft: '#5B7D72', accent: '#1FDB9B', dot: '#FFE600', band: '#123D33', bandText: '#9FE3C7',
-      ingredients: 'Sparkling water, apple juice, lemon juice, fresh mint infusion.', story: 'Real mint and real lemon, bubbled up and nothing else. One sip and you are somewhere up in the clouds.', icon: 'leaves' },
-    peach: { name: 'Peach & Lavender', sub: 'PEACH · LAVENDER · APPLE', base: '#FCEFE6', ink: '#5A2A1A', soft: '#8F5E4B', accent: '#FF9459', dot: '#FFD23F', band: '#5A2A1A', bandText: '#F7C4AA',
-      ingredients: 'Sparkling water, apple juice, peach purée, lemon juice, lavender infusion.', story: 'Sun-ripe peach and a hint of real lavender, pressed and bubbled. Like drifting off on a warm summer cloud.', icon: 'peach' },
-    grapefruit: { name: 'Grapefruit & Hibiscus', sub: 'GRAPEFRUIT · HIBISCUS · APPLE', base: '#FBEDEF', ink: '#4A1D2B', soft: '#86505F', accent: '#FF5C8A', dot: '#FFB627', band: '#4A1D2B', bandText: '#F5B9C3',
-      ingredients: 'Sparkling water, pink grapefruit juice, apple juice, hibiscus infusion.', story: 'Pink grapefruit and real hibiscus flowers, nothing more. Pour it over ice and let your head drift into the clouds.', icon: 'sprig' }
+    mint: { name: 'Cherry Crush', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF1F2', ink: '#3D0F1A', soft: '#7A4A55', accent: '#8FD14F', dot: '#8FD14F', band: '#A3162F', bandText: '#FFD9DE',
+      ingredients: 'Sparkling water, cherry juice, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).', story: 'Dark, juicy cherry with natural caffeine. Clear head, light feeling, all day long.', icon: 'cherry' },
+    peach: { name: 'Ice Cloud', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#EEF7FE', ink: '#0F2E4A', soft: '#4D6E8A', accent: '#5CC1FF', dot: '#FFD84D', band: '#2F95E0', bandText: '#DDF0FF',
+      ingredients: 'Sparkling water, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).', story: 'The classic energy taste you know, made clean and ice cold. Clear head, light feeling, ice cold.', icon: 'ice' },
+    grapefruit: { name: 'Strawberry & Rose', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF0F3', ink: '#3D1424', soft: '#8A5262', accent: '#FF5C7C', dot: '#FFB627', band: '#EE4B6A', bandText: '#FFE3EA',
+      ingredients: 'Sparkling water, strawberry juice, rose extract, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).', story: 'Sweet strawberry and a soft touch of rose with natural caffeine. Pour it over ice and let your head drift into the clouds.', icon: 'strawrose' }
   };
 
   const wait = ms => new Promise(r => setTimeout(r, ms));
@@ -703,12 +942,45 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     function leafLine(x, y, len, ang) { g.save(); g.translate(x, y); g.rotate(ang); g.strokeStyle = F.accent; g.lineWidth = 4; g.lineCap = 'round';
       g.beginPath(); g.moveTo(0, 0); g.quadraticCurveTo(len * 0.5, -len * 0.4, len, 0); g.quadraticCurveTo(len * 0.5, len * 0.4, 0, 0); g.stroke();
       g.beginPath(); g.moveTo(-len * 0.15, 0); g.lineTo(len * 0.85, 0); g.stroke(); g.restore(); }
+    function berry(x, y, k) { g.save(); g.translate(x, y); g.scale(k, k);
+      g.fillStyle = '#FF4F6A'; g.strokeStyle = F.ink; g.lineWidth = 3 / k; g.beginPath(); g.moveTo(0, 34); g.bezierCurveTo(-30, 20, -30, -14, -16, -18); g.bezierCurveTo(-8, -22, 8, -22, 16, -18); g.bezierCurveTo(30, -14, 30, 20, 0, 34); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = '#FFE38A'; [[-9,-6],[8,-7],[0,6],[-12,10],[12,9],[0,20]].forEach(([a,b]) => { g.beginPath(); g.ellipse(a, b, 2.2, 3.2, 0, 0, 6.2832); g.fill(); });
+      g.fillStyle = '#5BB04A'; g.beginPath(); for (let i = 0; i < 5; i++) { const an = Math.PI + i / 4 * Math.PI; g.moveTo(0, -18); g.quadraticCurveTo(Math.cos(an) * 14, -18 + Math.sin(an) * 10 - 6, Math.cos(an) * 20, -18 + Math.sin(an) * 4); g.lineTo(0, -16); } g.fill(); g.restore(); }
     function icon(fx, y) {
-      if (F.icon === 'leaves') { leafLine(fx - 70, y, 120, -0.45); leafLine(fx + 70, y, 120, Math.PI + 0.45); g.fillStyle = F.dot; g.beginPath(); g.arc(fx, y + 10, 14, 0, Math.PI * 2); g.fill(); }
-      else if (F.icon === 'peach') { g.save(); g.strokeStyle = F.accent; g.lineWidth = 4; g.beginPath(); g.arc(fx, y + 6, 44, 0, Math.PI * 2); g.stroke();
-        g.beginPath(); g.moveTo(fx, y - 38); g.quadraticCurveTo(fx - 10, y + 6, fx, y + 50); g.stroke(); g.restore(); leafLine(fx + 8, y - 40, 70, -0.6); (function () { const sx = fx + 70, sy = y + 52; g.save(); g.strokeStyle = '#7E9C6A'; g.lineWidth = 3; g.lineCap = 'round'; g.beginPath(); g.moveTo(sx, sy); g.quadraticCurveTo(sx + 8, sy - 50, sx + 24, sy - 100); g.stroke(); g.fillStyle = '#A88BC9'; for (let i = 0; i < 8; i++) { const t = 0.32 + i * 0.09, px = sx + 24 * t * t + 8 * t + (i % 2 ? 5 : -5), py = sy - 100 * t; g.beginPath(); g.ellipse(px, py, 4.5, 8, i % 2 ? 0.5 : -0.5, 0, 6.2832); g.fill(); } g.restore(); })();
-        g.fillStyle = F.dot; g.beginPath(); g.arc(fx - 86, y + 20, 10, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(fx + 92, y + 30, 7, 0, Math.PI * 2); g.fill(); }
-      else { g.save(); g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = F.accent; for (let i = 0; i < 5; i++) { const a = i / 5 * Math.PI * 2 - Math.PI / 2; g.save(); g.translate(fx + Math.cos(a) * 30, y + 8 + Math.sin(a) * 30); g.rotate(a + Math.PI / 2); g.fillStyle = '#FBDDE3'; g.beginPath(); g.ellipse(0, 0, 25, 33, 0, 0, Math.PI * 2); g.fill(); g.stroke(); g.restore(); } g.fillStyle = F.ink; g.beginPath(); g.arc(fx, y + 8, 7, 0, Math.PI * 2); g.fill(); g.strokeStyle = F.ink; g.lineWidth = 3; g.lineCap = 'round'; g.beginPath(); g.moveTo(fx, y + 8); g.quadraticCurveTo(fx + 18, y - 18, fx + 40, y - 30); g.stroke(); g.restore(); g.fillStyle = F.dot; g.beginPath(); g.arc(fx + 42, y - 32, 6, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(fx - 104, y + 30, 10, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(fx + 104, y + 40, 7, 0, Math.PI * 2); g.fill(); }
+      if (F.icon === 'cherry') {
+        g.save(); g.strokeStyle = '#4E7A2E'; g.lineWidth = 4; g.lineCap = 'round';
+        g.beginPath(); g.moveTo(fx - 22, y + 20); g.quadraticCurveTo(fx - 10, y - 30, fx + 6, y - 46); g.stroke();
+        g.beginPath(); g.moveTo(fx + 24, y + 26); g.quadraticCurveTo(fx + 18, y - 20, fx + 6, y - 46); g.stroke();
+        g.fillStyle = '#C8183F'; g.strokeStyle = F.ink; g.lineWidth = 3;
+        [[fx - 24, y + 36, 22], [fx + 26, y + 42, 22]].forEach(([cx, cy, r]) => { g.beginPath(); g.arc(cx, cy, r, 0, 6.2832); g.fill(); g.stroke(); g.fillStyle = 'rgba(255,255,255,.55)'; g.beginPath(); g.arc(cx - 7, cy - 8, 5, 0, 6.2832); g.fill(); g.fillStyle = '#C8183F'; });
+        g.restore(); leafLine(fx + 8, y - 44, 56, -0.3);
+
+        g.fillStyle = F.dot; g.beginPath(); g.arc(fx + 96, y + 30, 8, 0, 6.2832); g.fill();
+      } else if (F.icon === 'ice') {
+        const cube = (cx, cy, sz, rot) => { g.save(); g.translate(cx, cy); g.rotate(rot);
+          const gr = g.createLinearGradient(-sz, -sz, sz, sz); gr.addColorStop(0, '#E4F4FE'); gr.addColorStop(1, '#8FD0F7');
+          g.fillStyle = gr; g.strokeStyle = '#2F95E0'; g.lineWidth = 3.5; g.lineJoin = 'round';
+          g.beginPath(); g.moveTo(-sz + 8, -sz); g.lineTo(sz - 8, -sz); g.quadraticCurveTo(sz, -sz, sz, -sz + 8); g.lineTo(sz, sz - 8); g.quadraticCurveTo(sz, sz, sz - 8, sz); g.lineTo(-sz + 8, sz); g.quadraticCurveTo(-sz, sz, -sz, sz - 8); g.lineTo(-sz, -sz + 8); g.quadraticCurveTo(-sz, -sz, -sz + 8, -sz); g.closePath(); g.fill(); g.stroke();
+          g.fillStyle = 'rgba(255,255,255,.9)'; g.beginPath(); g.ellipse(-sz * .4, -sz * .45, sz * .28, sz * .12, -0.5, 0, 6.2832); g.fill(); g.restore(); };
+        cube(fx - 30, y + 18, 32, -0.25); cube(fx + 32, y + 6, 26, 0.3);
+        const spark = (sx, sy, r) => { g.save(); g.fillStyle = '#5CC1FF'; g.beginPath(); g.moveTo(sx, sy - r); g.quadraticCurveTo(sx, sy, sx + r, sy); g.quadraticCurveTo(sx, sy, sx, sy + r); g.quadraticCurveTo(sx, sy, sx - r, sy); g.quadraticCurveTo(sx, sy, sx, sy - r); g.fill(); g.restore(); };
+        spark(fx + 74, y - 28, 14); spark(fx - 82, y - 18, 10); spark(fx + 6, y - 40, 8);
+        g.fillStyle = F.dot; g.beginPath(); g.arc(fx - 104, y + 34, 7, 0, 6.2832); g.fill(); g.beginPath(); g.arc(fx + 100, y + 30, 6, 0, 6.2832); g.fill();
+      } else {
+        berry(fx - 40, y + 18, 1.1);
+        /* rose: side view bloom with layered petals, stem and two leaves */
+        g.save(); const rx = fx + 40, ry = y - 4;
+        g.strokeStyle = '#4E8A3A'; g.lineWidth = 5; g.lineCap = 'round'; g.beginPath(); g.moveTo(rx, ry + 26); g.quadraticCurveTo(rx + 4, ry + 50, rx - 2, ry + 72); g.stroke();
+        g.fillStyle = '#6BB04F'; [[1, 0.5], [-1, 0.75]].forEach(([d, t]) => { const sx = rx + 2, sy = ry + 26 + t * 46; g.beginPath(); g.moveTo(sx, sy); g.bezierCurveTo(sx + d * 10, sy - 18, sx + d * 30, sy - 16, sx + d * 34, sy - 6); g.bezierCurveTo(sx + d * 24, sy + 6, sx + d * 10, sy + 6, sx, sy); g.closePath(); g.fill(); });
+        const pg = g.createLinearGradient(rx, ry - 34, rx, ry + 30); pg.addColorStop(0, '#FF8FAB'); pg.addColorStop(1, '#E8365F');
+        g.fillStyle = pg; g.beginPath(); g.moveTo(rx - 30, ry - 8); g.bezierCurveTo(rx - 32, ry + 18, rx - 14, ry + 32, rx, ry + 32); g.bezierCurveTo(rx + 14, ry + 32, rx + 32, ry + 18, rx + 30, ry - 8); g.bezierCurveTo(rx + 20, ry - 2, rx + 10, ry - 4, rx, ry - 12); g.bezierCurveTo(rx - 10, ry - 4, rx - 20, ry - 2, rx - 30, ry - 8); g.closePath(); g.fill();
+        g.fillStyle = '#FF6F91'; g.beginPath(); g.moveTo(rx - 18, ry - 14); g.bezierCurveTo(rx - 22, ry - 34, rx - 4, ry - 40, rx + 2, ry - 30); g.bezierCurveTo(rx + 10, ry - 42, rx + 26, ry - 32, rx + 18, ry - 12); g.bezierCurveTo(rx + 8, ry - 4, rx - 8, ry - 4, rx - 18, ry - 14); g.closePath(); g.fill();
+        g.strokeStyle = '#C42A52'; g.lineWidth = 2.5; g.beginPath(); g.moveTo(rx - 8, ry - 22); g.bezierCurveTo(rx - 4, ry - 30, rx + 8, ry - 28, rx + 6, ry - 18); g.bezierCurveTo(rx + 4, ry - 12, rx - 6, ry - 12, rx - 4, ry - 20); g.stroke();
+        g.strokeStyle = 'rgba(196,42,82,.55)'; g.beginPath(); g.moveTo(rx - 20, ry + 4); g.quadraticCurveTo(rx, ry + 18, rx + 20, ry + 4); g.stroke();
+        g.fillStyle = 'rgba(255,255,255,.45)'; g.beginPath(); g.ellipse(rx - 16, ry + 4, 5, 9, 0.3, 0, 6.2832); g.fill();
+        g.restore();
+        g.fillStyle = F.dot; g.beginPath(); g.arc(fx - 108, y + 30, 8, 0, 6.2832); g.fill(); g.beginPath(); g.arc(fx + 104, y - 18, 6, 0, 6.2832); g.fill();
+      }
     }
     function drawLabel(TW, TH) {
       const bandY = TH - 250;
@@ -717,12 +989,25 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       g.fillStyle = F.band; g.fillRect(0, bandY, TW, TH - bandY + 400);
       g.beginPath(); for (let x = -40, i = 0; x < TW + 80; i++) { const r = 34 + ((i * 37) % 30); g.moveTo(x + r, bandY + 6); g.arc(x, bandY + 6, r, 0, Math.PI * 2); x += r * 1.35; } g.fill();
       const fx = 1024; g.textBaseline = 'alphabetic'; g.textAlign = 'center';
-      g.fillStyle = F.soft; g.font = '500 26px Outfit, sans-serif'; spaced('SPARKLING BOTANICAL SODA', fx, 190, 9);
+      g.fillStyle = F.ink; g.font = '700 44px Outfit, sans-serif'; spaced('SPARKLING ENERGY', fx, 200, 12);
+      g.font = '500 22px Outfit, sans-serif'; g.fillStyle = F.soft; spaced(F.sub, fx, 240, 5);
       logoCloud(fx, 395, 190, 'stroke', F.ink);
+      { const k = 1.9; g.save(); g.translate(fx - 47 * k, 395 - 54 * k); g.scale(k, k); g.fillStyle = '#FFC233'; g.strokeStyle = '#FFC233'; g.lineWidth = 3.5; g.lineJoin = 'round'; const b = new Path2D('M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z'); g.fill(b); g.stroke(b); g.restore(); }
       g.fillStyle = F.ink; g.font = '300 176px Outfit, sans-serif'; spaced('cloudly', fx, 560, -5); g.fillRect(fx - 40, 612, 80, 3);
       fitFont(F.name, '400', 64, 'Outfit, sans-serif', 560); g.fillStyle = F.ink; g.fillText(F.name, fx, 706);
-      g.font = '400 24px Outfit, sans-serif'; g.fillStyle = F.soft; spaced(F.sub, fx, 758, 6);
-      icon(fx, 900);
+      { g.save(); g.fillStyle = F.ink; g.font = '500 30px Outfit, sans-serif'; spaced('CLEAN ENERGY', fx, 770, 10);
+        g.strokeStyle = F.accent; g.lineWidth = 2.5; g.beginPath(); g.moveTo(fx - 250, 760); g.lineTo(fx - 190, 760); g.moveTo(fx + 190, 760); g.lineTo(fx + 250, 760); g.stroke(); g.restore(); }
+      
+      g.save(); g.translate(fx, 955); g.scale(1.5, 1.5); g.translate(-fx, -900); icon(fx, 900); g.restore();
+      /* round badges like on the front of a can: 0g sugar on the right, caffeine on the left */
+      /* 0g sugar mark with a fresh twist: round like a fruit, a little leaf and stem on top */
+      { const bx = fx + 262, by = 348, r = 74; g.save();
+        g.strokeStyle = '#5E8F3A'; g.lineWidth = 6; g.lineCap = 'round'; g.beginPath(); g.moveTo(bx - 4, by - r + 6); g.quadraticCurveTo(bx - 2, by - r - 14, bx + 6, by - r - 24); g.stroke();
+        g.fillStyle = '#7CC85A'; g.beginPath(); g.moveTo(bx + 4, by - r - 18); g.bezierCurveTo(bx + 22, by - r - 50, bx + 62, by - r - 44, bx + 70, by - r - 30); g.bezierCurveTo(bx + 52, by - r - 6, bx + 20, by - r - 6, bx + 4, by - r - 18); g.closePath(); g.fill();
+        g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 2.5; g.beginPath(); g.moveTo(bx + 10, by - r - 19); g.quadraticCurveTo(bx + 38, by - r - 30, bx + 64, by - r - 29); g.stroke();
+        g.fillStyle = F.band; g.beginPath(); g.arc(bx, by, r, 0, 6.2832); g.fill();
+        g.fillStyle = 'rgba(255,255,255,.22)'; g.beginPath(); g.ellipse(bx - r * .42, by - r * .42, r * .2, r * .12, -0.7, 0, 6.2832); g.fill();
+        g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '500 72px Outfit, sans-serif'; g.fillText('0g', bx, by + 16); g.font = '700 19px Outfit, sans-serif'; spaced('SUGAR', bx, by + 45, 6); g.restore(); }
       g.fillStyle = '#FFFFFF'; g.font = '300 44px Outfit, sans-serif'; g.fillText('light as a cloud.', fx, bandY + 128);
       g.fillStyle = F.bandText; g.font = '500 24px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 186, 10);
       const ix = 1660, iw = 420, lx = ix - iw / 2; g.textAlign = 'left'; let y = 290;
@@ -730,7 +1015,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       g.fillStyle = F.ink; g.font = '400 30px Outfit, sans-serif'; y = wrapText(F.ingredients, lx, y, iw, 40); y += 14; g.fillRect(lx, y, iw, 2); y += 54;
       g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; spaced('NUTRITION PER 100 ML', lx, y, 6, 'left'); y += 44;
       g.fillStyle = F.ink; g.font = '400 26px Outfit, sans-serif'; g.fillText('[values after lab test]', lx, y); y += 40; g.fillRect(lx, y, iw, 2); y += 52;
-      g.font = '400 24px Outfit, sans-serif'; g.fillStyle = F.soft; g.fillText('Nothing added. Nothing fake.', lx, y); y += 36; g.fillText('Keep cool. Best before: see bottom.', lx, y);
+      g.font = '400 24px Outfit, sans-serif'; g.fillStyle = F.soft; wrapText('High caffeine content. Not recommended for children or pregnant or breast-feeding women (32 mg/100 ml).', lx, y, iw, 32);
       barcode(lx, bandY - 130, 80, F.ink);
       g.textAlign = 'right'; g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; g.fillText('drinkcloudly.com', lx + iw, bandY - 60);
       const sx = 380; g.textAlign = 'center'; g.fillStyle = F.ink; g.font = '300 80px Outfit, sans-serif'; g.fillText('head in', sx, 380); g.fillText('the clouds.', sx, 464);
@@ -898,11 +1183,83 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     });
     UI.setImages(imgs);
 
+    /* ---------- pack shots for the shop: open tray with cans + one can in front ---------- */
+    (function packShots() {
+      const ps = new THREE.Scene(); key3(ps);
+      const pf = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.ShadowMaterial({ opacity: 0.2 })); pf.rotation.x = -Math.PI / 2; pf.position.y = -H; pf.receiveShadow = true; ps.add(pf);
+      const pCam = new THREE.PerspectiveCamera(24, 1, 0.1, 200);
+      const STEP = 1.7, WALL = 1.7, T = 0.06;
+      const MIX = { name: 'Mixed pack', base: '#EEF6FC', ink: '#123D33', soft: '#4F6F66', accent: '#5CC1FF', dot: '#FFE600', band: '#123D33', bandText: '#CBEBFF', icon: 'none' };
+      function wallArt(Fk, cw, ch, front, count) {
+        const c = document.createElement('canvas'); c.width = cw; c.height = ch; g = c.getContext('2d'); F = Fk;
+        const gr = g.createLinearGradient(0, 0, 0, ch); gr.addColorStop(0, '#FFFFFF'); gr.addColorStop(1, F.base); g.fillStyle = gr; g.fillRect(0, 0, cw, ch); g.globalAlpha = .2; g.fillStyle = F.band; g.fillRect(0, 0, cw, ch); g.globalAlpha = 1;
+        [[cw * .12, ch * .3, .5], [cw * .86, ch * .26, .42], [cw * .55, ch * .2, .3]].forEach(([x, y, k]) => cloudFill(x, y, k * ch / 400, '#FFFFFF', .9));
+        const bh = ch * .24; g.fillStyle = F.band; g.fillRect(0, ch - bh, cw, bh);
+        g.beginPath(); for (let x = -20, i = 0; x < cw + 40; i++) { const r = ch * (.05 + ((i * 37) % 30) / 1000); g.moveTo(x + r, ch - bh + 4); g.arc(x, ch - bh + 4, r, 0, 6.2832); x += r * 1.35; } g.fill();
+        g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+        const cx = front ? cw * .42 : cw * .5;
+        logoCloud(cx - ch * .62, ch * .5, ch * .34, 'stroke', F.ink);
+        g.fillStyle = F.ink; g.font = '300 ' + Math.round(ch * .36) + 'px Outfit, sans-serif'; spaced('cloudly', cx + ch * .12, ch * .56, -ch * .01);
+        g.fillStyle = F.soft; g.font = '600 ' + Math.round(ch * .075) + 'px Outfit, sans-serif'; spaced('SPARKLING ENERGY · ' + F.name.toUpperCase(), cx, ch * .7, ch * .014);
+        g.fillStyle = '#FFFFFF'; g.font = '600 ' + Math.round(ch * .07) + 'px Outfit, sans-serif'; spaced(count + ' × 250 ML · CLEAN ENERGY', cw * .5, ch - bh * .32, ch * .016);
+        if (front) {
+          const bx = cw * .86, by = ch * .42, r = ch * .16; g.fillStyle = F.band; g.beginPath(); g.arc(bx, by, r, 0, 6.2832); g.fill();
+          g.fillStyle = '#FFFFFF'; g.font = '500 ' + Math.round(r * .95) + 'px Outfit, sans-serif'; g.fillText('0g', bx, by + r * .2); g.font = '700 ' + Math.round(r * .26) + 'px Outfit, sans-serif'; spaced('SUGAR', bx, by + r * .6, r * .06);
+          if (F.icon !== 'none') { g.save(); const ix = cw * .7, iy = ch * .44, k = ch / 300; g.translate(ix, iy); g.scale(k, k); g.translate(-1024, -900); icon(1024, 900); g.restore(); }
+        }
+        const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 8; return t;
+      }
+      function makeTray(Fk, cols, rows, count) {
+        const grp = new THREE.Group(), W = cols * STEP + 0.12, D = rows * STEP + 0.12;
+        const inner = new THREE.MeshPhysicalMaterial({ color: 0xF4F8FB, roughness: 0.8, envMap });
+        const fm = new THREE.MeshPhysicalMaterial({ map: wallArt(Fk, 1800, Math.round(1800 * WALL / W), true, count), roughness: 0.55, envMap, clearcoat: 0.3 });
+        const sm = new THREE.MeshPhysicalMaterial({ map: wallArt(Fk, 1400, Math.round(1400 * WALL / D), false, count), roughness: 0.55, envMap, clearcoat: 0.3 });
+        const box = (w, h, d, mats, x, y, z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mats); m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; grp.add(m); };
+        const y0 = -H + WALL / 2;
+        box(W, WALL, T, [inner, inner, inner, inner, fm, inner], 0, y0, D / 2);
+        box(W, WALL, T, [inner, inner, inner, inner, inner, fm], 0, y0, -D / 2);
+        box(T, WALL, D, [sm, inner, inner, inner, inner, inner], W / 2, y0, 0);
+        box(T, WALL, D, [inner, sm, inner, inner, inner, inner], -W / 2, y0, 0);
+        box(W, 0.04, D, inner, 0, -H + 0.02, 0);
+        return { grp, W, D };
+      }
+      function shot(flavKey, count) {
+        const isMix = flavKey === 'mix', Fk = isMix ? MIX : FLAV[flavKey];
+        const cols = count === 24 ? 6 : 4, rows = count === 24 ? 4 : 3;
+        const order = isMix ? ['grapefruit', 'peach', 'mint'] : [flavKey];
+        const tray = makeTray(Fk, cols, rows, count); const objs = [tray.grp];
+        let n = 0;
+        for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+          const can = makeCan(order[(n++) % order.length]);
+          can.position.set(-tray.W / 2 + STEP * (c + .5) + .06, 0.05, -tray.D / 2 + STEP * (r + .5) + .06); can.rotation.y = -0.8 + ((r * 7 + c * 3) % 5 - 2) * .05; tray.grp.add(can);
+        }
+        const single = makeCan(isMix ? 'grapefruit' : flavKey);
+        single.position.set(tray.W / 2 - 0.5, 0, tray.D / 2 + 1.9); single.scale.setScalar(1.1); single.rotation.y = -0.75; tray.grp.add(single);
+        tray.grp.position.set(count === 24 ? -1.4 : -1.0, 0, count === 24 ? -1.6 : -1.2); tray.grp.rotation.y = 0.18;
+        objs.forEach(o => ps.add(o));
+        const d = count === 24 ? 1.95 : 1.5;
+        pCam.position.set(-6.5 * d, 6.2 * d, 15.5 * d); pCam.lookAt(-0.9, 0.1, 0.6); pCam.updateProjectionMatrix();
+        renderer.render(ps, pCam); const url = renderer.domElement.toDataURL('image/png');
+        objs.forEach(o => ps.remove(o));
+        return url;
+      }
+      const jobs = []; ['grapefruit', 'peach', 'mint', 'mix'].forEach(k => [12, 24].forEach(n => jobs.push([k, n])));
+      const out = {};
+      function next() {
+        if (!jobs.length) { renderer.setPixelRatio(Math.min(Math.max(window.devicePixelRatio || 1, 1.25), 2)); if (window.__heroResize) window.__heroResize(); return; }
+        const [k, n] = jobs.shift();
+        renderer.setPixelRatio(1); renderer.setSize(1000, 1000, false);
+        out[k + '-' + n] = shot(k, n); UI.setPacks && UI.setPacks({ [k + '-' + n]: out[k + '-' + n] });
+        setTimeout(next, 60);
+      }
+      window.__startPacks = () => setTimeout(next, 400);
+    })();
+
     /* ---------- live studio hero ---------- */
     const scene = new THREE.Scene(); key3(scene);
     const cam = new THREE.PerspectiveCamera(20, 1, 0.1, 100); cam.position.set(0, 0.4, 22); cam.lookAt(0, 0.2, 0);
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.2 })); floor.rotation.x = -Math.PI / 2; floor.position.y = -H - 1.0; floor.receiveShadow = true; scene.add(floor);
-    const keys = ['peach', 'mint', 'grapefruit'];
+    const keys = ['peach', 'grapefruit', 'mint'];
     const cans = keys.map(k => makeCan(k));
     const base = [{ x: -1.95, z: -0.4, ry: 0.42, rz: 0.07, s: 1 }, { x: 0, z: 0.5, ry: -0.12, rz: 0, s: 1.1 }, { x: 1.95, z: -0.4, ry: -0.62, rz: -0.07, s: 1 }];
     cans.forEach(c => scene.add(c));
@@ -927,7 +1284,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       renderer.setSize(w, h, false); cam.aspect = w / h;
       cam.position.z = w / h < 1.0 ? 22 / Math.max(0.55, w / h) : 22; cam.updateProjectionMatrix();
     }
-    window.addEventListener('resize', resize); resize();
+    window.addEventListener('resize', resize); resize(); window.__heroResize = resize;
+    if (window.__startPacks) window.__startPacks();
 
     let visible = true;
     if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(UI.hero);
