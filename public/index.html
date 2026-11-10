@@ -1120,11 +1120,11 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
   const FLAV = {
     mint: { name: 'Cherry Crush', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF1F2', ink: '#3D0F1A', soft: '#7A4A55', accent: '#8FD14F', dot: '#8FD14F', band: '#A3162F', bandText: '#FFD9DE',
-      ingredients: 'Sparkling water, cherry juice (5%), natural flavouring, acids: citric acid, malic acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Dark, juicy cherry with natural caffeine. Clear head, light feeling, all day long.', icon: 'cherry' },
+      ingredients: 'Sparkling water, cherry juice (5%), natural flavouring, acids: citric acid, malic acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Dark, juicy cherry with natural caffeine. Clear head, light feeling, all day long.', icon: 'cherry', legal: 'Bruisende energiedrank met kersensmaak, met zoetstoffen.', ingNL: 'Koolzuurhoudend water, kersensap (5%), natuurlijk aroma, voedingszuren: citroenzuur, appelzuur, zuurteregelaar: natriumcitraat, zoetstoffen: erythritol, steviolglycosiden, cafeïne uit groene thee, L-theanine, vitamines (niacine, B6, B12).' },
     peach: { name: 'Ice Cloud', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#EEF7FE', ink: '#0F2E4A', soft: '#4D6E8A', accent: '#5CC1FF', dot: '#FFD84D', band: '#2F95E0', bandText: '#DDF0FF',
-      ingredients: 'Sparkling water, acid: citric acid, acidity regulator: sodium citrate, taurine, natural flavouring, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, thickener: xanthan gum, vitamins (niacin, pantothenic acid, B6, B12).', story: 'The classic energy taste you know, made clean and ice cold. Clear head, light feeling, ice cold.', icon: 'ice' },
+      ingredients: 'Sparkling water, acid: citric acid, acidity regulator: sodium citrate, taurine, natural flavouring, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, thickener: xanthan gum, vitamins (niacin, pantothenic acid, B6, B12).', story: 'The classic energy taste you know, made clean and ice cold. Clear head, light feeling, ice cold.', icon: 'ice', b5: true, legal: 'Bruisende energiedrank, met zoetstoffen.', ingNL: 'Koolzuurhoudend water, voedingszuur: citroenzuur, zuurteregelaar: natriumcitraat, taurine, natuurlijk aroma, zoetstoffen: erythritol, steviolglycosiden, cafeïne uit groene thee, L-theanine, verdikkingsmiddel: xanthaangom, vitamines (niacine, pantotheenzuur, B6, B12).' },
     grapefruit: { name: 'Strawberry & Rose', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF0F3', ink: '#3D1424', soft: '#8A5262', accent: '#FF5C7C', dot: '#FFB627', band: '#EE4B6A', bandText: '#FFE3EA',
-      ingredients: 'Sparkling water, strawberry juice (4%), natural flavouring, rose extract, acid: citric acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Sweet strawberry and a soft touch of rose with natural caffeine. Pour it over ice and let your head drift into the clouds.', icon: 'strawrose' }
+      ingredients: 'Sparkling water, strawberry juice (4%), natural flavouring, rose extract, acid: citric acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Sweet strawberry and a soft touch of rose with natural caffeine. Pour it over ice and let your head drift into the clouds.', icon: 'strawrose', legal: 'Bruisende energiedrank met aardbei- en rozensmaak, met zoetstoffen.', ingNL: 'Koolzuurhoudend water, aardbeiensap (4%), natuurlijk aroma, rozenextract, voedingszuur: citroenzuur, zuurteregelaar: natriumcitraat, zoetstoffen: erythritol, steviolglycosiden, cafeïne uit groene thee, L-theanine, vitamines (niacine, B6, B12).' }
   };
 
   const wait = ms => new Promise(r => setTimeout(r, ms));
@@ -1222,14 +1222,37 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '500 72px Outfit, sans-serif'; g.fillText('0g', bx, by + 16); g.font = '700 19px Outfit, sans-serif'; spaced('SUGAR', bx, by + 45, 6); g.restore(); }
       g.fillStyle = '#FFFFFF'; g.font = '300 44px Outfit, sans-serif'; g.fillText('light as a cloud.', fx, bandY + 128);
       g.fillStyle = F.bandText; g.font = '500 24px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 186, 10);
-      const ix = 1660, iw = 420, lx = ix - iw / 2; g.textAlign = 'left'; let y = 290;
-      g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; spaced('INGREDIENTS', lx, y, 6, 'left'); y += 46;
-      g.fillStyle = F.ink; g.font = '400 30px Outfit, sans-serif'; y = wrapText(F.ingredients, lx, y, iw, 40); y += 14; g.fillRect(lx, y, iw, 2); y += 54;
-      g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; spaced('NUTRITION PER 100 ML', lx, y, 6, 'left'); y += 44;
-      g.fillStyle = F.ink; g.font = '400 26px Outfit, sans-serif'; g.fillText('[values after lab test]', lx, y); y += 40; g.fillRect(lx, y, iw, 2); y += 52;
-      g.font = '400 24px Outfit, sans-serif'; g.fillStyle = F.soft; wrapText('High caffeine content. Not recommended for children or pregnant or breast-feeding women (32 mg/100 ml).', lx, y, iw, 32);
+      /* back panel: mandatory Dutch label info (EU 1169/2011) */
+      const ix = 1660, iw = 480, lx = ix - iw / 2; g.textAlign = 'left'; let y = 262;
+      g.fillStyle = F.ink; g.font = '600 20px Outfit, sans-serif'; y = wrapText(F.legal, lx, y, iw, 26); y += 6;
+      g.fillStyle = F.soft; g.font = '500 16px Outfit, sans-serif'; spaced('INGREDIËNTEN', lx, y, 5, 'left'); y += 26;
+      g.fillStyle = F.ink; g.font = '400 18px Outfit, sans-serif'; y = wrapText(F.ingNL, lx, y, iw, 23); y += 4; g.fillRect(lx, y, iw, 1.5); y += 30;
+      g.fillStyle = F.soft; g.font = '500 16px Outfit, sans-serif'; spaced('VOEDINGSWAARDE PER 100 ML', lx, y, 5, 'left'); y += 28;
+      const rows = [['Energie', '13 kJ / 3 kcal'], ['Vet', '0 g'], ['  waarvan verzadigd', '0 g'], ['Koolhydraten', '0,8 g'], ['  waarvan suikers', '0 g'], ['  waarvan polyolen', '0,8 g'], ['Eiwitten', '0 g'], ['Zout', '0,04 g'], ['Niacine', '1,9 mg (12%*)']];
+      if (F.b5) rows.push(['Pantotheenzuur', '0,6 mg (10%*)']);
+      rows.push(['Vitamine B6', '0,17 mg (12%*)'], ['Vitamine B12', '0,3 µg (12%*)'], ['Cafeïne', '32 mg']);
+      g.font = '400 17px Outfit, sans-serif';
+      rows.forEach(([a, b], i) => { g.fillStyle = F.ink; g.textAlign = 'left'; g.fillText(a.trim(), lx + (a.startsWith(' ') ? 18 : 0), y); g.textAlign = 'right'; g.fillText(b, lx + iw, y); g.textAlign = 'left';
+        if (i < rows.length - 1) { g.globalAlpha = .18; g.fillRect(lx, y + 7, iw, 1); g.globalAlpha = 1; } y += 22; });
+      g.fillStyle = F.soft; g.font = '400 14px Outfit, sans-serif'; g.fillText('*Referentie-inname. Indicatieve waarden.', lx, y + 2); y += 30;
+      g.fillStyle = F.ink; g.font = '600 16px Outfit, sans-serif'; y = wrapText('Hoog cafeïnegehalte. Niet aanbevolen voor kinderen en vrouwen die zwanger zijn of borstvoeding geven (32 mg/100 ml).', lx, y, iw, 21);
       barcode(lx, bandY - 130, 80, F.ink);
-      g.textAlign = 'right'; g.fillStyle = F.soft; g.font = '500 22px Outfit, sans-serif'; g.fillText('drinkcloudly.com', lx + iw, bandY - 60);
+      g.textAlign = 'right'; g.fillStyle = F.soft; g.font = '400 15px Outfit, sans-serif';
+      g.fillText('Ten minste houdbaar tot & lot: zie bodem', lx + iw, bandY - 118); g.fillText('Koel bewaren, gekoeld het lekkerst.', lx + iw, bandY - 96);
+      g.fillText('Cloudly · Groningen · Nederland', lx + iw, bandY - 74);
+      g.font = '500 18px Outfit, sans-serif'; g.fillText('drinkcloudly.com', lx + iw, bandY - 48);
+      /* deposit + recycling marks on the band (placeholder for the official Statiegeld Nederland file) */
+      { const sx2 = 1500, sy2 = bandY + 118, r2 = 44; g.save(); g.strokeStyle = '#FFFFFF'; g.fillStyle = '#FFFFFF'; g.lineWidth = 5; g.lineCap = 'round';
+        g.beginPath(); g.arc(sx2, sy2, r2, -2.6, 0.2); g.stroke(); g.beginPath(); g.arc(sx2, sy2, r2, 0.55, 2.95); g.stroke();
+        const ah = (ang) => { const ax = sx2 + r2 * Math.cos(ang), ay = sy2 + r2 * Math.sin(ang); const t = ang + Math.PI / 2; g.beginPath(); g.moveTo(ax + 12 * Math.cos(t), ay + 12 * Math.sin(t)); g.lineTo(ax + 11 * Math.cos(t - 2.2), ay + 11 * Math.sin(t - 2.2)); g.lineTo(ax + 11 * Math.cos(t + 2.2), ay + 11 * Math.sin(t + 2.2)); g.closePath(); g.fill(); };
+        ah(0.2); ah(2.95);
+        g.textAlign = 'center'; g.font = '700 22px Outfit, sans-serif'; g.fillText('€0,15', sx2, sy2 + 8);
+        g.font = '700 15px Outfit, sans-serif'; spaced('STATIEGELD', sx2, sy2 + r2 + 34, 4); g.restore(); }
+      { const ax2 = 1820, ay2 = bandY + 118; g.save(); g.strokeStyle = '#FFFFFF'; g.fillStyle = '#FFFFFF'; g.lineWidth = 4; g.lineJoin = 'round';
+        g.beginPath(); g.moveTo(ax2, ay2 - 40); g.lineTo(ax2 + 44, ay2 + 34); g.lineTo(ax2 - 44, ay2 + 34); g.closePath(); g.stroke();
+        g.textAlign = 'center'; g.font = '700 22px Outfit, sans-serif'; g.fillText('alu', ax2, ay2 + 22);
+        g.font = '500 15px Outfit, sans-serif'; spaced('RECYCLE ME', ax2, ay2 + 76, 4); g.restore(); }
+      g.textAlign = 'center';
       const sx = 380; g.textAlign = 'center'; g.fillStyle = F.ink; g.font = '300 80px Outfit, sans-serif'; g.fillText('head in', sx, 380); g.fillText('the clouds.', sx, 464);
       g.font = '400 30px Outfit, sans-serif'; wrapText(F.story, sx, 560, 440, 44); badge(sx, 880, 230);
     }
