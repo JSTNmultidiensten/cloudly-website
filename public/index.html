@@ -38,8 +38,10 @@
 .pop-scrim.show { opacity: 1 }
 .ebpop { position: relative; width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border-radius: 30px; overflow: hidden; background: #fff; box-shadow: 0 40px 90px -30px rgba(10,40,70,.6); transform: translateY(20px) scale(.97); transition: transform .45s cubic-bezier(.3,1.5,.5,1) }
 .pop-scrim.show .ebpop { transform: none }
-.ebpop .art { position: relative; background: linear-gradient(180deg, #8FD0FF, #DFF2FF 70%, #FFE4EA); display: flex; align-items: flex-end; justify-content: center; gap: 2%; padding-top: 30px; min-height: 340px }
-.ebpop .art img.can3d { height: 74%; width: auto; filter: drop-shadow(0 20px 24px rgba(20,50,80,.3)) } .ebpop .art img.can3d:nth-child(2) { height: 86% } .ebpop .art svg.can { height: 70%; width: auto }
+.ebpop .art { position: relative; overflow: hidden; background: linear-gradient(180deg, #8FD0FF, #DFF2FF 70%, #FFE4EA); display: flex; align-items: flex-end; justify-content: center; gap: 1%; padding: 64px 5% 28px; min-height: 340px }
+.ebpop .art::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: 18px; height: 22px; border-radius: 50%; background: radial-gradient(closest-side, rgba(20,50,80,.25), transparent) }
+.ebpop .art img.can3d, .ebpop .art svg.can { position: relative; z-index: 1; width: 30%; height: auto; max-height: none; filter: drop-shadow(0 16px 18px rgba(20,50,80,.28)) }
+.ebpop .art img.can3d:nth-of-type(2), .ebpop .art svg.can:nth-of-type(2) { width: 35%; z-index: 2; margin: 0 -2% 6px }
 .ebpop .art .stk { position: absolute; top: 16px; left: 16px; background: #FFE600; color: #123D33; font: 800 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: 999px; box-shadow: 0 4px 0 #123D33; transform: rotate(-4deg) }
 .ebpop .txt { padding: clamp(24px, 4vw, 40px) }
 .ebpop h3 { font: 400 clamp(28px, 3.6vw, 40px)/1.05 var(--display); margin: 6px 0 10px; color: var(--ink); letter-spacing: -.02em }
@@ -63,7 +65,7 @@
 .ebpop .ok { margin: 10px 0 0; font-weight: 700; color: #1F7A52 }
 .ebpop .px { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.9); font-size: 22px; cursor: pointer; color: var(--ink) }
 .ebpop .later { display: block; margin: 12px auto 0; border: 0; background: none; color: var(--soft); font: 600 13px var(--body); cursor: pointer; text-decoration: underline }
-@media (max-width: 640px) { .ebpop { grid-template-columns: minmax(0, 1fr) } .ebpop .art { min-height: 190px } .toast { left: 12px; right: 12px; max-width: none } }
+@media (max-width: 640px) { .ebpop { grid-template-columns: minmax(0, 1fr); max-height: calc(100vh - 32px); overflow-y: auto } .ebpop .art { min-height: 0; padding: 48px 20% 18px } .ebpop .art img.can3d, .ebpop .art svg.can { width: 28% } .ebpop .art img.can3d:nth-of-type(2), .ebpop .art svg.can:nth-of-type(2) { width: 33% } .toast { left: 12px; right: 12px; max-width: none } }
 </style>
 </head>
 <body>
