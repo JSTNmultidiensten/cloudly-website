@@ -10,7 +10,22 @@
 <meta property="og:image" content="hero-poster.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cpath d='M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z' fill='%23123D33'/%3E%3C/svg%3E">
-<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]{display:none!important}
+.hero .facts span.f { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 7px; background: rgba(255,255,255,.9); box-shadow: 0 6px 16px -10px rgba(20,60,90,.4) }
+.hero .facts span.f i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: #123D33; color: #FFE600 }
+.hero .facts span.f i svg { width: 14px; height: 14px }
+.usp { position: relative; z-index: 2; padding: clamp(40px, 6vw, 72px) 0 clamp(8px, 2vw, 20px) }
+.usp .head { text-align: center; margin-bottom: 22px } .usp .head h2 { font-size: clamp(30px, 4vw, 46px); margin: 6px 0 0 }
+.usp .row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px }
+.usp .u { background: rgba(255,255,255,.88); border: 1px solid rgba(255,255,255,.9); border-radius: 24px; padding: 18px 14px; text-align: center; box-shadow: 0 14px 30px -22px rgba(20,60,90,.5); transition: transform .3s cubic-bezier(.3,1.6,.5,1) }
+.usp .u:hover { transform: translateY(-4px) }
+.usp .u i { width: 48px; height: 48px; margin: 0 auto 10px; border-radius: 50%; display: grid; place-items: center; background: #123D33; color: #FFE600 }
+.usp .u i svg { width: 22px; height: 22px }
+.usp .u b { display: block; font: 500 18px/1.15 var(--display); color: var(--ink) } .usp .u span { display: block; margin-top: 4px; font-size: 13px; color: var(--soft); line-height: 1.35 }
+.usp .note { text-align: center; font-size: 12px; color: var(--soft); margin: 14px 0 0 }
+@media (max-width: 960px) { .usp .row { grid-template-columns: repeat(3, minmax(0, 1fr)) } }
+@media (max-width: 560px) { .usp .row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 16px 10px; margin: 0 -16px; scrollbar-width: none } .usp .row::-webkit-scrollbar { display: none } .usp .u { flex: 0 0 62%; scroll-snap-align: center } }
+</style>
 </head>
 <body>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -172,7 +187,8 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 @media (max-width: 860px) {
   .hero .in { padding-block: 8px 32px; gap: 0 }
   .hero .stage3d { order: -1; min-height: 50vh; margin: 0 -8px }
-  .hero .eyebrow, .hero p:not(.ok):not(.fine), .hero .facts { display: none }
+  .hero .eyebrow, .hero p:not(.ok):not(.fine) { display: none }
+  .hero .facts { margin-top: 16px; justify-content: center } .hero .facts span.f { font-size: 12.5px; padding: 5px 11px 5px 5px } .hero .facts span.f i { width: 22px; height: 22px }
   .hero h1 { font-size: 54px }
   .hero .soon { margin-bottom: 12px; font-size: 13px }
   .hform { margin-top: 16px }
@@ -414,13 +430,23 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         <p class="ok" hidden role="status"></p>
         <p class="fine" style="font-size:13px;color:var(--soft);margin:8px 0 0">We only email you about the launch. One click to unsubscribe.</p>
         <a class="meet" href="#flavors">Meet the three flavors ↓</a>
-        <div class="facts"><span>80 mg natural caffeine</span><span>Zero sugar</span><span>Under 10 kcal</span><span>250 ml slim can</span></div>
+        <div class="facts"><span class="f"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg></i>Natural caffeine</span><span class="f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 17.5l11-11"/></svg></i>0 g sugar</span><span class="f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19l8-8"/></svg></i>Clean energy</span><span class="f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1 0-10 6 6 0 0 1 11 1.5A4.3 4.3 0 0 1 17.5 18z"/></svg></i>Under 10 kcal</span></div>
       </div>
       <div class="stage3d" id="stage3d" aria-label="The three Cloudly cans"><div class="fallback" id="fallback"></div><div class="stamp" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text font-family="Nunito, sans-serif" font-weight="800" font-size="21" letter-spacing="4.6" fill="#123D33"><textPath href="#ringp" textLength="458" lengthAdjust="spacing">CLEAN ENERGY • COMING SOON •</textPath></text></svg><svg class="mid" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#123D33"/><path d="M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z" fill="#FFE600" stroke="#FFE600" stroke-width="4" stroke-linejoin="round"/></svg></div></div>
     </div>
   </section>
 
   <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
+
+  <section class="usp" aria-label="Why Cloudly">
+    <div class="in">
+      <div class="head"><div class="eyebrow">Why Cloudly</div><h2>Clean energy, nothing heavy.</h2></div>
+      <div class="row">
+        <div class="u"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-6-7-5-11 2 0 5 1 5 5 0-4 3-5 5-5 1 4-1 8-5 11z"/></svg></i><b>Natural caffeine</b><span>80 mg from green tea, about one cup of coffee</span></div><div class="u"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 17.5l11-11"/></svg></i><b>0 g sugar</b><span>Sweetened with stevia, never syrupy</span></div><div class="u"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19l8-8"/></svg></i><b>Clean energy</b><span>With L-theanine for a smooth, steady feeling</span></div><div class="u"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="9" width="16" height="7" rx="3.5" transform="rotate(-35 12 12.5)"/><path d="M10 7.5l4 9"/></svg></i><b>Vitamin B6 & B12*</b><span>For normal energy-yielding metabolism</span></div><div class="u"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1 0-10 6 6 0 0 1 11 1.5A4.3 4.3 0 0 1 17.5 18z"/></svg></i><b>Under 10 kcal</b><span>Light as a cloud, every single can</span></div><div class="u"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="8" cy="15" r="3.2"/><circle cx="15.5" cy="9" r="2.4"/><circle cx="16" cy="17" r="1.6"/><circle cx="9" cy="6.5" r="1.4"/></svg></i><b>Lightly sparkling</b><span>Fine bubbles, ice cold, real fruit taste</span></div>
+      </div>
+      <p class="note">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism.</p>
+    </div>
+  </section>
 
   <section class="filmband" id="film">
     <div class="in">
