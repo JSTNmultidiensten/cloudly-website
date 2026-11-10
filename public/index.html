@@ -1169,15 +1169,23 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
         g.fillStyle = F.dot; g.beginPath(); g.arc(fx + 96, y + 30, 8, 0, 6.2832); g.fill();
       } else if (F.icon === 'ice') {
-        const cube = (cx, cy, sz, rot) => { g.save(); g.translate(cx, cy); g.rotate(rot);
-          const gr = g.createLinearGradient(-sz, -sz, sz, sz); gr.addColorStop(0, '#E4F4FE'); gr.addColorStop(1, '#8FD0F7');
-          g.fillStyle = gr; g.strokeStyle = '#2F95E0'; g.lineWidth = 3.5; g.lineJoin = 'round';
-          g.beginPath(); g.moveTo(-sz + 8, -sz); g.lineTo(sz - 8, -sz); g.quadraticCurveTo(sz, -sz, sz, -sz + 8); g.lineTo(sz, sz - 8); g.quadraticCurveTo(sz, sz, sz - 8, sz); g.lineTo(-sz + 8, sz); g.quadraticCurveTo(-sz, sz, -sz, sz - 8); g.lineTo(-sz, -sz + 8); g.quadraticCurveTo(-sz, -sz, -sz + 8, -sz); g.closePath(); g.fill(); g.stroke();
-          g.fillStyle = 'rgba(255,255,255,.9)'; g.beginPath(); g.ellipse(-sz * .4, -sz * .45, sz * .28, sz * .12, -0.5, 0, 6.2832); g.fill(); g.restore(); };
-        cube(fx - 30, y + 18, 32, -0.25); cube(fx + 32, y + 6, 26, 0.3);
-        const spark = (sx, sy, r) => { g.save(); g.fillStyle = '#5CC1FF'; g.beginPath(); g.moveTo(sx, sy - r); g.quadraticCurveTo(sx, sy, sx + r, sy); g.quadraticCurveTo(sx, sy, sx, sy + r); g.quadraticCurveTo(sx, sy, sx - r, sy); g.quadraticCurveTo(sx, sy, sx, sy - r); g.fill(); g.restore(); };
-        spark(fx + 74, y - 28, 14); spark(fx - 82, y - 18, 10); spark(fx + 6, y - 40, 8);
-        g.fillStyle = F.dot; g.beginPath(); g.arc(fx - 104, y + 34, 7, 0, 6.2832); g.fill(); g.beginPath(); g.arc(fx + 100, y + 30, 6, 0, 6.2832); g.fill();
+        /* two clear ice cubes in soft 3D, with a few fizz bubbles */
+        const cube = (cx, cy, s, rot) => { g.save(); g.translate(cx, cy); g.rotate(rot); const k = .87;
+          g.fillStyle = 'rgba(47,149,224,.13)'; g.beginPath(); g.ellipse(0, s * 1.08, s * 1.05, s * .2, 0, 0, 6.2832); g.fill();
+          const face = (pts, fill) => { g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.closePath(); g.fillStyle = fill; g.strokeStyle = fill; g.lineWidth = 7; g.lineJoin = 'round'; g.fill(); g.stroke(); };
+          const T = [0, -s], R = [s * k, -s * .5], C = [0, 0], L = [-s * k, -s * .5], B = [0, s], BR = [s * k, s * .5], BL = [-s * k, s * .5];
+          const gl = g.createLinearGradient(-s, -s * .5, 0, s); gl.addColorStop(0, '#BFE6FD'); gl.addColorStop(1, '#8CCDF6');
+          const gr = g.createLinearGradient(0, -s * .5, s, s); gr.addColorStop(0, '#7CC3F2'); gr.addColorStop(1, '#4FA9E8');
+          const gt = g.createLinearGradient(-s, -s, s, 0); gt.addColorStop(0, '#FFFFFF'); gt.addColorStop(1, '#CDEAFD');
+          face([L, C, B, BL], gl); face([C, R, BR, B], gr); face([T, R, C, L], gt);
+          g.strokeStyle = '#8FCFF7'; g.lineWidth = 2; g.lineJoin = 'round'; g.beginPath(); g.moveTo(L[0] - 3, L[1]); g.lineTo(T[0], T[1] - 3); g.lineTo(R[0] + 3, R[1]); g.stroke();
+          g.strokeStyle = 'rgba(255,255,255,.95)'; g.lineWidth = 2.5; g.lineCap = 'round';
+          g.beginPath(); g.moveTo(L[0] + 3, L[1] + 4); g.lineTo(C[0], C[1] + 3); g.lineTo(R[0] - 3, R[1] + 4); g.stroke();
+          g.beginPath(); g.moveTo(C[0], C[1] + 6); g.lineTo(B[0], B[1] - 4); g.globalAlpha = .55; g.stroke(); g.globalAlpha = 1;
+          g.fillStyle = 'rgba(255,255,255,.5)'; g.beginPath(); g.moveTo(-s * .68, -s * .12); g.lineTo(-s * .6, -s * .07); g.lineTo(-s * .6, s * .3); g.lineTo(-s * .68, s * .25); g.closePath(); g.fill();
+          g.restore(); };
+        cube(fx + 36, y - 2, 26, 0.16); cube(fx - 24, y + 14, 34, -0.1);
+        g.strokeStyle = '#5CC1FF'; g.lineWidth = 3; [[fx + 82, y - 34, 7], [fx + 66, y - 58, 4.5], [fx - 76, y - 26, 5.5], [fx - 90, y - 46, 3.5]].forEach(([bx, by, r]) => { g.beginPath(); g.arc(bx, by, r, 0, 6.2832); g.stroke(); });
       } else {
         berry(fx - 40, y + 18, 1.1);
         /* rose: side view bloom with layered petals, stem and two leaves */
