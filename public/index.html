@@ -570,10 +570,11 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
             <tr><th>Average values</th><th>per 100 ml</th><th>per can</th></tr>
             <tr><td>Energy</td><td>&lt; 4 kcal</td><td>&lt; 10 kcal</td></tr>
             <tr><td>Fat</td><td>0 g</td><td>0 g</td></tr>
-            <tr><td>Carbohydrate</td><td>&lt; 0.5 g</td><td>&lt; 1 g</td></tr>
+            <tr><td>Carbohydrate</td><td>0.8 g</td><td>2 g</td></tr>
             <tr class="sub"><td>of which sugars</td><td>0 g</td><td>0 g</td></tr>
+            <tr class="sub"><td>of which polyols</td><td>0.8 g</td><td>2 g</td></tr>
             <tr><td>Protein</td><td>0 g</td><td>0 g</td></tr>
-            <tr class="gap"><td>Salt</td><td>0.02 g</td><td>0.05 g</td></tr>
+            <tr class="gap"><td>Salt</td><td>0.04 g</td><td>0.1 g</td></tr>
             <tr><td>Niacin</td><td>1.9 mg (12%*)</td><td>4.8 mg (30%*)</td></tr>
             <tr><td>Vitamin B6</td><td>0.17 mg (12%*)</td><td>0.42 mg (30%*)</td></tr>
             <tr class="gap"><td>Vitamin B12</td><td>0.3 µg (12%*)</td><td>0.75 µg (30%*)</td></tr>
@@ -655,7 +656,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       <div class="sec-head"><div><div class="eyebrow">FAQ</div><h2>Good to know.</h2></div></div>
       <div class="faq">
         <details><summary>When can I buy Cloudly?</summary><p>We are working on our first production run right now. Join the launch list and you will hear it first, with an early bird discount.</p></details>
-        <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, a little real fruit juice, natural caffeine from green tea, vitamins B3, B6 and B12, and stevia. Vitamins B6 and B12 contribute to normal energy-yielding metabolism.</p></details><details><summary>How much caffeine is in a can?</summary><p>80 mg per 250 ml can, about one cup of coffee. High caffeine content: not recommended for children or pregnant or breast-feeding women.</p></details>
+        <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, a little real fruit juice, natural caffeine from green tea, vitamins B3, B6 and B12, and natural sweeteners from stevia and erythritol. Vitamins B6 and B12 contribute to normal energy-yielding metabolism.</p></details><details><summary>How much caffeine is in a can?</summary><p>80 mg per 250 ml can, about one cup of coffee. High caffeine content: not recommended for children or pregnant or breast-feeding women.</p></details>
         <details><summary>Where will you deliver?</summary><p>First in the Netherlands, with Belgium soon after.</p></details>
         <details><summary>Can I sell Cloudly in my shop or café?</summary><p>Yes, we would love that. Send a message to hello@drinkcloudly.com and we will get in touch before launch.</p></details>
       </div>
@@ -990,9 +991,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   const colorOf = k => k === 'mix' ? '#E8F4FC' : FL[k].bg;
   const cansOf = k => k === 'mix' ? ['peach', 'grapefruit', 'mint'] : [k];
   const pdpMain = document.getElementById('pdp-main'), pdpThumbs = document.getElementById('pdp-thumbs');
-  const INGR = { grapefruit: 'Sparkling water, strawberry juice, rose extract, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).',
-    peach: 'Sparkling water, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).',
-    mint: 'Sparkling water, cherry juice, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).' };
+  const INGR = { grapefruit: 'Sparkling water, strawberry juice (4%), natural flavouring, rose extract, acid: citric acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).',
+    peach: 'Sparkling water, acid: citric acid, acidity regulator: sodium citrate, taurine, natural flavouring, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, thickener: xanthan gum, vitamins (niacin, pantothenic acid, B6, B12).',
+    mint: 'Sparkling water, cherry juice (5%), natural flavouring, acids: citric acid, malic acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).' };
   function renderShopPics() {
     const k = PDP.flavor, flav = cansOf(k), n = PDP.size;
     const rows = n === 24 ? 4 : 3, cols = n === 24 ? 6 : 4;
@@ -1119,11 +1120,11 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
   const FLAV = {
     mint: { name: 'Cherry Crush', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF1F2', ink: '#3D0F1A', soft: '#7A4A55', accent: '#8FD14F', dot: '#8FD14F', band: '#A3162F', bandText: '#FFD9DE',
-      ingredients: 'Sparkling water, cherry juice, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).', story: 'Dark, juicy cherry with natural caffeine. Clear head, light feeling, all day long.', icon: 'cherry' },
+      ingredients: 'Sparkling water, cherry juice (5%), natural flavouring, acids: citric acid, malic acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Dark, juicy cherry with natural caffeine. Clear head, light feeling, all day long.', icon: 'cherry' },
     peach: { name: 'Ice Cloud', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#EEF7FE', ink: '#0F2E4A', soft: '#4D6E8A', accent: '#5CC1FF', dot: '#FFD84D', band: '#2F95E0', bandText: '#DDF0FF',
-      ingredients: 'Sparkling water, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).', story: 'The classic energy taste you know, made clean and ice cold. Clear head, light feeling, ice cold.', icon: 'ice' },
+      ingredients: 'Sparkling water, acid: citric acid, acidity regulator: sodium citrate, taurine, natural flavouring, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, thickener: xanthan gum, vitamins (niacin, pantothenic acid, B6, B12).', story: 'The classic energy taste you know, made clean and ice cold. Clear head, light feeling, ice cold.', icon: 'ice' },
     grapefruit: { name: 'Strawberry & Rose', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF0F3', ink: '#3D1424', soft: '#8A5262', accent: '#FF5C7C', dot: '#FFB627', band: '#EE4B6A', bandText: '#FFE3EA',
-      ingredients: 'Sparkling water, strawberry juice, rose extract, natural flavouring, caffeine from green tea, L-theanine, acid: citric acid, sweetener: steviol glycosides, vitamins (niacin, B6, B12).', story: 'Sweet strawberry and a soft touch of rose with natural caffeine. Pour it over ice and let your head drift into the clouds.', icon: 'strawrose' }
+      ingredients: 'Sparkling water, strawberry juice (4%), natural flavouring, rose extract, acid: citric acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Sweet strawberry and a soft touch of rose with natural caffeine. Pour it over ice and let your head drift into the clouds.', icon: 'strawrose' }
   };
 
   const wait = ms => new Promise(r => setTimeout(r, ms));
