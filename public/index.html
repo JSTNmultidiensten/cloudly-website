@@ -1224,7 +1224,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       g.fillStyle = F.bandText; g.font = '500 24px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 186, 10);
       /* back panel: mandatory Dutch label info (EU 1169/2011) */
       const ix = 1660, iw = 480, lx = ix - iw / 2; g.textAlign = 'left'; let y = 262;
-      g.fillStyle = F.ink; g.font = '600 20px Outfit, sans-serif'; y = wrapText(F.legal, lx, y, iw, 26); y += 6;
+      { const nm = F.legal.split(', met ')[0]; g.fillStyle = F.ink; g.font = '600 20px Outfit, sans-serif'; g.fillText(nm, lx, y); const w = g.measureText(nm).width;
+        g.fillStyle = F.soft; g.font = '400 14px Outfit, sans-serif'; if (w + 130 < iw) g.fillText('met zoetstoffen', lx + w + 10, y); else { y += 20; g.fillText('met zoetstoffen', lx, y); } y += 32; }
       g.fillStyle = F.soft; g.font = '500 16px Outfit, sans-serif'; spaced('INGREDIËNTEN', lx, y, 5, 'left'); y += 26;
       g.fillStyle = F.ink; g.font = '400 18px Outfit, sans-serif'; y = wrapText(F.ingNL, lx, y, iw, 23); y += 4; g.fillRect(lx, y, iw, 1.5); y += 30;
       g.fillStyle = F.soft; g.font = '500 16px Outfit, sans-serif'; spaced('VOEDINGSWAARDE PER 100 ML', lx, y, 5, 'left'); y += 28;
