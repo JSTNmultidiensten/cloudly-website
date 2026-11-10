@@ -132,15 +132,10 @@ header.top .in { display: flex; align-items: center; justify-content: space-betw
 a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 
 /* coming soon: loud and clear */
-.announce { display: flex; align-items: center; gap: 14px; background: #123D33; color: #fff; text-decoration: none; font: 700 14px/1.3 var(--body); letter-spacing: .02em; padding: 9px 0 9px 16px; overflow: hidden }
-.announce .am { flex: 1; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent) }
-.announce .amt { display: inline-flex; gap: 34px; white-space: nowrap; animation: amove 30s linear infinite; padding-right: 34px }
-.announce .amt span { display: inline-flex; align-items: center; gap: 7px } .announce .amt svg { color: #FFE600 }
-@keyframes amove { to { transform: translateX(-50%) } }
-@media (prefers-reduced-motion: reduce) { .announce .amt { animation: none } }
+.announce { background: #123D33; color: #fff; text-align: center; font: 700 14px/1.3 var(--body); letter-spacing: .02em; padding: 10px 16px }
 .announce a { color: #FFE600; text-decoration: none; white-space: nowrap }
 @media (max-width: 600px) { .announce .hide-m { display: none } }
-.announce b { flex: none; color: #123D33; background: #FFE600; border-radius: 999px; padding: 3px 10px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase }
+.announce b { color: #FFE600; letter-spacing: .12em; text-transform: uppercase; margin-right: 6px }
 .soon { display: inline-flex; align-items: center; gap: 10px; background: #FFE600; color: #123D33; font: 800 15px/1 var(--body); letter-spacing: .16em; text-transform: uppercase; padding: 11px 18px 11px 14px; border-radius: 999px; box-shadow: 0 6px 0 #123D33; margin-bottom: 18px; transform: rotate(-2deg) }
 .soon i { width: 10px; height: 10px; border-radius: 50%; background: #E2453C; box-shadow: 0 0 0 0 rgba(226,69,60,.6) }
 @media (prefers-reduced-motion: no-preference) { .soon i { animation: ping 1.6s infinite } }
@@ -427,7 +422,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .pdp .main .tag i { font-style: normal; color: #FFE600 }
 </style>
 
-<a class="announce" href="#list" aria-label="Coming soon. Join the launch list for an early bird discount"><b>Coming soon</b><span class="am"><span class="amt"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg>Natural caffeine</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 17.5l11-11M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16"/></svg>0 g sugar</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14M5 19l8-8"/></svg>Clean energy</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1 0-10 6 6 0 0 1 11 1.5A4.3 4.3 0 0 1 17.5 18z"/></svg>Under 10 kcal</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Early bird discount for the launch list</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg>Natural caffeine</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 17.5l11-11M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16"/></svg>0 g sugar</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14M5 19l8-8"/></svg>Clean energy</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1 0-10 6 6 0 0 1 11 1.5A4.3 4.3 0 0 1 17.5 18z"/></svg>Under 10 kcal</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Early bird discount for the launch list</span></span></span></a>
+<div class="announce"><b>Coming soon</b> <span class="hide-m">Cloudly lands in the Netherlands soon. </span><a href="#list">Join the launch list<span class="hide-m"> for an early bird discount</span> →</a></div>
 <header class="top">
   <div class="in">
     <a class="logo" href="#top" aria-label="cloudly home">
