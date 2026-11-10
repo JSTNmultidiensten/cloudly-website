@@ -36,22 +36,34 @@
 .toast .tx { margin-left: auto; align-self: flex-start; border: 0; background: none; font-size: 20px; line-height: 1; color: var(--soft); cursor: pointer; padding: 0 0 0 6px }
 .pop-scrim { position: fixed; inset: 0; z-index: 90; background: rgba(15,40,60,.45); backdrop-filter: blur(4px); display: grid; place-items: center; padding: 16px; opacity: 0; transition: opacity .3s }
 .pop-scrim.show { opacity: 1 }
-.pop { position: relative; width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border-radius: 30px; overflow: hidden; background: #fff; box-shadow: 0 40px 90px -30px rgba(10,40,70,.6); transform: translateY(20px) scale(.97); transition: transform .45s cubic-bezier(.3,1.5,.5,1) }
-.pop-scrim.show .pop { transform: none }
-.pop .art { position: relative; background: linear-gradient(180deg, #8FD0FF, #DFF2FF 70%, #FFE4EA); display: flex; align-items: flex-end; justify-content: center; gap: 2%; padding-top: 30px; min-height: 340px }
-.pop .art img.can3d { height: 74%; width: auto; filter: drop-shadow(0 20px 24px rgba(20,50,80,.3)) } .pop .art img.can3d:nth-child(2) { height: 86% } .pop .art svg.can { height: 70%; width: auto }
-.pop .art .stk { position: absolute; top: 16px; left: 16px; background: #FFE600; color: #123D33; font: 800 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: 999px; box-shadow: 0 4px 0 #123D33; transform: rotate(-4deg) }
-.pop .txt { padding: clamp(24px, 4vw, 40px) }
-.pop h3 { font: 400 clamp(28px, 3.6vw, 40px)/1.05 var(--display); margin: 6px 0 10px; color: var(--ink); letter-spacing: -.02em }
-.pop p { color: var(--soft); margin: 0 0 16px }
-.pop .mini { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px } .pop .mini span { background: #F1F8F4; color: #1F7A52; border-radius: 999px; padding: 6px 10px; font: 800 12px var(--body) }
-.pop form { display: flex; flex-direction: column; gap: 8px } .pop label { position: absolute; left: -9999px }
-.pop input[type=email] { min-height: 50px; border-radius: 999px; border: 1.5px solid var(--line); padding: 0 18px; font: 500 16px var(--body) }
-.pop .btn { min-height: 50px; width: 100% }
-.pop .ok { margin: 10px 0 0; font-weight: 700; color: #1F7A52 }
-.pop .px { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.9); font-size: 22px; cursor: pointer; color: var(--ink) }
-.pop .later { display: block; margin: 12px auto 0; border: 0; background: none; color: var(--soft); font: 600 13px var(--body); cursor: pointer; text-decoration: underline }
-@media (max-width: 640px) { .pop { grid-template-columns: minmax(0, 1fr) } .pop .art { min-height: 190px } .toast { left: 12px; right: 12px; max-width: none } }
+.ebpop { position: relative; width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border-radius: 30px; overflow: hidden; background: #fff; box-shadow: 0 40px 90px -30px rgba(10,40,70,.6); transform: translateY(20px) scale(.97); transition: transform .45s cubic-bezier(.3,1.5,.5,1) }
+.pop-scrim.show .ebpop { transform: none }
+.ebpop .art { position: relative; background: linear-gradient(180deg, #8FD0FF, #DFF2FF 70%, #FFE4EA); display: flex; align-items: flex-end; justify-content: center; gap: 2%; padding-top: 30px; min-height: 340px }
+.ebpop .art img.can3d { height: 74%; width: auto; filter: drop-shadow(0 20px 24px rgba(20,50,80,.3)) } .ebpop .art img.can3d:nth-child(2) { height: 86% } .ebpop .art svg.can { height: 70%; width: auto }
+.ebpop .art .stk { position: absolute; top: 16px; left: 16px; background: #FFE600; color: #123D33; font: 800 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: 999px; box-shadow: 0 4px 0 #123D33; transform: rotate(-4deg) }
+.ebpop .txt { padding: clamp(24px, 4vw, 40px) }
+.ebpop h3 { font: 400 clamp(28px, 3.6vw, 40px)/1.05 var(--display); margin: 6px 0 10px; color: var(--ink); letter-spacing: -.02em }
+.ebpop p { color: var(--soft); margin: 0 0 16px }
+.ebpop .mini { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px } .ebpop .mini span { background: #F1F8F4; color: #1F7A52; border-radius: 999px; padding: 6px 10px; font: 800 12px var(--body) }
+.ebpop form { display: flex; flex-direction: column; gap: 8px } .ebpop label { position: absolute; left: -9999px }
+.ebpop .cloudfield { position: relative; margin: 26px 0 6px; height: 58px; filter: drop-shadow(0 10px 16px rgba(60,120,170,.22)) }
+.ebpop .cloudfield::before, .ebpop .cloudfield::after { content: ""; position: absolute; background: #EEF8FF; border-radius: 50%; z-index: 0 }
+.ebpop .cloudfield::before { width: 64px; height: 64px; left: 14%; top: -26px }
+.ebpop .cloudfield::after { width: 88px; height: 88px; left: 38%; top: -40px }
+.ebpop .cloudfield input { position: relative; z-index: 1; width: 100%; height: 100%; border: 0; border-radius: 999px; background: #EEF8FF; padding: 0 22px; font: 600 16px var(--body); color: var(--ink); outline: none }
+.ebpop .cloudfield input::placeholder { color: #7FA3BD; font-weight: 500 }
+.ebpop .cloudfield:focus-within { filter: drop-shadow(0 10px 16px rgba(60,120,170,.3)) drop-shadow(0 0 0 #5CC1FF) drop-shadow(0 0 6px rgba(92,193,255,.7)) }
+.ebpop .cloudfield .bump { position: absolute; width: 44px; height: 44px; right: 16%; top: -16px; background: #EEF8FF; border-radius: 50%; z-index: 0 }
+.ebpop .cloudfield.fly { animation: cloudfly 1.6s cubic-bezier(.4,0,.3,1) forwards; pointer-events: none }
+@keyframes cloudfly { 0% { transform: none; opacity: 1 } 20% { transform: translateY(6px) scale(1.02) } 100% { transform: translate(60px, -260px) scale(.7) rotate(-4deg); opacity: 0 } }
+.ebpop form.sent .btn { opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; pointer-events: none }
+.ebpop .ok.yay { font: 500 22px/1.25 var(--display); color: var(--ink); animation: yay .6s .9s both }
+@keyframes yay { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
+.ebpop .btn { min-height: 50px; width: 100% }
+.ebpop .ok { margin: 10px 0 0; font-weight: 700; color: #1F7A52 }
+.ebpop .px { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.9); font-size: 22px; cursor: pointer; color: var(--ink) }
+.ebpop .later { display: block; margin: 12px auto 0; border: 0; background: none; color: var(--soft); font: 600 13px var(--body); cursor: pointer; text-decoration: underline }
+@media (max-width: 640px) { .ebpop { grid-template-columns: minmax(0, 1fr) } .ebpop .art { min-height: 190px } .toast { left: 12px; right: 12px; max-width: none } }
 </style>
 </head>
 <body>
@@ -282,7 +294,7 @@ section.block { padding-block: 72px }
 .qty button { width: 40px; height: 44px; border: 0; background: transparent; font: 800 18px var(--body); color: var(--ink); cursor: pointer; border-radius: 999px }
 .qty span { min-width: 22px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums }
 .buy .btn { flex: 1; min-height: 44px; padding: 10px 14px }
-.pop { animation: pop .6s cubic-bezier(.3,1.6,.5,1) }
+.ebpop { animation: pop .6s cubic-bezier(.3,1.6,.5,1) }
 @keyframes pop { 0% { transform: translateY(14px) scale(.98) } 100% { transform: none } }
 
 /* story */
@@ -619,7 +631,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden><i></i><div><b></b><small></small></div><button class="tx" type="button" aria-label="Close">×</button></div>
 <div class="pop-scrim" id="pop" hidden>
-  <div class="pop" role="dialog" aria-modal="true" aria-labelledby="pop-h">
+  <div class="ebpop" role="dialog" aria-modal="true" aria-labelledby="pop-h">
     <button class="px" type="button" id="pop-x" aria-label="Close">×</button>
     <div class="art" id="pop-art"><span class="stk">Coming soon</span></div>
     <div class="txt">
@@ -630,7 +642,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       <form class="lform" data-source="popup" name="launch-list">
         <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
         <label for="pop-email">Email address</label>
-        <input id="pop-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+        <div class="cloudfield"><span class="bump"></span><input id="pop-email" name="email" type="email" required placeholder="your email, light as a cloud" autocomplete="email"></div>
         <button class="btn" type="submit">Get early access</button>
       </form>
       <p class="ok" hidden role="status"></p>
@@ -849,13 +861,13 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       const email = (input.value || '').trim();
       const trap = wf.querySelector('input[name=bot-field]');
       const live = /(^|\.)drinkcloudly\.com$|\.pages\.dev$/.test(location.hostname);
-      if (!live) { wok.textContent = 'Preview only: on drinkcloudly.com this adds you to the launch list.'; wok.hidden = false; return; }
+      if (!live) { wok.textContent = 'Preview only: on drinkcloudly.com this adds you to the launch list.'; wok.hidden = false; wf.dispatchEvent(new CustomEvent('subscribed', { detail: { preview: true } })); return; }
       const btn = wf.querySelector('button[type=submit]'); btn.disabled = true;
       try {
         const r = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, source: wf.dataset.source || (wf.id === 'wait-form' ? 'bottom' : 'hero'), 'bot-field': trap ? trap.value : '' }) });
         const res = await r.json().catch(() => ({}));
-        if (r.ok && res.ok) { wf.reset(); wok.textContent = res.already ? 'You are already on the list. We will email you a few days before launch.' : 'Thanks! You are on the list. We will email you a few days before launch.'; }
+        if (r.ok && res.ok) { wf.dispatchEvent(new CustomEvent('subscribed', { detail: { already: res.already } })); wf.reset(); wok.textContent = res.already ? 'You are already on the list. We will email you a few days before launch.' : 'Thanks! You are on the list. We will email you a few days before launch.'; }
         else if (res.error === 'invalid_email') wok.textContent = 'That email address does not look right. Please check it and try again.';
         else wok.textContent = 'Something went wrong. Please try again in a minute.';
       } catch (err) {
@@ -893,6 +905,13 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       setTimeout(() => { const i = document.getElementById('pop-email'); if (i && window.innerWidth > 640) i.focus({ preventScroll: true }); }, 350);
     }
     function closePop() { pop.classList.remove('show'); setTimeout(() => { pop.hidden = true; popOpen = false; }, 300); }
+    const pf = pop.querySelector('form.lform');
+    pf.addEventListener('subscribed', e => {
+      const cf = pf.querySelector('.cloudfield'), ok = pf.nextElementSibling;
+      cf.classList.add('fly'); pf.classList.add('sent');
+      setTimeout(() => { ok.classList.add('yay'); ok.textContent = e.detail && e.detail.already ? 'You were already on cloud nine. See you at launch!' : 'You are on the list! Your early bird discount floats your way before launch.'; ok.hidden = false; }, 50);
+      setTimeout(closePop, 4200);
+    });
     document.getElementById('pop-x').onclick = closePop; document.getElementById('pop-later').onclick = closePop;
     pop.addEventListener('click', e => { if (e.target === pop) closePop(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && popOpen) closePop(); });
