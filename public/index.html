@@ -844,7 +844,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   });
   /* small teaser for the next flavors: compact, no names */
   const teaseEl = document.createElement('section'); teaseEl.className = 'teasestrip'; teaseEl.setAttribute('aria-label', 'More flavors coming later');
-  teaseEl.innerHTML = '<div class="in"><div class="card"><div class="tcans" aria-hidden="true">' + canPic('peach') + canPic('mint') + '</div><div><div class="eyebrow">Next up</div><h3>Two more flavors are on the way.</h3><p>Still top secret. The launch list hears it first.</p></div></div></div>';
+  teaseEl.innerHTML = '<div class="in"><div class="card"><div class="tcans" aria-hidden="true">' + canPic('peach') + canPic('mint') + '</div><div><div class="eyebrow">Psst…</div><h3>Two more flavors are floating in.</h3><p>We are still on cloud nine perfecting them. Join the list and taste them first.</p></div></div></div>';
   flavorsEl.appendChild(teaseEl);
 
   /* playful floating clouds: puffy SVG clouds that drift, bob, squish on hover and go poof on click */
