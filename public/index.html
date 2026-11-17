@@ -291,6 +291,11 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .band .canwrap { display: flex; justify-content: center; height: clamp(320px, 46vw, 520px) }
 .band .canwrap > * { height: 100%; will-change: transform }
 .band .canwrap img.can3d, .band .canwrap svg.can { height: 100%; width: auto }
+.teasestrip { padding: 28px 0 8px; position: relative; z-index: 2 }
+.teasestrip .card { display: flex; align-items: center; gap: clamp(16px, 4vw, 40px); background: #121417; color: #fff; border-radius: 28px; padding: 18px clamp(18px, 4vw, 40px); max-width: 760px; margin: 0 auto }
+.teasestrip .tcans { display: flex; flex: none; height: 150px } .teasestrip .tcans img.can3d, .teasestrip .tcans svg.can { height: 100%; width: auto; margin-right: -14px }
+.teasestrip .eyebrow { color: rgba(255,255,255,.6) } .teasestrip h3 { font: 500 clamp(22px, 3vw, 30px)/1.1 var(--display); margin: 6px 0 6px; color: #fff } .teasestrip p { margin: 0; color: rgba(255,255,255,.7); font-size: 15px }
+@media (max-width: 560px) { .teasestrip .card { flex-direction: column; text-align: center } .teasestrip .tcans { height: 120px } }
 .band.tease { --bg: #121417 !important; background: #121417; color: #FFFFFF }
 .band.tease h2, .band.tease p { color: #FFFFFF } .band.tease .num { color: rgba(255,255,255,.55) }
 .band.tease .word { color: rgba(255,255,255,.06) } .band.tease .perks, .band.tease .fine, .band.tease .ing { display: none }
@@ -514,7 +519,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         </form>
         <p class="ok" hidden role="status"></p>
         <p class="fine" style="font-size:13px;color:var(--soft);margin:8px 0 0">We only email you about the launch. One click to unsubscribe.</p>
-        <a class="meet" href="#flavors">Meet flavor 01 ↓</a>
+        <a class="meet" href="#flavors">Meet Strawberry &amp; Rose ↓</a>
         <div class="facts"><span class="f" style="--c:#3FBF7F"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg></i>Natural caffeine</span><span class="f" style="--c:#FF5C7C"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 17.5l11-11"/></svg></i>0 g sugar</span><span class="f" style="--c:#2FB5A8"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19l8-8"/></svg></i>Clean energy</span><span class="f" style="--c:#5CC1FF"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1 0-10 6 6 0 0 1 11 1.5A4.3 4.3 0 0 1 17.5 18z"/></svg></i>Under 10 kcal</span></div>
       </div>
       <div class="stage3d" id="stage3d" aria-label="The three Cloudly cans"><div class="fallback" id="fallback"></div><div class="stamp" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text font-family="Nunito, sans-serif" font-weight="800" font-size="21" letter-spacing="4.6" fill="#123D33"><textPath href="#ringp" textLength="458" lengthAdjust="spacing">CLEAN ENERGY • COMING SOON •</textPath></text></svg><svg class="mid" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#123D33"/><path d="M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z" fill="#FFE600" stroke="#FFE600" stroke-width="4" stroke-linejoin="round"/></svg></div></div>
@@ -804,12 +809,12 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   /* flavor bands */
   const flavorsEl = document.getElementById('flavors');
   const bands = [];
-  ORDER.forEach((k, i) => {
+  ORDER.filter(k => !TEASED[k]).forEach((k, i) => {
     const f = FL[k];
     const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
     sec.setAttribute('aria-label', f.name);
     sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div></div>' +
-      '<div><div class="num">0' + (i + 1) + ' / 03 · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#list">Notify me at launch</a></div></div>';
+      '<div><div class="num">Flavor 01 · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#list">Notify me at launch</a></div></div>';
     sec.querySelector('.word').textContent = TEASED[k] ? '? · ? · ? · ? · ' : (f.name.split(' & ')[0] + ' · ').repeat(4);
     sec.querySelector('h2').textContent = TEASED[k] ? 'Flavor 0' + TEASED[k] : f.name;
     sec.querySelector('p').textContent = TEASED[k] ? 'Still top secret. This one drops later, and the launch list hears it first.' : f.desc;
@@ -827,6 +832,10 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     flavorsEl.appendChild(sec);
     bands.push({ sec, key: k, mover: sec.querySelector('.mover'), word: sec.querySelector('.word'), dir: i % 2 ? 1 : -1 });
   });
+  /* small teaser for the next flavors: compact, no names */
+  const teaseEl = document.createElement('section'); teaseEl.className = 'teasestrip'; teaseEl.setAttribute('aria-label', 'More flavors coming later');
+  teaseEl.innerHTML = '<div class="in"><div class="card"><div class="tcans" aria-hidden="true">' + canPic('peach') + canPic('mint') + '</div><div><div class="eyebrow">Next up</div><h3>Two more flavors are on the way.</h3><p>Still top secret. The launch list hears it first.</p></div></div></div>';
+  flavorsEl.appendChild(teaseEl);
 
   /* playful floating clouds: puffy SVG clouds that drift, bob, squish on hover and go poof on click */
   const SHAPES = [
@@ -1120,6 +1129,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       Object.assign(IMG, map);
       pics.forEach(([el, p]) => { el.innerHTML = p.cans.map(canPic).join(''); });
       bands.forEach(b => { b.mover.innerHTML = canPic(b.key); b.mover.classList.remove('wait'); });
+      const tc = document.querySelector('.teasestrip .tcans'); if (tc) tc.innerHTML = canPic('peach') + canPic('mint');
       renderShopPics(); renderBag();
     },
     useHero3D(canvas) {
@@ -1652,7 +1662,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.2 })); floor.rotation.x = -Math.PI / 2; floor.position.y = -H - 1.0; floor.receiveShadow = true; scene.add(floor);
     const keys = ['peach', 'grapefruit', 'mint'];
     const cans = keys.map(k => makeCan(k));
-    const base = [{ x: -1.95, z: -0.4, ry: 0.42, rz: 0.07, s: 1 }, { x: 0, z: 0.5, ry: -0.12, rz: 0, s: 1.1 }, { x: 1.95, z: -0.4, ry: -0.62, rz: -0.07, s: 1 }];
+    const base = [{ x: -1.7, z: -1.6, ry: 0.42, rz: 0.07, s: 0.78 }, { x: 0, z: 0.7, ry: -0.12, rz: 0, s: 1.25 }, { x: 1.7, z: -1.6, ry: -0.62, rz: -0.07, s: 0.78 }];
     cans.forEach(c => scene.add(c));
 
     const props = [];
