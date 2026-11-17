@@ -571,7 +571,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
           <div class="thumbs" id="pdp-thumbs"></div>
         </div>
         <div>
-          <div class="eyebrow" id="pdp-eyebrow">Shop · pre-order soon</div>
+          <div class="eyebrow" id="pdp-eyebrow">Shop · coming soon</div>
           <h2 id="pdp-title">Cloudly Sparkling Energy</h2>
           <div class="stars">New · launching in the Netherlands</div>
           <p class="lead" id="pdp-lead">Clean, light energy with natural caffeine from green tea and zero sugar. Lightly sparkling, ice cold and light as a cloud.</p>
@@ -1083,7 +1083,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         document.getElementById('nf-bar').textContent = mix ? 'Mixed pack' : nameOf(k);
         document.getElementById('nf-ingr').textContent = mix ? INGR.grapefruit : INGR[k];
         document.getElementById('nf-taste').textContent = { grapefruit: 'sweet strawberry and soft rose, lightly sparkling', peach: 'the classic energy taste, ice cold and lightly sparkling', mint: 'dark juicy cherry, a little tart, lightly sparkling', mix: 'three fruity flavors, lightly sparkling' }[k];
-        document.getElementById('pdp-eyebrow').textContent = 'Shop · ' + (mix ? 'mixed pack' : nameOf(k)) + ' · pre-order soon';
+        document.getElementById('pdp-eyebrow').textContent = 'Shop · ' + (mix ? 'mixed pack' : nameOf(k)) + ' · coming soon';
         sec.classList.remove('swap');
       };
       if (sec.dataset.k && sec.dataset.k !== k) { sec.classList.add('swap'); setTimeout(apply, 220); } else apply();
