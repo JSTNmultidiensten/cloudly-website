@@ -1357,15 +1357,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       [[fx - 250, 270, 0.75, -0.25], [fx + 255, 300, 0.6, 0.3], [fx - 285, 940, 0.7, 0.2], [fx + 285, 960, 0.8, -0.2], [fx + 300, 640, 0.5, 0.25], [fx - 310, 590, 0.5, -0.3]].forEach(([x, y, k, r]) => roseAt(x, y, k, r));
       g.save(); g.translate(fx, 790); g.scale(2.3, 2.3); g.translate(-fx, -900); icon(fx, 900); g.restore();
       }
-      { /* 0g sugar seal: scalloped starburst sticker, tilted, with a pink offset shadow */
-        const bx = fx - 262, by = 700, r = 72, n = 16; g.save(); g.translate(bx, by); g.rotate(-0.21);
-        const seal = (rr, dd) => { g.beginPath(); for (let i = 0; i <= n * 2; i++) { const a = i / (n * 2) * 6.2832 - 1.5708, rad = i % 2 ? rr - dd : rr; i ? g.lineTo(Math.cos(a) * rad, Math.sin(a) * rad) : g.moveTo(Math.cos(a) * rad, Math.sin(a) * rad); } g.closePath(); };
-        g.lineJoin = 'round'; g.save(); g.translate(5, 7); seal(r, 11); g.fillStyle = F.accent || '#FF6FA8'; g.strokeStyle = F.accent || '#FF6FA8'; g.lineWidth = 7; g.fill(); g.stroke(); g.restore();
-        seal(r, 11); g.fillStyle = F.badge0 || F.badge; g.strokeStyle = F.badge0 || F.badge; g.lineWidth = 7; g.fill(); g.stroke();
-        g.setLineDash([4, 6]); g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 2.5; g.beginPath(); g.arc(0, 0, r - 15, 0, 6.2832); g.stroke(); g.setLineDash([]);
-        g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '800 58px Outfit, sans-serif'; g.fillText('0g', 0, 12); g.font = '800 14px Outfit, sans-serif'; spaced('SUGAR', 0, 33, 3);
-        g.fillStyle = '#FFFFFF'; g.beginPath(); const sx = r * 0.78, sy = -r * 0.78, k = 11; g.moveTo(sx, sy - k); g.lineTo(sx + 3, sy - 3); g.lineTo(sx + k, sy); g.lineTo(sx + 3, sy + 3); g.lineTo(sx, sy + k); g.lineTo(sx - 3, sy + 3); g.lineTo(sx - k, sy); g.lineTo(sx - 3, sy - 3); g.closePath(); g.fill();
-        g.restore(); }
+      { const bx = fx - 262, by = 700, r = 56; g.save(); g.fillStyle = F.badge0 || F.badge; g.beginPath(); g.arc(bx, by, r, 0, 6.2832); g.fill();
+        g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '500 54px Outfit, sans-serif'; g.fillText('0g', bx, by + 12); g.font = '700 15px Outfit, sans-serif'; spaced('SUGAR', bx, by + 36, 4); g.restore(); }
       { const pw = 330, ph = 50, px = fx - pw / 2, py = 1000; g.save(); g.fillStyle = F.badge; g.beginPath(); g.roundRect(px, py, pw, ph, 25); g.fill();
         g.fillStyle = '#FFFFFF'; g.font = '700 22px Outfit, sans-serif'; spaced('ENERGY DRINK', fx, py + 33, 6); g.restore(); }
       g.fillStyle = F.bandInk; g.font = '600 30px Outfit, sans-serif'; g.fillText('natural caffeine  ·  zero sugar  ·  B-vitamins', fx, bandY + 128);
