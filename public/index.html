@@ -422,6 +422,21 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .sum .msg { background: var(--sky); border-radius: 14px; padding: 12px 14px; font-size: 14px; margin-top: 8px }
 
 
+/* ---------- lookbook ---------- */
+.look { padding-block: clamp(40px, 6vw, 80px) 0 }
+.look .grid { display: flex; flex-direction: column; gap: 16px }
+.look .row2 { display: flex; gap: 16px }
+.look figure { margin: 0; border-radius: 28px; overflow: hidden; background: #FFE3EC; box-shadow: 0 24px 50px -30px rgba(18,61,51,.35) }
+.look figure img { display: block; width: 100%; height: 100%; object-fit: cover }
+.look .wide { aspect-ratio: 1376 / 768 }
+.look .row2 .p { flex: 671 1 0; aspect-ratio: 848 / 1264 }
+.look .row2 .l { flex: 1491 1 0; aspect-ratio: 1264 / 848 }
+@media (max-width: 700px) { .look .row2 { flex-direction: column } .look figure { border-radius: 22px } }
+.pdp .main { position: relative }
+.pdp .main .phbg { position: absolute; inset: 0 }
+.pdp .main img.photo { position: relative; width: 100%; height: 100%; object-fit: contain }
+.pdp .thumbs button.ph { padding: 0; align-items: stretch }
+.pdp .thumbs button.ph img { width: 100%; height: 100%; object-fit: cover }
 /* ---------- product page section ---------- */
 .pdp { padding-block: clamp(56px, 8vw, 100px) }
 .pdp .grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start }
@@ -556,6 +571,19 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         </video>
         <div class="cap"><div class="eyebrow">Strawberry Cloud · ice cold</div><h2>Straight from the clouds.</h2></div>
         <button class="film-toggle" id="film-toggle" type="button" aria-label="Pause video">❚❚</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="look" id="look" aria-label="Strawberry Cloud photos">
+    <div class="in">
+      <div class="sec-head"><div><div class="eyebrow">Strawberry Cloud</div><h2>Pretty in pink.<br>Light as a cloud.</h2></div><p>Sweet strawberry, a soft touch of rose, natural caffeine and zero sugar. Best served ice cold.</p></div>
+      <div class="grid">
+        <figure class="wide"><img src="photos/hand-sky.webp" alt="A hand holding a can of Cloudly Strawberry Cloud up against a blue sky with clouds" loading="lazy" width="1376" height="768"></figure>
+        <div class="row2">
+          <figure class="p"><img src="photos/light-as-a-cloud.webp" alt="Cloudly Strawberry Cloud rising from a soft cloud with fresh strawberries: clean energy, light as a cloud" loading="lazy" width="848" height="1264"></figure>
+          <figure class="l"><img src="photos/strawberry-cloud-benefits.webp" alt="Cloudly Strawberry Cloud with strawberries, ice and green tea: natural caffeine from green tea, zero sugar, B-vitamins" loading="lazy" width="1264" height="848"></figure>
+        </div>
       </div>
     </div>
   </section>
@@ -1026,7 +1054,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   })();
 
   /* ---------- product page + bag ---------- */
-  const PDP = { flavor: 'grapefruit', size: 12, qty: 1 }; const PACK = {};
+  const PDP = { flavor: 'grapefruit', size: 12, qty: 1, pic: -1 };
+  const PHOTOS = [['light-as-a-cloud', 'Strawberry Cloud, light as a cloud', '#CBE6F3,#E6E2E8'], ['strawberry-cloud-benefits', 'Strawberry Cloud with strawberries, ice and green tea', '#EFC8C8,#EFC9CA'], ['hand-sky', 'Strawberry Cloud held up against the sky', '#8BB2DC,#869CB4']];
+  const photoThumbs = () => PHOTOS.map((p, i) => '<button type="button" class="ph" data-pic="' + i + '" aria-label="' + p[1] + '" aria-pressed="' + (PDP.pic === i) + '"><img src="photos/' + p[0] + '-thumb.webp" alt="" loading="lazy"></button>').join(''); const PACK = {};
   const SIZES = { 12: 24.99, 24: 46.99 };
   const PDP_KEYS = ['grapefruit'];
   const nameOf = k => k === 'mix' ? 'Mixed pack' : FL[k].name;
@@ -1039,12 +1069,19 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   function renderShopPics() {
     const k = PDP.flavor, flav = cansOf(k), n = PDP.size;
     const rows = n === 24 ? 4 : 3, cols = n === 24 ? 6 : 4;
+    if (PDP.pic >= 0) {
+      const ph = PHOTOS[PDP.pic];
+      pdpMain.classList.remove('multi');
+      pdpMain.innerHTML = '<div class="phbg" style="background:linear-gradient(' + ph[2] + ')"></div><img class="photo" src="photos/' + ph[0] + '.webp" alt="' + ph[1] + '">';
+      pdpThumbs.innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-label="' + nameOf(t) + '" aria-pressed="false" style="--t:' + colorOf(t) + '">' + cansOf(t).slice(0, 1).map(canPic).join('') + '</button>').join('') + photoThumbs();
+      return;
+    }
     pdpMain.style.setProperty('--g', colorOf(k));
     pdpMain.style.setProperty('--g2', k === 'mix' ? '#D6EAF8' : (FL[k] ? FL[k].tint : colorOf(k)));
     if (PACK[k + '-' + n]) {
       pdpMain.classList.remove('multi');
       pdpMain.innerHTML = '<div class="cl" style="width:26%;height:7%;left:6%;top:16%"></div><div class="cl" style="width:20%;height:6%;right:8%;top:10%"></div><div class="tag">' + n + ' cans <i>·</i> ' + (k === 'mix' ? 'mixed' : nameOf(k)) + '</div><img class="pack" src="' + PACK[k + '-' + n] + '" alt="Cloudly ' + nameOf(k) + ', ' + n + ' cans">';
-      pdpThumbs.innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-label="' + nameOf(t) + '" aria-pressed="' + (t === k) + '" style="--t:' + colorOf(t) + '">' + cansOf(t).slice(0, 1).map(canPic).join('') + '</button>').join('');
+      pdpThumbs.innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-label="' + nameOf(t) + '" aria-pressed="' + (t === k && PDP.pic < 0) + '" style="--t:' + colorOf(t) + '">' + cansOf(t).slice(0, 1).map(canPic).join('') + '</button>').join('') + photoThumbs();
       return;
     }
     let html = '<div class="cl" style="width:26%;height:7%;left:6%;top:16%"></div><div class="cl" style="width:20%;height:6%;right:8%;top:10%"></div><div class="floor"></div>';
@@ -1064,7 +1101,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     if (n === 24) html += '<div class="tray"><b>cloudly</b><span>24 × 250 ml<br>sparkling energy</span></div>';
     pdpMain.classList.remove('multi');
     pdpMain.innerHTML = html;
-    pdpThumbs.innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-label="' + nameOf(t) + '" aria-pressed="' + (t === k) + '" style="--t:' + colorOf(t) + '">' + cansOf(t).slice(0, 1).map(canPic).join('') + '</button>').join('');
+    pdpThumbs.innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-label="' + nameOf(t) + '" aria-pressed="' + (t === k && PDP.pic < 0) + '" style="--t:' + colorOf(t) + '">' + cansOf(t).slice(0, 1).map(canPic).join('') + '</button>').join('') + photoThumbs();
   }
   function renderPdp() {
     document.getElementById('pdp-flavor-name').textContent = nameOf(PDP.flavor);
@@ -1099,8 +1136,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     renderShopPics();
   }
   document.getElementById('shop').addEventListener('click', e => {
-    const f = e.target.closest('[data-k]'); if (f) { PDP.flavor = f.dataset.k; renderPdp(); return; }
-    const n = e.target.closest('[data-n]'); if (n) { PDP.size = +n.dataset.n; renderPdp(); }
+    const ph = e.target.closest('[data-pic]'); if (ph) { PDP.pic = +ph.dataset.pic; renderShopPics(); return; }
+    const f = e.target.closest('[data-k]'); if (f) { PDP.flavor = f.dataset.k; PDP.pic = -1; renderPdp(); return; }
+    const n = e.target.closest('[data-n]'); if (n) { PDP.size = +n.dataset.n; PDP.pic = -1; renderPdp(); }
   });
   document.getElementById('pdp-minus').onclick = () => { PDP.qty = Math.max(1, PDP.qty - 1); renderPdp(); };
   document.getElementById('pdp-plus').onclick = () => { PDP.qty = Math.min(20, PDP.qty + 1); renderPdp(); };
