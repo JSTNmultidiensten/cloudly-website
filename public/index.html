@@ -1368,9 +1368,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         g.restore(); }
       { const pw = 330, ph = 50, px = fx - pw / 2, py = 1000; g.save(); g.fillStyle = F.badge; g.beginPath(); g.roundRect(px, py, pw, ph, 25); g.fill();
         g.fillStyle = '#FFFFFF'; g.font = '700 22px Outfit, sans-serif'; spaced('ENERGY DRINK', fx, py + 33, 6); g.restore(); }
-      g.fillStyle = F.bandInk; g.font = '500 32px Outfit, sans-serif';
-      ['+ natural caffeine', '+ zero sugar', '+ B-vitamins'].forEach((t, i) => g.fillText(t, fx, bandY + 88 + i * 42));
-      g.fillStyle = F.bandText; g.font = '500 20px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 228, 8);
+      g.fillStyle = F.bandInk; g.font = '600 30px Outfit, sans-serif'; g.fillText('natural caffeine  ·  zero sugar  ·  B-vitamins', fx, bandY + 128);
+      g.fillStyle = F.bandText; g.font = '500 20px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 196, 8);
       } else {
       g.fillStyle = F.ink; g.font = '700 44px Outfit, sans-serif'; spaced('SPARKLING ENERGY', fx, 200, 12);
       g.font = '500 22px Outfit, sans-serif'; g.fillStyle = F.soft; spaced(F.sub, fx, 240, 5);
