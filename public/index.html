@@ -1334,7 +1334,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       /* pink rim band at the top with the flavour name, like the bottom band */
       { const lab = window.__fmt === 'label', b1 = lab ? 28 : -62;
       g.fillStyle = F.band; g.fillRect(0, -400, TW, 400 + b1);
-      g.fillStyle = '#FFFFFF'; g.font = '700 30px Outfit, sans-serif'; [380, fx, 1660].forEach(x => spaced(F.name.toUpperCase(), x, b1 - 23, 8)); }
+      g.fillStyle = '#FFFFFF'; g.font = '700 30px Outfit, sans-serif'; [380, fx, 1660].forEach(x => spaced(x === fx ? F.name.toUpperCase() : 'ENERGY DRINK', x, b1 - 23, 8)); }
       logoCloud(fx, 318, 150, 'stroke', F.ink);
       g.fillStyle = F.ink; g.font = '400 168px Outfit, sans-serif'; spaced('cloudly', fx, 478, -5);
       g.fillStyle = F.soft; g.font = '400 50px Outfit, sans-serif'; g.fillText('sparkling energy', fx, 548);
@@ -1349,7 +1349,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         g.save(); const glow = g.createRadialGradient(fx, 790, 20, fx, 790, 260); glow.addColorStop(0, 'rgba(255,255,255,.95)'); glow.addColorStop(.6, 'rgba(255,255,255,.55)'); glow.addColorStop(1, 'rgba(255,255,255,0)');
         g.fillStyle = glow; g.beginPath(); g.arc(fx, 790, 260, 0, 6.2832); g.fill(); g.restore();
         cloudFill(fx, 900, 0.95, '#FFFFFF', 0.95);
-        berryFlat(fx + 70, 800, 1.55, 0.28); berryFlat(fx - 40, 780, 2.6, -0.16);
+        berryFlat(fx + 85, 850, 1.7, 0.28); berryFlat(fx - 40, 825, 2.85, -0.16);
         [[fx + 175, 620, 34, 0.35, F.badge], [fx - 190, 905, 26, -0.4, F.accent], [fx + 215, 870, 22, 0.25, F.accent], [fx - 160, 640, 18, -0.2, '#FF9EC6']].forEach(([x, y, sz, r, c]) => heart(x, y, sz, r, c));
         [[fx + 120, 590, 20, '#FFFFFF'], [fx - 120, 975, 16, '#FFFFFF'], [fx + 235, 735, 14, '#FFD86B'], [fx - 215, 790, 12, '#FFD86B']].forEach(([x, y, sz, c]) => spark(x, y, sz, c));
         roseFlat(fx + 268, 300, 1.1, 0.3); roseFlat(fx - 300, 960, 1, -0.2); roseFlat(fx + 230, 960, 0.8, 0.5);
@@ -1366,11 +1366,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '800 58px Outfit, sans-serif'; g.fillText('0g', 0, 12); g.font = '800 14px Outfit, sans-serif'; spaced('SUGAR', 0, 33, 3);
         g.fillStyle = '#FFFFFF'; g.beginPath(); const sx = r * 0.78, sy = -r * 0.78, k = 11; g.moveTo(sx, sy - k); g.lineTo(sx + 3, sy - 3); g.lineTo(sx + k, sy); g.lineTo(sx + 3, sy + 3); g.lineTo(sx, sy + k); g.lineTo(sx - 3, sy + 3); g.lineTo(sx - k, sy); g.lineTo(sx - 3, sy - 3); g.closePath(); g.fill();
         g.restore(); }
-      { const pw = 330, ph = 50, px = fx - pw / 2, py = 1000; g.save(); g.fillStyle = F.badge; g.beginPath(); g.roundRect(px, py, pw, ph, 25); g.fill();
-        g.fillStyle = '#FFFFFF'; g.font = '700 22px Outfit, sans-serif'; spaced('ENERGY DRINK', fx, py + 33, 6); g.restore(); }
-      g.fillStyle = F.bandInk; g.font = '500 32px Outfit, sans-serif';
-      ['+ natural caffeine', '+ zero sugar', '+ B-vitamins'].forEach((t, i) => g.fillText(t, fx, bandY + 88 + i * 42));
-      g.fillStyle = F.bandText; g.font = '500 20px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 228, 8);
+      g.fillStyle = F.bandInk; g.font = '600 30px Outfit, sans-serif'; g.fillText('natural caffeine  ·  zero sugar  ·  B-vitamins', fx, bandY + 128);
+      g.fillStyle = F.bandText; g.font = '500 20px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 196, 8);
       } else {
       g.fillStyle = F.ink; g.font = '700 44px Outfit, sans-serif'; spaced('SPARKLING ENERGY', fx, 200, 12);
       g.font = '500 22px Outfit, sans-serif'; g.fillStyle = F.soft; spaced(F.sub, fx, 240, 5);
