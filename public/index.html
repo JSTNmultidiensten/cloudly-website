@@ -10,11 +10,11 @@
 <meta name="theme-color" content="#BFDDF5">
 <meta property="og:site_name" content="Cloudly">
 <meta property="og:title" content="Cloudly · sparkling energy, light as a cloud">
-<meta property="og:description" content="Natural caffeine from green tea, zero sugar, under 10 kcal. Strawberry & Rose, Ice Cloud and Cherry Crush. Coming soon. Join the launch list.">
+<meta property="og:description" content="Natural caffeine from green tea, zero sugar, under 10 kcal. First up: Strawberry & Rose. Two more flavors coming soon. Join the launch list.">
 <meta property="og:image" content="https://drinkcloudly.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Three Cloudly sparkling energy cans: Ice Cloud, Strawberry & Rose and Cherry Crush">
+<meta property="og:image:alt" content="Cloudly sparkling energy cans">
 <meta property="og:url" content="https://drinkcloudly.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
@@ -26,7 +26,7 @@
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "name": "Cloudly", "url": "https://drinkcloudly.com/", "logo": "https://drinkcloudly.com/icon-512.png", "email": "hello@drinkcloudly.com", "description": "Cloudly is a clean sparkling energy drink brand from Groningen, the Netherlands.", "address": {"@type": "PostalAddress", "streetAddress": "Zernikepark 4", "postalCode": "9747 AN", "addressLocality": "Groningen", "addressCountry": "NL"}}, {"@context": "https://schema.org", "@type": "WebSite", "name": "Cloudly", "url": "https://drinkcloudly.com/", "inLanguage": "en"}, {"@context": "https://schema.org", "@type": "Product", "name": "Cloudly Strawberry & Rose", "brand": {"@type": "Brand", "name": "Cloudly"}, "category": "Energy drink", "description": "Sparkling energy drink with strawberry and a soft touch of rose. Natural caffeine from green tea, zero sugar, under 10 kcal.", "image": "https://drinkcloudly.com/og-image.jpg", "size": "250 ml"}, {"@context": "https://schema.org", "@type": "Product", "name": "Cloudly Ice Cloud", "brand": {"@type": "Brand", "name": "Cloudly"}, "category": "Energy drink", "description": "Sparkling energy drink with a classic energy taste, made clean and ice cold. Natural caffeine from green tea, zero sugar, under 10 kcal.", "image": "https://drinkcloudly.com/og-image.jpg", "size": "250 ml"}, {"@context": "https://schema.org", "@type": "Product", "name": "Cloudly Cherry Crush", "brand": {"@type": "Brand", "name": "Cloudly"}, "category": "Energy drink", "description": "Sparkling energy drink with dark, juicy cherry. Natural caffeine from green tea, zero sugar, under 10 kcal.", "image": "https://drinkcloudly.com/og-image.jpg", "size": "250 ml"}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "name": "Cloudly", "url": "https://drinkcloudly.com/", "logo": "https://drinkcloudly.com/icon-512.png", "email": "hello@drinkcloudly.com", "description": "Cloudly is a clean sparkling energy drink brand from Groningen, the Netherlands.", "address": {"@type": "PostalAddress", "streetAddress": "Zernikepark 4", "postalCode": "9747 AN", "addressLocality": "Groningen", "addressCountry": "NL"}}, {"@context": "https://schema.org", "@type": "WebSite", "name": "Cloudly", "url": "https://drinkcloudly.com/", "inLanguage": "en"}, {"@context": "https://schema.org", "@type": "Product", "name": "Cloudly Strawberry & Rose", "brand": {"@type": "Brand", "name": "Cloudly"}, "category": "Energy drink", "description": "Sparkling energy drink with strawberry and a soft touch of rose. Natural caffeine from green tea, zero sugar, under 10 kcal.", "image": "https://drinkcloudly.com/og-image.jpg", "size": "250 ml"}]</script>
 <style>:root{color-scheme:light;box-sizing:border-box}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]{display:none!important}
 .hero .facts span.f { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 7px; background: rgba(255,255,255,.9); box-shadow: 0 6px 16px -10px rgba(20,60,90,.4) }
 .hero .facts span.f i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--c, #123D33); color: #fff }
@@ -291,6 +291,10 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .band .canwrap { display: flex; justify-content: center; height: clamp(320px, 46vw, 520px) }
 .band .canwrap > * { height: 100%; will-change: transform }
 .band .canwrap img.can3d, .band .canwrap svg.can { height: 100%; width: auto }
+.band.tease { --bg: #121417 !important; background: #121417; color: #FFFFFF }
+.band.tease h2, .band.tease p { color: #FFFFFF } .band.tease .num { color: rgba(255,255,255,.55) }
+.band.tease .word { color: rgba(255,255,255,.06) } .band.tease .perks, .band.tease .fine, .band.tease .ing { display: none }
+.band.tease .canwrap img.can3d { filter: drop-shadow(0 30px 40px rgba(0,0,0,.5)) }
 .band h2 { font-size: clamp(46px, 6.5vw, 86px); line-height: .92 }
 .band .num { font: 300 18px/1 var(--display); color: var(--soft); margin-bottom: 10px }
 .band p { font-size: 18px; color: var(--soft); max-width: 38ch; margin: 16px 0 }
@@ -510,7 +514,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         </form>
         <p class="ok" hidden role="status"></p>
         <p class="fine" style="font-size:13px;color:var(--soft);margin:8px 0 0">We only email you about the launch. One click to unsubscribe.</p>
-        <a class="meet" href="#flavors">Meet the three flavors ↓</a>
+        <a class="meet" href="#flavors">Meet flavor 01 ↓</a>
         <div class="facts"><span class="f" style="--c:#3FBF7F"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg></i>Natural caffeine</span><span class="f" style="--c:#FF5C7C"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 17.5l11-11"/></svg></i>0 g sugar</span><span class="f" style="--c:#2FB5A8"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19l8-8"/></svg></i>Clean energy</span><span class="f" style="--c:#5CC1FF"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1 0-10 6 6 0 0 1 11 1.5A4.3 4.3 0 0 1 17.5 18z"/></svg></i>Under 10 kcal</span></div>
       </div>
       <div class="stage3d" id="stage3d" aria-label="The three Cloudly cans"><div class="fallback" id="fallback"></div><div class="stamp" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text font-family="Nunito, sans-serif" font-weight="800" font-size="21" letter-spacing="4.6" fill="#123D33"><textPath href="#ringp" textLength="458" lengthAdjust="spacing">CLEAN ENERGY • COMING SOON •</textPath></text></svg><svg class="mid" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#123D33"/><path d="M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z" fill="#FFE600" stroke="#FFE600" stroke-width="4" stroke-linejoin="round"/></svg></div></div>
@@ -735,6 +739,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       desc: 'Sweet strawberry with a soft floral touch of rose. Pink, light and dreamy.', ing: ['strawberry', 'rose', '80 mg caffeine', 'zero sugar'] }
   };
   const ORDER = ['grapefruit', 'peach', 'mint'];
+  const TEASED = { peach: 2, mint: 3 };
+  FL.peach.name = 'Coming soon'; FL.mint.name = 'Coming soon';
   const CLOUD = 'M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z';
 
   /* drawn can, used until the 3D pictures are ready */
@@ -764,8 +770,6 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
   const PRODUCTS = [
     { id: 'grapefruit', name: 'Strawberry & Rose', desc: 'Sweet strawberry with a soft floral touch of rose.', cans: ['grapefruit'], tint: FL.grapefruit.tint },
-    { id: 'peach', name: 'Ice Cloud', desc: 'The classic energy taste, ice cold and light.', cans: ['peach'], tint: FL.peach.tint },
-    { id: 'mint', name: 'Cherry Crush', desc: 'Dark, juicy sweet cherry. Bold and a little tart.', cans: ['mint'], tint: FL.mint.tint },
     { id: 'mix', name: 'Mixed pack', desc: '4 cans of each flavor. The easiest way to find your favorite.', cans: ['peach', 'grapefruit', 'mint'], tint: '#E8F4FC' }
   ];
   const PRICE = 24.99, DEPOSIT = 12 * 0.15, SHIP = 4.95, FREE_FROM = 40;
@@ -806,9 +810,10 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     sec.setAttribute('aria-label', f.name);
     sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div></div>' +
       '<div><div class="num">0' + (i + 1) + ' / 03 · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#list">Notify me at launch</a></div></div>';
-    sec.querySelector('.word').textContent = (f.name.split(' & ')[0] + ' · ').repeat(4);
-    sec.querySelector('h2').textContent = f.name;
-    sec.querySelector('p').textContent = f.desc;
+    sec.querySelector('.word').textContent = TEASED[k] ? '? · ? · ? · ? · ' : (f.name.split(' & ')[0] + ' · ').repeat(4);
+    sec.querySelector('h2').textContent = TEASED[k] ? 'Flavor 0' + TEASED[k] : f.name;
+    sec.querySelector('p').textContent = TEASED[k] ? 'Still top secret. This one drops later, and the launch list hears it first.' : f.desc;
+    if (TEASED[k]) { sec.classList.add('tease'); f.ing = []; }
     const ing = sec.querySelector('.ing'); f.ing.filter(x => !/caffeine|sugar/.test(x)).forEach(x => { const s = document.createElement('span'); s.textContent = x; ing.appendChild(s); });
     const P = {
       sugar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 17.5l11-11"/></svg>',
@@ -1003,7 +1008,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   /* ---------- product page + bag ---------- */
   const PDP = { flavor: 'grapefruit', size: 12, qty: 1 }; const PACK = {};
   const SIZES = { 12: 24.99, 24: 46.99 };
-  const PDP_KEYS = ['grapefruit', 'peach', 'mint', 'mix'];
+  const PDP_KEYS = ['grapefruit'];
   const nameOf = k => k === 'mix' ? 'Mixed pack' : FL[k].name;
   const colorOf = k => k === 'mix' ? '#E8F4FC' : FL[k].bg;
   const cansOf = k => k === 'mix' ? ['peach', 'grapefruit', 'mint'] : [k];
@@ -1135,12 +1140,13 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   const UI = window.CloudlyUI;
   if (!window.THREE || !UI) return;
 
+  const TEASE = { peach: 2, mint: 3 };
   const FLAV = {
     mint: { name: 'Cherry Crush', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF1F2', ink: '#3D0F1A', soft: '#7A4A55', accent: '#8FD14F', dot: '#8FD14F', band: '#A3162F', bandText: '#FFD9DE',
       ingredients: 'Sparkling water, cherry juice (5%), natural flavouring, acids: citric acid, malic acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Dark, juicy cherry with natural caffeine. Clear head, light feeling, all day long.', icon: 'cherry', legal: 'Bruisende energiedrank met kersensmaak, met zoetstoffen.', ingNL: 'Koolzuurhoudend water, kersensap (5%), natuurlijk aroma, voedingszuren: citroenzuur, appelzuur, zuurteregelaar: natriumcitraat, zoetstoffen: erythritol, steviolglycosiden, cafeïne uit groene thee, L-theanine, vitamines (niacine, B6, B12).' },
     peach: { name: 'Ice Cloud', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#EEF7FE', ink: '#0F2E4A', soft: '#4D6E8A', accent: '#5CC1FF', dot: '#FFD84D', band: '#2F95E0', bandText: '#DDF0FF',
       ingredients: 'Sparkling water, acid: citric acid, acidity regulator: sodium citrate, taurine, natural flavouring, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, thickener: xanthan gum, vitamins (niacin, pantothenic acid, B6, B12).', story: 'The classic energy taste you know, made clean and ice cold. Clear head, light feeling, ice cold.', icon: 'ice', b5: true, legal: 'Bruisende energiedrank, met zoetstoffen.', ingNL: 'Koolzuurhoudend water, voedingszuur: citroenzuur, zuurteregelaar: natriumcitraat, taurine, natuurlijk aroma, zoetstoffen: erythritol, steviolglycosiden, cafeïne uit groene thee, L-theanine, verdikkingsmiddel: xanthaangom, vitamines (niacine, pantotheenzuur, B6, B12).' },
-    grapefruit: { name: 'Strawberry & Rose', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFF0F3', ink: '#3D1424', soft: '#8A5262', accent: '#FF5C7C', dot: '#FFB627', band: '#EE4B6A', bandText: '#FFE3EA',
+    grapefruit: { name: 'Strawberry & Rose', sub: 'NATURAL CAFFEINE · ZERO SUGAR', base: '#FFD3E4', ink: '#123D33', soft: '#3F6A57', accent: '#FF6FA8', dot: '#FF9EC6', band: '#FF4F98', bandText: '#FFE0EE', dream: true, bandInk: '#FFFFFF', badge: '#F2287C', badge0: '#123D33',
       ingredients: 'Sparkling water, strawberry juice (4%), natural flavouring, rose extract, acid: citric acid, acidity regulator: sodium citrate, sweeteners: erythritol, steviol glycosides, caffeine from green tea, L-theanine, vitamins (niacin, B6, B12).', story: 'Sweet strawberry and a soft touch of rose with natural caffeine. Pour it over ice and let your head drift into the clouds.', icon: 'strawrose', legal: 'Bruisende energiedrank met aardbei- en rozensmaak, met zoetstoffen.', ingNL: 'Koolzuurhoudend water, aardbeiensap (4%), natuurlijk aroma, rozenextract, voedingszuur: citroenzuur, zuurteregelaar: natriumcitraat, zoetstoffen: erythritol, steviolglycosiden, cafeïne uit groene thee, L-theanine, vitamines (niacine, B6, B12).' }
   };
 
@@ -1172,9 +1178,82 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       g.beginPath(); g.moveTo(0, 0); g.quadraticCurveTo(len * 0.5, -len * 0.4, len, 0); g.quadraticCurveTo(len * 0.5, len * 0.4, 0, 0); g.stroke();
       g.beginPath(); g.moveTo(-len * 0.15, 0); g.lineTo(len * 0.85, 0); g.stroke(); g.restore(); }
     function berry(x, y, k) { g.save(); g.translate(x, y); g.scale(k, k);
-      g.fillStyle = '#FF4F6A'; g.strokeStyle = F.ink; g.lineWidth = 3 / k; g.beginPath(); g.moveTo(0, 34); g.bezierCurveTo(-30, 20, -30, -14, -16, -18); g.bezierCurveTo(-8, -22, 8, -22, 16, -18); g.bezierCurveTo(30, -14, 30, 20, 0, 34); g.closePath(); g.fill(); g.stroke();
-      g.fillStyle = '#FFE38A'; [[-9,-6],[8,-7],[0,6],[-12,10],[12,9],[0,20]].forEach(([a,b]) => { g.beginPath(); g.ellipse(a, b, 2.2, 3.2, 0, 0, 6.2832); g.fill(); });
-      g.fillStyle = '#5BB04A'; g.beginPath(); for (let i = 0; i < 5; i++) { const an = Math.PI + i / 4 * Math.PI; g.moveTo(0, -18); g.quadraticCurveTo(Math.cos(an) * 14, -18 + Math.sin(an) * 10 - 6, Math.cos(an) * 20, -18 + Math.sin(an) * 4); g.lineTo(0, -16); } g.fill(); g.restore(); }
+      g.fillStyle = (F.dream ? '#FF2F73' : '#FF4F6A'); g.strokeStyle = F.ink; g.lineWidth = 3 / k; g.beginPath(); g.moveTo(0, 34); g.bezierCurveTo(-30, 20, -30, -14, -16, -18); g.bezierCurveTo(-8, -22, 8, -22, 16, -18); g.bezierCurveTo(30, -14, 30, 20, 0, 34); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = (F.dream ? '#FFF3B0' : '#FFE38A'); [[-9,-6],[8,-7],[0,6],[-12,10],[12,9],[0,20]].forEach(([a,b]) => { g.beginPath(); g.ellipse(a, b, 2.2, 3.2, 0, 0, 6.2832); g.fill(); });
+      g.fillStyle = (F.dream ? '#2FAE58' : '#5BB04A'); g.beginPath(); for (let i = 0; i < 5; i++) { const an = Math.PI + i / 4 * Math.PI; g.moveTo(0, -18); g.quadraticCurveTo(Math.cos(an) * 14, -18 + Math.sin(an) * 10 - 6, Math.cos(an) * 20, -18 + Math.sin(an) * 4); g.lineTo(0, -16); } g.fill(); g.restore(); }
+    function roseFlat(x, y, k, rot) { g.save(); g.translate(x, y); g.rotate(rot || 0); g.scale(k, k);
+      g.fillStyle = '#22A653'; [-1, 1].forEach(d => { g.save(); g.rotate(d * 2.2); g.beginPath(); g.moveTo(0, 0); g.bezierCurveTo(-8, 12, -6, 28, 0, 32); g.bezierCurveTo(6, 28, 8, 12, 0, 0); g.fill(); g.restore(); });
+      g.fillStyle = '#FF6FA8'; g.beginPath(); g.arc(0, 0, 20, 0, 6.2832); g.fill();
+      g.strokeStyle = '#E0246A'; g.lineWidth = 3; g.lineCap = 'round';
+      g.beginPath(); g.arc(0, 0, 14, 0.4, 3.6); g.stroke(); g.beginPath(); g.arc(1, -1, 8.5, 2.6, 6.4); g.stroke(); g.beginPath(); g.arc(0, 0, 3.5, 0, 4.5); g.stroke();
+      g.restore(); }
+    /* modern flat strawberry, Bloom-like: bold pink-red, white seeds, chunky leaves */
+    function berryFlat(x, y, k, rot) { g.save(); g.translate(x, y); g.rotate(rot || 0); g.scale(k, k);
+      const body = new Path2D('M0 -34 C26 -40 50 -26 48 2 C46 30 20 52 0 60 C-20 52 -46 30 -48 2 C-50 -26 -26 -40 0 -34 Z');
+      g.save(); g.shadowColor = 'rgba(220,20,90,.35)'; g.shadowBlur = 16; g.shadowOffsetY = 7; g.fillStyle = '#FF3D6E'; g.fill(body); g.restore();
+      g.save(); g.clip(body); g.fillStyle = '#EC2259'; g.beginPath(); g.ellipse(40, 14, 24, 60, -0.25, 0, 6.2832); g.fill(); g.restore();
+      g.fillStyle = '#FFFFFF'; [[-24, -14, -0.4], [-4, -18, 0], [17, -14, 0.35], [-30, 6, -0.5], [-10, 2, -0.15], [11, 4, 0.2], [30, 2, 0.5], [-19, 22, -0.35], [2, 22, 0], [21, 22, 0.35], [-8, 40, -0.2], [9, 40, 0.2]].forEach(([a, b, r]) => { g.beginPath(); g.ellipse(a, b, 2.6, 4.4, r, 0, 6.2832); g.fill(); });
+      g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 4; g.lineCap = 'round'; g.beginPath(); g.arc(-6, 2, 34, Math.PI * 1.08, Math.PI * 1.3); g.stroke();
+      const leaf = (a, L, c) => { g.save(); g.rotate(a); g.fillStyle = c; g.beginPath(); g.moveTo(0, 0); g.bezierCurveTo(-9, L * .35, -7, L * .8, 0, L); g.bezierCurveTo(7, L * .8, 9, L * .35, 0, 0); g.fill(); g.restore(); };
+      g.save(); g.translate(0, -36);
+      [-1.95, -1.15, 1.15, 1.95].forEach(a => leaf(a, 30, '#15803D'));
+      [-2.45, -1.55, 0, 1.55, 2.45].forEach((a, i) => leaf(a + Math.PI / 2 * 0 , i === 2 ? 22 : 32, '#22A653'));
+      g.restore();
+      g.strokeStyle = '#15803D'; g.lineWidth = 5.5; g.lineCap = 'round'; g.beginPath(); g.moveTo(0, -40); g.quadraticCurveTo(3, -54, 11, -60); g.stroke();
+      g.restore(); }
+    /* richer illustrated strawberry and rose for the dream look: gradients, shading, no outlines */
+    function berryPro(x, y, k) { g.save(); g.translate(x, y); g.scale(k, k);
+      const body = new Path2D('M0 -38 C30 -44 52 -24 46 4 C40 32 16 52 0 58 C-16 52 -40 32 -46 4 C-52 -24 -30 -44 0 -38 Z');
+      g.save(); g.shadowColor = 'rgba(140,10,50,.35)'; g.shadowBlur = 18; g.shadowOffsetY = 8;
+      const rg = g.createRadialGradient(-16, -14, 4, 0, 6, 70); rg.addColorStop(0, '#FF7A98'); rg.addColorStop(0.45, '#F2285E'); rg.addColorStop(1, '#A50D3A');
+      g.fillStyle = rg; g.fill(body); g.restore();
+      g.save(); g.clip(body);
+      g.fillStyle = 'rgba(110,0,30,.22)'; g.beginPath(); g.ellipse(34, 18, 26, 52, -0.3, 0, 6.2832); g.fill();
+      for (let row = 0; row < 7; row++) { const yy = -24 + row * 12; const t = (yy - 4) / 56; const w = 44 * Math.sqrt(Math.max(0, 1 - t * t)) * (yy > 20 ? 1 - (yy - 20) / 50 : 1);
+        const n = Math.max(1, Math.round(w / 11)); for (let i = 0; i <= n; i++) { const xx = -w * 0.82 + (2 * w * 0.82) * (i / n) + (row % 2 ? 5 : 0); if (Math.abs(xx) > w * 0.86) continue;
+          g.fillStyle = 'rgba(120,0,35,.45)'; g.beginPath(); g.ellipse(xx, yy + 1, 3.4, 4.6, xx / 90, 0, 6.2832); g.fill();
+          const sg = g.createLinearGradient(xx, yy - 3, xx, yy + 3); sg.addColorStop(0, '#FFF2A8'); sg.addColorStop(1, '#E8B83A');
+          g.fillStyle = sg; g.beginPath(); g.ellipse(xx, yy, 1.9, 3, xx / 90, 0, 6.2832); g.fill(); } }
+      const hl = g.createRadialGradient(-20, -18, 0, -20, -18, 26); hl.addColorStop(0, 'rgba(255,255,255,.55)'); hl.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = hl; g.beginPath(); g.ellipse(-20, -18, 22, 16, -0.5, 0, 6.2832); g.fill(); g.restore();
+      for (let i = 0; i < 7; i++) { const a = 0.2 + i * (Math.PI - 0.4) / 6; const L = 30 + (i % 2 ? -6 : 4);
+        const ex = Math.cos(a) * L * 1.1, ey = -40 + Math.sin(a) * L * 0.6; const lg = g.createLinearGradient(0, -40, ex, ey); lg.addColorStop(0, '#1C6E36'); lg.addColorStop(1, '#43B866');
+        g.fillStyle = lg; g.beginPath(); g.moveTo(0, -40); g.quadraticCurveTo(Math.cos(a - 0.35) * L * 0.6, -40 + Math.sin(a - 0.35) * L * 0.4, ex, ey); g.quadraticCurveTo(Math.cos(a + 0.35) * L * 0.6, -40 + Math.sin(a + 0.35) * L * 0.4, 0, -36); g.closePath(); g.fill(); }
+      g.strokeStyle = '#1C6E36'; g.lineWidth = 4.5; g.lineCap = 'round'; g.beginPath(); g.moveTo(0, -42); g.quadraticCurveTo(2, -54, 9, -60); g.stroke();
+      g.restore(); }
+    function rosePro(x, y, k) { g.save(); g.translate(x, y); g.scale(k, k);
+      g.strokeStyle = '#1F7A3C'; g.lineWidth = 4.5; g.lineCap = 'round'; g.beginPath(); g.moveTo(0, 0); g.quadraticCurveTo(4, 26, -2, 54); g.stroke();
+      [[1, 22], [-1, 38]].forEach(([d, sy]) => { const lg = g.createLinearGradient(0, sy, d * 30, sy - 12); lg.addColorStop(0, '#1F7A3C'); lg.addColorStop(1, '#4CC271');
+        g.fillStyle = lg; g.beginPath(); g.moveTo(1, sy); g.bezierCurveTo(d * 8, sy - 16, d * 28, sy - 16, d * 32, sy - 6); g.bezierCurveTo(d * 24, sy + 4, d * 10, sy + 6, 1, sy); g.fill();
+        g.strokeStyle = 'rgba(255,255,255,.45)'; g.lineWidth = 1.2; g.beginPath(); g.moveTo(2, sy); g.quadraticCurveTo(d * 16, sy - 8, d * 30, sy - 6); g.stroke(); });
+      const cres = (cx, cy, r, s0, s1, th, c1, c2) => { const lg = g.createLinearGradient(cx, cy - r, cx, cy + r); lg.addColorStop(0, c1); lg.addColorStop(1, c2);
+        g.fillStyle = lg; g.beginPath(); g.arc(cx, cy, r, s0, s1); g.arc(cx + Math.cos((s0 + s1) / 2) * th * .6, cy + Math.sin((s0 + s1) / 2) * th * .6, r - th, s1, s0, true); g.closePath(); g.fill(); };
+      g.save(); g.shadowColor = 'rgba(150,10,60,.3)'; g.shadowBlur = 12; g.shadowOffsetY = 5;
+      const bg = g.createRadialGradient(0, -26, 2, 0, -24, 32); bg.addColorStop(0, '#7E0A36'); bg.addColorStop(0.6, '#C0124F'); bg.addColorStop(1, '#E8306E');
+      g.fillStyle = bg; g.beginPath(); g.ellipse(0, -25, 30, 22, 0, 0, 6.2832); g.fill(); g.restore();
+      cres(0, -25, 22, Math.PI * 0.85, Math.PI * 2.15, 6, '#FF6FA4', '#D81A5E');
+      cres(2, -27, 15, Math.PI * 1.15, Math.PI * 2.45, 5, '#FF8CB6', '#E0246A');
+      cres(-1, -27, 9, Math.PI * 0.3, Math.PI * 1.7, 4, '#F2387A', '#B30F4B');
+      g.fillStyle = '#9C0C40'; g.beginPath(); g.ellipse(1, -28, 3.5, 2.5, 0, 0, 6.2832); g.fill();
+      [-1, 1].forEach(d => { const pg = g.createLinearGradient(d * 34, -28, 0, 4); pg.addColorStop(0, '#FF7AAD'); pg.addColorStop(1, '#D8185E');
+        g.fillStyle = pg; g.beginPath(); g.moveTo(d * 2, 4); g.bezierCurveTo(d * 36, 4, d * 40, -22, d * 30, -30); g.bezierCurveTo(d * 22, -16, d * 12, -6, d * 2, 4); g.fill(); });
+      const cg = g.createLinearGradient(0, -20, 0, 8); cg.addColorStop(0, '#FFA8C9'); cg.addColorStop(1, '#EE3176');
+      g.fillStyle = cg; g.beginPath(); g.moveTo(-26, -14); g.bezierCurveTo(-22, 10, 22, 10, 26, -14); g.quadraticCurveTo(13, -8, 6, -12); g.quadraticCurveTo(0, -6, -6, -12); g.quadraticCurveTo(-13, -8, -26, -14); g.fill();
+      g.strokeStyle = 'rgba(255,255,255,.5)'; g.lineWidth = 1.4; g.beginPath(); g.moveTo(-18, -6); g.quadraticCurveTo(0, 2, 18, -6); g.stroke();
+      g.fillStyle = '#2E9A52'; [[-1], [1]].forEach(([d]) => { g.beginPath(); g.moveTo(0, 4); g.quadraticCurveTo(d * 10, 6, d * 14, 12); g.quadraticCurveTo(d * 6, 10, 0, 8); g.fill(); });
+      g.restore(); }
+    /* rose: side view bloom with layered petals, stem and two leaves */
+    function rose0(fx, y) { if (F.dream) { rosePro(fx + 40, y - 4, 1); return; } const rx = fx + 40, ry = y - 4;
+        g.strokeStyle = (F.dream ? '#1F8A45' : '#4E8A3A'); g.lineWidth = 5; g.lineCap = 'round'; g.beginPath(); g.moveTo(rx, ry + 26); g.quadraticCurveTo(rx + 4, ry + 50, rx - 2, ry + 72); g.stroke();
+        g.fillStyle = (F.dream ? '#2FAE58' : '#6BB04F'); [[1, 0.5], [-1, 0.75]].forEach(([d, t]) => { const sx = rx + 2, sy = ry + 26 + t * 46; g.beginPath(); g.moveTo(sx, sy); g.bezierCurveTo(sx + d * 10, sy - 18, sx + d * 30, sy - 16, sx + d * 34, sy - 6); g.bezierCurveTo(sx + d * 24, sy + 6, sx + d * 10, sy + 6, sx, sy); g.closePath(); g.fill(); });
+        const pg = g.createLinearGradient(rx, ry - 34, rx, ry + 30); pg.addColorStop(0, (F.dream ? '#FF9CC4' : '#FF8FAB')); pg.addColorStop(1, (F.dream ? '#F2287C' : '#E8365F'));
+        g.fillStyle = pg; g.beginPath(); g.moveTo(rx - 30, ry - 8); g.bezierCurveTo(rx - 32, ry + 18, rx - 14, ry + 32, rx, ry + 32); g.bezierCurveTo(rx + 14, ry + 32, rx + 32, ry + 18, rx + 30, ry - 8); g.bezierCurveTo(rx + 20, ry - 2, rx + 10, ry - 4, rx, ry - 12); g.bezierCurveTo(rx - 10, ry - 4, rx - 20, ry - 2, rx - 30, ry - 8); g.closePath(); g.fill();
+        g.fillStyle = (F.dream ? '#FF6FA8' : '#FF6F91'); g.beginPath(); g.moveTo(rx - 18, ry - 14); g.bezierCurveTo(rx - 22, ry - 34, rx - 4, ry - 40, rx + 2, ry - 30); g.bezierCurveTo(rx + 10, ry - 42, rx + 26, ry - 32, rx + 18, ry - 12); g.bezierCurveTo(rx + 8, ry - 4, rx - 8, ry - 4, rx - 18, ry - 14); g.closePath(); g.fill();
+        g.strokeStyle = (F.dream ? '#C0145E' : '#C42A52'); g.lineWidth = 2.5; g.beginPath(); g.moveTo(rx - 8, ry - 22); g.bezierCurveTo(rx - 4, ry - 30, rx + 8, ry - 28, rx + 6, ry - 18); g.bezierCurveTo(rx + 4, ry - 12, rx - 6, ry - 12, rx - 4, ry - 20); g.stroke();
+        g.strokeStyle = (F.dream ? 'rgba(217,102,138,.5)' : 'rgba(196,42,82,.55)'); g.beginPath(); g.moveTo(rx - 20, ry + 4); g.quadraticCurveTo(rx, ry + 18, rx + 20, ry + 4); g.stroke();
+        g.fillStyle = 'rgba(255,255,255,.45)'; g.beginPath(); g.ellipse(rx - 16, ry + 4, 5, 9, 0.3, 0, 6.2832); g.fill();
+    }
+    function roseAt(x, y, k, rot) { g.save(); g.translate(x, y); g.rotate(rot || 0); g.scale(k, k); g.translate(-1064, -896); rose0(1024, 900); g.restore(); }
     function icon(fx, y) {
       if (F.icon === 'cherry') {
         g.save(); g.strokeStyle = '#4E7A2E'; g.lineWidth = 4; g.lineCap = 'round';
@@ -1198,32 +1277,77 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         bolt(fx + 76, y - 30, 1.15, 0.18); bolt(fx - 82, y - 20, 0.85, -0.2);
         g.fillStyle = F.dot; g.beginPath(); g.arc(fx - 104, y + 34, 7, 0, 6.2832); g.fill(); g.beginPath(); g.arc(fx + 100, y + 30, 6, 0, 6.2832); g.fill();
       } else {
-        berry(fx - 40, y + 18, 1.1);
-        /* rose: side view bloom with layered petals, stem and two leaves */
-        g.save(); const rx = fx + 40, ry = y - 4;
-        g.strokeStyle = '#4E8A3A'; g.lineWidth = 5; g.lineCap = 'round'; g.beginPath(); g.moveTo(rx, ry + 26); g.quadraticCurveTo(rx + 4, ry + 50, rx - 2, ry + 72); g.stroke();
-        g.fillStyle = '#6BB04F'; [[1, 0.5], [-1, 0.75]].forEach(([d, t]) => { const sx = rx + 2, sy = ry + 26 + t * 46; g.beginPath(); g.moveTo(sx, sy); g.bezierCurveTo(sx + d * 10, sy - 18, sx + d * 30, sy - 16, sx + d * 34, sy - 6); g.bezierCurveTo(sx + d * 24, sy + 6, sx + d * 10, sy + 6, sx, sy); g.closePath(); g.fill(); });
-        const pg = g.createLinearGradient(rx, ry - 34, rx, ry + 30); pg.addColorStop(0, '#FF8FAB'); pg.addColorStop(1, '#E8365F');
-        g.fillStyle = pg; g.beginPath(); g.moveTo(rx - 30, ry - 8); g.bezierCurveTo(rx - 32, ry + 18, rx - 14, ry + 32, rx, ry + 32); g.bezierCurveTo(rx + 14, ry + 32, rx + 32, ry + 18, rx + 30, ry - 8); g.bezierCurveTo(rx + 20, ry - 2, rx + 10, ry - 4, rx, ry - 12); g.bezierCurveTo(rx - 10, ry - 4, rx - 20, ry - 2, rx - 30, ry - 8); g.closePath(); g.fill();
-        g.fillStyle = '#FF6F91'; g.beginPath(); g.moveTo(rx - 18, ry - 14); g.bezierCurveTo(rx - 22, ry - 34, rx - 4, ry - 40, rx + 2, ry - 30); g.bezierCurveTo(rx + 10, ry - 42, rx + 26, ry - 32, rx + 18, ry - 12); g.bezierCurveTo(rx + 8, ry - 4, rx - 8, ry - 4, rx - 18, ry - 14); g.closePath(); g.fill();
-        g.strokeStyle = '#C42A52'; g.lineWidth = 2.5; g.beginPath(); g.moveTo(rx - 8, ry - 22); g.bezierCurveTo(rx - 4, ry - 30, rx + 8, ry - 28, rx + 6, ry - 18); g.bezierCurveTo(rx + 4, ry - 12, rx - 6, ry - 12, rx - 4, ry - 20); g.stroke();
-        g.strokeStyle = 'rgba(196,42,82,.55)'; g.beginPath(); g.moveTo(rx - 20, ry + 4); g.quadraticCurveTo(rx, ry + 18, rx + 20, ry + 4); g.stroke();
-        g.fillStyle = 'rgba(255,255,255,.45)'; g.beginPath(); g.ellipse(rx - 16, ry + 4, 5, 9, 0.3, 0, 6.2832); g.fill();
-        g.restore();
+        if (!F.dream) berry(fx - 40, y + 18, 1.1);
+        g.save(); if (F.dream) { g.translate(fx + 82, y - 40); g.scale(0.6, 0.6); g.translate(-(fx + 40), -(y - 4)); } rose0(fx, y);
+        g.restore(); if (F.dream) berryPro(fx - 14, y + 10, 1.15);
         g.fillStyle = F.dot; g.beginPath(); g.arc(fx - 108, y + 30, 8, 0, 6.2832); g.fill(); g.beginPath(); g.arc(fx + 104, y - 18, 6, 0, 6.2832); g.fill();
       }
     }
     function drawLabel(TW, TH) {
       const bandY = TH - 250;
-      [[1024-330,260,0.9],[1024+320,200,0.7],[1024+360,860,0.8],[1024-360,900,0.6],[380-220,190,0.8],[380+230,1000,0.7],[1660+230,180,0.7],[1660-260,1030,0.6],[40,520,1.0],[2010,420,0.9],[1960,860,0.7],[120,900,0.6],[700,120,0.5],[1340,110,0.5]].forEach(([x,y,s]) => cloudFill(x, y, s, '#FFFFFF', 0.85));
+      [[1024-330,260,0.9],[1024+320,200,0.7],[1024+360,860,0.8],[1024-360,900,0.6],[380-220,190,0.8],[380+230,1000,0.7],[1660+230,180,0.7],[1660-260,1030,0.6],[40,520,1.0],[2010,420,0.9],[1960,860,0.7],[120,900,0.6],[700,120,0.5],[1340,110,0.5]].forEach(([x,y,s]) => cloudFill(x, y, F.dream ? s * 1.25 : s, '#FFFFFF', F.dream ? 0.92 : 0.85)); if (F.dream) [[1024,180,0.6],[1024-200,1010,0.7],[1024+220,1040,0.6],[380,260,0.6],[1660,1080,0.5]].forEach(([x,y,s]) => cloudFill(x, y, s, '#FFFFFF', 0.75));
       cloudLine(1024 - 300, 300, 0.45, F.accent, 4); cloudLine(1024 + 290, 820, 0.4, F.accent, 4); cloudLine(40, 560, 0.55, F.accent, 4); cloudLine(2000, 300, 0.45, F.accent, 4);
+      if (F.dream) {
+        /* layered fluffy cloud band: soft back puffs, main puffs with a light rim, small front puffs */
+        const puffs = (y0, rMin, rVar, step, seed) => { const out = []; for (let x = -60, i = 0; x < TW + 120; i++) { const r = rMin + ((i * seed) % rVar); out.push([x, y0 + ((i * 13) % 3 - 1) * 10, r]); x += r * step; } return out; };
+        const BS = window.__bandStyle || 'A';
+        if (BS === 'A') {
+          g.fillStyle = F.band; g.fillRect(0, bandY, TW, TH - bandY + 400);
+          g.beginPath(); for (let x = -40, i = 0; x < TW + 80; i++) { const r = 34 + ((i * 37) % 30); g.moveTo(x + r, bandY + 6); g.arc(x, bandY + 6, r, 0, Math.PI * 2); x += r * 1.35; } g.fill();
+        } else if (BS === 'B') {
+          /* one calm, smooth cloud edge: large overlapping puffs, single layer */
+          g.fillStyle = F.band; g.fillRect(0, bandY + 20, TW, TH - bandY + 400);
+          g.beginPath(); for (let x = -80, i = 0; x < TW + 160; i++) { const r = 95 + ((i * 41) % 40); g.moveTo(x + r, bandY + 70); g.arc(x, bandY + 70, r, 0, Math.PI * 2); x += r * 1.55; } g.fill();
+        } else {
+          /* white sky clouds resting on a straight pink band */
+          g.fillStyle = F.band; g.fillRect(0, bandY + 40, TW, TH - bandY + 400);
+          [[60, 1.3], [520, 1.0], [900, 1.25], [1380, 1.1], [1800, 1.3], [2100, 1.0]].forEach(([x, k]) => cloudFill(x, bandY + 30, k * 1.6, '#FFFFFF', 0.96));
+        }
+      } else {
       g.fillStyle = F.band; g.fillRect(0, bandY, TW, TH - bandY + 400);
       g.beginPath(); for (let x = -40, i = 0; x < TW + 80; i++) { const r = 34 + ((i * 37) % 30); g.moveTo(x + r, bandY + 6); g.arc(x, bandY + 6, r, 0, Math.PI * 2); x += r * 1.35; } g.fill();
+      }
       const fx = 1024; g.textBaseline = 'alphabetic'; g.textAlign = 'center';
+      if (F.dream) {
+      /* front, Bloom-like: brand, one line, big fruit, short perks in the band */
+      /* pink rim band at the top with the flavour name, like the bottom band */
+      { const lab = window.__fmt === 'label', b1 = lab ? 28 : -62;
+      g.fillStyle = F.band; g.fillRect(0, -400, TW, 400 + b1);
+      g.fillStyle = '#FFFFFF'; g.font = '700 30px Outfit, sans-serif'; [380, fx, 1660].forEach(x => spaced(F.name.toUpperCase(), x, b1 - 23, 8)); }
+      logoCloud(fx, 318, 150, 'stroke', F.ink);
+      g.fillStyle = F.ink; g.font = '400 168px Outfit, sans-serif'; spaced('cloudly', fx, 478, -5);
+      g.fillStyle = F.soft; g.font = '400 50px Outfit, sans-serif'; g.fillText('sparkling energy', fx, 548);
+      [[fx - 200, 620, 0.32], [fx + 215, 900, 0.28], [fx - 230, 930, 0.22], [fx + 190, 610, 0.2]].forEach(([x, y, k]) => cloudFill(x, y, k, '#FFFFFF', 1));
+      cloudLine(fx - 175, 640, 0.3, F.accent, 3); cloudLine(fx + 225, 930, 0.26, F.accent, 3);
+      const ART = { rose: { naturalWidth: 1, naturalHeight: 1 } };
+      if (true) {
+        const rimg = (x, y, h, r) => { const w = h * ART.rose.naturalWidth / ART.rose.naturalHeight; g.save(); g.translate(x, y); g.rotate(r || 0); g.drawImage(ART.rose, -w / 2, -h / 2, w, h); g.restore(); };
+        const heart = (x, y, sz, r, c) => { g.save(); g.translate(x, y); g.rotate(r); g.scale(sz / 30, sz / 30); g.fillStyle = c; g.beginPath(); g.moveTo(0, 10); g.bezierCurveTo(-16, -2, -14, -16, -6, -16); g.bezierCurveTo(-2, -16, 0, -13, 0, -10); g.bezierCurveTo(0, -13, 2, -16, 6, -16); g.bezierCurveTo(14, -16, 16, -2, 0, 10); g.fill(); g.restore(); };
+        const spark = (x, y, sz, c) => { g.save(); g.translate(x, y); g.fillStyle = c; g.beginPath(); for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2; g.lineTo(Math.cos(a) * sz, Math.sin(a) * sz); g.lineTo(Math.cos(a + Math.PI / 4) * sz * .28, Math.sin(a + Math.PI / 4) * sz * .28); } g.closePath(); g.fill(); g.restore(); };
+        /* soft glowing cloud behind the fruit */
+        g.save(); const glow = g.createRadialGradient(fx, 790, 20, fx, 790, 260); glow.addColorStop(0, 'rgba(255,255,255,.95)'); glow.addColorStop(.6, 'rgba(255,255,255,.55)'); glow.addColorStop(1, 'rgba(255,255,255,0)');
+        g.fillStyle = glow; g.beginPath(); g.arc(fx, 790, 260, 0, 6.2832); g.fill(); g.restore();
+        cloudFill(fx, 900, 0.95, '#FFFFFF', 0.95);
+        berryFlat(fx + 70, 800, 1.55, 0.28); berryFlat(fx - 40, 780, 2.6, -0.16);
+        [[fx + 175, 620, 34, 0.35, F.badge], [fx - 190, 905, 26, -0.4, F.accent], [fx + 215, 870, 22, 0.25, F.accent], [fx - 160, 640, 18, -0.2, '#FF9EC6']].forEach(([x, y, sz, r, c]) => heart(x, y, sz, r, c));
+        [[fx + 120, 590, 20, '#FFFFFF'], [fx - 120, 975, 16, '#FFFFFF'], [fx + 235, 735, 14, '#FFD86B'], [fx - 215, 790, 12, '#FFD86B']].forEach(([x, y, sz, c]) => spark(x, y, sz, c));
+        roseFlat(fx + 268, 300, 1.1, 0.3); roseFlat(fx - 300, 960, 1, -0.2); roseFlat(fx + 230, 960, 0.8, 0.5);
+      } else {
+      [[fx - 250, 270, 0.75, -0.25], [fx + 255, 300, 0.6, 0.3], [fx - 285, 940, 0.7, 0.2], [fx + 285, 960, 0.8, -0.2], [fx + 300, 640, 0.5, 0.25], [fx - 310, 590, 0.5, -0.3]].forEach(([x, y, k, r]) => roseAt(x, y, k, r));
+      g.save(); g.translate(fx, 790); g.scale(2.3, 2.3); g.translate(-fx, -900); icon(fx, 900); g.restore();
+      }
+      { const bx = fx - 262, by = 700, r = 56; g.save(); g.fillStyle = F.badge0 || F.badge; g.beginPath(); g.arc(bx, by, r, 0, 6.2832); g.fill();
+        g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '500 54px Outfit, sans-serif'; g.fillText('0g', bx, by + 12); g.font = '700 15px Outfit, sans-serif'; spaced('SUGAR', bx, by + 36, 4); g.restore(); }
+      { const pw = 330, ph = 50, px = fx - pw / 2, py = 1000; g.save(); g.fillStyle = F.badge; g.beginPath(); g.roundRect(px, py, pw, ph, 25); g.fill();
+        g.fillStyle = '#FFFFFF'; g.font = '700 22px Outfit, sans-serif'; spaced('ENERGY DRINK', fx, py + 33, 6); g.restore(); }
+      g.fillStyle = F.bandInk; g.font = '500 32px Outfit, sans-serif';
+      ['+ natural caffeine', '+ zero sugar', '+ B-vitamins'].forEach((t, i) => g.fillText(t, fx, bandY + 88 + i * 42));
+      g.fillStyle = F.bandText; g.font = '500 20px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 228, 8);
+      } else {
       g.fillStyle = F.ink; g.font = '700 44px Outfit, sans-serif'; spaced('SPARKLING ENERGY', fx, 200, 12);
       g.font = '500 22px Outfit, sans-serif'; g.fillStyle = F.soft; spaced(F.sub, fx, 240, 5);
       logoCloud(fx, 395, 190, 'stroke', F.ink);
-      { const k = 1.9; g.save(); g.translate(fx - 47 * k, 395 - 54 * k); g.scale(k, k); g.fillStyle = '#FFC233'; g.strokeStyle = '#FFC233'; g.lineWidth = 3.5; g.lineJoin = 'round'; const b = new Path2D('M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z'); g.fill(b); g.stroke(b); g.restore(); }
+      if (window.__cloudlyBolt !== false) { const k = 1.9; g.save(); g.translate(fx - 47 * k, 395 - 54 * k); g.scale(k, k); g.fillStyle = '#FFC233'; g.strokeStyle = '#FFC233'; g.lineWidth = 3.5; g.lineJoin = 'round'; const b = new Path2D('M51 20 L42 35 L48.5 35 L45.5 46 L57 30 L50.5 30 L54 20 Z'); g.fill(b); g.stroke(b); g.restore(); }
       g.fillStyle = F.ink; g.font = '300 176px Outfit, sans-serif'; spaced('cloudly', fx, 560, -5); g.fillRect(fx - 40, 612, 80, 3);
       fitFont(F.name, '400', 64, 'Outfit, sans-serif', 560); g.fillStyle = F.ink; g.fillText(F.name, fx, 706);
       { g.save(); g.fillStyle = F.ink; g.font = '500 30px Outfit, sans-serif'; spaced('CLEAN ENERGY', fx, 770, 10);
@@ -1241,6 +1365,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '500 72px Outfit, sans-serif'; g.fillText('0g', bx, by + 16); g.font = '700 19px Outfit, sans-serif'; spaced('SUGAR', bx, by + 45, 6); g.restore(); }
       g.fillStyle = '#FFFFFF'; g.font = '300 44px Outfit, sans-serif'; g.fillText('light as a cloud.', fx, bandY + 128);
       g.fillStyle = F.bandText; g.font = '500 24px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 186, 10);
+      }
       /* back panel: mandatory Dutch label info (EU 1169/2011) */
       const ix = 1660, iw = 480, lx = ix - iw / 2; g.textAlign = 'left'; let y = 262;
       { const nm = F.legal.split(', met ')[0]; g.fillStyle = F.ink; g.font = '600 20px Outfit, sans-serif'; g.fillText(nm, lx, y); const w = g.measureText(nm).width;
@@ -1359,6 +1484,17 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       sky.addColorStop(0, '#5CC1FF'); sky.addColorStop(0.45, '#A6DDFF'); sky.addColorStop(0.72, '#DDF2FF'); sky.addColorStop(1, F.base);
       g.fillStyle = sky; g.fillRect(0, 0, LW, end);
       g.translate(0, topOffset); drawLabel(LW, 1368);
+      if (TEASE[key]) {
+        /* teaser: the real label, blurred and blacked out, with a big question mark */
+        const cp = document.createElement('canvas'); cp.width = c.width; cp.height = c.height; cp.getContext('2d').drawImage(c, 0, 0);
+        g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#0E1013'; g.fillRect(0, 0, c.width, c.height);
+        g.filter = 'blur(46px) brightness(0.24) saturate(0.35)'; g.drawImage(cp, 0, 0); g.filter = 'none';
+        g.setTransform(SCALE, 0, 0, SCALE, 0, topOffset * SCALE); g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+        [380, 1024, 1660].forEach(x => {
+          g.fillStyle = '#FFFFFF'; g.font = '300 300px Outfit, sans-serif'; g.fillText('?', x, 700);
+          g.font = '700 40px Outfit, sans-serif'; spaced('COMING SOON', x, 820, 12);
+          g.fillStyle = 'rgba(255,255,255,.6)'; g.font = '500 26px Outfit, sans-serif'; spaced('FLAVOR 0' + TEASE[key], x, 880, 8); });
+      }
       g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = 'rgba(255,255,255,0.05)'; g.fillRect(0, 0, c.width, c.height);
       const tex = new THREE.CanvasTexture(c); tex.encoding = THREE.sRGBEncoding; tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
       printMats[key] = new THREE.MeshPhysicalMaterial({ map: tex, metalness: 0.2, roughness: 0.36, envMap,
