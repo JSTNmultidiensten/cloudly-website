@@ -1334,7 +1334,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       /* pink rim band at the top with the flavour name, like the bottom band */
       { const lab = window.__fmt === 'label', b1 = lab ? 28 : -62;
       g.fillStyle = F.band; g.fillRect(0, -400, TW, 400 + b1);
-      g.fillStyle = '#FFFFFF'; g.font = '700 30px Outfit, sans-serif'; [380, fx, 1660].forEach(x => spaced(x === fx ? F.name.toUpperCase() : 'ENERGY DRINK', x, b1 - 23, 8)); }
+      g.fillStyle = '#FFFFFF'; g.font = '700 30px Outfit, sans-serif'; [380, fx, 1660].forEach(x => spaced(F.name.toUpperCase(), x, b1 - 23, 8)); }
       logoCloud(fx, 318, 150, 'stroke', F.ink);
       g.fillStyle = F.ink; g.font = '400 168px Outfit, sans-serif'; spaced('cloudly', fx, 478, -5);
       g.fillStyle = F.soft; g.font = '400 50px Outfit, sans-serif'; g.fillText('sparkling energy', fx, 548);
@@ -1366,7 +1366,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.font = '800 58px Outfit, sans-serif'; g.fillText('0g', 0, 12); g.font = '800 14px Outfit, sans-serif'; spaced('SUGAR', 0, 33, 3);
         g.fillStyle = '#FFFFFF'; g.beginPath(); const sx = r * 0.78, sy = -r * 0.78, k = 11; g.moveTo(sx, sy - k); g.lineTo(sx + 3, sy - 3); g.lineTo(sx + k, sy); g.lineTo(sx + 3, sy + 3); g.lineTo(sx, sy + k); g.lineTo(sx - 3, sy + 3); g.lineTo(sx - k, sy); g.lineTo(sx - 3, sy - 3); g.closePath(); g.fill();
         g.restore(); }
-      g.fillStyle = F.bandInk; g.font = '600 30px Outfit, sans-serif'; g.fillText('natural caffeine  ·  zero sugar  ·  B-vitamins', fx, bandY + 128);
+      g.fillStyle = F.bandInk; g.font = '800 34px Outfit, sans-serif'; spaced('ENERGY DRINK', fx, bandY + 104, 10);
+      g.font = '500 26px Outfit, sans-serif'; g.fillText('natural caffeine  ·  zero sugar  ·  B-vitamins', fx, bandY + 150);
       g.fillStyle = F.bandText; g.font = '500 20px Outfit, sans-serif'; spaced('250 ML', fx, bandY + 196, 8);
       } else {
       g.fillStyle = F.ink; g.font = '700 44px Outfit, sans-serif'; spaced('SPARKLING ENERGY', fx, 200, 12);
