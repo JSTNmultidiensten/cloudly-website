@@ -863,7 +863,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   /* small teaser for the next flavors: compact, no names */
   const teaseEl = document.createElement('section'); teaseEl.className = 'teasestrip'; teaseEl.setAttribute('aria-label', 'More flavors coming later');
   teaseEl.innerHTML = '<div class="in"><div class="card"><div class="tcans" aria-hidden="true">' + canPic('peach') + canPic('mint') + '</div><div><div class="eyebrow">Psst…</div><h3>Two more flavors are coming from the clouds.</h3><p>Join the list and be the first to taste them.</p></div></div></div>';
-  flavorsEl.appendChild(teaseEl);
+  document.getElementById('shop').after(teaseEl);
 
   /* playful floating clouds: puffy SVG clouds that drift, bob, squish on hover and go poof on click */
   const SHAPES = [
