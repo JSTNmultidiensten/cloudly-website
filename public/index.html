@@ -875,7 +875,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   });
   /* small teaser for the next flavors: compact, no names */
   const teaseEl = document.createElement('section'); teaseEl.className = 'teasestrip'; teaseEl.setAttribute('aria-label', 'More flavors coming later');
-  teaseEl.innerHTML = '<div class="in"><div class="card"><div class="tcans" aria-hidden="true">' + canPic('peach') + canPic('mint') + '</div><div><div class="eyebrow">Psst…</div><h3>Two more flavors are coming from the clouds.</h3><p>Join the list and be the first to taste them.</p></div></div></div>';
+  teaseEl.innerHTML = '<div class="in"><div class="card"><div class="tcans" aria-hidden="true">' + canPic('peach') + canPic('mint') + '</div><div><div class="eyebrow">Psst…</div><h3>??? Cloud &amp; ??? Cloud are on their way.</h3><p>Join the list and be the first to taste them.</p></div></div></div>';
   flavorsEl.appendChild(teaseEl);
 
   /* playful floating clouds: puffy SVG clouds that drift, bob, squish on hover and go poof on click */
@@ -1140,7 +1140,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       };
       if (sec.dataset.k && sec.dataset.k !== k) { sec.classList.add('swap'); setTimeout(apply, 220); } else apply();
       sec.dataset.k = k; }
-    document.getElementById('pdp-flavors').innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-pressed="' + (t === PDP.flavor) + '"><i style="--c:' + (t === 'mix' ? 'conic-gradient(' + FL.grapefruit.band + ' 0 33%,' + FL.peach.band + ' 0 66%,' + FL.mint.band + ' 0)' : FL[t].band) + '"></i>' + nameOf(t) + '</button>').join('') + [2, 3].map(n => '<span class="soonchip" aria-disabled="true" title="Coming soon"><i>?</i>Flavor 0' + n + '<em>soon</em></span>').join('');
+    document.getElementById('pdp-flavors').innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-pressed="' + (t === PDP.flavor) + '"><i style="--c:' + (t === 'mix' ? 'conic-gradient(' + FL.grapefruit.band + ' 0 33%,' + FL.peach.band + ' 0 66%,' + FL.mint.band + ' 0)' : FL[t].band) + '"></i>' + nameOf(t) + '</button>').join('') + [2, 3].map(n => '<span class="soonchip" aria-disabled="true" title="Secret flavor, coming soon"><i>?</i>??? Cloud<em>soon</em></span>').join('');
     document.getElementById('pdp-sizes').innerHTML = Object.keys(SIZES).map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (+n === PDP.size) + '">' + n + ' cans</button>').join('');
     const base = SIZES[PDP.size];
     document.getElementById('pr-once').textContent = eur(base);
