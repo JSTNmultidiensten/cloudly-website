@@ -438,7 +438,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .pdp .main.auto { aspect-ratio: auto; min-height: 0; padding: clamp(20px, 4vw, 40px) 0; display: block }
 .pdp .main.auto .ingcard { margin: 0 auto; box-sizing: border-box }
 .pdp .main.auto .ingcard { width: calc(100% - 2 * clamp(16px, 4vw, 40px)) }
-.pdp .thumbs { grid-template-columns: repeat(3, minmax(0, 1fr)) }
+.pdp .thumbs { grid-template-columns: repeat(4, minmax(0, 1fr)) }
+.pdp .thumbs button.vt-photo { padding: 0; overflow: hidden } .pdp .thumbs img.ph { width: 100%; height: 100%; object-fit: cover; display: block }
+.pdp .main img.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3 }
 .pdp .thumbs button.vt { position: relative }
 .pdp .thumbs .pk { display: flex; align-items: flex-end; justify-content: center; height: 100%; width: 100% }
 .pdp .thumbs .pk img.can3d { height: 70%; margin: 0 -9% } .pdp .thumbs .pk img.can3d:nth-child(2) { height: 80%; position: relative; z-index: 1 }
@@ -1067,9 +1069,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   })();
 
   /* ---------- product page + bag ---------- */
-  const PDP = { flavor: 'grapefruit', size: 12, qty: 1, view: 'pack' }; const PACK = {};
-  const VIEWS = [['pack', 'cans'], ['can', 'The can'], ['ingr', 'Ingredients']];
-  const viewThumbs = k => VIEWS.map(v => '<button type="button" class="vt vt-' + v[0] + '" data-view="' + v[0] + '" aria-label="' + (v[0] === 'pack' ? PDP.size + ' ' + v[1] : v[1]) + '" aria-pressed="' + (PDP.view === v[0]) + '" style="--t:' + colorOf(k) + '">' + (v[0] === 'ingr' ? '<span class="it"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-6-7-5-11 2 0 5 1 5 5 0-4 3-5 5-5 1 4-1 8-5 11z"/></svg><b>Ingredients</b></span>' : v[0] === 'pack' ? '<span class="pk">' + canPic(k) + canPic(k) + canPic(k) + '</span><em>' + PDP.size + '-pack</em>' : canPic(k)) + '</button>').join('');
+  const PDP = { flavor: 'grapefruit', size: 12, qty: 1, view: 'photo' }; const PACK = {};
+  const VIEWS = [['photo', 'Product photo'], ['pack', 'cans'], ['can', 'The can'], ['ingr', 'Ingredients']];
+  const viewThumbs = k => VIEWS.map(v => '<button type="button" class="vt vt-' + v[0] + '" data-view="' + v[0] + '" aria-label="' + (v[0] === 'pack' ? PDP.size + ' ' + v[1] : v[1]) + '" aria-pressed="' + (PDP.view === v[0]) + '" style="--t:' + colorOf(k) + '">' + (v[0] === 'photo' ? '<img class="ph" src="photos/strawberry-cloud-product-thumb.webp" alt="">' : v[0] === 'ingr' ? '<span class="it"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-6-7-5-11 2 0 5 1 5 5 0-4 3-5 5-5 1 4-1 8-5 11z"/></svg><b>Ingredients</b></span>' : v[0] === 'pack' ? '<span class="pk">' + canPic(k) + canPic(k) + canPic(k) + '</span><em>' + PDP.size + '-pack</em>' : canPic(k)) + '</button>').join('');
   const SIZES = { 12: 24.99, 24: 46.99 };
   const PDP_KEYS = ['grapefruit'];
   const nameOf = k => k === 'mix' ? 'Mixed pack' : FL[k].name;
@@ -1083,6 +1085,11 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     pdpMain.classList.remove('auto');
     const k = PDP.flavor, flav = cansOf(k), n = PDP.size;
     const rows = n === 24 ? 4 : 3, cols = n === 24 ? 6 : 4;
+    if (PDP.view === 'photo') {
+      pdpMain.classList.remove('multi');
+      pdpMain.innerHTML = '<img class="photo" src="photos/strawberry-cloud-product.webp" alt="Cloudly Strawberry Cloud can with fresh strawberries and ice cubes">';
+      pdpThumbs.innerHTML = viewThumbs(flav[0]); return;
+    }
     if (PDP.view === 'can') {
       pdpMain.classList.remove('multi');
       pdpMain.innerHTML = '<div class="cl" style="width:26%;height:7%;left:6%;top:16%"></div><div class="cl" style="width:20%;height:6%;right:8%;top:10%"></div><div class="floor"></div><div class="tag">250 ml <i>·</i> ' + nameOf(k) + '</div><div class="solo">' + canPic(flav[0]) + '</div>';
@@ -1154,7 +1161,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   }
   document.getElementById('shop').addEventListener('click', e => {
     const vw = e.target.closest('[data-view]'); if (vw) { PDP.view = vw.dataset.view; renderShopPics(); return; }
-    const f = e.target.closest('[data-k]'); if (f) { PDP.flavor = f.dataset.k; PDP.view = 'pack'; renderPdp(); return; }
+    const f = e.target.closest('[data-k]'); if (f) { PDP.flavor = f.dataset.k; PDP.view = 'photo'; renderPdp(); return; }
     const n = e.target.closest('[data-n]'); if (n) { PDP.size = +n.dataset.n; PDP.view = 'pack'; renderPdp(); }
   });
   document.getElementById('pdp-minus').onclick = () => { PDP.qty = Math.max(1, PDP.qty - 1); renderPdp(); };
