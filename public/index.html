@@ -485,6 +485,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .pdp .chips button i { width: 22px; height: 22px; border-radius: 50%; background: var(--c) }
 .pdp .chips button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink) }
 .pdp .chips.size button { padding-left: 16px }
+.pdp .soonchip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px 8px 10px; border-radius: 999px; border: 1.5px dashed #B9C9D6; color: #8193A1; font: 700 15px var(--body); cursor: not-allowed; user-select: none; position: relative }
+.pdp .soonchip i { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 800 12px/1 var(--body); font-style: normal; color: #fff; background: conic-gradient(#FFB36B, #6FD3B0, #9FC9F5, #FFB36B); filter: blur(.3px) saturate(.8) }
+.pdp .soonchip em { font-style: normal; font: 800 10px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; background: #121417; color: #fff; padding: 4px 6px; border-radius: 999px }
 .pdp .opts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px }
 .pdp .opt { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 18px; border: 1.5px solid var(--line); background: var(--cloud); cursor: pointer }
 .pdp .opt:has(input:checked) { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink) }
@@ -1137,7 +1140,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       };
       if (sec.dataset.k && sec.dataset.k !== k) { sec.classList.add('swap'); setTimeout(apply, 220); } else apply();
       sec.dataset.k = k; }
-    document.getElementById('pdp-flavors').innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-pressed="' + (t === PDP.flavor) + '"><i style="--c:' + (t === 'mix' ? 'conic-gradient(' + FL.grapefruit.band + ' 0 33%,' + FL.peach.band + ' 0 66%,' + FL.mint.band + ' 0)' : FL[t].band) + '"></i>' + nameOf(t) + '</button>').join('');
+    document.getElementById('pdp-flavors').innerHTML = PDP_KEYS.map(t => '<button type="button" data-k="' + t + '" aria-pressed="' + (t === PDP.flavor) + '"><i style="--c:' + (t === 'mix' ? 'conic-gradient(' + FL.grapefruit.band + ' 0 33%,' + FL.peach.band + ' 0 66%,' + FL.mint.band + ' 0)' : FL[t].band) + '"></i>' + nameOf(t) + '</button>').join('') + [2, 3].map(n => '<span class="soonchip" aria-disabled="true" title="Coming soon"><i>?</i>Flavor 0' + n + '<em>soon</em></span>').join('');
     document.getElementById('pdp-sizes').innerHTML = Object.keys(SIZES).map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (+n === PDP.size) + '">' + n + ' cans</button>').join('');
     const base = SIZES[PDP.size];
     document.getElementById('pr-once').textContent = eur(base);
