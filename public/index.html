@@ -306,11 +306,11 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .band .canwrap { display: flex; justify-content: center; height: clamp(320px, 46vw, 520px) }
 .band .canwrap > * { height: 100%; will-change: transform }
 .band .canwrap img.can3d, .band .canwrap svg.can { height: 100%; width: auto }
-.teasestrip { padding: 28px 0 8px; position: relative; z-index: 2 }
-.teasestrip .card { display: flex; align-items: center; gap: clamp(16px, 4vw, 40px); background: #121417; color: #fff; border-radius: 28px; padding: 18px clamp(18px, 4vw, 40px); max-width: 760px; margin: 0 auto }
-.teasestrip .tcans { display: flex; flex: none; height: 150px } .teasestrip .tcans img.can3d, .teasestrip .tcans svg.can { height: 100%; width: auto; margin-right: -14px }
-.teasestrip .eyebrow { color: rgba(255,255,255,.6) } .teasestrip h3 { font: 500 clamp(22px, 3vw, 30px)/1.1 var(--display); margin: 6px 0 6px; color: #fff } .teasestrip p { margin: 0; color: rgba(255,255,255,.7); font-size: 15px }
-@media (max-width: 560px) { .teasestrip .card { flex-direction: column; text-align: center } .teasestrip .tcans { height: 120px } }
+.teasestrip { padding: 22px 0 0; position: relative; z-index: 2 }
+.teasestrip .card { display: flex; align-items: center; gap: 16px; background: #121417; color: #fff; border-radius: 999px; padding: 8px 26px 8px 14px; max-width: 520px; margin: 0 auto }
+.teasestrip .tcans { display: flex; flex: none; height: 64px } .teasestrip .tcans img.can3d, .teasestrip .tcans svg.can { height: 100%; width: auto; margin-right: -8px }
+.teasestrip .eyebrow { color: rgba(255,255,255,.6); font-size: 10px } .teasestrip h3 { font: 500 17px/1.2 var(--display); margin: 2px 0; color: #fff } .teasestrip p { margin: 0; color: rgba(255,255,255,.7); font-size: 12.5px }
+@media (max-width: 560px) { .teasestrip .card { border-radius: 22px; padding: 10px 16px 10px 12px; margin: 0 16px; gap: 12px } .teasestrip .tcans { height: 54px } .teasestrip h3 { font-size: 15px } }
 .band.tease { --bg: #121417 !important; background: #121417; color: #FFFFFF }
 .band.tease h2, .band.tease p { color: #FFFFFF } .band.tease .num { color: rgba(255,255,255,.55) }
 .band.tease .word { color: rgba(255,255,255,.06) } .band.tease .perks, .band.tease .fine, .band.tease .ing { display: none }
@@ -506,6 +506,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .love { margin-top: clamp(48px, 7vw, 88px) }
 .why { padding-bottom: 0 } .why .love { margin-top: 0 }
 .look { padding-top: clamp(48px, 7vw, 88px) }
+@media (max-width: 700px) { .look { display: none } }
 .love .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 20px }
 .love .card { background: var(--cloud); border: 1px solid var(--line); border-radius: 24px; padding: 22px }
 .love .card i { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--sky); margin-bottom: 14px; font-style: normal; font-size: 22px }
@@ -600,19 +601,6 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     </div>
   </section>
 
-  <section class="look" id="look" aria-label="Strawberry Cloud photos">
-    <div class="in">
-      <div class="sec-head"><div><div class="eyebrow">Strawberry Cloud</div><h2>Pretty in pink.<br>Light as a cloud.</h2></div><p>Sweet strawberry, a soft touch of rose, natural caffeine and zero sugar. Best served ice cold.</p></div>
-      <div class="grid">
-        <figure class="wide"><img src="photos/hand-sky.webp" alt="A hand holding a can of Cloudly Strawberry Cloud up against a blue sky with clouds" loading="lazy" width="1376" height="768"></figure>
-        <div class="row2">
-          <figure class="p"><img src="photos/light-as-a-cloud.webp" alt="Cloudly Strawberry Cloud rising from a soft cloud with fresh strawberries: clean energy, light as a cloud" loading="lazy" width="848" height="1264"></figure>
-          <figure class="l"><img src="photos/strawberry-cloud-benefits.webp" alt="Cloudly Strawberry Cloud with strawberries, ice and green tea: natural caffeine from green tea, zero sugar, B-vitamins" loading="lazy" width="1264" height="848"></figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="block pdp" id="shop">
     <div class="in">
       <div class="grid" id="buy">
@@ -683,6 +671,19 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   </section>
 
 
+
+  <section class="look" id="look" aria-label="Strawberry Cloud photos">
+    <div class="in">
+      <div class="sec-head"><div><div class="eyebrow">Strawberry Cloud</div><h2>Pretty in pink.<br>Light as a cloud.</h2></div><p>Sweet strawberry, a soft touch of rose, natural caffeine and zero sugar. Best served ice cold.</p></div>
+      <div class="grid">
+        <figure class="wide"><img src="photos/hand-sky.webp" alt="A hand holding a can of Cloudly Strawberry Cloud up against a blue sky with clouds" loading="lazy" width="1376" height="768"></figure>
+        <div class="row2">
+          <figure class="p"><img src="photos/light-as-a-cloud.webp" alt="Cloudly Strawberry Cloud rising from a soft cloud with fresh strawberries: clean energy, light as a cloud" loading="lazy" width="848" height="1264"></figure>
+          <figure class="l"><img src="photos/strawberry-cloud-benefits.webp" alt="Cloudly Strawberry Cloud with strawberries, ice and green tea: natural caffeine from green tea, zero sugar, B-vitamins" loading="lazy" width="1264" height="848"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="in" id="story">
     <div class="story">
@@ -872,7 +873,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   /* small teaser for the next flavors: compact, no names */
   const teaseEl = document.createElement('section'); teaseEl.className = 'teasestrip'; teaseEl.setAttribute('aria-label', 'More flavors coming later');
   teaseEl.innerHTML = '<div class="in"><div class="card"><div class="tcans" aria-hidden="true">' + canPic('peach') + canPic('mint') + '</div><div><div class="eyebrow">Psst…</div><h3>Two more flavors are coming from the clouds.</h3><p>Join the list and be the first to taste them.</p></div></div></div>';
-  document.getElementById('shop').after(teaseEl);
+  flavorsEl.appendChild(teaseEl);
 
   /* playful floating clouds: puffy SVG clouds that drift, bob, squish on hover and go poof on click */
   const SHAPES = [
