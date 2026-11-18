@@ -855,9 +855,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
     sec.setAttribute('aria-label', f.name);
     sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div></div>' +
-      '<div><div class="num">Flavor 01 · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#shop">See packs &amp; prices ↓</a></div></div>';
+      '<div><div class="num">Our first Cloud · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#shop">See packs &amp; prices ↓</a></div></div>';
     sec.querySelector('.word').textContent = TEASED[k] ? '? · ? · ? · ? · ' : (f.name.split(' & ')[0] + ' · ').repeat(4);
-    sec.querySelector('h2').textContent = TEASED[k] ? 'Flavor 0' + TEASED[k] : f.name;
+    sec.querySelector('h2').textContent = TEASED[k] ? '??? Cloud' : f.name;
     sec.querySelector('p').textContent = TEASED[k] ? 'Still top secret. This one drops later, and the launch list hears it first.' : f.desc;
     if (TEASED[k]) { sec.classList.add('tease'); f.ing = []; }
     const ing = sec.querySelector('.ing'); f.ing.filter(x => !/caffeine|sugar/.test(x)).forEach(x => { const s = document.createElement('span'); s.textContent = x; ing.appendChild(s); });
