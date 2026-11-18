@@ -292,7 +292,7 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 .stage3d .fallback .can:nth-child(2) { width: 30%; max-width: 172px }
 
 /* ticker */
-.ticker { background: var(--ink); color: var(--cloud); overflow: hidden; padding-block: 16px; transform: rotate(-1.2deg); margin: -14px -10px 0; position: relative; z-index: 5 }
+.ticker { background: var(--ink); color: var(--cloud); overflow: hidden; padding-block: 16px; transform: rotate(-1.2deg); margin: -14px -10px -14px; position: relative; z-index: 5 }
 .ticker .track { display: flex; width: max-content; will-change: transform }
 .ticker span { font: 300 30px/1 var(--display); white-space: nowrap; padding-right: 22px; display: inline-flex; align-items: center; gap: 22px }
 .ticker svg { flex: none }
@@ -504,6 +504,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .acc .body { padding: 0 0 18px; color: var(--soft) } .acc ul { margin: 0; padding-left: 18px } .acc li { margin: 4px 0 }
 .acc table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums } .acc td { padding: 6px 0; border-bottom: 1px dashed var(--line) } .acc td:last-child { text-align: right; color: var(--ink); font-weight: 700 }
 .love { margin-top: clamp(48px, 7vw, 88px) }
+.why { padding-bottom: 0 } .why .love { margin-top: 0 }
+.look { padding-top: clamp(48px, 7vw, 88px) }
 .love .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 20px }
 .love .card { background: var(--cloud); border: 1px solid var(--line); border-radius: 24px; padding: 22px }
 .love .card i { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--sky); margin-bottom: 14px; font-style: normal; font-size: 22px }
@@ -576,7 +578,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
   <div id="flavors"></div>
 
-  <section class="block pdp" id="shop">
+  <section class="block why" id="why">
     <div class="in">
       <div class="love" style="margin-top:0">
         <div class="eyebrow">Why you'll love it</div>
@@ -595,7 +597,25 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         </div>
       </div>
 
-      <div class="grid" id="buy" style="margin-top:clamp(40px,6vw,72px)">
+    </div>
+  </section>
+
+  <section class="look" id="look" aria-label="Strawberry Cloud photos">
+    <div class="in">
+      <div class="sec-head"><div><div class="eyebrow">Strawberry Cloud</div><h2>Pretty in pink.<br>Light as a cloud.</h2></div><p>Sweet strawberry, a soft touch of rose, natural caffeine and zero sugar. Best served ice cold.</p></div>
+      <div class="grid">
+        <figure class="wide"><img src="photos/hand-sky.webp" alt="A hand holding a can of Cloudly Strawberry Cloud up against a blue sky with clouds" loading="lazy" width="1376" height="768"></figure>
+        <div class="row2">
+          <figure class="p"><img src="photos/light-as-a-cloud.webp" alt="Cloudly Strawberry Cloud rising from a soft cloud with fresh strawberries: clean energy, light as a cloud" loading="lazy" width="848" height="1264"></figure>
+          <figure class="l"><img src="photos/strawberry-cloud-benefits.webp" alt="Cloudly Strawberry Cloud with strawberries, ice and green tea: natural caffeine from green tea, zero sugar, B-vitamins" loading="lazy" width="1264" height="848"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block pdp" id="shop">
+    <div class="in">
+      <div class="grid" id="buy">
         <div class="gal">
           <div class="main" id="pdp-main"></div>
           <div class="thumbs" id="pdp-thumbs"></div>
@@ -664,19 +684,6 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
 
 
-  <section class="look" id="look" aria-label="Strawberry Cloud photos">
-    <div class="in">
-      <div class="sec-head"><div><div class="eyebrow">Strawberry Cloud</div><h2>Pretty in pink.<br>Light as a cloud.</h2></div><p>Sweet strawberry, a soft touch of rose, natural caffeine and zero sugar. Best served ice cold.</p></div>
-      <div class="grid">
-        <figure class="wide"><img src="photos/hand-sky.webp" alt="A hand holding a can of Cloudly Strawberry Cloud up against a blue sky with clouds" loading="lazy" width="1376" height="768"></figure>
-        <div class="row2">
-          <figure class="p"><img src="photos/light-as-a-cloud.webp" alt="Cloudly Strawberry Cloud rising from a soft cloud with fresh strawberries: clean energy, light as a cloud" loading="lazy" width="848" height="1264"></figure>
-          <figure class="l"><img src="photos/strawberry-cloud-benefits.webp" alt="Cloudly Strawberry Cloud with strawberries, ice and green tea: natural caffeine from green tea, zero sugar, B-vitamins" loading="lazy" width="1264" height="848"></figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="in" id="story">
     <div class="story">
       <svg class="skyline" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1200 V18 C1170 18 1160 34 1130 34 C1100 34 1095 14 1060 14 C1025 14 1015 32 980 32 C950 32 940 16 905 16 C870 16 860 34 825 34 C795 34 785 12 750 12 C715 12 705 30 670 30 C640 30 630 16 595 16 C560 16 550 34 515 34 C485 34 475 14 440 14 C405 14 395 32 360 32 C330 32 320 16 285 16 C250 16 240 34 205 34 C175 34 165 12 130 12 C95 12 85 30 50 30 C25 30 15 20 0 20 Z" fill="#F3FAFE"></path></svg>
@@ -699,6 +706,19 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   </section>
 
   <div class="skyclouds" aria-hidden="true"><i></i></div>
+  <section class="block" id="faq">
+    <div class="in">
+      <div class="sec-head"><div><div class="eyebrow">FAQ</div><h2>Good to know.</h2></div></div>
+      <div class="faq">
+        <details><summary>When can I buy Cloudly?</summary><p>We are working on our first production run right now. Join the launch list and you will hear it first, with an early bird discount.</p></details>
+        <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, a little real fruit juice, natural caffeine from green tea, vitamins B3, B6 and B12, and natural sweeteners from stevia and erythritol. Vitamins B6 and B12 contribute to normal energy-yielding metabolism.</p></details><details><summary>How much caffeine is in a can?</summary><p>80 mg per 250 ml can, about one cup of coffee. High caffeine content: not recommended for children or pregnant or breast-feeding women.</p></details>
+        <details><summary>How does Subscribe &amp; save work?</summary><p>You save 15% on every delivery and get a fresh pack every 30 days. A subscription runs for at least 2 deliveries. After that you can pause, skip a month or cancel anytime in your account. If you cancel before your second delivery, we charge the 15% discount of your first order after all.</p></details>
+        <details><summary>Where will you deliver?</summary><p>First in the Netherlands, with Belgium soon after.</p></details>
+        <details><summary>Can I sell Cloudly in my shop or café?</summary><p>Yes, we would love that. Send a message to hello@drinkcloudly.com and we will get in touch before launch.</p></details>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="list">
     <div class="in">
       <div class="wait">
@@ -717,18 +737,6 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     </div>
   </section>
 
-  <section class="block" id="faq" style="padding-top:0">
-    <div class="in">
-      <div class="sec-head"><div><div class="eyebrow">FAQ</div><h2>Good to know.</h2></div></div>
-      <div class="faq">
-        <details><summary>When can I buy Cloudly?</summary><p>We are working on our first production run right now. Join the launch list and you will hear it first, with an early bird discount.</p></details>
-        <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, a little real fruit juice, natural caffeine from green tea, vitamins B3, B6 and B12, and natural sweeteners from stevia and erythritol. Vitamins B6 and B12 contribute to normal energy-yielding metabolism.</p></details><details><summary>How much caffeine is in a can?</summary><p>80 mg per 250 ml can, about one cup of coffee. High caffeine content: not recommended for children or pregnant or breast-feeding women.</p></details>
-        <details><summary>How does Subscribe &amp; save work?</summary><p>You save 15% on every delivery and get a fresh pack every 30 days. A subscription runs for at least 2 deliveries. After that you can pause, skip a month or cancel anytime in your account. If you cancel before your second delivery, we charge the 15% discount of your first order after all.</p></details>
-        <details><summary>Where will you deliver?</summary><p>First in the Netherlands, with Belgium soon after.</p></details>
-        <details><summary>Can I sell Cloudly in my shop or café?</summary><p>Yes, we would love that. Send a message to hello@drinkcloudly.com and we will get in touch before launch.</p></details>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
@@ -843,7 +851,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
     sec.setAttribute('aria-label', f.name);
     sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div></div>' +
-      '<div><div class="num">Flavor 01 · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#list">Notify me at launch</a></div></div>';
+      '<div><div class="num">Flavor 01 · coming soon</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamins B6 and B12 contribute to normal energy-yielding metabolism. Contains caffeine (32 mg/100 ml).</p><a class="btn" href="#shop">See packs &amp; prices ↓</a></div></div>';
     sec.querySelector('.word').textContent = TEASED[k] ? '? · ? · ? · ? · ' : (f.name.split(' & ')[0] + ' · ').repeat(4);
     sec.querySelector('h2').textContent = TEASED[k] ? 'Flavor 0' + TEASED[k] : f.name;
     sec.querySelector('p').textContent = TEASED[k] ? 'Still top secret. This one drops later, and the launch list hears it first.' : f.desc;
@@ -919,7 +927,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     svg.classList.remove('poof'); void svg.getBoundingClientRect(); svg.classList.add('poof');
     setTimeout(() => svg.classList.remove('poof'), 2500);
   });
-  bands.forEach(b => sprinkle(b.sec, 3, '', [160, 320], [4, 80], ['white']));
+  bands.forEach(b => sprinkle(b.sec, 3, '', [160, 320], [22, 80], ['white']));
   sprinkle(document.getElementById('shop'), 2, 'soft', [110, 180], [0, 22], ['sky', 'pink']);
   sprinkle(document.querySelector('#story .story'), 4, 'dark', [200, 400], [5, 85], ['white']);
   document.querySelectorAll('main > section.block:not(#shop)').forEach(sec => sprinkle(sec, 2, '', [130, 220], [0, 60], ['sky', 'mint', 'peach', 'pink']));
