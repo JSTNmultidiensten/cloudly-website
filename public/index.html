@@ -578,36 +578,20 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
   <section class="block pdp" id="shop">
     <div class="in">
-      <div class="grid">
-        <div class="gal">
-          <div class="main" id="pdp-main"></div>
-          <div class="thumbs" id="pdp-thumbs"></div>
+      <div class="love" style="margin-top:0">
+        <div class="eyebrow">Why you'll love it</div>
+        <h2 style="font-size:clamp(32px,4vw,46px)">Energy that feels light.</h2>
+        <p style="margin:6px 0 18px;font:500 clamp(18px,2.2vw,22px)/1.3 var(--display);color:var(--soft)">Fly high on a cloud, no sugar crash landing.</p>
+        <div class="cards">
+          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="#123D33"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg></i><b>Natural energy</b><p>80 mg caffeine from green tea. A clear head without the heavy feeling.</p></div>
+          <div class="card"><i><svg width="24" height="16" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="#123D33" stroke-width="7" stroke-linejoin="round"/></svg></i><b>Light as a cloud</b><p>0 g sugar and under 10 kcal. All the fizz, none of the sugar rush.</p></div>
+          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D33" stroke-width="2" stroke-linejoin="round"><path d="M12 21c-5-3-7-7-6-10 1-2 3-3 6-3s5 1 6 3c1 3-1 7-6 10z"/><path d="M9 6c1 1 2 1.5 3 1.5S14 7 15 6M12 7.5V4"/></svg></i><b>Fruit you can taste</b><p>Strawberry &amp; rose, ice cold classic or dark cherry. Juicy, never syrupy.</p></div>
+          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D33" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><b>Nothing weird</b><p>No artificial colors. Sweetened with stevia, with vitamins B6 and B12.</p></div>
         </div>
-        <div>
-          <div class="eyebrow" id="pdp-eyebrow">Shop · coming soon</div>
-          <h2 id="pdp-title">Cloudly Sparkling Energy</h2>
-          <div class="stars">New · launching in the Netherlands</div>
-          <p class="lead" id="pdp-lead">Clean, light energy with natural caffeine from green tea and zero sugar. Lightly sparkling, ice cold and light as a cloud.</p>
-          <div class="tags" id="pdp-tags"><span>Natural caffeine</span><span>Zero sugar</span><span>Clean energy</span><span>Under 10 kcal</span></div>
-          <p class="lbl">Flavor <b id="pdp-flavor-name"></b></p>
-          <div class="chips" id="pdp-flavors"></div>
-          <p class="lbl">Pack size</p>
-          <div class="chips size" id="pdp-sizes"></div>
-          <div class="opts" id="pdp-opts">
-            <label class="opt"><input type="radio" name="ptype" value="once" checked><span><b>One-time purchase</b><small>Pay once, no strings</small></span><span class="pr" id="pr-once"></span></label>
-            <label class="opt"><input type="radio" name="ptype" value="sub"><span><b>Subscribe &amp; save <span class="save">-15%</span></b><small>Delivered every 30 days · minimum 2 deliveries, then skip or cancel anytime</small></span><span class="pr" id="pr-sub"></span></label>
-          </div>
-          <div class="buyrow">
-            <div class="qty" aria-label="Quantity"><button type="button" id="pdp-minus" aria-label="Less">−</button><span id="pdp-qty">1</span><button type="button" id="pdp-plus" aria-label="More">+</button></div>
-            <button class="btn" type="button" id="pdp-add">Add to bag</button>
-          </div>
-          <p class="ship"><b>Free shipping in the Netherlands</b> on orders over €40</p>
-          <div class="acc">
-            <details open><summary>Tell me more</summary><div class="body"><ul><li>80 mg natural caffeine from green tea per can, about one cup of coffee</li><li>A smooth, steady feeling, never heavy</li><li>Vitamins B6 and B12, which contribute to normal energy-yielding metabolism</li><li>0 g sugar, under 10 kcal, lightly sparkling</li></ul></div></details>
-            <details><summary>How to use</summary><div class="body">Drink one can when you need a clear, light boost: a morning start, a long study session, before the gym or as your afternoon pick-me-up. Best served ice cold.</div></details>
-            <details><summary>Ingredients</summary><div class="body" id="pdp-ingr"></div></details>
-            <details><summary>Nutrition per 100 ml</summary><div class="body"><table><tr><td>Energy</td><td>&lt; 4 kcal</td></tr><tr><td>Sugars</td><td>0 g</td></tr><tr><td>Caffeine</td><td>32 mg</td></tr><tr><td>Niacin</td><td>1.9 mg (12% RI)</td></tr><tr><td>Vitamin B6</td><td>0.17 mg (12% RI)</td></tr><tr><td>Vitamin B12</td><td>0.3 µg (12% RI)</td></tr></table><p style="margin:10px 0 0;font-size:13px">Final values after lab test. High caffeine content. Not recommended for children or pregnant or breast-feeding women.</p></div></details>
-          </div>
+        <div class="howto">
+          <div><b>Morning</b><span>Swap your second coffee for a cold can.</span></div>
+          <div><b>Afternoon</b><span>Beat the 3 pm dip without a sugar crash.</span></div>
+          <div><b>Before the gym</b><span>Light, fizzy and easy on the stomach.</span></div>
         </div>
       </div>
 
@@ -642,22 +626,39 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         </div>
       </div>
 
-      <div class="love">
-        <div class="eyebrow">Why you'll love it</div>
-        <h2 style="font-size:clamp(32px,4vw,46px)">Energy that feels light.</h2>
-        <p style="margin:6px 0 18px;font:500 clamp(18px,2.2vw,22px)/1.3 var(--display);color:var(--soft)">Fly high on a cloud, no sugar crash landing.</p>
-        <div class="cards">
-          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="#123D33"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg></i><b>Natural energy</b><p>80 mg caffeine from green tea. A clear head without the heavy feeling.</p></div>
-          <div class="card"><i><svg width="24" height="16" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="#123D33" stroke-width="7" stroke-linejoin="round"/></svg></i><b>Light as a cloud</b><p>0 g sugar and under 10 kcal. All the fizz, none of the sugar rush.</p></div>
-          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D33" stroke-width="2" stroke-linejoin="round"><path d="M12 21c-5-3-7-7-6-10 1-2 3-3 6-3s5 1 6 3c1 3-1 7-6 10z"/><path d="M9 6c1 1 2 1.5 3 1.5S14 7 15 6M12 7.5V4"/></svg></i><b>Fruit you can taste</b><p>Strawberry &amp; rose, ice cold classic or dark cherry. Juicy, never syrupy.</p></div>
-          <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D33" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><b>Nothing weird</b><p>No artificial colors. Sweetened with stevia, with vitamins B6 and B12.</p></div>
+      <div class="grid" id="buy" style="margin-top:clamp(40px,6vw,72px)">
+        <div class="gal">
+          <div class="main" id="pdp-main"></div>
+          <div class="thumbs" id="pdp-thumbs"></div>
         </div>
-        <div class="howto">
-          <div><b>Morning</b><span>Swap your second coffee for a cold can.</span></div>
-          <div><b>Afternoon</b><span>Beat the 3 pm dip without a sugar crash.</span></div>
-          <div><b>Before the gym</b><span>Light, fizzy and easy on the stomach.</span></div>
+        <div>
+          <div class="eyebrow" id="pdp-eyebrow">Shop · coming soon</div>
+          <h2 id="pdp-title">Cloudly Sparkling Energy</h2>
+          <div class="stars">New · launching in the Netherlands</div>
+          <p class="lead" id="pdp-lead">Clean, light energy with natural caffeine from green tea and zero sugar. Lightly sparkling, ice cold and light as a cloud.</p>
+          <div class="tags" id="pdp-tags"><span>Natural caffeine</span><span>Zero sugar</span><span>Clean energy</span><span>Under 10 kcal</span></div>
+          <p class="lbl">Flavor <b id="pdp-flavor-name"></b></p>
+          <div class="chips" id="pdp-flavors"></div>
+          <p class="lbl">Pack size</p>
+          <div class="chips size" id="pdp-sizes"></div>
+          <div class="opts" id="pdp-opts">
+            <label class="opt"><input type="radio" name="ptype" value="once" checked><span><b>One-time purchase</b><small>Pay once, no strings</small></span><span class="pr" id="pr-once"></span></label>
+            <label class="opt"><input type="radio" name="ptype" value="sub"><span><b>Subscribe &amp; save <span class="save">-15%</span></b><small>Delivered every 30 days · minimum 2 deliveries, then skip or cancel anytime</small></span><span class="pr" id="pr-sub"></span></label>
+          </div>
+          <div class="buyrow">
+            <div class="qty" aria-label="Quantity"><button type="button" id="pdp-minus" aria-label="Less">−</button><span id="pdp-qty">1</span><button type="button" id="pdp-plus" aria-label="More">+</button></div>
+            <button class="btn" type="button" id="pdp-add">Add to bag</button>
+          </div>
+          <p class="ship"><b>Free shipping in the Netherlands</b> on orders over €40</p>
+          <div class="acc">
+            <details open><summary>Tell me more</summary><div class="body"><ul><li>80 mg natural caffeine from green tea per can, about one cup of coffee</li><li>A smooth, steady feeling, never heavy</li><li>Vitamins B6 and B12, which contribute to normal energy-yielding metabolism</li><li>0 g sugar, under 10 kcal, lightly sparkling</li></ul></div></details>
+            <details><summary>How to use</summary><div class="body">Drink one can when you need a clear, light boost: a morning start, a long study session, before the gym or as your afternoon pick-me-up. Best served ice cold.</div></details>
+            <details><summary>Ingredients</summary><div class="body" id="pdp-ingr"></div></details>
+            <details><summary>Nutrition per 100 ml</summary><div class="body"><table><tr><td>Energy</td><td>&lt; 4 kcal</td></tr><tr><td>Sugars</td><td>0 g</td></tr><tr><td>Caffeine</td><td>32 mg</td></tr><tr><td>Niacin</td><td>1.9 mg (12% RI)</td></tr><tr><td>Vitamin B6</td><td>0.17 mg (12% RI)</td></tr><tr><td>Vitamin B12</td><td>0.3 µg (12% RI)</td></tr></table><p style="margin:10px 0 0;font-size:13px">Final values after lab test. High caffeine content. Not recommended for children or pregnant or breast-feeding women.</p></div></details>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
