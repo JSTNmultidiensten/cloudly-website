@@ -57,7 +57,7 @@
 .pop-scrim.show .ebpop { transform: none }
 .ebpop .art { position: relative; overflow: hidden; background: linear-gradient(180deg, #8FD0FF, #DFF2FF 70%, #FFE4EA); display: flex; align-items: flex-end; justify-content: center; gap: 1%; padding: 64px 5% 28px; min-height: 340px }
 .ebpop .art::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: 18px; height: 22px; border-radius: 50%; background: radial-gradient(closest-side, rgba(20,50,80,.25), transparent) }
-.ebpop .art img.can3d, .ebpop .art svg.can { position: relative; z-index: 1; width: 30%; height: auto; max-height: none; filter: drop-shadow(0 16px 18px rgba(20,50,80,.28)) }
+.ebpop .art img.can3d, .ebpop .art svg.can { position: relative; z-index: 1; width: 42%; max-width: 170px; height: auto; max-height: none; filter: drop-shadow(0 16px 18px rgba(20,50,80,.28)) }
 .ebpop .art img.can3d:nth-of-type(2), .ebpop .art svg.can:nth-of-type(2) { width: 35%; z-index: 2; margin: 0 -2% 6px }
 .ebpop .art .stk { position: absolute; top: 16px; left: 16px; background: #FFE600; color: #123D33; font: 800 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: 999px; box-shadow: 0 4px 0 #123D33; transform: rotate(-4deg) }
 .ebpop .txt { padding: clamp(24px, 4vw, 40px) }
@@ -284,6 +284,11 @@ a.cart-btn { text-decoration: none; display: inline-flex; align-items: center }
 }
 .stage3d .fallback { display: flex; align-items: flex-end; justify-content: center; gap: 2%; width: 100%; padding-bottom: 30px }
 .stage3d .fallback .can { width: 26%; max-width: 150px }
+.stage3d .fallback { position: relative; z-index: 1 }
+.stage3d .fallback img.herocan { height: min(500px, 82vh); width: auto; max-width: 70%; object-fit: contain; filter: drop-shadow(0 30px 30px rgba(120,30,60,.28)); animation: canfloat 6s ease-in-out infinite; transform-origin: 50% 90% }
+@keyframes canfloat { 0%, 100% { transform: translateY(0) rotate(-2deg) } 50% { transform: translateY(-14px) rotate(1.5deg) } }
+@media (max-width: 860px) { .stage3d .fallback img.herocan { height: min(400px, 46vh) } }
+@media (prefers-reduced-motion: reduce) { .stage3d .fallback img.herocan { animation: none } }
 .stage3d .fallback .can:nth-child(2) { width: 30%; max-width: 172px }
 
 /* ticker */
@@ -825,7 +830,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       '<rect x="4" y="14" width="100" height="238" fill="url(#' + id + ')"/></g>' +
       '<rect x="14" y="248" width="80" height="10" rx="5" fill="url(#m' + id + ')"/></svg>';
   }
-  const IMG = {};
+  const CANPH = 'photos/strawberry-cloud-can.webp';
+  const IMG = { grapefruit: CANPH };
   function canPic(key) { return IMG[key] ? '<img class="can3d" src="' + IMG[key] + '" alt="Cloudly ' + FL[key].name + ' can">' : can(key); }
 
   const PRODUCTS = [
@@ -837,9 +843,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
   /* hero fallback: hidden while the 3D cans load, shown only if 3D is not ready after a few seconds */
   const fallback = document.getElementById('fallback');
-  fallback.innerHTML = can('grapefruit');
+  fallback.innerHTML = '<img class="herocan" src="' + CANPH + '" alt="An ice cold can of Cloudly Strawberry Cloud with condensation" fetchpriority="high">';
+  document.getElementById('stage3d').classList.add('nogl');
   const noGL = setTimeout(() => {
-    document.getElementById('stage3d').classList.add('nogl');
     document.querySelectorAll('.band .mover.wait').forEach(m => m.classList.remove('wait'));
   }, 6000);
 
@@ -1042,7 +1048,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     const pop = document.getElementById('pop'); let popDone = store.get('cl_pop') === 'done', popOpen = false;
     function openPop() {
       if (popDone || popOpen) return; popOpen = true; popDone = true; store.set('cl_pop', 'done'); hideTip();
-      document.getElementById('pop-art').insertAdjacentHTML('beforeend', canPic('peach') + canPic('grapefruit') + canPic('mint'));
+      document.getElementById('pop-art').insertAdjacentHTML('beforeend', canPic('grapefruit'));
       pop.hidden = false; requestAnimationFrame(() => pop.classList.add('show'));
       setTimeout(() => { const i = document.getElementById('pop-email'); if (i && window.innerWidth > 640) i.focus({ preventScroll: true }); }, 350);
     }
@@ -1072,7 +1078,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   /* ---------- product page + bag ---------- */
   const PDP = { flavor: 'grapefruit', size: 12, qty: 1, view: 'photo' }; const PACK = {};
   const VIEWS = [['photo', 'Product photo'], ['pack', 'cans'], ['ingr', 'Ingredients']];
-  const viewThumbs = k => VIEWS.map(v => '<button type="button" class="vt vt-' + v[0] + '" data-view="' + v[0] + '" aria-label="' + (v[0] === 'pack' ? PDP.size + ' ' + v[1] : v[1]) + '" aria-pressed="' + (PDP.view === v[0]) + '" style="--t:' + colorOf(k) + '">' + (v[0] === 'photo' ? '<img class="ph" src="photos/strawberry-cloud-product-thumb.webp" alt="">' : v[0] === 'ingr' ? '<span class="it"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-6-7-5-11 2 0 5 1 5 5 0-4 3-5 5-5 1 4-1 8-5 11z"/></svg><b>Ingredients</b></span>' : v[0] === 'pack' && PDP.size === 12 ? '<img class="ph" src="photos/strawberry-cloud-12-pack-thumb.webp" alt="">' : v[0] === 'pack' ? '<span class="pk">' + canPic(k) + canPic(k) + canPic(k) + '</span><em>' + PDP.size + '-pack</em>' : canPic(k)) + '</button>').join('');
+  const viewThumbs = k => VIEWS.map(v => '<button type="button" class="vt vt-' + v[0] + '" data-view="' + v[0] + '" aria-label="' + (v[0] === 'pack' ? PDP.size + ' ' + v[1] : v[1]) + '" aria-pressed="' + (PDP.view === v[0]) + '" style="--t:' + colorOf(k) + '">' + (v[0] === 'photo' ? '<img class="ph" src="photos/strawberry-cloud-product-thumb.webp" alt="">' : v[0] === 'ingr' ? '<span class="it"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-6-7-5-11 2 0 5 1 5 5 0-4 3-5 5-5 1 4-1 8-5 11z"/></svg><b>Ingredients</b></span>' : v[0] === 'pack' ? '<img class="ph" src="photos/strawberry-cloud-12-pack-thumb.webp" alt="">' : v[0] === 'pack' ? '<span class="pk">' + canPic(k) + canPic(k) + canPic(k) + '</span><em>' + PDP.size + '-pack</em>' : canPic(k)) + '</button>').join('');
   const SIZES = { 12: 24.99, 24: 46.99 };
   const PDP_KEYS = ['grapefruit'];
   const nameOf = k => k === 'mix' ? 'Mixed pack' : FL[k].name;
@@ -1091,9 +1097,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       pdpMain.innerHTML = '<img class="photo" src="photos/strawberry-cloud-product.webp" alt="Cloudly Strawberry Cloud can with fresh strawberries and ice cubes">';
       pdpThumbs.innerHTML = viewThumbs(flav[0]); return;
     }
-    if (PDP.view === 'pack' && PDP.size === 12) {
+    if (PDP.view === 'pack') {
       pdpMain.classList.remove('multi');
-      pdpMain.innerHTML = '<img class="photo" src="photos/strawberry-cloud-12-pack.webp" alt="Cloudly Strawberry Cloud 12-pack, 12 cans of 250 ml in shrink-wrap">';
+      pdpMain.innerHTML = (PDP.size === 24 ? '<div class="tag" style="top:auto;bottom:5%">24 cans <i>·</i> 2 × 12-pack</div>' : '') + '<img class="photo" src="photos/strawberry-cloud-12-pack.webp" alt="Cloudly Strawberry Cloud 12-pack, 12 cans of 250 ml in shrink-wrap">';
       pdpThumbs.innerHTML = viewThumbs(flav[0]); return;
     }
     if (PDP.view === 'can') {
@@ -1205,13 +1211,14 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     reduce, heroState, hero: heroEl,
     setPacks(map) { Object.assign(PACK, map); renderShopPics(); },
     setImages(map) {
-      Object.assign(IMG, map);
+      Object.assign(IMG, map); IMG.grapefruit = CANPH;
       pics.forEach(([el, p]) => { el.innerHTML = p.cans.map(canPic).join(''); });
       bands.forEach(b => { b.mover.innerHTML = canPic(b.key); b.mover.classList.remove('wait'); });
       const tc = document.querySelector('.teasestrip .tcans'); if (tc) tc.innerHTML = canPic('peach') + canPic('mint');
       renderShopPics(); renderBag();
     },
     useHero3D(canvas) {
+      return null;
       const st = document.getElementById('stage3d');
       clearTimeout(noGL); fallback.remove(); st.appendChild(canvas);
       requestAnimationFrame(() => requestAnimationFrame(() => canvas.classList.add('on')));
