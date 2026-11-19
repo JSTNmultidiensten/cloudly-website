@@ -451,6 +451,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .spin360 .sh { position: absolute; left: 50%; bottom: 5%; width: 34%; height: 4%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(18,61,51,.22), transparent); }
 .spin360 .hint { position: absolute; left: 50%; bottom: 3%; transform: translateX(-50%); z-index: 2; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 99px; background: rgba(255,255,255,.85); color: #123D33; font: 700 12px/1 Outfit, system-ui, sans-serif; letter-spacing: .02em; transition: opacity .4s; white-space: nowrap }
 .spin360.used .hint { opacity: 0 }
+.spin360.live .hint { z-index: 4; pointer-events: none }
 .pdp .thumbs button.vt-spin { padding: 0; overflow: hidden; background: linear-gradient(180deg, #CFE6FA, #FFE3EE) }
 .pdp .thumbs button.vt-spin img { height: 86%; width: auto; display: block; margin: 7% auto 0 }
 .pdp .thumbs button.vt-spin b { position: absolute; right: 4px; bottom: 4px; background: #123D33; color: #fff; font: 800 10px/1 Outfit, system-ui, sans-serif; padding: 3px 5px; border-radius: 6px }
@@ -1122,8 +1123,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     }
     if (PDP.view === 'spin') {
       pdpMain.classList.remove('multi');
-      pdpMain.innerHTML = '<div class="spin360"></div>';
-      cloudSpin(pdpMain.firstChild, 'photos/spin/');
+      pdpMain.innerHTML = '<div class="spin360 live"></div>';
+      if (window.__can3d) { const el = pdpMain.firstChild; el.innerHTML = '<div class="hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg>drag to spin</div>'; window.__can3d(el); }
+      else { cloudSpin(pdpMain.firstChild, 'photos/spin/'); document.addEventListener('cloudly:can3d', () => { if (PDP.view === 'spin') renderShopPics(); }, { once: true }); }
       pdpThumbs.innerHTML = viewThumbs(flav[0]); return;
     }
     if (PDP.view === 'pack') {
@@ -1529,7 +1531,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     renderer.physicallyCorrectLights = true;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
-    const envMap = (function () {
+    const makeEnv = function (rdr) {
       const w = 1024, h = 512, d = new Uint8Array(w * h * 4);
       function put(i, r, gg, b) { const m = Math.max(r, gg, b); if (m < 1e-6) { d[i] = d[i + 1] = d[i + 2] = d[i + 3] = 0; return; }
         const e = Math.ceil(Math.log2(m)), f = 255 / Math.pow(2, e); d[i] = Math.min(255, Math.round(r * f)); d[i + 1] = Math.min(255, Math.round(gg * f)); d[i + 2] = Math.min(255, Math.round(b * f)); d[i + 3] = e + 128; }
@@ -1541,8 +1543,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         const k2 = 1 - 0.8 * box(u, v, 0.46, 0.52, 0.2, 0.45, 0.02); put(i, (r + L) * k2, (gg + L) * k2, (b + L) * k2); } }
       const t = new THREE.DataTexture(d, w, h, THREE.RGBAFormat, THREE.UnsignedByteType);
       t.encoding = THREE.RGBEEncoding; t.mapping = THREE.EquirectangularReflectionMapping; t.minFilter = THREE.NearestFilter; t.magFilter = THREE.NearestFilter; t.generateMipmaps = false; t.flipY = false; t.needsUpdate = true;
-      const pm = new THREE.PMREMGenerator(renderer); const out = pm.fromEquirectangular(t).texture; t.dispose(); pm.dispose(); return out;
-    })();
+      const pm = new THREE.PMREMGenerator(rdr); const out = pm.fromEquirectangular(t).texture; t.dispose(); pm.dispose(); return out;
+    };
+    const envMap = makeEnv(renderer);
 
     /* ---------- can geometry ---------- */
     const R = 0.8, H = 2.03, SEG = 160;
@@ -1808,6 +1811,44 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
     const props = [];
     function prop(mesh, x, y, z, rx, ry, rz, depth, spin) { mesh.position.set(x, y, z); mesh.rotation.set(rx, ry, rz); scene.add(mesh); props.push({ mesh, x, y, z, rx, ry, rz, depth, spin, s: mesh.scale.x }); }
+
+    /* ---------- live 3D viewer for the shop gallery: drag to turn the real can ---------- */
+    (function viewer() {
+      let vr = null, vs, vc, vcan, mountEl = null, raf = 0;
+      const st = { ry: -0.35, vel: 0, drag: null, idle: 0, last: 0 };
+      function build() {
+        vr = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        vr.outputEncoding = THREE.sRGBEncoding; vr.toneMapping = THREE.ACESFilmicToneMapping; vr.toneMappingExposure = 0.78;
+        vr.physicallyCorrectLights = true; vr.shadowMap.enabled = true; vr.shadowMap.type = THREE.PCFShadowMap;
+        vr.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        vs = new THREE.Scene(); key3(vs);
+        vc = new THREE.PerspectiveCamera(20, 1, 0.1, 100); vc.position.set(0, 0.9, 15.2); vc.lookAt(0, -0.05, 0);
+        const fl = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), new THREE.ShadowMaterial({ opacity: 0.18 })); fl.rotation.x = -Math.PI / 2; fl.position.y = -H; fl.receiveShadow = true; vs.add(fl);
+        const vEnv = makeEnv(vr); vcan = makeCan('grapefruit'); vcan.traverse(o => { if (o.isMesh) { o.material = o.material.clone(); o.material.envMap = vEnv; o.material.needsUpdate = true; } }); vs.add(vcan);
+        const el = vr.domElement; el.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;cursor:grab';
+        el.addEventListener('pointerdown', e => { st.drag = { x: e.clientX, lx: e.clientX, t: e.timeStamp }; st.vel = 0; el.setPointerCapture(e.pointerId); el.style.cursor = 'grabbing'; if (mountEl) mountEl.classList.add('used'); });
+        el.addEventListener('pointermove', e => { if (!st.drag) return; const w = el.clientWidth || 300, dx = e.clientX - st.drag.lx, dt = Math.max(8, e.timeStamp - st.drag.t);
+          st.ry += dx / w * Math.PI * 1.6; st.vel = dx / w * Math.PI * 1.6 / (dt / 1000); st.drag.lx = e.clientX; st.drag.t = e.timeStamp; });
+        const up = () => { if (!st.drag) return; st.drag = null; el.style.cursor = 'grab'; st.vel = Math.max(-14, Math.min(14, st.vel)); st.idle = performance.now() + 3000; };
+        el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+      }
+      function frame(t) {
+        raf = 0; if (!mountEl || !mountEl.isConnected) { mountEl = null; return; }
+        const dt = Math.min(0.05, (t - (st.last || t)) / 1000); st.last = t;
+        if (!st.drag) { if (Math.abs(st.vel) > 0.05) { st.ry += st.vel * dt; st.vel *= Math.pow(0.05, dt); } else if (!UI.reduce && t > st.idle) st.ry += 0.45 * dt; }
+        const w = mountEl.clientWidth, h = mountEl.clientHeight;
+        if (w && h && (vr.domElement.width !== Math.round(w * vr.getPixelRatio()) || vr.domElement.height !== Math.round(h * vr.getPixelRatio()))) { vr.setSize(w, h, false); vc.aspect = w / h; vc.updateProjectionMatrix(); }
+        vcan.rotation.set(0.03, st.ry, 0); vcan.position.y = UI.reduce ? 0 : Math.sin(t / 1000 * 1.1) * 0.06;
+        vr.render(vs, vc); raf = requestAnimationFrame(frame);
+      }
+      window.__can3d = function (el) {
+        if (!vr) build();
+        mountEl = el; el.appendChild(vr.domElement); st.last = 0;
+        if (!raf) raf = requestAnimationFrame(frame);
+        return true;
+      };
+      document.dispatchEvent(new Event('cloudly:can3d'));
+    })();
 
     renderer.setPixelRatio(Math.min(Math.max(window.devicePixelRatio || 1, 1.25), 2));
     const holder = UI.useHero3D(renderer.domElement);
