@@ -1403,7 +1403,6 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         g.fillStyle = glow; g.beginPath(); g.arc(fx, 790, 260, 0, 6.2832); g.fill(); g.restore();
         cloudFill(fx, 900, 0.95, '#FFFFFF', 0.95);
         berryFlat(fx + 70, 800, 1.55, 0.28); berryFlat(fx - 40, 780, 2.6, -0.16);
-        [[fx + 175, 620, 34, 0.35, F.badge], [fx - 190, 905, 26, -0.4, F.accent], [fx + 215, 870, 22, 0.25, F.accent], [fx - 160, 640, 18, -0.2, '#FF9EC6']].forEach(([x, y, sz, r, c]) => heart(x, y, sz, r, c));
         [[fx + 120, 590, 20, '#FFFFFF'], [fx - 120, 975, 16, '#FFFFFF'], [fx + 235, 735, 14, '#FFD86B'], [fx - 215, 790, 12, '#FFD86B']].forEach(([x, y, sz, c]) => spark(x, y, sz, c));
         roseFlat(fx + 268, 300, 1.1, 0.3); roseFlat(fx - 300, 960, 1, -0.2); roseFlat(fx + 230, 960, 0.8, 0.5);
       } else {
