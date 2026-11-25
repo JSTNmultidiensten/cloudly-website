@@ -65,7 +65,7 @@ h2{font:400 clamp(30px,4.5vw,46px)/1.08 var(--display);letter-spacing:-.02em;mar
 .wall{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:16px}
 .tile{aspect-ratio:4/5;border-radius:22px;background:linear-gradient(165deg,#CDEAFF 0,#FFE3EE 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:var(--soft);font:600 14px var(--body);border:2px dashed rgba(255,255,255,.9);padding:14px}
 .tile svg{width:54px;height:33px;opacity:.85}
-.tile.more{background:#fff;border:2px solid #FFD0E2;color:var(--ink);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.tile.more{font:inherit;cursor:pointer;width:100%;background:#fff;border:2px solid #FFD0E2;color:var(--ink);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
 .tile.more:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(232,67,122,.6)}
 .tile.more .plus{width:64px;height:64px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font:300 44px/1 var(--display)}
 .tile.more b{font:500 20px/1.1 var(--display)}
@@ -153,7 +153,15 @@ footer a{color:inherit}
       <div class="tile"><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
       <div class="tile"><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
       <div class="tile"><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
-      <a class="tile more" href="https://www.tiktok.com/@drinkcloudly" target="_blank" rel="noopener"><span class="plus">+</span><b>See more</b><small>on TikTok</small></a>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <div class="tile extra" hidden><svg viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#fff"/></svg>coming soon</div>
+      <button class="tile more" type="button" id="wall-more"><span class="plus">+</span><b>See more</b></button>
     </div>
   </section>
 
@@ -176,5 +184,11 @@ footer a{color:inherit}
   <span>© 2026 Cloudly · KvK 95416137 · Groningen</span>
   <span><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a> · <a href="/algemene-voorwaarden" hreflang="nl">Voorwaarden</a></span>
 </footer>
+<script>
+(function(){var btn=document.getElementById('wall-more');if(!btn)return;var wall=btn.parentNode;
+function rest(){return wall.querySelectorAll('.tile.extra[hidden]');}
+if(!rest().length){btn.hidden=true;return;}
+btn.addEventListener('click',function(){var r=rest();for(var i=0;i<Math.min(8,r.length);i++){r[i].hidden=false;}wall.appendChild(btn);if(!rest().length){btn.hidden=true;}});})();
+</script>
 </body>
 </html>
