@@ -830,7 +830,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     peach: { name: 'Ice Cloud', base: '#EEF7FE', ink: '#0F2E4A', accent: '#5CC1FF', band: '#2F95E0', tint: '#E3F2FD', bg: '#CDE7FB',
       desc: 'De klassieke energysmaak, ijskoud en licht. Zoet, fris en een beetje fruitig. IJskoud, zo licht als een wolk.', ing: ['klassieke energysmaak', 'ijskoud', '80 mg caffeine', '0 g suiker'] },
     grapefruit: { name: 'Strawberry Cloud', base: '#FFF0F3', ink: '#3D1424', accent: '#FF5C7C', band: '#EE4B6A', tint: '#FFE8ED', bg: '#FFD9E1',
-      desc: 'Zoete aardbei met een zacht vleugje roos. Roze, licht en dromerig.', ing: ['strawberry', 'rose', '80 mg caffeine', '0 g suiker'] }
+      desc: 'Verse aardbei met een zacht vleugje roos. Fris, sappig en zo licht als een wolk.', ing: ['strawberry', 'rose', '80 mg caffeine', '0 g suiker'] }
   };
   const ORDER = ['grapefruit', 'peach', 'mint'];
   const TEASED = { peach: 2, mint: 3 };
@@ -864,7 +864,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   function canPic(key) { return IMG[key] ? '<img class="can3d" src="' + IMG[key] + '" alt="Blikje Cloudly ' + FL[key].name + '">' : can(key); }
 
   const PRODUCTS = [
-    { id: 'grapefruit', name: 'Strawberry Cloud', desc: 'Zoete aardbei met een zacht vleugje roos.', cans: ['grapefruit'], tint: FL.grapefruit.tint },
+    { id: 'grapefruit', name: 'Strawberry Cloud', desc: 'Verse aardbei met een zacht vleugje roos.', cans: ['grapefruit'], tint: FL.grapefruit.tint },
     { id: 'mix', name: 'Mixpakket', desc: '4 blikjes van elke smaak. De makkelijkste manier om je favoriet te vinden.', cans: ['peach', 'grapefruit', 'mint'], tint: '#E8F4FC' }
   ];
   const PRICE = 24.99, DEPOSIT = 12 * 0.15, SHIP = 4.95, FREE_FROM = 40;
@@ -1196,7 +1196,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     document.getElementById('pdp-flavor-name').textContent = nameOf(PDP.flavor);
     { const k = PDP.flavor, mix = k === 'mix';
       const PD = {
-        grapefruit: { lead: 'Zoete aardbei met een zacht vleugje roos. Roze, sappig en licht, met natuurlijke cafeïne uit groene thee en 0 g suiker. Onze nummer één.', notes: ['Strawberry', 'Rose', 'Pink & floral'], love: ['Fruit dat je proeft', 'Zoete aardbei en een vleugje roos. Sappig, nooit stroperig.'] },
+        grapefruit: { lead: 'Verse aardbei met een zacht vleugje roos. Sappig en licht, met natuurlijke cafeïne uit groene thee en 0 g suiker. Onze nummer één.', notes: ['Strawberry', 'Rose', 'Pink & floral'], love: ['Fruit dat je proeft', 'Zoete aardbei en een vleugje roos. Sappig, nooit stroperig.'] },
         peach: { lead: 'De klassieke energysmaak die je kent, maar dan clean. Zoet, fris en een beetje fruitig, het lekkerst ijskoud. Natuurlijke cafeïne, 0 g suiker.', notes: ['Klassieke energysmaak', 'IJskoud', 'Sweet & tangy'], love: ['De klassieker, maar dan clean', 'Die energydrinksmaak waar je van houdt, zonder suiker of zwaar gevoel.'] },
         mint: { lead: 'Donkere, sappige zoete kers. Uitgesproken, een beetje zuur en klaarwakker, met natuurlijke cafeïne uit groene thee en 0 g suiker.', notes: ['Donkere kers', 'Bold & juicy', 'Een beetje zuur'], love: ['Fruit dat je proeft', 'Donkere, sappige kers. Uitgesproken en een beetje zuur, nooit stroperig.'] },
         mix: { lead: 'Kun je niet kiezen? Probeer ze alle drie: Strawberry Cloud, Ice Cloud en Cherry Crush in één pakket. Natuurlijke cafeïne, 0 g suiker, zo licht als een wolk.', notes: ['All 3 flavors', 'Ideaal om mee te starten', 'Om te delen met vrienden'], love: ['Drie smaken, één pakket', 'Strawberry Cloud, de ijskoude klassieker en donkere kers. Vind je favoriet.'] } }[k];
