@@ -520,6 +520,10 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .pdp .opt b { display: block; font-size: 15px } .pdp .opt small { color: var(--soft) }
 .pdp .opt .pr { font: 600 17px var(--body); text-align: right; font-variant-numeric: tabular-nums }
 .pdp .opt .pr s { display: block; font-size: 13px; color: var(--soft); font-weight: 600 }
+.pdp .freq { display: none; grid-column: 2 / 4; flex-wrap: wrap; gap: 6px; margin-top: 2px }
+.pdp .opt:has(input:checked) .freq { display: flex }
+.pdp .freq button { font: 600 13px var(--body); padding: 7px 12px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); cursor: pointer }
+.pdp .freq button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff }
 .pdp .opt .save { display: inline-block; background: #FFE600; border-radius: 999px; padding: 2px 8px; font: 800 11px var(--body); margin-left: 6px; vertical-align: 1px }
 .pdp .buyrow { display: flex; gap: 10px; align-items: stretch; margin-bottom: 12px }
 .pdp .buyrow .btn { flex: 1; min-height: 54px; font-size: 16px }
@@ -650,15 +654,15 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
           <div class="chips size" id="pdp-sizes"></div>
           <div class="opts" id="pdp-opts">
             <label class="opt"><input type="radio" name="ptype" value="once" checked><span><b>Eenmalige aankoop</b><small>Eén keer betalen, nergens aan vast</small></span><span class="pr" id="pr-once"></span></label>
-            <label class="opt"><input type="radio" name="ptype" value="sub"><span><b>Abonnement <span class="save">-15%</span></b><small>Elke 30 dagen bezorgd · minimaal 2 leveringen, daarna altijd over te slaan of op te zeggen</small></span><span class="pr" id="pr-sub"></span></label>
+            <label class="opt"><input type="radio" name="ptype" value="sub"><span><b>Abonnement <span class="save">-15%</span></b><small>Bezorgd wanneer jij wilt · minimaal 2 leveringen, daarna altijd over te slaan of op te zeggen</small></span><span class="pr" id="pr-sub"></span><span class="freq" id="pdp-freq" role="group" aria-label="Hoe vaak?"><button type="button" data-f="1w" aria-pressed="false">Elke week</button><button type="button" data-f="2w" aria-pressed="false">Elke 2 weken</button><button type="button" data-f="3w" aria-pressed="false">Elke 3 weken</button><button type="button" data-f="4w" aria-pressed="true">Elke maand</button></span></label>
           </div>
           <div class="buyrow">
             <div class="qty" aria-label="Aantal"><button type="button" id="pdp-minus" aria-label="Minder">−</button><span id="pdp-qty">1</span><button type="button" id="pdp-plus" aria-label="Meer">+</button></div>
             <button class="btn" type="button" id="pdp-add">In mijn mandje</button>
           </div>
-          <p class="ship"><b>Gratis verzending in Nederland</b> bij bestellingen vanaf €40</p>
+          <p class="ship"><b>We zitten in Nederland</b> · gratis verzending vanaf €40</p>
           <div class="acc">
-            <details open><summary>Vertel me meer</summary><div class="body"><ul><li>80 mg natuurlijke cafeïne uit groene thee per blik, ongeveer één kop koffie</li><li>Een rustig, stabiel gevoel, nooit zwaar</li><li>Vitamine B6 en B12, die bijdragen aan een normaal energieleverend metabolisme</li><li>0 g suiker, minder dan 10 kcal, licht bruisend</li></ul></div></details>
+            <details open><summary>Meer over dit product</summary><div class="body"><ul><li>80 mg natuurlijke cafeïne uit groene thee per blik, ongeveer één kop koffie</li><li>Een rustig, stabiel gevoel, nooit zwaar</li><li>Vitamine B6 en B12, die bijdragen aan een normaal energieleverend metabolisme</li><li>0 g suiker, minder dan 10 kcal, licht bruisend</li></ul></div></details>
             <details><summary>Zo drink je hem</summary><div class="body">Drink een blikje als je een lichte boost wilt: bij de start van je dag, tijdens een lange studiesessie, voor de gym of als oppepper in de middag. Het lekkerst ijskoud.</div></details>
             <details><summary>Ingrediënten</summary><div class="body" id="pdp-ingr"></div></details>
             <details><summary>Voedingswaarde per 100 ml</summary><div class="body"><table><tr><td>Energie</td><td>&lt; 4 kcal</td></tr><tr><td>Suikers</td><td>0 g</td></tr><tr><td>Cafeïne</td><td>32 mg</td></tr><tr><td>Niacine</td><td>1.9 mg (12% RI)</td></tr><tr><td>Vitamine B6</td><td>0.17 mg (12% RI)</td></tr><tr><td>Vitamine B12</td><td>0.3 µg (12% RI)</td></tr></table><p style="margin:10px 0 0;font-size:13px">Definitieve waarden na labtest. Hoog cafeïnegehalte. Niet aanbevolen voor kinderen en vrouwen die zwanger zijn of borstvoeding geven.</p></div></details>
@@ -751,7 +755,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       <div class="faq">
         <details><summary>Wanneer kan ik Cloudly kopen?</summary><p>We werken nu aan onze eerste productie. Meld je aan voor de lanceerlijst, dan hoor je het als eerste, met early bird-korting.</p></details>
         <details><summary>Wat zit er in een blikje Cloudly?</summary><p>Bruisend water, een beetje echt vruchtensap, natuurlijke cafeïne uit groene thee, vitamine B3, B6 en B12, en natuurlijke zoetstoffen uit stevia en erythritol. Vitamine B6 en B12 dragen bij aan een normaal energieleverend metabolisme.</p></details><details><summary>Hoeveel cafeïne zit er in een blikje?</summary><p>80 mg per blik van 250 ml, ongeveer één kop koffie. Hoog cafeïnegehalte: niet aanbevolen voor kinderen en vrouwen die zwanger zijn of borstvoeding geven.</p></details>
-        <details><summary>Hoe werkt het abonnement?</summary><p>Je krijgt 15% korting op elke levering en elke 30 dagen een vers pakket. Een abonnement loopt minimaal 2 leveringen. Daarna kun je het in je account altijd pauzeren, een maand overslaan of opzeggen. Zeg je op voor je tweede levering, dan rekenen we de 15% korting van je eerste bestelling alsnog. Lees de volledige <a href="/terms">algemene voorwaarden</a>.</p></details>
+        <details><summary>Hoe werkt het abonnement?</summary><p>Je krijgt 15% korting op elke levering en een vers pakket zo vaak als jij wilt: elke week, elke 2 weken, elke 3 weken of elke maand. Een abonnement loopt minimaal 2 leveringen. Daarna kun je het in je account altijd pauzeren, een levering overslaan, het ritme aanpassen of opzeggen. Zeg je op voor je tweede levering, dan rekenen we de 15% korting van je eerste bestelling alsnog. Lees de volledige <a href="/terms">algemene voorwaarden</a>.</p></details>
         <details><summary>Waar bezorgen jullie?</summary><p>Eerst in Nederland, en snel daarna in België.</p></details>
         <details><summary>Kan ik Cloudly verkopen in mijn winkel of café?</summary><p>Ja, dat zouden we super vinden! Cloudly is nog klein en persoonlijk. We werken nog niet met distributeurs of tussenpartijen, dus we leveren rechtstreeks aan jou en je hebt ons altijd direct aan de lijn. Dat betekent ook: nu is het moment om een van de eerste plekken te zijn waar je Cloudly kunt kopen. Stuur een berichtje naar <a href="mailto:hello@drinkcloudly.com">hello@drinkcloudly.com</a> en we nemen persoonlijk contact met je op.</p></details>
       </div>
@@ -1239,11 +1243,13 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   const closeBag = () => { drawer.hidden = true; scrim.hidden = true; };
   document.getElementById('cart-open').onclick = openBag; document.getElementById('drawer-x').onclick = closeBag; scrim.onclick = closeBag;
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBag(); });
+  const FREQ = {'1w':'elke week','2w':'elke 2 weken','3w':'elke 3 weken','4w':'elke maand'}; let freq = '4w';
+  document.getElementById('pdp-freq').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (!b) return; e.preventDefault(); freq = b.dataset.f; b.parentNode.querySelectorAll('[data-f]').forEach(x => x.setAttribute('aria-pressed', x === b)); b.closest('label').querySelector('input').checked = true; });
   document.getElementById('pdp-add').onclick = () => {
     const sub = document.querySelector('input[name=ptype]:checked').value === 'sub';
-    const id = PDP.flavor + '-' + PDP.size + (sub ? '-sub' : '');
+    const id = PDP.flavor + '-' + PDP.size + (sub ? '-sub-' + freq : '');
     const ex = BAG.find(x => x.id === id);
-    if (ex) ex.qty += PDP.qty; else BAG.push({ id, k: PDP.flavor, size: PDP.size, sub, qty: PDP.qty, price: SIZES[PDP.size] * (sub ? .85 : 1) });
+    if (ex) ex.qty += PDP.qty; else BAG.push({ id, k: PDP.flavor, size: PDP.size, sub, freq: sub ? freq : null, qty: PDP.qty, price: SIZES[PDP.size] * (sub ? .85 : 1) });
     const c = document.getElementById('cart-open'); c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
     openBag();
   };
@@ -1252,7 +1258,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     document.getElementById('cart-count').textContent = items;
     const lines = document.getElementById('lines'), sum = document.getElementById('sum');
     if (!BAG.length) { lines.innerHTML = '<p class="empty">Je mandje is leeg.</p>'; sum.innerHTML = ''; return; }
-    lines.innerHTML = BAG.map((x, i) => '<div class="line"><div class="mini" style="background:' + colorOf(x.k) + '">' + canPic(cansOf(x.k)[0]) + '</div><div><b>' + nameOf(x.k) + '</b><small>' + x.size + ' blikjes' + (x.sub ? ' · elke 30 dagen' : '') + ' · ' + eur(x.price) + '</small></div><div class="qty"><button type="button" data-i="' + i + '" data-d="-1" aria-label="Minder">−</button><span>' + x.qty + '</span><button type="button" data-i="' + i + '" data-d="1" aria-label="Meer">+</button></div></div>').join('');
+    lines.innerHTML = BAG.map((x, i) => '<div class="line"><div class="mini" style="background:' + colorOf(x.k) + '">' + canPic(cansOf(x.k)[0]) + '</div><div><b>' + nameOf(x.k) + '</b><small>' + x.size + ' blikjes' + (x.sub ? ' · ' + FREQ[x.freq] : '') + ' · ' + eur(x.price) + '</small></div><div class="qty"><button type="button" data-i="' + i + '" data-d="-1" aria-label="Minder">−</button><span>' + x.qty + '</span><button type="button" data-i="' + i + '" data-d="1" aria-label="Meer">+</button></div></div>').join('');
     const sub = BAG.reduce((a, x) => a + x.qty * x.price, 0), ship = sub >= FREE_FROM ? 0 : SHIP;
     sum.innerHTML = '<div><span>Subtotaal</span><span>' + eur(sub) + '</span></div><div><span>Verzending (NL)</span><span>' + (ship ? eur(ship) : 'Gratis') + '</span></div>' + (ship ? '<div style="font-size:13px;color:var(--soft)"><span>Nog ' + eur(FREE_FROM - sub) + ' tot gratis verzending</span></div>' : '') + '<div class="tot"><span>Totaal</span><span>' + eur(sub + ship) + '</span></div><a class="btn" href="#list" id="bag-go" style="margin-top:8px">Afrekenen</a><div class="msg">We verkopen nog niet. Meld je aan voor de lanceerlijst, dan laten we je weten zodra je mandje verstuurd kan worden.</div>';
     document.getElementById('bag-go').onclick = closeBag;

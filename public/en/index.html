@@ -520,6 +520,10 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 .pdp .opt b { display: block; font-size: 15px } .pdp .opt small { color: var(--soft) }
 .pdp .opt .pr { font: 600 17px var(--body); text-align: right; font-variant-numeric: tabular-nums }
 .pdp .opt .pr s { display: block; font-size: 13px; color: var(--soft); font-weight: 600 }
+.pdp .freq { display: none; grid-column: 2 / 4; flex-wrap: wrap; gap: 6px; margin-top: 2px }
+.pdp .opt:has(input:checked) .freq { display: flex }
+.pdp .freq button { font: 600 13px var(--body); padding: 7px 12px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); cursor: pointer }
+.pdp .freq button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff }
 .pdp .opt .save { display: inline-block; background: #FFE600; border-radius: 999px; padding: 2px 8px; font: 800 11px var(--body); margin-left: 6px; vertical-align: 1px }
 .pdp .buyrow { display: flex; gap: 10px; align-items: stretch; margin-bottom: 12px }
 .pdp .buyrow .btn { flex: 1; min-height: 54px; font-size: 16px }
@@ -650,13 +654,13 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
           <div class="chips size" id="pdp-sizes"></div>
           <div class="opts" id="pdp-opts">
             <label class="opt"><input type="radio" name="ptype" value="once" checked><span><b>One-time purchase</b><small>Pay once, no strings</small></span><span class="pr" id="pr-once"></span></label>
-            <label class="opt"><input type="radio" name="ptype" value="sub"><span><b>Subscribe &amp; save <span class="save">-15%</span></b><small>Delivered every 30 days · minimum 2 deliveries, then skip or cancel anytime</small></span><span class="pr" id="pr-sub"></span></label>
+            <label class="opt"><input type="radio" name="ptype" value="sub"><span><b>Subscribe &amp; save <span class="save">-15%</span></b><small>Delivered when you want · minimum 2 deliveries, then skip or cancel anytime</small></span><span class="pr" id="pr-sub"></span><span class="freq" id="pdp-freq" role="group" aria-label="How often?"><button type="button" data-f="1w" aria-pressed="false">Every week</button><button type="button" data-f="2w" aria-pressed="false">Every 2 weeks</button><button type="button" data-f="3w" aria-pressed="false">Every 3 weeks</button><button type="button" data-f="4w" aria-pressed="true">Every month</button></span></label>
           </div>
           <div class="buyrow">
             <div class="qty" aria-label="Quantity"><button type="button" id="pdp-minus" aria-label="Less">−</button><span id="pdp-qty">1</span><button type="button" id="pdp-plus" aria-label="More">+</button></div>
             <button class="btn" type="button" id="pdp-add">Add to bag</button>
           </div>
-          <p class="ship"><b>Free shipping in the Netherlands</b> on orders over €40</p>
+          <p class="ship"><b>Based in the Netherlands</b> · free shipping from €40</p>
           <div class="acc">
             <details open><summary>Tell me more</summary><div class="body"><ul><li>80 mg natural caffeine from green tea per can, about one cup of coffee</li><li>A smooth, steady feeling, never heavy</li><li>Vitamins B6 and B12, which contribute to normal energy-yielding metabolism</li><li>0 g sugar, under 10 kcal, lightly sparkling</li></ul></div></details>
             <details><summary>How to use</summary><div class="body">Drink one can when you need a clear, light boost: a morning start, a long study session, before the gym or as your afternoon pick-me-up. Best served ice cold.</div></details>
@@ -751,7 +755,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       <div class="faq">
         <details><summary>When can I buy Cloudly?</summary><p>We are working on our first production run right now. Join the launch list and you will hear it first, with an early bird discount.</p></details>
         <details><summary>What is in a can of Cloudly?</summary><p>Sparkling water, a little real fruit juice, natural caffeine from green tea, vitamins B3, B6 and B12, and natural sweeteners from stevia and erythritol. Vitamins B6 and B12 contribute to normal energy-yielding metabolism.</p></details><details><summary>How much caffeine is in a can?</summary><p>80 mg per 250 ml can, about one cup of coffee. High caffeine content: not recommended for children or pregnant or breast-feeding women.</p></details>
-        <details><summary>How does Subscribe &amp; save work?</summary><p>You save 15% on every delivery and get a fresh pack every 30 days. A subscription runs for at least 2 deliveries. After that you can pause, skip a month or cancel anytime in your account. If you cancel before your second delivery, we charge the 15% discount of your first order after all. Read the full <a href="/terms">terms and conditions</a>.</p></details>
+        <details><summary>How does Subscribe &amp; save work?</summary><p>You save 15% on every delivery and get a fresh pack as often as you like: every week, every 2 weeks, every 3 weeks or every month. A subscription runs for at least 2 deliveries. After that you can pause, skip a month or cancel anytime in your account. If you cancel before your second delivery, we charge the 15% discount of your first order after all. Read the full <a href="/terms">terms and conditions</a>.</p></details>
         <details><summary>Where will you deliver?</summary><p>First in the Netherlands, with Belgium soon after.</p></details>
         <details><summary>Can I sell Cloudly in my shop or café?</summary><p>Yes, we would love that! Cloudly is still small and personal. We do not work with distributors or middlemen yet, so we deliver straight to you and you always have us on the line. That also means now is the moment to be one of the first spots to stock Cloudly. Send a message to <a href="mailto:hello@drinkcloudly.com">hello@drinkcloudly.com</a> and we will get in touch personally.</p></details>
       </div>
@@ -1239,11 +1243,13 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   const closeBag = () => { drawer.hidden = true; scrim.hidden = true; };
   document.getElementById('cart-open').onclick = openBag; document.getElementById('drawer-x').onclick = closeBag; scrim.onclick = closeBag;
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBag(); });
+  const FREQ = {'1w':'every week','2w':'every 2 weeks','3w':'every 3 weeks','4w':'every month'}; let freq = '4w';
+  document.getElementById('pdp-freq').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (!b) return; e.preventDefault(); freq = b.dataset.f; b.parentNode.querySelectorAll('[data-f]').forEach(x => x.setAttribute('aria-pressed', x === b)); b.closest('label').querySelector('input').checked = true; });
   document.getElementById('pdp-add').onclick = () => {
     const sub = document.querySelector('input[name=ptype]:checked').value === 'sub';
-    const id = PDP.flavor + '-' + PDP.size + (sub ? '-sub' : '');
+    const id = PDP.flavor + '-' + PDP.size + (sub ? '-sub-' + freq : '');
     const ex = BAG.find(x => x.id === id);
-    if (ex) ex.qty += PDP.qty; else BAG.push({ id, k: PDP.flavor, size: PDP.size, sub, qty: PDP.qty, price: SIZES[PDP.size] * (sub ? .85 : 1) });
+    if (ex) ex.qty += PDP.qty; else BAG.push({ id, k: PDP.flavor, size: PDP.size, sub, freq: sub ? freq : null, qty: PDP.qty, price: SIZES[PDP.size] * (sub ? .85 : 1) });
     const c = document.getElementById('cart-open'); c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
     openBag();
   };
@@ -1252,7 +1258,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     document.getElementById('cart-count').textContent = items;
     const lines = document.getElementById('lines'), sum = document.getElementById('sum');
     if (!BAG.length) { lines.innerHTML = '<p class="empty">Your bag is empty.</p>'; sum.innerHTML = ''; return; }
-    lines.innerHTML = BAG.map((x, i) => '<div class="line"><div class="mini" style="background:' + colorOf(x.k) + '">' + canPic(cansOf(x.k)[0]) + '</div><div><b>' + nameOf(x.k) + '</b><small>' + x.size + ' cans' + (x.sub ? ' · every 30 days' : '') + ' · ' + eur(x.price) + '</small></div><div class="qty"><button type="button" data-i="' + i + '" data-d="-1" aria-label="Less">−</button><span>' + x.qty + '</span><button type="button" data-i="' + i + '" data-d="1" aria-label="More">+</button></div></div>').join('');
+    lines.innerHTML = BAG.map((x, i) => '<div class="line"><div class="mini" style="background:' + colorOf(x.k) + '">' + canPic(cansOf(x.k)[0]) + '</div><div><b>' + nameOf(x.k) + '</b><small>' + x.size + ' cans' + (x.sub ? ' · ' + FREQ[x.freq] : '') + ' · ' + eur(x.price) + '</small></div><div class="qty"><button type="button" data-i="' + i + '" data-d="-1" aria-label="Less">−</button><span>' + x.qty + '</span><button type="button" data-i="' + i + '" data-d="1" aria-label="More">+</button></div></div>').join('');
     const sub = BAG.reduce((a, x) => a + x.qty * x.price, 0), ship = sub >= FREE_FROM ? 0 : SHIP;
     sum.innerHTML = '<div><span>Subtotal</span><span>' + eur(sub) + '</span></div><div><span>Shipping (NL)</span><span>' + (ship ? eur(ship) : 'Free') + '</span></div>' + (ship ? '<div style="font-size:13px;color:var(--soft)"><span>Add ' + eur(FREE_FROM - sub) + ' for free shipping</span></div>' : '') + '<div class="tot"><span>Total</span><span>' + eur(sub + ship) + '</span></div><a class="btn" href="#list" id="bag-go" style="margin-top:8px">Checkout</a><div class="msg">We are not selling yet. Join the launch list and we will let you know the moment your bag can ship.</div>';
     document.getElementById('bag-go').onclick = closeBag;
