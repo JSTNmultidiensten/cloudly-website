@@ -706,6 +706,14 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
 
 
 
+    <section class="in gf-band" aria-label="Community">
+    <a class="gf-card" href="/community">
+      <span class="gf-ic" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"><rect x="4" y="9" width="24" height="17" rx="4"/><circle cx="16" cy="17.5" r="4.5"/><path d="M11 9l2-3h6l2 3"/></svg></span>
+      <span class="gf-tx"><b>Laat je blikje zien. Join de community.</b><span>Maak een foto met je Cloud, tag @drinkcloudly en kom op onze website en socials.</span></span>
+      <span class="gf-go">Zo werkt het →</span>
+    </a>
+  </section>
+
   <section class="look" id="look" aria-label="Foto’s van Strawberry Cloud">
     <div class="in">
       <div class="sec-head"><div><div class="eyebrow">Strawberry Cloud</div><h2>Zo licht als een wolk.</h2></div><p>Verse aardbei, een vleugje roos, natuurlijke cafeïne en 0 g suiker. Het lekkerst ijskoud.</p></div>
@@ -719,13 +727,6 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     </div>
   </section>
 
-  <section class="in gf-band" aria-label="Community">
-    <a class="gf-card" href="/community">
-      <span class="gf-ic" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"><rect x="4" y="9" width="24" height="17" rx="4"/><circle cx="16" cy="17.5" r="4.5"/><path d="M11 9l2-3h6l2 3"/></svg></span>
-      <span class="gf-tx"><b>Laat je blikje zien. Join de community.</b><span>Maak een foto met je Cloud, tag @drinkcloudly en kom op onze website en socials.</span></span>
-      <span class="gf-go">Zo werkt het →</span>
-    </a>
-  </section>
 
   <section class="in" id="story">
     <div class="story">
@@ -1213,7 +1214,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
         const card = [...document.querySelectorAll('.love .card')][2]; if (card) { card.querySelector('b').textContent = PD.love[0]; card.querySelector('p').textContent = PD.love[1]; }
         document.getElementById('nf-bar').textContent = mix ? 'Mixpakket' : nameOf(k);
         document.getElementById('nf-ingr').textContent = mix ? INGR.grapefruit : INGR[k];
-        document.getElementById('nf-taste').textContent = { grapefruit: 'zoete aardbei en zachte roos, licht bruisend', peach: 'de klassieke energysmaak, ijskoud en licht bruisend', mint: 'donkere sappige kers, een beetje zuur, licht bruisend', mix: 'drie fruitige smaken, licht bruisend' }[k];
+        document.getElementById('nf-taste').textContent = { grapefruit: 'verse aardbei en zachte roos, licht bruisend', peach: 'de klassieke energysmaak, ijskoud en licht bruisend', mint: 'donkere sappige kers, een beetje zuur, licht bruisend', mix: 'drie fruitige smaken, licht bruisend' }[k];
         document.getElementById('pdp-eyebrow').textContent = 'Bestel je';
         sec.classList.remove('swap');
       };
