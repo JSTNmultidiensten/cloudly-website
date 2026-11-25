@@ -7,6 +7,16 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://drinkcloudly.com/get-featured</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://drinkcloudly.com/get-featured-en</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://drinkcloudly.com/terms</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.3</priority>
