@@ -639,8 +639,8 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
           <div class="thumbs" id="pdp-thumbs"></div>
         </div>
         <div>
-          <div class="eyebrow" id="pdp-eyebrow">Shop · binnenkort</div>
-          <h2 id="pdp-title">Cloudly Sparkling Energy</h2>
+          <div class="eyebrow" id="pdp-eyebrow">Bestel je</div>
+          <h2 id="pdp-title">Strawberry Cloud</h2>
           <div class="stars">Nieuw · binnenkort in Nederland</div>
           <p class="lead" id="pdp-lead">Lichte, schone energie met natuurlijke cafeïne uit groene thee en 0 g suiker. Licht bruisend, ijskoud en zo licht als een wolk.</p>
           <div class="tags" id="pdp-tags"><span>Natuurlijke cafeïne</span><span>0 g suiker</span><span>Clean energy</span><span>Minder dan 10 kcal</span></div>
@@ -1203,14 +1203,14 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
       const sec = document.getElementById('shop'), col = mix ? '#123D33' : FL[k].band, bg = mix ? '#E3F2FD' : FL[k].tint;
       sec.style.setProperty('--pc', col); sec.style.setProperty('--pc-bg', bg);
       const apply = () => {
-        document.getElementById('pdp-title').innerHTML = 'Cloudly Sparkling Energy<span id="pdp-sub">' + nameOf(k) + '</span>';
+        document.getElementById('pdp-title').textContent = mix ? 'Mixpakket' : nameOf(k);
         document.getElementById('pdp-lead').textContent = PD.lead;
         document.getElementById('pdp-tags').innerHTML = PD.notes.map(n => '<span class="fl">' + n + '</span>').join('') + '<span>Natuurlijke cafeïne</span><span>0 g suiker</span><span>Minder dan 10 kcal</span>';
         const card = [...document.querySelectorAll('.love .card')][2]; if (card) { card.querySelector('b').textContent = PD.love[0]; card.querySelector('p').textContent = PD.love[1]; }
         document.getElementById('nf-bar').textContent = mix ? 'Mixpakket' : nameOf(k);
         document.getElementById('nf-ingr').textContent = mix ? INGR.grapefruit : INGR[k];
         document.getElementById('nf-taste').textContent = { grapefruit: 'zoete aardbei en zachte roos, licht bruisend', peach: 'de klassieke energysmaak, ijskoud en licht bruisend', mint: 'donkere sappige kers, een beetje zuur, licht bruisend', mix: 'drie fruitige smaken, licht bruisend' }[k];
-        document.getElementById('pdp-eyebrow').textContent = 'Shop · ' + (mix ? 'mixpakket' : nameOf(k)) + ' · binnenkort';
+        document.getElementById('pdp-eyebrow').textContent = 'Bestel je';
         sec.classList.remove('swap');
       };
       if (sec.dataset.k && sec.dataset.k !== k) { sec.classList.add('swap'); setTimeout(apply, 220); } else apply();
