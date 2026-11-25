@@ -612,9 +612,9 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
   <section class="block why" id="why">
     <div class="in">
       <div class="love" style="margin-top:0">
-        <div class="eyebrow">Waarom je hem gaat liefhebben</div>
-        <h2 style="font-size:clamp(32px,4vw,46px)">Energie die licht aanvoelt.</h2>
-        <p style="margin:6px 0 18px;font:500 clamp(18px,2.2vw,22px)/1.3 var(--display);color:var(--soft)">Zweef op een wolk, zonder suikerdip achteraf.</p>
+        <div class="eyebrow">Waarom Strawberry Cloud zo lekker is</div>
+        <h2 style="font-size:clamp(32px,4vw,46px)">Een energiedrankje dat lichtjes aanvoelt.</h2>
+        <p style="margin:6px 0 18px;font:500 clamp(18px,2.2vw,22px)/1.3 var(--display);color:var(--soft)">Lekker fris, zonder suikerdip achteraf.</p>
         <div class="cards">
           <div class="card"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="#123D33"><path d="M13 2L5 14h6l-1 8 8-12h-6l1-8z"/></svg></i><b>Natuurlijke energie</b><p>80 mg cafeïne uit groene thee. Energie zonder dat zware gevoel.</p></div>
           <div class="card"><i><svg width="24" height="16" viewBox="0 0 100 60"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="#123D33" stroke-width="7" stroke-linejoin="round"/></svg></i><b>Zo licht als een wolk</b><p>0 g suiker en minder dan 10 kcal. Alle bubbels, zonder suikerpiek.</p></div>
@@ -891,7 +891,7 @@ footer p { margin: 0; color: var(--ink); font-size: 14px }
     const sec = document.createElement('section'); sec.className = 'band' + (i % 2 ? ' flip' : ''); sec.style.setProperty('--bg', f.bg);
     sec.setAttribute('aria-label', f.name);
     sec.innerHTML = '<div class="word" aria-hidden="true"></div><div class="in"><div class="canwrap"><div class="mover wait">' + canPic(k) + '</div></div>' +
-      '<div><div class="num">Onze eerste Cloud · binnenkort</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamine B6 en B12 dragen bij aan een normaal energieleverend metabolisme. Bevat cafeïne (32 mg/100 ml).</p><a class="btn" href="#shop">Bekijk pakketten &amp; prijzen ↓</a></div></div>';
+      '<div><div class="num">Onze eerste Cloud · binnenkort</div><h2></h2><p></p><div class="ing"></div><div class="perks"></div><p class="fine">*Vitamine B6 en B12 dragen bij aan een normaal energieleverend metabolisme. Bevat cafeïne (32 mg/100 ml).</p><a class="btn" href="#shop">Bekijk pakketten &amp; kortingen ↓</a></div></div>';
     sec.querySelector('.word').textContent = TEASED[k] ? '? · ? · ? · ? · ' : (f.name.split(' & ')[0] + ' · ').repeat(4);
     sec.querySelector('h2').textContent = TEASED[k] ? '??? Cloud' : f.name;
     sec.querySelector('p').textContent = TEASED[k] ? 'Still top secret. This one drops later, and the launch list hears it first.' : f.desc;
