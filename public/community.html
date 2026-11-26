@@ -107,8 +107,10 @@ footer a{color:inherit}
 .fields{display:grid;gap:12px;align-content:start}
 .fields label.f{display:grid;gap:4px;font:700 14px var(--body)}
 .fields label.f span{font-weight:400;color:var(--soft)}
+.fields textarea{font:400 16px var(--body);padding:12px 16px;border-radius:14px;border:1.5px solid var(--line);background:#fff;color:var(--ink);resize:vertical;min-height:84px}
+.fields .cnt{justify-self:end;font:400 12px var(--body);color:var(--soft);margin-top:-2px}
 .fields input[type=text],.fields input[type=email]{font:400 16px var(--body);padding:12px 16px;border-radius:14px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
-.fields input:focus{outline:none;border-color:var(--pink)}
+.fields input:focus,.fields textarea:focus{outline:none;border-color:var(--pink)}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--soft)}
 .chk input{margin:3px 0 0;width:18px;height:18px;accent-color:#E8437A;flex:none}
 .send button.pill{border:0;cursor:pointer;justify-self:start;font-size:16px;padding:14px 24px}
@@ -198,7 +200,8 @@ footer a{color:inherit}
       <div class="fields">
         <label class="f">Naam of gebruikersnaam <span>zo zetten we je op de wall</span><input type="text" name="name" maxlength="80" placeholder="bijv. Lisa of @lisa" autocomplete="nickname" required></label>
         <label class="f">E-mail <span>optioneel, dan laten we je weten als je op de wall staat</span><input type="email" name="email" maxlength="254" autocomplete="email"></label>
-        <label class="chk"><input type="checkbox" name="consent" required><span>Ik geef Cloudly toestemming om deze foto met mijn naam op de website en socials te plaatsen. Dit kan ik altijd intrekken via <a href="mailto:hello@drinkcloudly.com">hello@drinkcloudly.com</a>.</span></label>
+        <label class="f">Jouw reactie <span>optioneel, wat vind je van je Cloud?</span><textarea name="message" maxlength="280" rows="3" placeholder="bijv. Mijn nieuwe favoriet na de gym!"></textarea><small class="cnt" id="msg-cnt">0/280</small></label>
+        <label class="chk"><input type="checkbox" name="consent" required><span>Ik geef Cloudly toestemming om deze foto met mijn naam en reactie op de website en socials te plaatsen. Dit kan ik altijd intrekken via <a href="mailto:hello@drinkcloudly.com">hello@drinkcloudly.com</a>.</span></label>
         <label class="chk"><input type="checkbox" name="age" required><span>Ik ben 16 jaar of ouder en iedereen op de foto vindt het goed.</span></label>
         <input type="text" name="bot-field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <button class="pill pink" type="submit" id="send-btn">Verstuur mijn foto</button>
@@ -240,6 +243,7 @@ function say(t,err){msg.textContent=t||'';msg.className='msg'+(err?' err':'');}
 function shrink(file){return new Promise(function(res){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){var m=1600,s=Math.min(1,m/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.round(im.naturalWidth*s);c.height=Math.round(im.naturalHeight*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.toBlob(function(b){URL.revokeObjectURL(u);res({b:b,url:b?URL.createObjectURL(b):null});},'image/jpeg',.85);};im.onerror=function(){URL.revokeObjectURL(u);res({b:null,url:null});};im.src=u;});}
 function pick(file){if(!file)return;say('');shrink(file).then(function(r){blob=r.b||(/^image\/(jpeg|png|webp)$/.test(file.type)?file:null);if(!blob){say(L.e.type,1);return;}if(!img){img=document.createElement('img');img.alt='';drop.insertBefore(img,chg);}img.src=r.url||URL.createObjectURL(blob);empty.hidden=true;chg.hidden=false;});}
 inp.addEventListener('change',function(){pick(inp.files&&inp.files[0]);});
+var ta=f.querySelector('textarea[name=message]'),cnt=document.getElementById('msg-cnt');if(ta&&cnt)ta.addEventListener('input',function(){cnt.textContent=ta.value.length+'/280';});
 ['dragenter','dragover'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.add('over');});});
 ['dragleave','drop'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.remove('over');});});
 drop.addEventListener('drop',function(ev){var fl=ev.dataTransfer&&ev.dataTransfer.files;if(fl&&fl[0])pick(fl[0]);});

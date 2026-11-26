@@ -1,4 +1,4 @@
-// POST /api/submit  (multipart form)  photo, name, email?, consent, age, lang, bot-field
+// POST /api/submit  (multipart form)  photo, name, email?, message?, consent, age, lang, bot-field
 // Saves a community photo submission in the D1 database bound as DB.
 // The page resizes photos to max 1600 px JPEG before upload, so they stay well under D1's 2 MB value limit.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -10,8 +10,9 @@ const json = (body, status = 200) =>
 
 export async function ensureTable(DB) {
   await DB.prepare(
-    'CREATE TABLE IF NOT EXISTS submissions (id INTEGER PRIMARY KEY AUTOINCREMENT, created_at TEXT NOT NULL, name TEXT NOT NULL, email TEXT, lang TEXT, country TEXT, consent TEXT NOT NULL, mime TEXT NOT NULL, size INTEGER NOT NULL, photo BLOB NOT NULL)'
+    'CREATE TABLE IF NOT EXISTS submissions (id INTEGER PRIMARY KEY AUTOINCREMENT, created_at TEXT NOT NULL, name TEXT NOT NULL, email TEXT, lang TEXT, country TEXT, consent TEXT NOT NULL, mime TEXT NOT NULL, size INTEGER NOT NULL, photo BLOB NOT NULL, message TEXT)'
   ).run();
+  try { await DB.prepare('ALTER TABLE submissions ADD COLUMN message TEXT').run(); } catch (e) { /* column already there */ }
 }
 
 export async function onRequestPost({ request, env }) {
@@ -23,6 +24,7 @@ export async function onRequestPost({ request, env }) {
   const name = String(form.get('name') || '').trim().slice(0, 80);
   const email = String(form.get('email') || '').trim().toLowerCase();
   const lang = String(form.get('lang') || 'nl').slice(0, 5);
+  const message = String(form.get('message') || '').trim().replace(/\s+/g, ' ').slice(0, 280);
   if (!name) return json({ ok: false, error: 'name' }, 400);
   if (email && (email.length > 254 || !EMAIL_RE.test(email))) return json({ ok: false, error: 'email' }, 400);
   if (form.get('consent') !== 'on' || form.get('age') !== 'on') return json({ ok: false, error: 'consent' }, 400);
@@ -34,13 +36,13 @@ export async function onRequestPost({ request, env }) {
   const bytes = await photo.arrayBuffer();
 
   const consent = lang === 'en'
-    ? 'Permission to show this photo with my name on the Cloudly website and socials; 16 or older; everyone in the photo agrees.'
-    : 'Toestemming om deze foto met mijn naam op de website en socials van Cloudly te tonen; 16 jaar of ouder; iedereen op de foto vindt het goed.';
+    ? 'Permission to show this photo, my name and my message on the Cloudly website and socials; 16 or older; everyone in the photo agrees.'
+    : 'Toestemming om deze foto, mijn naam en mijn reactie op de website en socials van Cloudly te tonen; 16 jaar of ouder; iedereen op de foto vindt het goed.';
 
   await ensureTable(env.DB);
   await env.DB.prepare(
-    'INSERT INTO submissions (created_at, name, email, lang, country, consent, mime, size, photo) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)'
-  ).bind(new Date().toISOString(), name, email || null, lang, (request.cf && request.cf.country) || '', consent, photo.type, bytes.byteLength, bytes).run();
+    'INSERT INTO submissions (created_at, name, email, lang, country, consent, mime, size, photo, message) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)'
+  ).bind(new Date().toISOString(), name, email || null, lang, (request.cf && request.cf.country) || '', consent, photo.type, bytes.byteLength, bytes, message || null).run();
 
   return json({ ok: true });
 }

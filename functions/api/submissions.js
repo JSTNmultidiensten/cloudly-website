@@ -27,12 +27,12 @@ export async function onRequestGet({ request, env }) {
     return new Response(new Uint8Array(row.photo), { headers });
   }
 
-  const { results } = await env.DB.prepare('SELECT id, created_at, name, email, lang, country, size FROM submissions ORDER BY id DESC').all();
+  const { results } = await env.DB.prepare('SELECT id, created_at, name, email, lang, country, size, message FROM submissions ORDER BY id DESC').all();
   const k = encodeURIComponent(key);
   const cards = results.map(r => `
     <figure>
       <a href="?key=${k}&id=${r.id}" target="_blank"><img src="?key=${k}&id=${r.id}" loading="lazy" alt=""></a>
-      <figcaption><b>${esc(r.name)}</b><span>${esc(r.email || 'geen e-mail')}</span><span>${esc(r.created_at.slice(0, 16).replace('T', ' '))} · ${esc(r.lang)} ${esc(r.country)} · ${Math.round(r.size / 1024)} kB</span>
+      <figcaption><b>${esc(r.name)}</b>${r.message ? `<q>${esc(r.message)}</q>` : ''}<span>${esc(r.email || 'geen e-mail')}</span><span>${esc(r.created_at.slice(0, 16).replace('T', ' '))} · ${esc(r.lang)} ${esc(r.country)} · ${Math.round(r.size / 1024)} kB</span>
         <span class="row"><a href="?key=${k}&id=${r.id}&dl=1">Download</a>
         <form method="post" action="?key=${k}" onsubmit="return confirm('Foto ${r.id} definitief verwijderen?')"><input type="hidden" name="id" value="${r.id}"><button>Verwijderen</button></form></span>
       </figcaption>
@@ -44,7 +44,7 @@ h1{font-weight:500;margin:0 0 4px}p{margin:0 0 20px;color:#4F6F66}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
 figure{margin:0;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px -20px rgba(18,61,51,.4)}
 img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#eee}
-figcaption{padding:10px 12px;display:grid;gap:2px}figcaption span{color:#4F6F66;font-size:13px;word-break:break-all}
+figcaption{padding:10px 12px;display:grid;gap:2px}q{display:block;margin:2px 0 4px;font-style:italic;color:#123D33}figcaption span{color:#4F6F66;font-size:13px;word-break:break-all}
 .row{display:flex;gap:12px;align-items:center;margin-top:6px}.row a{color:#E8437A;font-weight:600}
 button{border:0;background:none;color:#4F6F66;text-decoration:underline;cursor:pointer;font:inherit;padding:0}
 </style></head><body><h1>Community-inzendingen</h1><p>${results.length} foto's. Alleen zichtbaar met de geheime sleutel. Foto's die je niet gebruikt kun je hier verwijderen.</p><div class="grid">${cards || '<p>Nog geen inzendingen.</p>'}</div></body></html>`;
