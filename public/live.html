@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070D1C">
+<title>Cloudly · Live verkoop</title>
+<style>
+@font-face{font-family:"Outfit";src:url(/fonts/outfit.woff) format("woff");font-weight:100 900;font-display:swap}
+:root{--bg:#070D1C;--panel:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);--ink:#F4F7FF;--soft:#9FB0CC;--dim:#6B7C99;--pink:#FF5C9A;--pink2:#FF9CC2;--sky:#86CCFA;--mint:#5FE0B0;--sun:#FFC46B}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+html,body{margin:0;height:100%;background-color:var(--bg);background-image:radial-gradient(1200px 800px at 50% 40%,#13224A 0%,#0A1430 45%,var(--bg) 100%);background-repeat:no-repeat;color:var(--ink);font-family:Outfit,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow:hidden}
+.app{height:100%;display:grid;grid-template-rows:auto 1fr;padding:22px 28px 24px;gap:18px}
+header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-size:26px;font-weight:500;letter-spacing:-.4px}
+.logo svg{width:38px;height:23px}
+.tag{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);padding-left:16px;border-left:1px solid var(--line)}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--pink2);background:rgba(255,92,154,.12);padding:7px 12px;border-radius:999px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 0 rgba(255,92,154,.7);animation:pulse 1.6s infinite}
+.live.off{color:var(--dim);background:rgba(255,255,255,.05)}.live.off i{background:var(--dim);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,92,154,.6)}70%{box-shadow:0 0 0 10px rgba(255,92,154,0)}100%{box-shadow:0 0 0 0 rgba(255,92,154,0)}}
+.demo{font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--sun);border:1px solid rgba(255,196,107,.4);padding:6px 10px;border-radius:999px}
+.sp{flex:1}
+.clock{font-size:15px;color:var(--soft);font-variant-numeric:tabular-nums}
+.hbtn{font:600 14px Outfit,sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;min-height:42px}
+.hbtn:hover{background:rgba(255,255,255,.09)}
+.hbtn.primary{background:var(--pink);border-color:var(--pink);color:#fff}
+.hbtn.primary:hover{background:#ff478d}
+main{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr) minmax(300px,390px);gap:22px;min-height:0}
+.col{display:flex;flex-direction:column;gap:16px;min-height:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px 20px}
+.lbl{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.big{font-size:clamp(46px,5.2vw,84px);font-weight:600;letter-spacing:-2px;line-height:1;margin-top:10px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.big small{font-size:.45em;font-weight:500;color:var(--soft);letter-spacing:0;margin-right:4px}
+.sub{color:var(--soft);font-size:14px;margin-top:8px}
+.sub b{color:var(--mint);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.stat b{display:block;font-size:30px;font-weight:600;margin-top:6px;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.stat span{font-size:12px;color:var(--soft)}
+.bars{display:flex;align-items:flex-end;gap:3px;height:92px;margin-top:14px}
+.bars i{flex:1;background:linear-gradient(180deg,var(--pink),rgba(255,92,154,.25));border-radius:4px 4px 1px 1px;min-height:2px;transition:height .6s}
+.bars i.now{background:linear-gradient(180deg,var(--sky),rgba(134,204,250,.25))}
+.axis{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);margin-top:6px}
+.chan{display:grid;gap:9px;margin-top:12px}
+.chan div{display:grid;grid-template-columns:86px 1fr 70px;align-items:center;gap:10px;font-size:14px}
+.chan em{font-style:normal;text-align:right;color:var(--soft);font-variant-numeric:tabular-nums}
+.chan s{display:block;height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;text-decoration:none}
+.chan s i{display:block;height:100%;border-radius:99px;transition:width .6s}
+.mapwrap{position:relative;min-height:0;display:flex;flex-direction:column}
+.mapwrap .card{flex:1;position:relative;padding:0;overflow:hidden}
+#map{position:absolute;inset:0;width:100%;height:100%}
+.maplbl{position:absolute;left:20px;top:18px;z-index:2}
+.maplbl b{display:block;font-size:22px;font-weight:500;margin-top:6px}
+.legend{position:absolute;left:20px;bottom:16px;display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--soft);z-index:2}
+.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:9px;height:9px;border-radius:50%}
+.feedcard{flex:1;display:flex;flex-direction:column;min-height:0;padding-bottom:6px}
+.feed{list-style:none;margin:12px -6px 0;padding:0;overflow:hidden;flex:1;display:flex;flex-direction:column;gap:6px}
+.feed li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 10px;border-radius:14px;background:rgba(255,255,255,.03);animation:slide .5s ease-out}
+.feed li.fresh{background:rgba(255,92,154,.14)}
+@keyframes slide{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.feed .dot{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:12px;font-weight:700;color:#0A1430}
+.feed .who{min-width:0}.feed .who b{display:block;font-weight:500;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed .who span{font-size:12px;color:var(--soft)}
+.feed .amt{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.feed .amt span{display:block;font-size:12px;font-weight:400;color:var(--soft)}
+.feed .del{background:none;border:0;color:var(--dim);font:12px Outfit,sans-serif;cursor:pointer;padding:2px 0 0;text-decoration:underline}
+.empty{color:var(--soft);font-size:14px;padding:12px 8px}
+.toast{position:fixed;left:50%;top:22px;transform:translate(-50%,-140%);background:#fff;color:#0A1430;border-radius:20px;padding:14px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 20px 60px -10px rgba(0,0,0,.5);transition:transform .45s cubic-bezier(.2,.9,.3,1.2);z-index:20;max-width:92vw}
+.toast.show{transform:translate(-50%,0)}
+.toast svg{width:34px;height:21px;flex:none}
+.toast b{font-size:18px;font-weight:600}.toast span{display:block;font-size:14px;color:#4A5875}
+.mile{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:15;opacity:0;transition:opacity .4s}
+.mile.show{opacity:1}
+.mile div{text-align:center;transform:scale(.7);transition:transform .6s cubic-bezier(.2,.9,.3,1.3)}
+.mile.show div{transform:scale(1)}
+.mile b{display:block;font-size:clamp(80px,13vw,220px);font-weight:700;letter-spacing:-4px;line-height:1;color:#fff;text-shadow:0 0 60px rgba(255,92,154,.8),0 0 140px rgba(134,204,250,.5)}
+.mile span{font-size:clamp(18px,2vw,28px);color:var(--pink2);letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.veil{position:fixed;inset:0;background:rgba(4,8,18,.7);backdrop-filter:blur(6px);display:none;place-items:center;z-index:30;padding:20px}
+.veil.show{display:grid}
+.dlg{width:min(440px,100%);background:#0F1A36;border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:14px}
+.dlg h2{margin:0;font-weight:500;font-size:24px}.dlg p{margin:0;color:var(--soft);font-size:14px;line-height:1.5}
+.dlg label{display:grid;gap:6px;font-size:13px;color:var(--soft)}
+.dlg input,.dlg select{font:16px Outfit,sans-serif;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-height:46px;width:100%}
+.dlg select option{color:#0A1430}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:500 14px Outfit,sans-serif;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer;min-height:40px}
+.chips button[aria-pressed=true]{background:var(--pink);border-color:var(--pink)}
+.acts{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.err{color:#FF8A8A;font-size:13px;min-height:1em}
+.sound{position:fixed;right:24px;bottom:22px;z-index:5}
+@media (max-width:1100px){
+  body{overflow:auto}.app{height:auto;padding:16px}
+  html,body{height:auto;min-height:100%}
+  main{grid-template-columns:1fr}.mapwrap .card{min-height:420px}
+  .clock,.demo{display:none}.sp{display:none}header{gap:10px}
+  .feedcard{max-height:560px}.tag{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo"><svg viewBox="0 0 100 60" aria-hidden="true"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="none" stroke="#fff" stroke-width="6"/></svg>cloudly</div>
+    <div class="tag">Live verkoop</div>
+    <span class="live off" id="live"><i></i><span id="livetxt">VERBINDEN</span></span>
+    <span class="demo" id="demotag" hidden>DEMO · NEPBESTELLINGEN</span>
+    <div class="sp"></div>
+    <div class="clock" id="clock"></div>
+    <button class="hbtn" id="soundbtn" type="button">Geluid aan</button>
+    <button class="hbtn primary" id="addbtn" type="button">+ Verkoop</button>
+  </header>
+  <main>
+    <div class="col">
+      <section class="card">
+        <div class="lbl">Totale omzet</div>
+        <div class="big" id="total"><small>€</small>0</div>
+        <div class="sub" id="todaysub">Vandaag <b>€0</b></div>
+      </section>
+      <div class="stats">
+        <div class="stat"><span>Blikjes verkocht</span><b id="s-cans">0</b></div>
+        <div class="stat"><span>Bestellingen</span><b id="s-orders">0</b></div>
+        <div class="stat"><span>Vandaag blikjes</span><b id="s-tcans">0</b></div>
+        <div class="stat"><span>Gem. bestelling</span><b id="s-avg">€0</b></div>
+      </div>
+      <section class="card">
+        <div class="lbl">Omzet vandaag per uur</div>
+        <div class="bars" id="bars"></div>
+        <div class="axis"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+      </section>
+      <section class="card">
+        <div class="lbl">Per kanaal</div>
+        <div class="chan" id="chan"></div>
+      </section>
+    </div>
+    <div class="mapwrap">
+      <section class="card">
+        <div class="maplbl"><div class="lbl">Waar Cloudly heen gaat</div><b id="citycount">0 plaatsen</b></div>
+        <canvas id="map" aria-label="Kaart van Nederland met bestellingen"></canvas>
+        <div class="legend" id="legend"></div>
+      </section>
+    </div>
+    <div class="col">
+      <section class="card feedcard">
+        <div class="lbl">Laatste verkopen</div>
+        <ul class="feed" id="feed"><li class="empty" style="display:block;background:none">Nog geen verkopen. De eerste komt eraan.</li></ul>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg viewBox="0 0 100 60" aria-hidden="true"><path d="M22 54 C10 54 4 46 4 38 C4 29 11 23 19 23 C21 12 30 5 41 5 C53 5 62 13 64 24 C66 23 68 23 70 23 C81 23 90 31 90 41 C90 49 85 54 77 54 Z" fill="#FF5C9A"/></svg><div><b id="toastt"></b><span id="toasts"></span></div></div>
+<div class="mile" id="mile" aria-hidden="true"><div><b id="milet"></b><span>Nieuwe mijlpaal</span></div></div>
+
+<div class="veil" id="keyveil">
+  <form class="dlg" id="keyform">
+    <h2>Live verkoop</h2>
+    <p>Vul je geheime sleutel in (dezelfde als <code>EXPORT_KEY</code> in Cloudflare). Hij wordt alleen in deze browser bewaard.</p>
+    <label>Geheime sleutel<input id="keyin" type="password" autocomplete="off" required></label>
+    <div class="err" id="keyerr"></div>
+    <div class="acts"><a class="hbtn" href="?demo=1" style="text-decoration:none;display:inline-flex;align-items:center">Demo bekijken</a><button class="hbtn primary" type="submit">Openen</button></div>
+  </form>
+</div>
+
+<div class="veil" id="addveil">
+  <form class="dlg" id="addform">
+    <h2>Verkoop toevoegen</h2>
+    <p>Voor verkoop buiten de webshop: winkels, horeca en proeverijen. Webshopbestellingen komen er vanzelf in.</p>
+    <div class="chips" id="addchan"></div>
+    <label>Plaats<input id="addcity" list="citylist" placeholder="Bijv. Groningen" autocomplete="off"></label>
+    <div class="row2">
+      <label>Aantal blikjes<input id="addcans" type="number" min="0" step="1" inputmode="numeric" placeholder="24"></label>
+      <label>Bedrag (€)<input id="addamt" type="number" min="0" step="0.01" inputmode="decimal" placeholder="33,60"></label>
+    </div>
+    <label>Notitie (optioneel)<input id="addnote" maxlength="140" placeholder="Bijv. Café De Wolk"></label>
+    <div class="err" id="adderr"></div>
+    <div class="acts"><button class="hbtn" type="button" id="addcancel">Annuleren</button><button class="hbtn primary" type="submit">Toevoegen</button></div>
+  </form>
+</div>
+<datalist id="citylist"></datalist>
+
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const TZ = 'Europe/Amsterdam';
+  const HQ = { lat: 53.240, lon: 6.533, name: 'Groningen' }; // Zernikepark, het magazijn
+  const CH = {
+    webshop: { name: 'Webshop', col: '#FF5C9A', ab: 'WS' },
+    tiktok: { name: 'TikTok', col: '#86CCFA', ab: 'TT' },
+    winkel: { name: 'Winkel', col: '#5FE0B0', ab: 'WK' },
+    horeca: { name: 'Horeca', col: '#FFC46B', ab: 'HO' },
+    proeverij: { name: 'Proeverij', col: '#C9A7FF', ab: 'PR' },
+    overig: { name: 'Overig', col: '#9FB0CC', ab: '··' }
+  };
+  const CITIES = {"amsterdam":[52.370,4.895],"rotterdam":[51.922,4.479],"den haag":[52.078,4.312],"s-gravenhage":[52.078,4.312],"utrecht":[52.091,5.122],"eindhoven":[51.441,5.470],"groningen":[53.219,6.567],"tilburg":[51.560,5.091],"almere":[52.350,5.264],"breda":[51.589,4.776],"nijmegen":[51.842,5.853],"apeldoorn":[52.211,5.970],"arnhem":[51.985,5.899],"haarlem":[52.387,4.646],"enschede":[52.222,6.894],"amersfoort":[52.156,5.388],"zaandam":[52.439,4.826],"den bosch":[51.697,5.304],"s-hertogenbosch":[51.697,5.304],"haarlemmermeer":[52.300,4.690],"hoofddorp":[52.303,4.689],"zwolle":[52.517,6.083],"zoetermeer":[52.057,4.493],"leiden":[52.160,4.497],"maastricht":[50.851,5.691],"dordrecht":[51.813,4.690],"ede":[52.040,5.665],"emmen":[52.785,6.897],"westland":[52.000,4.200],"venlo":[51.370,6.172],"delft":[52.012,4.357],"deventer":[52.255,6.163],"leeuwarden":[53.201,5.800],"alkmaar":[52.632,4.748],"heerlen":[50.888,5.979],"hilversum":[52.223,5.176],"sittard":[51.000,5.869],"helmond":[51.476,5.661],"oss":[51.765,5.518],"amstelveen":[52.303,4.858],"assen":[52.993,6.562],"hengelo":[52.266,6.793],"purmerend":[52.505,4.959],"roosendaal":[51.531,4.465],"schiedam":[51.917,4.399],"lelystad":[52.518,5.471],"spijkenisse":[51.845,4.329],"gouda":[52.011,4.711],"vlaardingen":[51.912,4.341],"alphen aan den rijn":[52.129,4.656],"hoorn":[52.643,5.060],"veenendaal":[52.026,5.554],"capelle aan den ijssel":[51.929,4.578],"nieuwegein":[52.029,5.081],"zeist":[52.089,5.233],"katwijk":[52.200,4.416],"roermond":[51.194,5.988],"doetinchem":[51.965,6.289],"middelburg":[51.499,3.611],"vlissingen":[51.443,3.573],"goes":[51.504,3.889],"terneuzen":[51.335,3.828],"harderwijk":[52.342,5.620],"kampen":[52.555,5.911],"meppel":[52.696,6.194],"hoogeveen":[52.723,6.476],"heerenveen":[52.960,5.920],"drachten":[53.105,6.098],"sneek":[53.033,5.659],"den helder":[52.959,4.760],"wageningen":[51.970,5.665],"tiel":[51.887,5.429],"bergen op zoom":[51.495,4.291],"weert":[51.252,5.706],"veendam":[53.106,6.879],"winschoten":[53.144,7.035],"delfzijl":[53.330,6.919],"stadskanaal":[52.990,6.950],"hoogezand":[53.161,6.761],"haren":[53.173,6.605],"zuidhorn":[53.246,6.405],"leek":[53.162,6.376],"roden":[53.137,6.430],"appingedam":[53.321,6.858],"bedum":[53.300,6.602],"ten boer":[53.276,6.694],"paterswolde":[53.146,6.564],"eelde":[53.136,6.567],"zuidlaren":[53.094,6.682],"tynaarlo":[53.077,6.618],"vries":[53.075,6.577],"beilen":[52.862,6.513],"coevorden":[52.661,6.741],"steenwijk":[52.787,6.120],"almelo":[52.357,6.662],"oldenzaal":[52.313,6.929],"winterswijk":[51.972,6.720],"zutphen":[52.138,6.201],"culemborg":[51.955,5.227],"houten":[52.033,5.168],"woerden":[52.086,4.883],"waalwijk":[51.683,5.070],"uden":[51.659,5.617],"veghel":[51.616,5.549],"valkenswaard":[51.351,5.459],"kerkrade":[50.866,6.062],"geleen":[50.974,5.828],"texel":[53.055,4.797],"schiermonnikoog":[53.480,6.160],"ameland":[53.448,5.740],"terschelling":[53.400,5.330]};
+
+  // --- simplified outline of the Netherlands (lon, lat); drawn as a dot map so small inaccuracies disappear
+  const NL = [[4.76,52.96],[4.66,52.77],[4.62,52.62],[4.58,52.46],[4.52,52.37],[4.42,52.24],[4.26,52.11],[4.12,51.98],[4.00,51.96],[3.85,51.82],[3.69,51.70],[3.44,51.53],[3.57,51.44],[3.38,51.37],[3.40,51.30],[3.55,51.24],[3.85,51.21],[4.05,51.25],[4.24,51.37],[4.40,51.45],[4.55,51.43],[4.75,51.50],[4.95,51.43],[5.05,51.48],[5.25,51.31],[5.50,51.28],[5.65,51.18],[5.85,51.15],[5.80,51.05],[5.75,50.93],[5.65,50.85],[5.70,50.75],[6.02,50.76],[6.08,50.88],[5.97,51.00],[6.17,51.15],[6.07,51.25],[6.22,51.36],[6.15,51.55],[6.02,51.71],[5.95,51.82],[6.17,51.85],[6.42,51.83],[6.72,51.90],[6.82,52.00],[6.70,52.08],[7.03,52.23],[7.07,52.38],[6.70,52.47],[6.75,52.65],[7.05,52.63],[7.07,52.85],[7.20,53.00],[7.21,53.18],[7.00,53.30],[6.85,53.35],[6.83,53.44],[6.40,53.42],[6.15,53.40],[5.85,53.38],[5.60,53.30],[5.42,53.17],[5.40,53.07],[5.10,53.02],[4.97,52.93]];
+  const WATER = [
+    [[4.97,52.93],[5.10,53.02],[5.36,52.88],[5.62,52.82],[5.60,52.68],[5.42,52.60],[5.25,52.52],[5.12,52.40],[4.98,52.37],[5.02,52.50],[5.10,52.62],[5.28,52.70],[5.10,52.75],[5.00,52.85]],
+    [[3.55,51.42],[3.75,51.40],[4.00,51.42],[4.22,51.38],[4.15,51.34],[3.90,51.36],[3.60,51.38]],
+    [[3.70,51.66],[4.00,51.62],[4.18,51.58],[4.10,51.55],[3.85,51.58],[3.65,51.62]]
+  ];
+  const ISLANDS = [[4.80,53.07,0.09,0.10],[5.02,53.27,0.10,0.035],[5.33,53.39,0.17,0.04],[5.75,53.45,0.14,0.035],[6.17,53.48,0.09,0.03]];
+
+  const eur = (n, dec) => '€' + Number(n || 0).toLocaleString('nl-NL', { minimumFractionDigits: dec ? 2 : 0, maximumFractionDigits: dec ? 2 : 0 });
+  const num = n => Number(n || 0).toLocaleString('nl-NL');
+  const dayKey = d => new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+  const hourOf = d => Number(new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', hour12: false }).format(d)) % 24;
+  const timeOf = d => new Intl.DateTimeFormat('nl-NL', { timeZone: TZ, hour: '2-digit', minute: '2-digit' }).format(d);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const norm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/^'s[- ]/, 's-').replace(/\s+/g, ' ').trim();
+  const hash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967295; };
+  function geo(s) {
+    if (s.lat != null && s.lon != null && s.lat > 50.5 && s.lat < 53.8 && s.lon > 3 && s.lon < 7.4) return [s.lat, s.lon];
+    const c = CITIES[norm(s.city)];
+    if (c) return c;
+    if (!s.city) return [HQ.lat, HQ.lon];
+    const a = hash(s.city), b = hash(s.city + 'x');
+    return [51.75 + a * 1.1, 4.7 + b * 1.6];
+  }
+
+  // ---------- state
+  const params = new URLSearchParams(location.search);
+  const DEMO = params.has('demo');
+  let KEY = params.get('key') || '';
+  try { if (KEY) localStorage.setItem('cloudly-live-key', KEY); else KEY = localStorage.getItem('cloudly-live-key') || ''; } catch (e) {}
+  if (params.get('key')) history.replaceState(null, '', location.pathname + (DEMO ? '?demo=1' : ''));
+  let sales = [], lastId = 0, booted = false, shownTotal = 0, soundOn = false, audio = null;
+
+  // ---------- map
+  const cv = $('map'), ctx = cv.getContext('2d');
+  let W = 0, H = 0, DPR = 1, proj = null, dots = [];
+  const arcs = [], pulses = [];
+  function inPoly(x, y, poly) { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, yi] = poly[i], [xj, yj] = poly[j]; if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) c = !c; } return c; }
+  function onLand(lon, lat) {
+    if (ISLANDS.some(([x, y, rx, ry]) => ((lon - x) / rx) ** 2 + ((lat - y) / ry) ** 2 <= 1)) return true;
+    return inPoly(lon, lat, NL) && !WATER.some(w => inPoly(lon, lat, w));
+  }
+  function layout() {
+    const r = cv.getBoundingClientRect(); DPR = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+    const k = Math.cos(52.2 * Math.PI / 180), lon0 = 3.3, lon1 = 7.3, lat0 = 50.7, lat1 = 53.6;
+    const gw = (lon1 - lon0) * k, gh = lat1 - lat0, pad = 46;
+    const s = Math.min((W - pad * 2) / gw, (H - pad * 2 - 30) / gh);
+    const ox = (W - gw * s) / 2, oy = (H - gh * s) / 2 + 12;
+    proj = (lat, lon) => [ox + (lon - lon0) * k * s, oy + (lat1 - lat) * s];
+    const step = Math.max(7, Math.min(13, s * 0.055)); dots = [];
+    for (let y = oy; y < oy + gh * s; y += step) for (let x = ox; x < ox + gw * s; x += step) {
+      const lon = lon0 + (x - ox) / (k * s), lat = lat1 - (y - oy) / s;
+      if (onLand(lon, lat)) dots.push([x, y]);
+    }
+    dots.step = step;
+  }
+  const cityStats = () => { const m = new Map(); for (const s of sales) { const [la, lo] = geo(s); const k = la.toFixed(2) + ',' + lo.toFixed(2); const v = m.get(k) || { la, lo, n: 0, ch: s.channel }; v.n++; v.ch = s.channel; m.set(k, v); } return m; };
+  let cityCache = new Map();
+  function draw(t) {
+    if (!proj) return;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
+    const r = dots.step * 0.26;
+    ctx.fillStyle = 'rgba(134,204,250,.22)';
+    for (const [x, y] of dots) { ctx.beginPath(); ctx.arc(x, y, r, 0, 6.283); ctx.fill(); }
+    // cities that already ordered
+    for (const v of cityCache.values()) {
+      const [x, y] = proj(v.la, v.lo), rr = 2.5 + Math.min(9, Math.sqrt(v.n) * 2.2), col = (CH[v.ch] || CH.overig).col;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, rr * 3); g.addColorStop(0, col + 'AA'); g.addColorStop(1, col + '00');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, rr * 3, 0, 6.283); ctx.fill();
+      ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, rr * 0.55, 0, 6.283); ctx.fill();
+    }
+    // warehouse
+    const [hx, hy] = proj(HQ.lat, HQ.lon), pr = 6 + 3 * Math.sin(t / 500);
+    ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(hx, hy, pr + 6, 0, 6.283); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(hx, hy, 4.5, 0, 6.283); ctx.fill();
+    ctx.font = '600 12px Outfit, sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.85)'; ctx.fillText('Cloudly · Groningen', hx + 12, hy - 10);
+    // arcs
+    for (let i = arcs.length - 1; i >= 0; i--) {
+      const a = arcs[i], p = Math.min(1, (t - a.t0) / 1900);
+      const [x0, y0] = proj(HQ.lat, HQ.lon), [x1, y1] = proj(a.la, a.lo);
+      const mx = (x0 + x1) / 2, my = (y0 + y1) / 2 - Math.max(40, Math.hypot(x1 - x0, y1 - y0) * 0.35);
+      const pt = u => [(1 - u) * (1 - u) * x0 + 2 * (1 - u) * u * mx + u * u * x1, (1 - u) * (1 - u) * y0 + 2 * (1 - u) * u * my + u * u * y1];
+      const fade = p < 1 ? 1 : Math.max(0, 1 - (t - a.t0 - 1900) / 1600);
+      if (fade <= 0) { arcs.splice(i, 1); continue; }
+      ctx.lineWidth = 2; ctx.lineCap = 'round';
+      const N = 40, tail = 0.45;
+      for (let k2 = 0; k2 < N; k2++) {
+        const u0 = Math.max(0, p - tail) + (p - Math.max(0, p - tail)) * k2 / N, u1 = Math.max(0, p - tail) + (p - Math.max(0, p - tail)) * (k2 + 1) / N;
+        const [ax, ay] = pt(u0), [bx, by] = pt(u1);
+        ctx.strokeStyle = a.col + Math.round(255 * fade * (k2 / N)).toString(16).padStart(2, '0');
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,' + 0.12 * fade + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.quadraticCurveTo(mx, my, x1, y1); ctx.stroke();
+      if (p < 1) { const [cx, cy] = pt(p); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cx, cy, 3.5, 0, 6.283); ctx.fill(); }
+      else if (!a.hit) { a.hit = true; pulses.push({ x: x1, y: y1, t0: t, col: a.col, label: a.label }); }
+    }
+    for (let i = pulses.length - 1; i >= 0; i--) {
+      const q = pulses[i], u = (t - q.t0) / 2600; if (u > 1) { pulses.splice(i, 1); continue; }
+      ctx.strokeStyle = q.col; ctx.globalAlpha = 1 - u; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(q.x, q.y, 6 + u * 46, 0, 6.283); ctx.stroke();
+      ctx.font = '600 14px Outfit, sans-serif'; ctx.fillStyle = '#fff'; ctx.fillText(q.label, q.x + 12, q.y - 12 - u * 8);
+      ctx.globalAlpha = 1;
+    }
+  }
+  function loop(t) { draw(t); requestAnimationFrame(loop); }
+
+  // ---------- render numbers
+  function render(newOnes) {
+    const today = dayKey(new Date());
+    let total = 0, cans = 0, tTotal = 0, tCans = 0; const hours = new Array(24).fill(0), byCh = {};
+    for (const s of sales) {
+      const d = new Date(s.created_at); total += s.amount; cans += s.cans;
+      byCh[s.channel] = (byCh[s.channel] || 0) + s.amount;
+      if (dayKey(d) === today) { tTotal += s.amount; tCans += s.cans; hours[hourOf(d)] += s.amount; }
+    }
+    tween(total);
+    $('todaysub').innerHTML = 'Vandaag <b>' + eur(tTotal) + '</b> · ' + num(sales.filter(s => dayKey(new Date(s.created_at)) === today).length) + ' verkopen';
+    $('s-cans').textContent = num(cans); $('s-orders').textContent = num(sales.length);
+    $('s-tcans').textContent = num(tCans); $('s-avg').textContent = eur(sales.length ? total / sales.length : 0, true);
+    const mx = Math.max(1, ...hours), nowH = hourOf(new Date());
+    $('bars').innerHTML = hours.map((v, h) => '<i class="' + (h === nowH ? 'now' : '') + '" style="height:' + Math.max(2, v / mx * 100) + '%" title="' + String(h).padStart(2, '0') + ':00 · ' + eur(v) + '"></i>').join('');
+    const chMax = Math.max(1, ...Object.values(byCh));
+    $('chan').innerHTML = Object.keys(CH).filter(k => byCh[k] || ['webshop', 'tiktok', 'winkel'].includes(k)).map(k =>
+      '<div><span>' + CH[k].name + '</span><s><i style="width:' + ((byCh[k] || 0) / chMax * 100) + '%;background:' + CH[k].col + '"></i></s><em>' + eur(byCh[k] || 0) + '</em></div>').join('');
+    cityCache = cityStats();
+    $('citycount').textContent = num(cityCache.size) + (cityCache.size === 1 ? ' plaats' : ' plaatsen');
+    const used = new Set(sales.map(s => s.channel));
+    $('legend').innerHTML = Object.keys(CH).filter(k => used.has(k)).map(k => '<span><i style="background:' + CH[k].col + '"></i>' + CH[k].name + '</span>').join('');
+    renderFeed(newOnes);
+  }
+  function renderFeed(newOnes) {
+    const list = sales.slice(-14).reverse(), fresh = new Set((newOnes || []).map(s => s.id));
+    $('feed').innerHTML = list.length ? list.map(s => {
+      const c = CH[s.channel] || CH.overig, d = new Date(s.created_at), when = dayKey(d) === dayKey(new Date()) ? timeOf(d) : d.toLocaleDateString('nl-NL', { timeZone: TZ, day: 'numeric', month: 'short' });
+      return '<li class="' + (fresh.has(s.id) ? 'fresh' : '') + '"><span class="dot" style="background:' + c.col + '">' + c.ab + '</span><span class="who"><b>' + esc(s.city || 'Onbekend') + (s.note ? ' · ' + esc(s.note) : '') + '</b><span>' + c.name + ' · ' + when + (DEMO ? '' : ' · <button class="del" data-del="' + s.id + '" type="button">verwijderen</button>') + '</span></span><span class="amt">' + eur(s.amount, true) + '<span>' + num(s.cans) + ' blikjes</span></span></li>';
+    }).join('') : '<li class="empty" style="display:block;background:none">Nog geen verkopen. De eerste komt eraan.</li>';
+  }
+  let tw = null;
+  function tween(target) {
+    const from = shownTotal, t0 = performance.now(), dur = booted ? 1400 : 1800; cancelAnimationFrame(tw);
+    const step = t => { const u = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - u, 3); shownTotal = from + (target - from) * e;
+      $('total').innerHTML = '<small>€</small>' + Math.round(shownTotal).toLocaleString('nl-NL'); if (u < 1) tw = requestAnimationFrame(step); };
+    tw = requestAnimationFrame(step);
+  }
+
+  // ---------- new sale effects
+  const MILES = [100, 250, 500, 1000, 2500, 5000, 7500, 10000, 15000, 20000, 25000, 50000, 75000, 100000];
+  const mileFor = n => MILES.filter(m => m <= n).pop() || (n >= 100000 ? Math.floor(n / 50000) * 50000 : 0);
+  function chime(big) {
+    if (!soundOn) return;
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      const notes = big ? [523, 659, 784, 1047] : [784, 1175];
+      notes.forEach((f, i) => { const o = audio.createOscillator(), g = audio.createGain(), t = audio.currentTime + i * 0.12;
+        o.type = 'sine'; o.frequency.value = f; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.18, t + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+        o.connect(g).connect(audio.destination); o.start(t); o.stop(t + 0.65); });
+    } catch (e) {}
+  }
+  let toastT = null;
+  function toast(s) {
+    const c = CH[s.channel] || CH.overig;
+    $('toastt').textContent = 'Nieuwe verkoop · ' + eur(s.amount, true);
+    $('toasts').textContent = (s.city || 'Onbekend') + ' · ' + num(s.cans) + ' blikjes · ' + c.name;
+    $('toast').classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => $('toast').classList.remove('show'), 4200);
+  }
+  function milestone(m) {
+    $('milet').textContent = eur(m); $('mile').classList.add('show'); chime(true);
+    setTimeout(() => $('mile').classList.remove('show'), 3200);
+  }
+  function addSales(list) {
+    if (!list.length) return;
+    const before = sales.reduce((a, s) => a + s.amount, 0);
+    for (const s of list) { s.amount = Number(s.amount) || 0; s.cans = Number(s.cans) || 0; sales.push(s); lastId = Math.max(lastId, s.id); }
+    sales.sort((a, b) => new Date(a.created_at) - new Date(b.created_at) || a.id - b.id);
+    const after = sales.reduce((a, s) => a + s.amount, 0);
+    render(booted ? list : []);
+    if (booted) {
+      const now = performance.now();
+      list.slice(-6).forEach((s, i) => { const [la, lo] = geo(s); arcs.push({ la, lo, t0: now + i * 450, col: (CH[s.channel] || CH.overig).col, label: (s.city || 'Onbekend') + ' · ' + eur(s.amount) }); });
+      toast(list[list.length - 1]);
+      const mb = mileFor(before), ma = mileFor(after);
+      if (ma > mb) setTimeout(() => milestone(ma), 900); else chime(false);
+    }
+  }
+
+  // ---------- data
+  async function api(method, body) {
+    const r = await fetch('/api/sales' + (method === 'GET' ? '?since=' + lastId : ''), { method, headers: { 'x-key': KEY, 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+    if (r.status === 401) throw Object.assign(new Error('key'), { code: 401 });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || !j.ok) throw Object.assign(new Error(j.error || 'http'), { code: r.status });
+    return j;
+  }
+  function setLive(on, txt) { $('live').classList.toggle('off', !on); $('livetxt').textContent = txt; }
+  async function poll() {
+    try { const j = await api('GET'); addSales(j.sales || []); setLive(true, 'LIVE'); if (!booted) { booted = true; } }
+    catch (e) { if (e.code === 401) { showKey('Deze sleutel klopt niet.'); return; } setLive(false, e.code === 503 ? 'GEEN DATABASE' : 'OFFLINE'); }
+    setTimeout(poll, 5000);
+  }
+  function showKey(err) { $('keyerr').textContent = err || ''; $('keyveil').classList.add('show'); setTimeout(() => $('keyin').focus(), 50); }
+  $('keyform').addEventListener('submit', e => { e.preventDefault(); KEY = $('keyin').value.trim(); try { localStorage.setItem('cloudly-live-key', KEY); } catch (x) {} $('keyveil').classList.remove('show'); lastId = 0; sales = []; booted = false; poll(); });
+
+  // ---------- demo
+  const DC = ['Amsterdam', 'Rotterdam', 'Utrecht', 'Den Haag', 'Groningen', 'Groningen', 'Groningen', 'Eindhoven', 'Zwolle', 'Leeuwarden', 'Assen', 'Haarlem', 'Nijmegen', 'Arnhem', 'Leiden', 'Enschede', 'Tilburg', 'Breda', 'Amersfoort', 'Haren', 'Delft', 'Maastricht', 'Drachten', 'Emmen', 'Deventer', 'Alkmaar', 'Hilversum', 'Middelburg', 'Wageningen', 'Zuidlaren'];
+  let did = 0;
+  function fake(at) {
+    const r = Math.random(), city = DC[Math.floor(Math.random() * DC.length)];
+    let s;
+    if (r < 0.55) { const t = Math.random() < 0.75 ? 1 : Math.random() < 0.7 ? 2 : 3; s = { channel: 'webshop', cans: 12 * t, amount: 24.99 * t }; }
+    else if (r < 0.78) { const t = Math.random() < 0.8 ? 1 : 2; s = { channel: 'tiktok', cans: 12 * t, amount: 22.99 * t }; }
+    else if (r < 0.88) { const c = [24, 48, 72][Math.floor(Math.random() * 3)]; s = { channel: 'winkel', cans: c, amount: c * 1.4, note: ['Spar', 'Kiosk', 'Gym'][Math.floor(Math.random() * 3)] }; }
+    else if (r < 0.95) { const c = [24, 48][Math.floor(Math.random() * 2)]; s = { channel: 'horeca', cans: c, amount: c * 1.4, note: 'Café' }; }
+    else { const c = 6 + Math.floor(Math.random() * 30); s = { channel: 'proeverij', cans: c, amount: c * 2.5 }; }
+    s.amount = Math.round(s.amount * 100) / 100;
+    return Object.assign(s, { id: ++did, city: s.channel === 'proeverij' ? 'Groningen' : city, created_at: (at || new Date()).toISOString() });
+  }
+  function startDemo() {
+    $('demotag').hidden = false; $('keyveil').classList.remove('show');
+    const now = Date.now(), hist = [];
+    for (let i = 0; i < 70; i++) hist.push(fake(new Date(now - Math.random() * 9 * 864e5)));
+    for (let i = 0; i < 9; i++) hist.push(fake(new Date(now - Math.random() * 6 * 36e5)));
+    addSales(hist); booted = true; setLive(true, 'LIVE');
+    const next = () => setTimeout(() => { addSales([fake()]); next(); }, 4500 + Math.random() * 6000);
+    next();
+  }
+
+  // ---------- add sale
+  let addCh = 'winkel';
+  $('addchan').innerHTML = ['winkel', 'horeca', 'proeverij', 'webshop', 'tiktok', 'overig'].map(k => '<button type="button" data-ch="' + k + '" aria-pressed="' + (k === addCh) + '">' + CH[k].name + '</button>').join('');
+  $('addchan').addEventListener('click', e => { const b = e.target.closest('[data-ch]'); if (!b) return; addCh = b.dataset.ch; $('addchan').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+  $('citylist').innerHTML = Object.keys(CITIES).filter(k => !k.startsWith('s-')).map(k => '<option value="' + k.replace(/\b\w/g, c => c.toUpperCase()) + '">').join('');
+  const openAdd = () => { $('adderr').textContent = ''; $('addveil').classList.add('show'); setTimeout(() => $('addcity').focus(), 50); };
+  const closeAdd = () => $('addveil').classList.remove('show');
+  $('addbtn').addEventListener('click', openAdd); $('addcancel').addEventListener('click', closeAdd);
+  $('addveil').addEventListener('click', e => { if (e.target === $('addveil')) closeAdd(); });
+  $('addcans').addEventListener('input', () => { if (!$('addamt').dataset.touched) { const c = Number($('addcans').value) || 0; const p = { winkel: 1.4, horeca: 1.4, proeverij: 2.5, webshop: 24.99 / 12, tiktok: 22.99 / 12, overig: 2 }[addCh]; $('addamt').value = c ? (c * p).toFixed(2) : ''; } });
+  $('addamt').addEventListener('input', () => { $('addamt').dataset.touched = '1'; });
+  $('addform').addEventListener('submit', async e => {
+    e.preventDefault();
+    const body = { channel: addCh, city: $('addcity').value.trim(), cans: Number($('addcans').value) || 0, amount: Number(String($('addamt').value).replace(',', '.')) || 0, note: $('addnote').value.trim() };
+    const c = CITIES[norm(body.city)]; if (c) { body.lat = c[0]; body.lon = c[1]; }
+    if (!body.cans && !body.amount) { $('adderr').textContent = 'Vul het aantal blikjes of het bedrag in.'; return; }
+    if (DEMO) { addSales([Object.assign(body, { id: ++did, created_at: new Date().toISOString() })]); }
+    else { try { await api('POST', body); const j = await api('GET'); addSales(j.sales || []); } catch (x) { $('adderr').textContent = x.code === 401 ? 'Sleutel klopt niet.' : 'Opslaan lukte niet. Probeer het opnieuw.'; return; } }
+    ['addcity', 'addcans', 'addamt', 'addnote'].forEach(id => { $(id).value = ''; }); delete $('addamt').dataset.touched; closeAdd();
+  });
+  $('feed').addEventListener('click', async e => {
+    const b = e.target.closest('[data-del]'); if (!b) return;
+    if (b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = 'zeker weten?'; setTimeout(() => { if (b.isConnected) { b.dataset.sure = ''; b.textContent = 'verwijderen'; } }, 4000); return; }
+    try { await api('POST', { action: 'delete', id: Number(b.dataset.del) }); sales = sales.filter(s => s.id !== Number(b.dataset.del)); render([]); } catch (x) {}
+  });
+  $('soundbtn').addEventListener('click', () => { soundOn = !soundOn; $('soundbtn').textContent = soundOn ? 'Geluid uit' : 'Geluid aan'; if (soundOn) chime(false); });
+
+  // ---------- clock + boot
+  const tick = () => { $('clock').textContent = new Intl.DateTimeFormat('nl-NL', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }).format(new Date()); };
+  tick(); setInterval(tick, 15000);
+  new ResizeObserver(() => layout()).observe(cv); layout(); requestAnimationFrame(loop);
+  setInterval(() => render([]), 60000);
+  if (DEMO) startDemo(); else if (!KEY) showKey(); else poll();
+})();
+</script>
+</body>
+</html>
